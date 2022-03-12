@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.myapp.modules.code.CodeMpp">
+
+	<resultMap id="resultMapObj"
+		type="com.mycompany.myapp.modules.code.Code"></resultMap>
+
+
+	<select id="selectListGroup" resultMap="resultMapObj">
+		
+		SELECT
+		oycgSeq
+		, oycgName
+		
+		FROM
+		oyCodeGroup
+		
+	</select>
+	
+	
+	<insert id="insertGroup">
+		
+		INSERT INTO oyCodeGroup (
+		oycgName
+		, oycgDelNy
+		) values (
+		#{oycgName}
+		, 0
+		)
+
+	</insert>
+
+
+	<select id="selectOneGroup" resultMap="resultMapObj">
+
+		SELECT
+		oycgSeq
+		, oycgName
+		, oycgDelNy
+		FROM
+		oyCodeGroup
+		WHERE 1=1
+		AND oycgDelNy = 0
+		AND oycgSeq = #{oycgSeq}
+
+	</select>
+	
+	
+	<update id="updateGroup">
+	
+		UPDATE
+		oyCodeGroup
+		SET
+		oycgName = #{oycgName}
+		WHERE 1=1
+		AND oycgSeq = #{oycgSeq}
+	
+	</update>
+
+	<select id="selectList" resultMap="resultMapObj">
+		
+		SELECT
+		oycdSeq
+		, oycdName
+		
+		FROM
+		oyCode
+		
+	</select>
+	
+	
+	<insert id="insert">
+		
+		INSERT INTO oyCode (
+		oycdName
+		, oycdDelNy
+		, oycgSeq
+		) values (
+		#{oycdName}
+		, 0
+		, #{oycgSeq}
+		)
+
+	</insert>
+
+
+	<select id="selectOne" resultMap="resultMapObj">
+
+		SELECT
+		oycdSeq
+		, oycdName
+		, oycdDelNy
+		FROM
+		oyCode
+		WHERE 1=1
+		AND oycdDelNy = 0
+		AND oycdSeq = #{oycdSeq}
+
+	</select>
+	
+	
+	<update id="update">
+	
+		UPDATE
+		oyCode
+		SET
+		oycdName = #{oycdName}
+		WHERE 1=1
+		AND oycdSeq = #{oycdSeq}
+	
+	</update>
+
+
+</mapper>

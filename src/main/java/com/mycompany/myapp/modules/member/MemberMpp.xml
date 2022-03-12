@@ -11,26 +11,59 @@
 
 
 	<select id="selectList" resultMap="resultMapObj">
-		select
+		
+		SELECT
 		oymbSeq
 		, oymbId
 		, oymbName
-		from
+		
+		FROM
 		oyMember
+		
 	</select>
+	
+	
 	<insert id="insert">
-		insert into oyMember (
+		
+		INSERT INTO oyMember (
 		oymbId
-		,oymbName
-		,oymbDelNy
-		)
-		values (
+		, oymbName
+		, oymbDelNy
+		) values (
 		#{oymbId}
-		,#{oymbName}
-		,0
-
+		, #{oymbName}
+		, 0
 		)
-
 
 	</insert>
+
+
+	<select id="selectOne" resultMap="resultMapObj">
+
+		SELECT
+		oymbSeq
+		, oymbName
+		, oymbId
+		, oymbDelNy
+		FROM
+		oyMember
+		WHERE 1=1
+		AND oymbDelNy = 0
+		AND oymbSeq = #{oymbSeq}
+
+	</select>
+	
+	
+	<update id="update">
+	
+		UPDATE
+		oyMember
+		SET
+		oymbName = #{oymbName}
+		WHERE 1=1
+		AND oymbSeq = #{oymbSeq}
+	
+	</update>
+
+
 </mapper>

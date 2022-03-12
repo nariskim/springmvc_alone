@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
-<a href="/myapp/member/memberForm?oymbSeq=<c:out value="${item.oymbSeq}"/>">등록</a>
+<a href="/myapp/code/codeGroupForm?oycgSeq=<c:out value="${item.oycgSeq}"/>">등록</a>
 
 <br>
 
@@ -19,9 +19,9 @@
 	<c:otherwise>
 		<c:forEach items="${list}" var="item" varStatus="status">
 
-			<c:out value="${item.oymbSeq}" /> | <a
-				href="/myapp/member/memberView?oymbSeq=<c:out value="${item.oymbSeq}"/>"><c:out
-					value="${item.oymbName}" /></a> | <c:out value="${item.oymbId}" />
+			<c:out value="${item.oycgSeq}" /> | <a
+				href="/myapp/code/codeGroupView?oycgSeq=<c:out value="${item.oycgSeq}"/>"><c:out
+					value="${item.oycgName}" /></a>
 			<br>
 
 		</c:forEach>
