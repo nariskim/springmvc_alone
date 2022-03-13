@@ -13,54 +13,54 @@ public class DurianController {
 	@Autowired
 	DurianServiceImpl service;
 
-	@RequestMapping(value = "/member/memberList")
-	public String memberList(Model model) throws Exception {
+	@RequestMapping(value = "/durian/durianList")
+	public String durianList(Model model) throws Exception {
 
 		List<Durian> list = service.selectList();
 		model.addAttribute("list", list);
 
-		return "member/memberList";
+		return "durian/durianList";
 	}
 
-	@RequestMapping(value = "/member/memberForm")
-	public String memberForm(Model model) throws Exception {
+	@RequestMapping(value = "/durian/durianForm")
+	public String durianForm(Model model) throws Exception {
 
-		return "member/memberForm";
+		return "durian/durianForm";
 	}
 
-	@RequestMapping(value = "/member/memberInst")
-	public String memberInst(Model model, Durian dto) throws Exception {
+	@RequestMapping(value = "/durian/durianInst")
+	public String durianInst(Model model, Durian dto) throws Exception {
 
 		service.insert(dto);
 
-		return "redirect:/member/memberList";
+		return "redirect:/durian/durianList";
 	}
 	
-	@RequestMapping(value = "/member/memberView")
-	public String memberView(DurianVo vo, Model model) throws Exception {
+	@RequestMapping(value = "/durian/durianView")
+	public String durianView(DurianVo vo, Model model) throws Exception {
 
 		Durian rt = service.selectOne(vo);
 		
 		model.addAttribute("item", rt);
 	
-		return "member/memberView";
+		return "durian/durianView";
 	}
 
-	@RequestMapping(value = "/member/memberEdit")
-	public String memberEdit(DurianVo vo, Model model) throws Exception {
+	@RequestMapping(value = "/durian/durianEdit")
+	public String durianEdit(DurianVo vo, Model model) throws Exception {
 
 		Durian rt = service.selectOne(vo);
 	
 		model.addAttribute("item", rt);
 
-		return "member/memberEdit";
+		return "durian/durianEdit";
 	}
 	
-	@RequestMapping(value = "/member/memberUpdt")
-	public String memberUpdt(Durian dto) throws Exception {
+	@RequestMapping(value = "/durian/durianUpdt")
+	public String durianUpdt(Durian dto) throws Exception {
 		
 		service.update(dto);
 		
-		return "redirect:/member/memberList";
+		return "redirect:/durian/durianList";
 	}
 }

@@ -14,7 +14,7 @@ public class DurianDao {
 //	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 
-	private static String namespace = "com.mycompany.myapp.modules.member.MemberMpp";
+	private static String namespace = "com.mycompany.myapp.modules.durian.DurianMpp";
 
 	public List<Durian> selectList() {
 		return sqlSession.selectList(namespace + ".selectList", "");
