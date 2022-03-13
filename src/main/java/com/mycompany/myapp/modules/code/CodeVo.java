@@ -6,6 +6,11 @@ public class CodeVo {
 
 	private String oycdSeq;
 
+	private String scOycgSeq = "";
+
+	private String scOycgName = "";
+	private Integer scOycgDelNy;
+
 	public String getOycgSeq() {
 		return oycgSeq;
 	}
@@ -20,6 +25,30 @@ public class CodeVo {
 
 	public void setOycdSeq(String oycdSeq) {
 		this.oycdSeq = oycdSeq;
+	}
+
+	public String getScOycgSeq() {
+		return scOycgSeq;
+	}
+
+	public void setScOycgSeq(String scOycgSeq) {
+		this.scOycgSeq = scOycgSeq;
+	}
+
+	public String getScOycgName() {
+		return scOycgName;
+	}
+
+	public void setScOycgName(String scOycgName) {
+		this.scOycgName = scOycgName;
+	}
+
+	public Integer getScOycgDelNy() {
+		return scOycgDelNy;
+	}
+
+	public void setScOycgDelNy(Integer scOycgDelNy) {
+		this.scOycgDelNy = scOycgDelNy;
 	}
 
 }

@@ -10,6 +10,16 @@
 
 <br>
 
+<form id="" name="" method="get" action="/myapp/code/codeList">
+<select name="scOycgSeq">
+	<option value="">::코드그룹::
+	<c:forEach items="${listCodeGroup}" var="item" varStatus="status">
+	<option value="<c:out value="${item.oycgSeq }"/>"> <c:out value="${item.oycgName}"/>
+	</c:forEach>
+</select>
+<input type="submit" name="search">
+</form>
+
 <c:choose>
 	<c:when test="${fn:length(list) eq 0}">
 		<tr>
@@ -19,7 +29,7 @@
 	<c:otherwise>
 		<c:forEach items="${list}" var="item" varStatus="status">
 
-			<c:out value="${item.oycdSeq}" /> | <a
+			<c:out value="${item.oycgSeq}" /><c:out value="${item.oycdSeq}" /> | <a
 				href="/myapp/code/codeView?oycdSeq=<c:out value="${item.oycdSeq}"/>"><c:out
 					value="${item.oycdName}" /></a>
 			<br>

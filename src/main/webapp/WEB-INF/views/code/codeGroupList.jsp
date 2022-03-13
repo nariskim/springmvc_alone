@@ -9,7 +9,17 @@
 <a href="/myapp/code/codeGroupForm?oycgSeq=<c:out value="${item.oycgSeq}"/>">등록</a>
 
 <br>
+<form id="" name="" method="get" action="/myapp/code/codeGroupList">
 
+<select name="scOycgDelNy">
+<option value="">::삭제여부::
+<option value="1">Y
+<option value="0">N
+</select>
+
+이름 : <input type="text" name="scOycgName">
+<input type ="submit" name="search">
+</form>
 <c:choose>
 	<c:when test="${fn:length(list) eq 0}">
 		<tr>

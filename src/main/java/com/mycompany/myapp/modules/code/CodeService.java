@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface CodeService {
 
-	public List<Code> selectListGroup() throws Exception;
+	public List<Code> selectListGroup(CodeVo Vo) throws Exception;
 
 	public int insertGroup(Code dto) throws Exception;
 
@@ -12,7 +12,7 @@ public interface CodeService {
 
 	public int updateGroup(Code dto) throws Exception;
 	
-	public List<Code> selectList() throws Exception;
+	public List<Code> selectList(CodeVo vo) throws Exception;
 	
 	public int insert(Code dto) throws Exception;
 	
