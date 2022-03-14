@@ -1,17 +1,3 @@
-<%-- <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-
-<form method = "post" action ="memberInst">
-	<input type="text" name ="oymbId" placeholder ="아이디">
-	<input type="text" name ="oymbName" placeholder ="이름">
-	<input type="submit" value="제출">
-
-</form> --%>
-
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 
@@ -238,7 +224,7 @@
 
 
 						<div class="row">
-							<input type="hidden" name="oycdDelNy" placeholder="0">
+							<!-- <input type="hidden" name="oycdDelNy" placeholder="0"> -->
 							<div class="col-12 col-sm-4 col-lg-2">
 								<label for="formFile" class="form-label">이름</label>
 							</div>

@@ -2,15 +2,22 @@ package com.mycompany.myapp.modules.code;
 
 public class CodeVo {
 
+	// oyCodeGroup
 	private String oycgSeq;
 
 	private String oycdSeq;
 
+	// oyCodeSearch
 	private String scOycgSeq = "";
 
+	// oyCodeGroupSearch
 	private String scOycgName = "";
 	private Integer scOycgDelNy;
 
+	// common
+	private String scOption;
+	private String scValue;
+	
 	public String getOycgSeq() {
 		return oycgSeq;
 	}
@@ -49,6 +56,22 @@ public class CodeVo {
 
 	public void setScOycgDelNy(Integer scOycgDelNy) {
 		this.scOycgDelNy = scOycgDelNy;
+	}
+
+	public String getScOption() {
+		return scOption;
+	}
+
+	public void setScOption(String scOption) {
+		this.scOption = scOption;
+	}
+
+	public String getScValue() {
+		return scValue;
+	}
+
+	public void setScValue(String scValue) {
+		this.scValue = scValue;
 	}
 
 }

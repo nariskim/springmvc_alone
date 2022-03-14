@@ -13,20 +13,24 @@
 	<select id="selectListGroup" resultMap="resultMapObj">
 
 		SELECT
-		oycgSeq
-		, oycgName
+		a.oycgSeq
+		, a.oycgName
+		, a.oycgNameEng
+		, a.oycgDelNy
 
 		FROM
-		oyCodeGroup
+		oyCodeGroup a
 
 		WHERE 1=1
 		<choose>
 			<when test="scOycgDelNy == 1">AND oycgDelNy = 1</when>
 			<when test="scOycgDelNy == 0">AND oycgDelNy = 0</when>
 		</choose>
-		and oycgDelNy=0
 		<if test="scOycgName != null and !scOycgName.equals('')"> AND oycgName LIKE concat('%',#{scOycgName},'%')</if>
-
+		<choose>
+			<when test="scOption == 1">AND a.oycgName LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 2">AND a.oycgNameEng LIKE concat('%',#{scValue},'%')</when>
+		</choose>
 
 	</select>
 

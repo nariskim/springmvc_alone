@@ -7,7 +7,7 @@ public class Code {
 	private String oycgSeq = "";
 	private String oycgName = "";
 	private Integer oycgDelNy;
-
+	private String oycgNameEng;
 	// oyCode
 
 	private String oycdSeq = "";
@@ -65,4 +65,13 @@ public class Code {
 		this.oycdDelNy = oycdDelNy;
 	}
 
+	public String getOycgNameEng() {
+		return oycgNameEng;
+	}
+
+	public void setOycgNameEng(String oycgNameEng) {
+		this.oycgNameEng = oycgNameEng;
+	}
+
+	
 }

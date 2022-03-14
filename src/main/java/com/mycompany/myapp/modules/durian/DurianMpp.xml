@@ -29,7 +29,7 @@
 	
 	<insert id="insert">
 		
-	<!-- 	INSERT INTO oyMember (
+		INSERT INTO oyMember (
 		oymbId
 		, oymbName
 		, oymbDelNy
@@ -38,13 +38,13 @@
 		, #{oymbName}
 		, 0
 		)
- -->
+
 	</insert>
 
 
 	<select id="selectOne" resultMap="resultMapObj">
 
-<!-- 		SELECT
+		SELECT
 		oymbSeq
 		, oymbName
 		, oymbId
@@ -53,19 +53,21 @@
 		oyMember
 		WHERE 1=1
 		AND oymbDelNy = 0
-		AND oymbSeq = #{oymbSeq} -->
+		AND oymbSeq = #{oymbSeq}
 
 	</select>
 	
 	
 	<update id="update">
 	
-<!-- 		UPDATE
+		UPDATE
 		oyMember
 		SET
 		oymbName = #{oymbName}
+		, oymbId = #{oymbId}
+		
 		WHERE 1=1
-		AND oymbSeq = #{oymbSeq} -->
+		AND oymbSeq = #{oymbSeq}
 	
 	</update>
 

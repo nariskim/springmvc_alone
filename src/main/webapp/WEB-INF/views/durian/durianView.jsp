@@ -39,7 +39,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Durian_List_Nari</title>
+<title>View.durian</title>
 
 
 <link
@@ -249,7 +249,7 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="#">홈</a></li>
 							<li class="breadcrumb-item"><a href="#">회원관리</a></li>
-							<li class="breadcrumb-item active" aria-current="page">회원가입</li>
+							<li class="breadcrumb-item active" aria-current="page">회원조회</li>
 						</ol>
 					</nav>
 					<br> <br> <input type="hidden" class="form-control"
@@ -272,7 +272,7 @@
 							<input type="text" class="form-control" name="oymbId"
 								value=<c:out value="${item.oymbId}"/>>
 						</div>
-						<input type="submit" value="제출">
+						<a href="/myapp/durian/durianEdit?oymbSeq=<c:out value="${item.oymbSeq}"/>">수정</a>
 					</div>
 
 					<div class="row">

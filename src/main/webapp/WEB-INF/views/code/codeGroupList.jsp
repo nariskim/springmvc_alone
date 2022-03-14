@@ -16,8 +16,15 @@
 <option value="1">Y
 <option value="0">N
 </select>
-
-이름 : <input type="text" name="scOycgName">
+||
+회원이름 : <input type="text" name="scOycgName">
+||
+<select name ="scOption">
+<option value="">::검색구분::
+<option value="1">한글
+<option value="2">영문
+</select>
+<input type="text" name="scValue">
 <input type ="submit" name="search">
 </form>
 <c:choose>
@@ -31,7 +38,8 @@
 
 			<c:out value="${item.oycgSeq}" /> | <a
 				href="/myapp/code/codeGroupView?oycgSeq=<c:out value="${item.oycgSeq}"/>"><c:out
-					value="${item.oycgName}" /></a>
+					value="${item.oycgName}" /></a> | <c:out
+					value="${item.oycgNameEng}" />
 			<br>
 
 		</c:forEach>
