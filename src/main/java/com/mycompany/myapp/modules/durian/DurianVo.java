@@ -12,6 +12,24 @@ public class DurianVo {
 	
 	private String oymeSeq;
 	
+	private Integer rowNumToShow;
+	private Integer startRnumForMysql;
+
+	public Integer getRowNumToShow() {
+		return rowNumToShow;
+	}
+
+	public void setRowNumToShow(Integer rowNumToShow) {
+		this.rowNumToShow = rowNumToShow;
+	}
+
+	public Integer getStartRnumForMysql() {
+		return startRnumForMysql;
+	}
+
+	public void setStartRnumForMysql(Integer startRnumForMysql) {
+		this.startRnumForMysql = startRnumForMysql;
+	}
 
 	public String getOymbSeq() {
 		return oymbSeq;

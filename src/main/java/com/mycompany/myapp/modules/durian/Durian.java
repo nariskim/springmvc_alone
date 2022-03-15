@@ -26,6 +26,8 @@ public class Durian {
 	private String oympNumber = "";
 	private Integer oympDelNy;
 //	private String oymbSeq = "";
+	
+	
 
 	
 	// ------------

@@ -52,4 +52,10 @@ public class CodeServiceImpl implements CodeService {
 		return dao.update(dto);
 		
 	}
+
+	@Override
+	public int selectOneCount(CodeVo vo) throws Exception {
+		
+		return dao.selectOneCount(vo);
+	}
 }

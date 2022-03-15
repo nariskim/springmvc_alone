@@ -9,8 +9,51 @@
 	<resultMap id="resultMapObj"
 		type="com.mycompany.myapp.modules.code.Code"></resultMap>
 
+	<sql id="selectCommon">
 
+
+		FROM
+		oyCodeGroup a
+
+		WHERE 1=1
+		<choose>
+			<when test="scOycgDelNy == 1">AND a.oycgDelNy = 1</when>
+			<when test="scOycgDelNy == 0">AND a.oycgDelNy = 0</when>
+		</choose>
+		<if test="scOycgName != null and !scOycgName.equals('')"> AND a.oycgName LIKE concat('%',#{scOycgName},'%')</if>
+		<choose>
+			<when test="scOption == 1">AND a.oycgName LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 2">AND a.oycgNameEng LIKE concat('%',#{scValue},'%')
+			</when>
+		</choose>
+
+	</sql>
+	
+	<select id="selectOneCount" resultType="Integer">
+
+		SELECT
+		count(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	
 	<select id="selectListGroup" resultMap="resultMapObj">
+		SELECT
+		a.oycgSeq
+		, a.oycgName
+		, a.oycgNameEng
+		, a.oycgDelNy
+		<include refid="selectCommon" />
+		limit #{startRnumForMysql}, #{rowNumToShow}
+
+	</select>
+
+
+	
+
+
+
+	<!-- <select id="selectListGroup" resultMap="resultMapObj">
 
 		SELECT
 		a.oycgSeq
@@ -23,16 +66,17 @@
 
 		WHERE 1=1
 		<choose>
-			<when test="scOycgDelNy == 1">AND oycgDelNy = 1</when>
-			<when test="scOycgDelNy == 0">AND oycgDelNy = 0</when>
+			<when test="scOycgDelNy == 1">AND a.oycgDelNy = 1</when>
+			<when test="scOycgDelNy == 0">AND a.oycgDelNy = 0</when>
 		</choose>
-		<if test="scOycgName != null and !scOycgName.equals('')"> AND oycgName LIKE concat('%',#{scOycgName},'%')</if>
+		<if test="scOycgName != null and !scOycgName.equals('')"> AND a.oycgName LIKE concat('%',#{scOycgName},'%')</if>
 		<choose>
 			<when test="scOption == 1">AND a.oycgName LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 2">AND a.oycgNameEng LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 2">AND a.oycgNameEng LIKE concat('%',#{scValue},'%')
+			</when>
 		</choose>
 
-	</select>
+	</select> -->
 
 
 	<insert id="insertGroup">
@@ -40,7 +84,8 @@
 		INSERT INTO oyCodeGroup (
 		oycgName
 		, oycgDelNy
-		) values (
+		) values
+		(
 		#{oycgName}
 		, 0
 		)
@@ -98,7 +143,8 @@
 		oycdName
 		, oycdDelNy
 		, oycgSeq
-		) values (
+		)
+		values (
 		#{oycdName}
 		, 0
 		,
@@ -131,7 +177,8 @@
 		SET
 		oycdName = #{oycdName}
 		WHERE 1=1
-		AND oycdSeq = #{oycdSeq}
+		AND
+		oycdSeq = #{oycdSeq}
 
 	</update>
 

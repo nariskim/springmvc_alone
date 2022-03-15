@@ -15,7 +15,11 @@ public class CodeDao {
 	private SqlSession sqlSession;
 
 	private static String namespace = "com.mycompany.myapp.modules.code.CodeMpp";
-
+	//paging
+	public int selectOneCount(CodeVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
+	//codeGroup
 	public List<Code> selectListGroup(CodeVo vo) {
 		return sqlSession.selectList(namespace + ".selectListGroup", vo);
 	}
@@ -29,7 +33,7 @@ public class CodeDao {
 	public int updateGroup(Code dto) {
 		return sqlSession.update(namespace + ".updateGroup", dto);
 	}
-
+	//code
 	public List<Code> selectList(CodeVo vo) {
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}

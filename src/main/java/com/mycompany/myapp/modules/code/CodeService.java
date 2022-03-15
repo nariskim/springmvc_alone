@@ -4,6 +4,9 @@ import java.util.List;
 
 public interface CodeService {
 
+	public int selectOneCount(CodeVo vo) throws Exception;
+
+	
 	public List<Code> selectListGroup(CodeVo Vo) throws Exception;
 
 	public int insertGroup(Code dto) throws Exception;
