@@ -4,12 +4,17 @@ import java.util.List;
 
 public interface DurianService {
 
-	public List<Durian> selectList() throws Exception;
+	public int selectOneCount(DurianVo vo) throws Exception;
+	
+
+	public List<Durian> selectList(DurianVo vo) throws Exception;
 
 	public int insert(Durian dto) throws Exception;
 
 	public Durian selectOne(DurianVo vo) throws Exception;
 
 	public int update(Durian dto) throws Exception;
+	
+	public int delete(DurianVo vo) throws Exception;
 
 }

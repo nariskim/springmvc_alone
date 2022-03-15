@@ -9,9 +9,38 @@
 	<resultMap id="resultMapObj"
 		type="com.mycompany.myapp.modules.durian.Durian"></resultMap>
 
+	<sql id="selectCommon">
+
+
+		FROM
+		oyMember a
+		LEFT JOIN oymbPhone b on b.oympSeq = a.oymbSeq
+		LEFT JOIN
+		oymbEmail c on c.oymeSeq = a.oymbSeq
+
+		WHERE 1=1
+		<choose>
+			<when test="scOymbDelNy == 1">AND a.oymbDelNy = 1</when>
+			<when test="scOymbDelNy == 0">AND a.oymbDelNy = 0</when>
+		</choose>
+		<if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName LIKE concat('%',#{scOymbName},'%')</if>
+		<choose>
+			<when test="scOption == 1">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 2">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')
+			</when>
+		</choose>
+
+	</sql>
+
+	<select id="selectOneCount" resultType="Integer">
+
+		SELECT
+		count(*)
+		<include refid="selectCommon" />
+	</select>
+
 
 	<select id="selectList" resultMap="resultMapObj">
-		
 		SELECT
 		a.oymbSeq
 		, a.oymbId
@@ -19,23 +48,24 @@
 		, a.oymbGenderCd
 		, b.oympNumber
 		, c.oymeEmailFull
-		FROM
-		oyMember a
-		LEFT JOIN oymbPhone b on b.oympSeq = a.oymbSeq
-		LEFT JOIN oymbEmail c on c.oymeSeq = a.oymbSeq 
-		
+
+
+		<include refid="selectCommon" />
+		limit #{startRnumForMysql}, #{rowNumToShow}
+
 	</select>
-	
-	
+
+
 	<insert id="insert">
-		
+
 		INSERT INTO oyMember (
 		oymbId
 		, oymbName
 		, oymbDelNy
 		) values (
 		#{oymbId}
-		, #{oymbName}
+		,
+		#{oymbName}
 		, 0
 		)
 
@@ -53,23 +83,31 @@
 		oyMember
 		WHERE 1=1
 		AND oymbDelNy = 0
-		AND oymbSeq = #{oymbSeq}
+		AND oymbSeq =
+		#{oymbSeq}
 
 	</select>
-	
-	
+
+
 	<update id="update">
-	
+
 		UPDATE
 		oyMember
 		SET
 		oymbName = #{oymbName}
 		, oymbId = #{oymbId}
-		
+
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
-	
+
 	</update>
+	
+	<delete id ="delete">
+	
+	DELETE FROM oyMember
+	WHERE oymbSeq=#{oymbSeq}
+	
+	</delete>
 
 
 </mapper>

@@ -249,9 +249,10 @@
 					</nav>
 					<br> <br>
 					<form method="post" action="/myapp/durian/durianUpdt">
-					<input type="hidden" name="oymbSeq" value= <c:out value="${item.oymbSeq}"/>>
-					<div class="row">
-						
+						<input type="hidden" name="oymbSeq"
+							value=<c:out value="${item.oymbSeq}"/>>
+						<div class="row">
+
 							<!-- <input type="hidden" name="oycdDelNy" placeholder="0"> -->
 							<div class="col-12 col-sm-4 col-lg-2">
 								<label for="formFile" class="form-label">이름</label>
@@ -269,9 +270,14 @@
 									value=<c:out value="${item.oymbId}"/>>
 							</div>
 							<input type="submit" value="제출">
-								
-					</div>
-</form>
+							<button type="button" class="btn btn-danger btn-sm">
+								<a
+									href="/myapp/durian/durianDlt?oymbSeq=<c:out value="${item.oymbSeq}"/>"><img
+									src="/trash-fill.svg"></a>
+							</button>
+
+						</div>
+					</form>
 					<div class="row">
 
 						<div class="col-12 col-sm-4 col-lg-2">

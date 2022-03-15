@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -14,13 +15,32 @@ public class DurianController {
 	DurianServiceImpl service;
 
 	@RequestMapping(value = "/durian/durianList")
-	public String durianList(Model model) throws Exception {
+	public String durianList(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
 
-		List<Durian> list = service.selectList();
-		model.addAttribute("list", list);
+		// count 가져올 것
+		int count = service.selectOneCount(vo);
 
+		vo.setParamsPaging(count);
+		
+		// count 가 0 이 아니면 list 가져오는 부분 수행 후 model 개쳋에 담기
+		if (count != 0) {
+			List<Durian> list = service.selectList(vo);
+			model.addAttribute("list", list);
+
+		} else {
+			//by pass
+		}
+
+		/*
+		 * List<Code> list = service.selectListGroup(vo); model.addAttribute("list",
+		 * list);
+		 */
+
+//		model.addAttribute("vo", vo); @ModelAttribute("vo")  이거 둘중하나 방법 선택
 		return "durian/durianList";
 	}
+	
+
 
 	@RequestMapping(value = "/durian/durianForm")
 	public String durianForm(Model model) throws Exception {
@@ -63,4 +83,13 @@ public class DurianController {
 		
 		return "redirect:/durian/durianList";
 	}
+	
+	@RequestMapping(value = "/durian/durianDlt")
+	public String durianDlt(DurianVo vo) throws Exception {
+		
+		service.delete(vo);
+		
+		return "redirect:/durian/durianList";
+	}
+	
 }

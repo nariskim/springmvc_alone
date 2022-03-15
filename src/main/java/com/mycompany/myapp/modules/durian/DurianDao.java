@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class DurianDao {
 
@@ -16,8 +17,13 @@ public class DurianDao {
 
 	private static String namespace = "com.mycompany.myapp.modules.durian.DurianMpp";
 
-	public List<Durian> selectList() {
-		return sqlSession.selectList(namespace + ".selectList", "");
+	//paging
+	public int selectOneCount(DurianVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
+	
+	public List<Durian> selectList(DurianVo vo) {
+		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
 
 	public int insert(Durian dto) {
@@ -28,6 +34,10 @@ public class DurianDao {
 	}
 	public int update(Durian dto) {
 		return sqlSession.update(namespace + ".update", dto);
+	}
+
+	public int delete(DurianVo vo) {
+		return  sqlSession.delete(namespace + ".delete", vo);
 	}
 
 

@@ -1,33 +1,3 @@
-<%-- <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
-
-<a href="/myapp/durian/durianForm?oymbSeq=<c:out value="${item.oymbSeq}"/>">등록</a>
-
-<br>
-
-<c:choose>
-	<c:when test="${fn:length(list) eq 0}">
-		<tr>
-			<td class="text-center" colspan="9">There is no data!</td>
-		</tr>
-	</c:when>
-	<c:otherwise>
-		<c:forEach items="${list}" var="item" varStatus="status">
-
-			<c:out value="${item.oymbSeq}" /> | <a
-				href="/myapp/durian/durianView?oymbSeq=<c:out value="${item.oymbSeq}"/>"><c:out
-					value="${item.oymbName}" /></a> | <c:out value="${item.oymbId}" />
-			<br>
-
-		</c:forEach>
-	</c:otherwise>
-</c:choose> --%>
-
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 
@@ -58,30 +28,33 @@
 <script src="https://kit.fontawesome.com/893e1f7eb8.js"
 	crossorigin="anonymous"></script>
 
-
-
 <style type="text/css">
 .bottom-border {
 	border-bottom: 2px groove black;
 }
+
 .sidebar-link {
 	transition: all .4s;
 }
+
 .sidebar-link:hover {
-	background-color: orange;
+	background-color: silver;
 	border-radius: 5px;
 }
+
 .current {
-	background-color: orange;
+	background-color: Greenyellow;
 	border-radius: 7px;
 	box-shadow: 2px 5px 10px gray;
 }
+
 .current:hover {
-	background-color: orange;
+	background-color: Greenyellow;
 	border-radius: 7px;
 	box-shadow: 2px 5px 10px gray;
 	transform: translateY(-1px);
 }
+
 .search-input {
 	background: transparent;
 	border: none;
@@ -89,23 +62,28 @@
 	border-bottom: 2px solid black;
 	transition: all .4s;
 }
+
 .search-input:focus {
 	background: transparent;
 	box-shadow: none;
-	border-bottom: 2px solid orange;
+	border-bottom: 2px solid GreenYellow;
 }
+
 .search-button {
 	border-radius: 50%;
 	padding: 10px 16px;
 	transition: all .4s;
 }
+
 .search-button:hover {
-	background-color: white;
+	background-color: GreenYellow;
 	transform: translateY(-1px);
 }
+
 .icon-parent {
 	position: relative;
 }
+
 .icon-bullet:after {
 	content: "";
 	position: absolute;
@@ -113,12 +91,14 @@
 	left: 15px;
 	height: 12px;
 	width: 12px;
-	background-color: red;
+	background-color: GreenYellow;
 	border-radius: 50%;
 }
+
 .table-wrapper {
 	overflow: auto;
 }
+
 .container {
 	justify-content: center; /* 수평 정렬 */
 	align-items: center; /* 수직 정렬 */
@@ -126,12 +106,15 @@
 	height: auto;
 	color: black;
 }
+
 .aaa {
 	margin-bottom: 15%;
 }
+
 .pagination {
 	justify-content: center;
 }
+
 .ccc {
 	display: inline;
 }
@@ -143,10 +126,10 @@
 
 
 		<div class="row">
-			<header class="navbar navbar-dark sticky-top bg-dark ml-auto">
+			<header class="navbar navbar-dark sticky-top bg-light ml-auto">
 
 				<div class="col-auto col-sm-5">
-					<a class="navbar-brand me-0 px-3" href="#">All Live Young </a>
+					<h1>&nbsp&nbsp&nbspALL LIVE YOUNG</h1>
 				</div>
 				<div class="col-auto d-md-none">
 
@@ -163,17 +146,18 @@
 
 
 				</div>
-				<div class="col-6 col-sm-3">
+				<div class="col-10 col-sm-3">
 
 					<input type="text" class="form-control me-2 search-input"
 						placeholder="Search...">
 				</div>
-				<div class="col-6 col-sm-1">
-					<button type="button" class="btn btn-dark search-button">
-						<i class="fas fa-search text-danger"></i>
+				<div class="col-2 col-sm-1">
+					<button type="button" class="btn btn-secondary search-button">
+						<i class="fas fa-search text-light"></i>
 					</button>
 
 				</div>
+
 				<div class="col-auto col-sm-3">
 
 					<ul class="nav">
@@ -207,43 +191,49 @@
 						<ul class="navbar-nav flex-column mt-4">
 							<!-- Dashboard -->
 							<li class="nav-item"><a href="#"
-								class="nav-link text-dark p-3 mb-2 current"> <i
-									class="fas fa-home text-dark fg-lg mr-3"></i>Dashboard
+								class="nav-link text-dark p-3 mb-2 sidebar-link"> <i
+									class="fas fa-home text-dark fg-lg mr-3"></i>&nbsp&nbsp홈
 							</a></li>
 							<!-- Profile -->
 							<li class="nav-item"><a href="#"
 								class="nav-link text-dark p-3 mb-2 sidebar-link"> <i
-									class="fas fa-user text-dark fg-lg mr-3"></i>Profile
+									class="fas fa-shopping-cart text-dark fg-lg mr-3"></i>&nbsp&nbsp상품
+									등록
 							</a></li>
 							<!-- Inbox -->
 							<li class="nav-item"><a href="#"
 								class="nav-link text-dark p-3 mb-2 sidebar-link"> <i
-									class="fas fa-envelope text-dark fg-lg mr-3"></i>Inbox
+									class="fas fa-truck-fast text-dark fg-lg mr-3"></i>&nbsp&nbsp주문
+									/ 배송
 							</a></li>
 							<!-- Sales -->
 							<li class="nav-item"><a href="#"
 								class="nav-link text-dark p-3 mb-2 sidebar-link"> <i
-									class="fas fa-shopping-cart text-dark fg-lg mr-3"></i>Sales
+									class="fas fa-calendar-check text-dark fg-lg mr-3"></i>&nbsp&nbsp스케줄
 							</a></li>
 							<!-- Analytics -->
 							<li class="nav-item"><a href="#"
 								class="nav-link text-dark p-3 mb-2 sidebar-link"> <i
-									class="fas fa-chart-line text-dark fg-lg mr-3"></i>Analytics
+									class="fas fa-chart-line text-dark fg-lg mr-3"></i>&nbsp&nbsp판매
+									현황
 							</a></li>
 							<!-- Tables -->
 							<li class="nav-item"><a href="#"
-								class="nav-link text-dark p-3 mb-2 sidebar-link"> <i
-									class="fas fa-table text-dark fg-lg mr-3"></i>Tables
+								class="nav-link text-dark p-3 mb-2 current"> <i
+									class="fas fa-user fa-table text-dark fg-lg mr-3"></i>&nbsp&nbsp회원
+									관리
 							</a></li>
 							<!-- Settings -->
 							<li class="nav-item"><a href="#"
 								class="nav-link text-dark p-3 mb-2 sidebar-link"> <i
-									class="fas fa-wrench text-dark fg-lg mr-3"></i>Settings
+									class="fas fa-headphones text-dark fg-lg mr-3"></i>&nbsp&nbsp고객
+									문의
 							</a></li>
 							<!-- Documentations -->
 							<li class="nav-item"><a href="#"
 								class="nav-link text-dark p-3 mb-2 sidebar-link"> <i
-									class="fas fa-file-alt text-dark fg-lg mr-3"></i>Documentation
+									class="fas fa-table fa-file-alt text-dark fg-lg mr-3"></i>&nbsp&nbsp게시판
+									관리
 							</a></li>
 						</ul>
 
@@ -254,8 +244,9 @@
 					<br>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="#">홈</a></li>
-							<li class="breadcrumb-item active" aria-current="page">회원관리</li>
+							<li class="breadcrumb-item"><a href="#">회원 관리</a></li>
+							<li class="breadcrumb-item active" aria-current="page">회원
+								리스트</li>
 						</ol>
 					</nav>
 					<br> <br>
@@ -264,15 +255,14 @@
 							<div class="row gx-2 gy-2">
 								<div class="col-12 col-sm-4 col-lg-2">
 									<select class="form-select" aria-label="Default select example">
-										<option selected>삭제여부</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
+										<option value="">::삭제여부::</option>
+										<option value="1">Y</option>
+										<option value="2">N</option>
 									</select>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
 									<select class="form-select" aria-label="Default select example">
-										<option selected>날짜</option>
+										<option value="">::날짜::</option>
 										<option value="1">One</option>
 										<option value="2">Two</option>
 										<option value="3">Three</option>
@@ -293,10 +283,9 @@
 							<div class="row gx-2 gy-2">
 								<div class="col-12 col-sm-4 col-lg-2">
 									<select class="form-select" aria-label="Default select example">
-										<option selected>검색구분</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
+										<option value="">::검색구분::</option>
+										<option value="1">한글</option>
+										<option value="2">영문</option>
 									</select>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
@@ -306,11 +295,11 @@
 								<div class="col-12 col-sm-4 col-lg-2">
 									<div style="text-align: left;">
 										<button type="button" class="btn btn-outline-secondary">
-											<a href="#"><img src="./search.svg"></a>
+											<a href="#"><img src="../../../images/xdmin/search.svg"></a>
 										</button>
 										<button type="button" class="btn btn-outline-secondary">
 											<a href="#"><img
-												src="./arrow-clockwise.svg"></a>
+												src="../../../images/xdmin/arrow-clockwise.svg"></a>
 										</button>
 									</div>
 								</div>
@@ -335,11 +324,11 @@
 											</div>
 										</th>
 										<th scope="col">#</th>
-										<th scope="col">Name</th>
-										<th scope="col">Id</th>
-										<th scope="col">Gender</th>
-										<th scope="col">Phone</th>
-										<th scope="col">Email</th>
+										<th scope="col">이름</th>
+										<th scope="col">아이디</th>
+										<th scope="col">성별</th>
+										<th scope="col">연락처</th>
+										<th scope="col">이메일</th>
 
 									</tr>
 								</thead>
@@ -436,8 +425,7 @@
 									<tr>
 										<th scope="row"><button type="button"
 												class="btn btn-danger btn-sm">
-												<a href="#"><img
-													src="/trash-fill.svg"></a>
+												<a href="/myapp/durian/durianDlt?oymbSeq=<c:out value="${item.oymbSeq}"/>"><img src="/trash-fill.svg"></a>
 											</button></th>
 										<td colspan="5">
 										<td><div style="text-align: right;">
@@ -448,8 +436,7 @@
 													</a>
 												</button>
 												<button type="button" class="btn btn btn-light btn-sm">
-													<a href="#"><img
-														src="./info-circle.svg"></a>
+													<a href="#"><img src="./info-circle.svg"></a>
 												</button>
 												<button type="button" class="btn btn btn-light btn-sm">
 													<a href="#"><img src="gear.svg"></a>
@@ -463,24 +450,40 @@
 
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
-							<li class="page-item"><a class="page-link"
-								style="color: black;" href="#" aria-label="Previous"> <span
-									aria-hidden="true">&laquo;</span>
-							</a></li>
-							<li class="page-item active" aria-current="page"><a
-								class="page-link" style="color: black;" href="#">1</a></li>
-							<li class="page-item"><a class="page-link"
-								style="color: black;" href="#">2</a></li>
-							<li class="page-item"><a class="page-link"
-								style="color: black;" href="#">3</a></li>
-							<li class="page-item"><a class="page-link"
-								style="color: black;" href="#">4</a></li>
-							<li class="page-item"><a class="page-link"
-								style="color: black;" href="#">5</a></li>
-							<li class="page-item"><a class="page-link"
-								style="color: black;" href="#" aria-label="Next"> <span
-									aria-hidden="true">&raquo;</span>
-							</a></li>
+
+
+
+							<c:if test="${vo.startPage gt vo.pageNumToShow}">
+								<li class="page-item"><a class="page-link"
+									style="color: black;"
+									href="/myapp/durian/durianList?thisPage=${vo.startPage - 1}"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								</a></li>
+							</c:if>
+							<c:forEach begin="${vo.startPage}" end="${vo.endPage}"
+								varStatus="i">
+								<c:choose>
+									<c:when test="${i.index eq vo.thisPage}">
+										<li class="page-item active"><a class="page-link"
+											style="color: black;"
+											href="/myapp/durian/durianList?thisPage=${i.index}">${i.index}</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item"><a class="page-link"
+											style="color: black;"
+											href="/myapp/durian/durianList?thisPage=${i.index}">${i.index}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+
+
+							<c:if test="${vo.endPage ne vo.totalPages}">
+								<li class="page-item"><a class="page-link"
+									style="color: black;"
+									href="/myapp/durian/durianList?thisPage=${vo.endPage + 1}"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+								</a></li>
+							</c:if>
 						</ul>
 					</nav>
 
@@ -521,3 +524,8 @@
 
 </body>
 </html>
+
+
+
+
+

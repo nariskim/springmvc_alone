@@ -5,15 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class DurianServiceImpl implements DurianService {
 
 	@Autowired
 	DurianDao dao;
-
+	
+	
 	@Override
-	public List<Durian> selectList() throws Exception {
-		return dao.selectList();
+	public List<Durian> selectList(DurianVo vo) throws Exception {
+		return dao.selectList(vo);
 	}
 
 	@Override
@@ -31,4 +33,16 @@ public class DurianServiceImpl implements DurianService {
 		return dao.update(dto);
 		
 	}
+	
+	@Override
+	public int selectOneCount(DurianVo vo) throws Exception {
+		
+		return dao.selectOneCount(vo);
+	}
+	
+	@Override
+	public int delete(DurianVo vo) {
+		return dao.delete(vo);
+	}
+
 }
