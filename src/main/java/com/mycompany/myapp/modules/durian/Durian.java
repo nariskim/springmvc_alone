@@ -10,11 +10,29 @@ public class Durian {
 	private String oymbGender = "";
 	private String oymbPassword = "";
 	private String oymbDob = "";
-
+	
+	private String oyoaSnsTypeCd = "";
+	private String oymbSns = "";
+	private String oyoaUrl = "";
+	private String oyoaDelNy = "";
+	
+	private String oyjqQuestionCd = "";
+	private String oymbQuestion = "";
 	private String oyjqAnswer = "";
+	private String oyjqDelNy = "";
 	
 	private String oymaAddress1 = "";
 	private String oymaAddress2 = "";
+	private String oymaDelNy = "";
+	
+	private String oymnSeq = "";
+	private String oymbNationality = "";
+	
+	private String oynaName = "";
+	
+	private String oympTelecomCd = "";
+	private String oymbTelecom = "";
+	
 	
 	private String oycgSeq = "";
 	private String oycgName = "";
@@ -27,6 +45,9 @@ public class Durian {
 	
 	private String oymeSeq = "";
 	private String oymeEmailFull = "";
+	private String oymeEmailAccount = "";
+	private String oymeEmailDomainCd = "";
+	private String oymbEmailDomain = "";
 	private Integer oymeDelNy;
 //	private String oymbSeq = "";
 	
@@ -35,11 +56,9 @@ public class Durian {
 	private Integer oympDelNy;
 //	private String oymbSeq = "";
 	
-	
-	
+
 	// ------------
 
-	
 	
 	public String getOymbSeq() {
 		return oymbSeq;
@@ -89,11 +108,53 @@ public class Durian {
 	public void setOymbDob(String oymbDob) {
 		this.oymbDob = oymbDob;
 	}
+	public String getOyoaSnsTypeCd() {
+		return oyoaSnsTypeCd;
+	}
+	public void setOyoaSnsTypeCd(String oyoaSnsTypeCd) {
+		this.oyoaSnsTypeCd = oyoaSnsTypeCd;
+	}
+	public String getOymbSns() {
+		return oymbSns;
+	}
+	public void setOymbSns(String oymbSns) {
+		this.oymbSns = oymbSns;
+	}
+	public String getOyoaUrl() {
+		return oyoaUrl;
+	}
+	public void setOyoaUrl(String oyoaUrl) {
+		this.oyoaUrl = oyoaUrl;
+	}
+	public String getOyoaDelNy() {
+		return oyoaDelNy;
+	}
+	public void setOyoaDelNy(String oyoaDelNy) {
+		this.oyoaDelNy = oyoaDelNy;
+	}
+	public String getOyjqQuestionCd() {
+		return oyjqQuestionCd;
+	}
+	public void setOyjqQuestionCd(String oyjqQuestionCd) {
+		this.oyjqQuestionCd = oyjqQuestionCd;
+	}
+	public String getOymbQuestion() {
+		return oymbQuestion;
+	}
+	public void setOymbQuestion(String oymbQuestion) {
+		this.oymbQuestion = oymbQuestion;
+	}
 	public String getOyjqAnswer() {
 		return oyjqAnswer;
 	}
 	public void setOyjqAnswer(String oyjqAnswer) {
 		this.oyjqAnswer = oyjqAnswer;
+	}
+	public String getOyjqDelNy() {
+		return oyjqDelNy;
+	}
+	public void setOyjqDelNy(String oyjqDelNy) {
+		this.oyjqDelNy = oyjqDelNy;
 	}
 	public String getOymaAddress1() {
 		return oymaAddress1;
@@ -106,6 +167,42 @@ public class Durian {
 	}
 	public void setOymaAddress2(String oymaAddress2) {
 		this.oymaAddress2 = oymaAddress2;
+	}
+	public String getOymaDelNy() {
+		return oymaDelNy;
+	}
+	public void setOymaDelNy(String oymaDelNy) {
+		this.oymaDelNy = oymaDelNy;
+	}
+	public String getOymnSeq() {
+		return oymnSeq;
+	}
+	public void setOymnSeq(String oymnSeq) {
+		this.oymnSeq = oymnSeq;
+	}
+	public String getOymbNationality() {
+		return oymbNationality;
+	}
+	public void setOymbNationality(String oymbNationality) {
+		this.oymbNationality = oymbNationality;
+	}
+	public String getOynaName() {
+		return oynaName;
+	}
+	public void setOynaName(String oynaName) {
+		this.oynaName = oynaName;
+	}
+	public String getOympTelecomCd() {
+		return oympTelecomCd;
+	}
+	public void setOympTelecomCd(String oympTelecomCd) {
+		this.oympTelecomCd = oympTelecomCd;
+	}
+	public String getOymbTelecom() {
+		return oymbTelecom;
+	}
+	public void setOymbTelecom(String oymbTelecom) {
+		this.oymbTelecom = oymbTelecom;
 	}
 	public String getOycgSeq() {
 		return oycgSeq;
@@ -155,6 +252,24 @@ public class Durian {
 	public void setOymeEmailFull(String oymeEmailFull) {
 		this.oymeEmailFull = oymeEmailFull;
 	}
+	public String getOymeEmailAccount() {
+		return oymeEmailAccount;
+	}
+	public void setOymeEmailAccount(String oymeEmailAccount) {
+		this.oymeEmailAccount = oymeEmailAccount;
+	}
+	public String getOymeEmailDomainCd() {
+		return oymeEmailDomainCd;
+	}
+	public void setOymeEmailDomainCd(String oymeEmailDomainCd) {
+		this.oymeEmailDomainCd = oymeEmailDomainCd;
+	}
+	public String getOymbEmailDomain() {
+		return oymbEmailDomain;
+	}
+	public void setOymbEmailDomain(String oymbEmailDomain) {
+		this.oymbEmailDomain = oymbEmailDomain;
+	}
 	public Integer getOymeDelNy() {
 		return oymeDelNy;
 	}
@@ -179,7 +294,6 @@ public class Durian {
 	public void setOympDelNy(Integer oympDelNy) {
 		this.oympDelNy = oympDelNy;
 	}
-
-
+	
 	
 }

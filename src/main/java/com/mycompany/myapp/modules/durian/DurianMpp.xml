@@ -12,11 +12,16 @@
 	<sql id="selectCommon">
 
 
-		FROM
-		oyMember a
-		LEFT JOIN oymbPhone b on b.oympSeq = a.oymbSeq
+		FROM oyMember a
+		LEFT JOIN oymbonlineaddress b on b.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbjoinqna c on c.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbaddress
+		d on d.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbnationality e on e.oymbSeq =
+		oynaSeq
+		LEFT JOIN oymbphone f on f.oymbSeq = a.oymbSeq
 		LEFT JOIN
-		oymbEmail c on c.oymeSeq = a.oymbSeq
+		oymbemail g on g.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
 		<choose>
@@ -42,14 +47,38 @@
 
 
 	<select id="selectList" resultMap="resultMapObj">
-		SELECT
 		a.oymbSeq
-		, a.oymbId
 		, a.oymbName
+		, a.oymbId
+		, a.oymbDob
+		, a.oymbDelNy
 		, a.oymbGenderCd
-		,(select oycdName from oyCode b where oycdSeq = a.oymbGenderCd) as oymbGender
-		, b.oympNumber
-		, c.oymeEmailFull
+		,(select oycdName from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender
+		, b.oyoaSnsTypeCd
+		,(select oycdName from
+		oyCode where oycdSeq = b.oyoaSnsTypeCd) as oymbSns
+		, b.oyoaUrl
+		, b.oyoaDelNy
+		, c.oyjqQuestionCd
+		,(select oycdName from oyCode where oycdSeq = c.oyjqQuestionCd) as oymbQuestion
+		, c.oyjqAnswer
+		, c.oyjqDelNy
+		, d.oymaAddress1
+		, d.oymaAddress2
+		, d.oymaDelNy
+		, e.oymnSeq
+		,(select oynaName from oyNationality where oynaSeq = e.oymbSeq) as oymbNationality
+		, f.oympTelecomCd
+		,(select oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oymbTelecom
+		, f.oympNumber
+		, f.oympDelNy
+		,
+		g.oymeEmailAccount
+		, g.oymeEmailDomainCd
+		,(select oycdName from oyCode
+		where oycdSeq = g.oymeEmailDomainCd) as
+		oymbEmailDomain
+		, g.oymeDelNy
 
 		<include refid="selectCommon" />
 		limit #{startRnumForMysql}, #{rowNumToShow}
@@ -79,14 +108,16 @@
 		SELECT
 		a.oymbSeq
 		, a.oymbName
-		, a.oymbId
+		,
+		a.oymbId
 		, a.oymbPassword
-		
+
 		, oymbDelNy
 		FROM
 		oyMember
 		WHERE 1=1
-		AND oymbDelNy = 0
+		AND oymbDelNy
+		= 0
 		AND oymbSeq =
 		#{oymbSeq}
 
