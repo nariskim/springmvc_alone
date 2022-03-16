@@ -14,7 +14,7 @@ public class DurianVo {
 	
 	// oyMemberSearch
 	private String scOymbName = "";
-	private Integer scOymbDelNy;
+	private Integer scOymbGenderCd;
 
 	// common
 	private String scOption;
@@ -130,12 +130,12 @@ public class DurianVo {
 		this.scOymbName = scOymbName;
 	}
 
-	public Integer getScOymbDelNy() {
-		return scOymbDelNy;
+	public Integer getscOymbGenderCd() {
+		return scOymbGenderCd;
 	}
 
-	public void setScOymbDelNy(Integer scOymbDelNy) {
-		this.scOymbDelNy = scOymbDelNy;
+	public void setscOymbGenderCd(Integer scOymbGenderCd) {
+		this.scOymbGenderCd = scOymbGenderCd;
 	}
 
 	public String getScOption() {

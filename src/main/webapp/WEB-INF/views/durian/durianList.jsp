@@ -121,9 +121,9 @@
 </style>
 </head>
 <body>
-	<form action="" method="post" id="" name=""
-		enctype="multipart/form-data">
 
+
+	<form method = "post" action ="/myapp/durian/durianList">
 
 		<div class="row">
 			<header class="navbar navbar-dark sticky-top bg-light ml-auto">
@@ -249,23 +249,35 @@
 								리스트</li>
 						</ol>
 					</nav>
+
 					<br> <br>
 					<div class="bbb">
 						<div class="container">
+
 							<div class="row gx-2 gy-2">
+								<!-- 						<div class="col-12 col-sm-4 col-lg-2">
+							<select name="scOymbDelNy" class="form-select"
+								aria-label="Default select example">
+								<option value="">::삭제여부::
+								<option value="1">Y
+								<option value="2">N
+							</select>
+						</div> -->
 								<div class="col-12 col-sm-4 col-lg-2">
-									<select class="form-select" aria-label="Default select example">
-										<option value="">::삭제여부::</option>
-										<option value="1">Y</option>
-										<option value="2">N</option>
+									<select name="scOymbGenderCd" class="form-select"
+										aria-label="Default select example">
+										<option value="">::성별::
+										<option value="3">남자
+										<option value="4">여자
+										<option value="5">기타
 									</select>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
 									<select class="form-select" aria-label="Default select example">
-										<option value="">::날짜::</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
+										<option value="">::날짜::
+										<option value="1">One
+										<option value="2">Two
+										<option value="3">Three
 									</select>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
@@ -278,35 +290,36 @@
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2"></div>
 								<div class="col-12 col-sm-4 col-lg-2"></div>
+
 							</div>
 							<br>
 							<div class="row gx-2 gy-2">
 								<div class="col-12 col-sm-4 col-lg-2">
-									<select class="form-select" aria-label="Default select example">
-										<option value="">::검색구분::</option>
-										<option value="1">한글</option>
-										<option value="2">영문</option>
+									<select name="scOption" class="form-select"
+										aria-label="Default select example">
+										<option value="">::검색구분::
+										<option value="1">한글
+										<option value="2">영문
 									</select>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
-									<input type="text" class="form-control"
+									<input type="text" name="scValue" class="form-control"
 										id="exampleFormControlInput1" placeholder="검색어">
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
 									<div style="text-align: left;">
-										<button type="button" class="btn btn-outline-secondary">
-											<a href="#"><img src="../../../images/xdmin/search.svg"></a>
-										</button>
-										<button type="button" class="btn btn-outline-secondary">
-											<a href="#"><img
-												src="../../../images/xdmin/arrow-clockwise.svg"></a>
-										</button>
+										<input type="submit" name="search"
+											class="btn btn-outline-dark"> <a
+											href="/myapp/durian/durianList"><button type="button"
+												class="btn btn-outline-dark">초기화</button></a>
+
 									</div>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2"></div>
 								<div class="col-12 col-sm-4 col-lg-2"></div>
 								<div class="col-12 col-sm-4 col-lg-2"></div>
 							</div>
+
 						</div>
 					</div>
 
@@ -354,9 +367,11 @@
 														href="/myapp/durian/durianView?oymbSeq=<c:out value="${item.oymbSeq}"/>"><c:out
 																value="${item.oymbName}" /></a></td>
 													<td><c:out value="${item.oymbId}" /></td>
-													<td><c:out value="${item.oymbGenderCd}" /></td>
+													<td><c:out value="${item.oymbGender}" /></td>
 													<td><c:out value="${item.oympNumber}" /></td>
 													<td><c:out value="${item.oymeEmailFull}" /></td>
+
+
 
 												</tr>
 
@@ -364,83 +379,77 @@
 										</c:otherwise>
 									</c:choose>
 									<!-- <tr>
-												
-													<th scope="row">
-														<div class="form-check">
-															<input class="form-check-input" type="checkbox" value=""
-																id="flexCheckDefault">
-														</div>
-													</th>
-													<th scope="row">2</th>
-													<td>이다다</td>
-													<td>qwerty</td>
-													<td>남</td>
-													<td>01055555555</td>
-													<td>qwerty@gmail.com</td>
-												</tr>
-												<tr>
-													<th scope="row">
-														<div class="form-check">
-															<input class="form-check-input" type="checkbox" value=""
-																id="flexCheckDefault">
-														</div>
-													</th>
-													<th scope="row">3</th>
-													<td>박라라</td>
-													<td>zxcv1234</td>
-													<td>남</td>
-													<td>01022222222</td>
-													<td>zxcv1234@hanmail.net</td>
-												</tr>
-												<tr>
-													<th scope="row">
-														<div class="form-check">
-															<input class="form-check-input" type="checkbox" value=""
-																id="flexCheckDefault">
-														</div>
-													</th>
-													<th scope="row">4</th>
-													<td>최마마</td>
-													<td>poiuy</td>
-													<td>여</td>
-													<td>01066666666</td>
-													<td>poiuy@naver.com</td>
-												</tr>
-												<tr>
-													<th scope="row">
-														<div class="form-check">
-															<input class="form-check-input" type="checkbox" value=""
-																id="flexCheckDefault">
-														</div>
-													</th>
-													<th scope="row">5</th>
-													<td>김바바</td>
-													<td>asdf9988</td>
-													<td>남</td>
-													<td>01011111111</td>
-													<td>asdf9988@naver.com</td>
-												</tr> -->
+					
+						<th scope="row">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value=""
+									id="flexCheckDefault">
+							</div>
+						</th>
+						<th scope="row">2</th>
+						<td>이다다</td>
+						<td>qwerty</td>
+						<td>남</td>
+						<td>01055555555</td>
+						<td>qwerty@gmail.com</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value=""
+									id="flexCheckDefault">
+							</div>
+						</th>
+						<th scope="row">3</th>
+						<td>박라라</td>
+						<td>zxcv1234</td>
+						<td>남</td>
+						<td>01022222222</td>
+						<td>zxcv1234@hanmail.net</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value=""
+									id="flexCheckDefault">
+							</div>
+						</th>
+						<th scope="row">4</th>
+						<td>최마마</td>
+						<td>poiuy</td>
+						<td>여</td>
+						<td>01066666666</td>
+						<td>poiuy@naver.com</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value=""
+									id="flexCheckDefault">
+							</div>
+						</th>
+						<th scope="row">5</th>
+						<td>김바바</td>
+						<td>asdf9988</td>
+						<td>남</td>
+						<td>01011111111</td>
+						<td>asdf9988@naver.com</td>
+					</tr> -->
 								</tbody>
 								<tfoot>
 									<tr>
 										<th scope="row"><button type="button"
-												class="btn btn-danger btn-sm">
-												<a href="/myapp/durian/durianDlt?oymbSeq=<c:out value="${item.oymbSeq}"/>"><img src="/trash-fill.svg"></a>
-											</button></th>
+												class="btn btn-danger">&nbsp삭 제&nbsp</button></th>
 										<td colspan="5">
 										<td><div style="text-align: right;">
-												<button type="button" class="btn btn btn-light btn-sm">
-													<a
-														href="/myapp/durian/durianForm?oymbSeq=<c:out value="${item.oymbSeq}"/>">
-														<img src=".person-plus-fill.svg">
-													</a>
-												</button>
-												<button type="button" class="btn btn btn-light btn-sm">
-													<a href="#"><img src="./info-circle.svg"></a>
-												</button>
-												<button type="button" class="btn btn btn-light btn-sm">
-													<a href="#"><img src="gear.svg"></a>
-												</button>
+
+												<a
+													href="/myapp/durian/durianForm?oymbSeq=<c:out value="${item.oymbSeq}"/>">
+													<button type="button" class="btn btn-success">&nbsp등
+														록&nbsp</button>
+												</a>
+
+
 											</div></td>
 									</tr>
 								</tfoot>

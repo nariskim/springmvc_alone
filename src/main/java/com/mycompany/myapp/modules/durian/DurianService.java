@@ -14,7 +14,6 @@ public interface DurianService {
 	public Durian selectOne(DurianVo vo) throws Exception;
 
 	public int update(Durian dto) throws Exception;
-	
-	public int delete(DurianVo vo) throws Exception;
+
 
 }

@@ -21,7 +21,8 @@
 		<option value="">::삭제여부::
 		<option value="1">Y
 		<option value="0">N
-	</select> || 회원이름 : <input type="text" name="scOycgName"> || <select
+	</select> || 회원이름 : <input type="text" name="scOycgName"> || 
+	<select
 		name="scOption">
 		<option value="">::검색구분::
 		<option value="1">한글
@@ -72,20 +73,4 @@
 				href="/myapp/code/codeGroupList?thisPage=${vo.endPage + 1}">Next</a></li>
 		</c:if>
 	</ul>
-</nav>
-
-<nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
 </nav>

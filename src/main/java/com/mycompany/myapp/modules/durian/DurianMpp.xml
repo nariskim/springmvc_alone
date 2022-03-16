@@ -20,8 +20,9 @@
 
 		WHERE 1=1
 		<choose>
-			<when test="scOymbDelNy == 1">AND a.oymbDelNy = 1</when>
-			<when test="scOymbDelNy == 0">AND a.oymbDelNy = 0</when>
+			<when test="scOymbGenderCd == 3">AND a.OymbGenderCd = 3</when>
+			<when test="scOymbGenderCd == 4">AND a.OymbGenderCd = 4</when>
+			<when test="scOymbGenderCd == 5">AND a.OymbGenderCd = 5</when>
 		</choose>
 		<if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName LIKE concat('%',#{scOymbName},'%')</if>
 		<choose>
@@ -46,9 +47,9 @@
 		, a.oymbId
 		, a.oymbName
 		, a.oymbGenderCd
+		,(select oycdName from oyCode b where oycdSeq = a.oymbGenderCd) as oymbGender
 		, b.oympNumber
 		, c.oymeEmailFull
-
 
 		<include refid="selectCommon" />
 		limit #{startRnumForMysql}, #{rowNumToShow}
@@ -62,7 +63,8 @@
 		oymbId
 		, oymbName
 		, oymbDelNy
-		) values (
+		)
+		values (
 		#{oymbId}
 		,
 		#{oymbName}
@@ -75,9 +77,11 @@
 	<select id="selectOne" resultMap="resultMapObj">
 
 		SELECT
-		oymbSeq
-		, oymbName
-		, oymbId
+		a.oymbSeq
+		, a.oymbName
+		, a.oymbId
+		, a.oymbPassword
+		
 		, oymbDelNy
 		FROM
 		oyMember
@@ -95,19 +99,13 @@
 		oyMember
 		SET
 		oymbName = #{oymbName}
-		, oymbId = #{oymbId}
+		, oymbId =
+		#{oymbId}
 
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
 
 	</update>
-	
-	<delete id ="delete">
-	
-	DELETE FROM oyMember
-	WHERE oymbSeq=#{oymbSeq}
-	
-	</delete>
 
 
 </mapper>

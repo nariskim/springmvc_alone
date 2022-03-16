@@ -36,9 +36,6 @@ public class DurianDao {
 		return sqlSession.update(namespace + ".update", dto);
 	}
 
-	public int delete(DurianVo vo) {
-		return  sqlSession.delete(namespace + ".delete", vo);
-	}
-
+	
 
 }

@@ -84,12 +84,5 @@ public class DurianController {
 		return "redirect:/durian/durianList";
 	}
 	
-	@RequestMapping(value = "/durian/durianDlt")
-	public String durianDlt(DurianVo vo) throws Exception {
-		
-		service.delete(vo);
-		
-		return "redirect:/durian/durianList";
-	}
-	
+
 }

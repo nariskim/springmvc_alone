@@ -39,10 +39,4 @@ public class DurianServiceImpl implements DurianService {
 		
 		return dao.selectOneCount(vo);
 	}
-	
-	@Override
-	public int delete(DurianVo vo) {
-		return dao.delete(vo);
-	}
-
 }

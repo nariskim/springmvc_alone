@@ -7,6 +7,14 @@ public class Durian {
 	private String oymbName = "";
 	private Integer oymbDelNy;
 	private String oymbGenderCd = "";
+	private String oymbGender = "";
+	private String oymbPassword = "";
+	private String oymbDob = "";
+
+	private String oyjqAnswer = "";
+	
+	private String oymaAddress1 = "";
+	private String oymaAddress2 = "";
 	
 	private String oycgSeq = "";
 	private String oycgName = "";
@@ -28,11 +36,11 @@ public class Durian {
 //	private String oymbSeq = "";
 	
 	
-
 	
 	// ------------
 
-
+	
+	
 	public String getOymbSeq() {
 		return oymbSeq;
 	}
@@ -62,6 +70,42 @@ public class Durian {
 	}
 	public void setOymbGenderCd(String oymbGenderCd) {
 		this.oymbGenderCd = oymbGenderCd;
+	}
+	public String getOymbGender() {
+		return oymbGender;
+	}
+	public void setOymbGender(String oymbGender) {
+		this.oymbGender = oymbGender;
+	}
+	public String getOymbPassword() {
+		return oymbPassword;
+	}
+	public void setOymbPassword(String oymbPassword) {
+		this.oymbPassword = oymbPassword;
+	}
+	public String getOymbDob() {
+		return oymbDob;
+	}
+	public void setOymbDob(String oymbDob) {
+		this.oymbDob = oymbDob;
+	}
+	public String getOyjqAnswer() {
+		return oyjqAnswer;
+	}
+	public void setOyjqAnswer(String oyjqAnswer) {
+		this.oyjqAnswer = oyjqAnswer;
+	}
+	public String getOymaAddress1() {
+		return oymaAddress1;
+	}
+	public void setOymaAddress1(String oymaAddress1) {
+		this.oymaAddress1 = oymaAddress1;
+	}
+	public String getOymaAddress2() {
+		return oymaAddress2;
+	}
+	public void setOymaAddress2(String oymaAddress2) {
+		this.oymaAddress2 = oymaAddress2;
 	}
 	public String getOycgSeq() {
 		return oycgSeq;
@@ -137,4 +181,5 @@ public class Durian {
 	}
 
 
+	
 }
