@@ -293,8 +293,8 @@
 						<label for="formFile" class="form-label">SNS URL</label>
 					</div>
 					<div class="col-12 col-sm-8 col-lg-4">
-						<input type="text" class="form-control" id="sns_url"
-							placeholder="주소를 입력해주세요">
+						<input type="text" readonly class="form-control" id="sns_url"
+							value=<c:out value="${item.oyoaUrl}"/>>
 					</div>
 
 				</div>
@@ -305,7 +305,7 @@
 						<label for="formFile" class="form-label">비밀번호</label>
 					</div>
 					<div class="col-12 col-sm-8 col-lg-4">
-						<input type="password" readonly id="oymbPassword" class="form-control"
+						<input type="text" readonly id="oymbPassword" class="form-control"
 							aria-describedby="passwordHelpBlock" value=<c:out value="${item.oymbPassword}"/>>
 						<div id="passwordHelpBlock" class="form-text">8-20자리의 영문
 							대소문자, 숫자, 특수문자를 조합하여 설정</div>
@@ -315,7 +315,7 @@
 						<label for="formFile" class="form-label">비밀번호 확인</label>
 					</div>
 					<div class="col-12 col-sm-8 col-lg-4">
-						<input type="password" readonly id="oymbPassword" class="form-control"
+						<input type="text" readonly id="oymbPassword" class="form-control"
 							aria-describedby="passwordHelpBlock" value=<c:out value="${item.oymbPassword}"/>>
 						<div id="passwordHelpBlock" class="form-text"></div>
 					</div>
@@ -422,7 +422,7 @@
 						<!-- MODAL END -->
 							</div>
 							<input type="text" readonly class="oymaAddress1" id="address2"
-								 value=<c:out value="${item.oymaAddress1}"/>>
+								 value=<c:out value="${item.oymaAddress2}"/>>
 						</div>
 
 						<div class="col-12 col-sm-4 col-lg-2">
@@ -459,8 +459,8 @@
 									<option>KT</option>
 									<option>Uplus</option>
 									<option>알뜰폰</option>
-								</select> <input type="text" class="form-control" id="mobile"
-									placeholder="'-'제외">
+								</select> <input type="text" readonly class="form-control" id="mobile"
+									value=<c:out value="${item.oympNumber}"/>>
 							</div>
 						</div>
 
@@ -482,8 +482,8 @@
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
 							<div class="input-group">
-								<input type="text" class="form-control" id="email"
-									placeholder="이메일"> <span class="input-group-text">@</span>
+								<input type="text" readonly class="form-control" id="email"
+									value=<c:out value="${item.oymeEmailAccount}"/>> <span class="input-group-text">@</span>
 								<select class="form-select" aria-label="Default select example">
 									<option value="server" selected>선택해주세요
 									<option value="Gmail">gmail.com
