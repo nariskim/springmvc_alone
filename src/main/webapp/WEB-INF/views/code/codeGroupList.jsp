@@ -10,25 +10,25 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-	<br>
+<br>
 <a
 	href="/myapp/code/codeGroupForm?oycgSeq=<c:out value="${item.oycgSeq}"/>">등록</a>
 
-<br><br>
+<br>
+<br>
 <form id="" name="" method="get" action="/myapp/code/codeGroupList">
 
-	<select name="scOycgDelNy">
+	<select name="scOycgDelNy" id="scOycgDelNy">
 		<option value="">::삭제여부::
 		<option value="1">Y
 		<option value="0">N
-	</select> || 회원이름 : <input type="text" name="scOycgName"> || 
-	<select
-		name="scOption">
+	</select> || 회원이름 : <input type="text" name="scOycgName" id="scOycgName">
+	|| <select name="scOption" id="scOption">
 		<option value="">::검색구분::
 		<option value="1">한글
 		<option value="2">영문
-	</select> <input type="text" name="scValue"> <input type="submit"
-		name="search"> <br><br>
+	</select> <input type="text" name="scValue" id="scValue"> <input
+		type="submit" id="btnSubmit" name="search"> <br> <br>
 	<c:choose>
 		<c:when test="${fn:length(list) eq 0}">
 			<tr>
@@ -42,7 +42,7 @@
 					href="/myapp/code/codeGroupView?oycgSeq=<c:out value="${item.oycgSeq}"/>"><c:out
 						value="${item.oycgName}" /></a> | <c:out value="${item.oycgNameEng}" />
 				<br>
-				
+
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
@@ -74,3 +74,40 @@
 		</c:if>
 	</ul>
 </nav>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script src="/myapp/resources/js/validation.js"></script>
+
+<!-- <script type="text/javascript">
+$("#btnSubmit").on("click", function() {
+	/* alert($("scOption").val()); */
+
+	alert("hello javascript!!!");
+	confirm("진짜 삭제? 복구 노노");
+}); </script>-->
+
+
+
+<!-- <script type="text/javascript">
+$("#btnSubmit").on("click", function(){
+	/* alert($("scOption").val()); */
+	alert($("#scOycgDelNy").val());
+	alert("jquery : " + $("#scOycgName").val());		// jquery 방식
+	alert($("#scOption").val());
+	alert($("#scValue").val());
+/* 	alert("javascript : " + document.getElementById("#scOycgName").value);	 */	// javascript 방식
+});
+</script> -->
+
+<script type="text/javascript">
+$("#btnSubmit").on("click", function(){
+
+if(!checkNull($("#scOycgName"), $("#scOycgName").val(), "검색어를 입력해주세요."))return false;	
+if(!checkNull($("#scValue"), $("#scValue").val(), "검색어를 입력해주세요."))return false;
+});
+
+
+</script>
+

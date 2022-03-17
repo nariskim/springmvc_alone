@@ -63,21 +63,118 @@
 	</select>
 
 
-	<insert id="insert">
+	<insert id="insert_oymb">
 
 		INSERT INTO oyMember (
 		oymbId
 		, oymbName
+		,
 		, oymbDelNy
 		)
 		values (
 		#{oymbId}
-		,
-		#{oymbName}
+		, #{oymbName}
 		, 0
 		)
 
 	</insert>
+	
+	<insert id="insert_oyoa">
+
+		INSERT INTO oyMember (
+		oymbId
+		, oymbName
+		,
+		, oymbDelNy
+		)
+		values (
+		#{oymbId}
+		, #{oymbName}
+		, 0
+		)
+
+	</insert>
+	
+	<insert id="insert_oyjq">
+
+		INSERT INTO oyMember (
+		oymbId
+		, oymbName
+		,
+		, oymbDelNy
+		)
+		values (
+		#{oymbId}
+		, #{oymbName}
+		, 0
+		)
+
+	</insert>
+	
+	<insert id="insert_oyma">
+
+		INSERT INTO oyMember (
+		oymbId
+		, oymbName
+		,
+		, oymbDelNy
+		)
+		values (
+		#{oymbId}
+		, #{oymbName}
+		, 0
+		)
+
+	</insert>
+	
+	<insert id="insert_oymn">
+
+		INSERT INTO oyMember (
+		oymbId
+		, oymbName
+		,
+		, oymbDelNy
+		)
+		values (
+		#{oymbId}
+		, #{oymbName}
+		, 0
+		)
+
+	</insert>
+	
+	<insert id="insert_oymp">
+
+		INSERT INTO oyMember (
+		oymbId
+		, oymbName
+		,
+		, oymbDelNy
+		)
+		values (
+		#{oymbId}
+		, #{oymbName}
+		, 0
+		)
+
+	</insert>
+	
+	<insert id="insert_oyme">
+
+		INSERT INTO oyMember (
+		oymbId
+		, oymbName
+		,
+		, oymbDelNy
+		)
+		values (
+		#{oymbId}
+		, #{oymbName}
+		, 0
+		)
+
+	</insert>
+	
 
 
 	<select id="selectOne" resultMap="resultMapObj">
