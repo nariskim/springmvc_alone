@@ -18,7 +18,9 @@ public class CodeServiceImpl implements CodeService {
 
 	@Override
 	public int insertGroup(Code dto) throws Exception {
-		return dao.insertGroup(dto);
+		dao.insert(dto);	//	oycgName, oycdName
+		dao.insertGroup(dto);	//	oycgName, oycdName, oycgSeq
+		return 1;
 	}
 	@Override
 	public Code selectOneGroup(CodeVo vo) throws Exception {

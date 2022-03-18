@@ -20,13 +20,13 @@
 
 	<select name="scOycgDelNy" id="scOycgDelNy">
 		<option value="">::삭제여부::
-		<option value="1">Y
-		<option value="0">N
+		<option value="1" <c:if test="${vo.scOycgDelNy eq 1 }">selected</c:if>>Y
+		<option value="0" <c:if test="${vo.scOycgDelNy eq 0 }">selected</c:if>>N
 	</select> || 회원이름 : <input type="text" name="scOycgName" id="scOycgName">
 	|| <select name="scOption" id="scOption">
 		<option value="">::검색구분::
-		<option value="1">한글
-		<option value="2">영문
+		<option value="1" <c:if test="${vo.scOption eq 1 }">selected</c:if>>한글
+		<option value="2" <c:if test="${vo.scOption eq 2 }">selected</c:if>>영문
 	</select> <input type="text" name="scValue" id="scValue"> <input
 		type="submit" id="btnSubmit" name="search"> <br> <br>
 	<c:choose>

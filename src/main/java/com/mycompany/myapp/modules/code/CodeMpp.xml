@@ -43,6 +43,7 @@
 		, a.oycgName
 		, a.oycgNameEng
 		, a.oycgDelNy
+		
 		<include refid="selectCommon" />
 		limit #{startRnumForMysql}, #{rowNumToShow}
 
@@ -84,12 +85,13 @@
 		INSERT INTO oyCodeGroup (
 		oycgName
 		, oycgDelNy
-		) values
-		(
+		) values (
 		#{oycgName}
 		, 0
 		)
-
+		<selectKey resultType="String" keyProperty="oycgSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
 
 
@@ -98,8 +100,7 @@
 		SELECT
 		oycgSeq
 		, oycgName
-		,
-		oycgDelNy
+		, oycgDelNy
 		FROM
 		oyCodeGroup
 		WHERE 1=1
