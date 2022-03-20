@@ -21,15 +21,43 @@
 		WHERE 1=1
 		<!-- AND oymaDefaultNy=1 AND oymeDefaultNy=1 AND oympDefaultNy=1 -->
 		<choose>
-			<when test="scOymbGenderCd == 3">AND a.OymbGenderCd = 3</when>
-			<when test="scOymbGenderCd == 4">AND a.OymbGenderCd = 4</when>
-			<when test="scOymbGenderCd == 5">AND a.OymbGenderCd = 5</when>
+			<when test="scOymbDelNy == 1">AND a.oymbDelNy = 1</when>
+			<when test="scOymbDelNy == 0">AND a.oymbDelNy = 0</when>
+		</choose>
+		<choose>
+			<when test="scOymbGenderCd == 3">AND a.oymbGenderCd = 3</when>
+			<when test="scOymbGenderCd == 4">AND a.oymbGenderCd = 4</when>
+			<when test="scOymbGenderCd == 5">AND a.oymbGenderCd = 5</when>
+		</choose>
+		<choose>
+			<when test="scOymbGradeCd == 137">AND a.oymbGradeCd = 137</when>
+			<when test="scOymbGradeCd == 138">AND a.oymbGradeCd = 138</when>
+			<when test="scOymbGradeCd == 139">AND a.oymbGradeCd = 139</when>
+			<when test="scOymbGradeCd == 140">AND a.oymbGradeCd = 140</when>
 		</choose>
 		<if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName LIKE concat('%',#{scOymbName},'%')</if>
 		<choose>
-			<when test="scOption == 1">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 2">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')
+			<when test="scOymbName == 10">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOymbName == 20">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')
 			</when>
+		</choose>
+		<choose>
+			<when test="scOption == 111">AND a.oymbSeq</when>
+			<when test="scOption == 222">AND a.oymbId</when>
+			<when test="scOption == 333">AND f.oympNumber</when>
+			<when test="scOption == 444">AND g.oymeEmailAccount</when>
+		</choose>
+		<choose>
+			<when test="scOympTelecomCd == 35">AND f.oympTelecomCd = 28</when>
+			<when test="scOympTelecomCd == 36">AND f.oympTelecomCd = 29</when>
+			<when test="scOympTelecomCd == 37">AND f.oympTelecomCd = 30</when>
+			<when test="scOympTelecomCd == 144">AND f.oympTelecomCd = 31</when>
+		</choose>
+		<choose>
+			<when test="scOymeEmailDomainCd == 35">AND g.oymeEmailDomainCd = 35</when>
+			<when test="scOymeEmailDomainCd == 36">AND g.oymeEmailDomainCd = 36</when>
+			<when test="scOymeEmailDomainCd == 37">AND g.oymeEmailDomainCd = 37</when>
+			<when test="scOymeEmailDomainCd == 144">AND g.oymeEmailDomainCd = 144</when>
 		</choose>
 
 	</sql>
@@ -49,12 +77,17 @@
 		, a.oymbName
 		, a.oymbId
 		, a.oymbGenderCd
-		,(select oycdName
-		from oyCode
-		where oycdSeq = a.oymbGenderCd) as oymbGender
+		,(select oycdName from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender
+		, a.oymbGradeCd
+		,(select oycdName from oyCode where oycdSeq = a.oymbGradeCd) as oymbGrade
+		, a.oymbDelNy
+		, f.oympTelecomCd
+		,(select oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oympTelecom
 		, f.oympNumber
-		,
-		g.oymeEmailFull
+		, g.oymeEmailFull
+		, g.oymeEmailAccount
+		, g.oymeEmailDomainCd
+		,(select oycdName from oyCode where oycdSeq = g.oymeEmailDomainCd) as oymeEmailDomain
 
 
 		<include refid="selectCommon" />
@@ -201,7 +234,7 @@
 		, e.oymnSeq
 		,(select oynaName from oyNationality where oynaSeq = e.oymbSeq) as oymbNationality
 		, f.oympTelecomCd
-		,(select oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oymbTelecom
+		,(select oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oympTelecom
 		, f.oympNumber
 		, f.oympDelNy
 		, g.oymeEmailAccount

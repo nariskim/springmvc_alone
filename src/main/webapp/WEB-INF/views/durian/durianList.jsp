@@ -255,14 +255,15 @@
 						<div class="container">
 
 							<div class="row gx-2 gy-2">
-								<!-- 						<div class="col-12 col-sm-4 col-lg-2">
-					<select name="scOymbDelNy" class="form-select"
-						aria-label="Default select example">
-						<option value="">::삭제여부::
-						<option value="1">Y
-						<option value="2">N
-					</select>
-				</div> -->
+								<div class="col-12 col-sm-4 col-lg-2">
+									<select name="scOymbDelNy" class="form-select"
+										aria-label="Default select example">
+										<option value="">::삭제여부::
+										<option value="1"
+											<c:if test="${vo.scOymbDelNy eq 1 }">selected</c:if>>Y
+										<option value="0"
+											<c:if test="${vo.scOymbDelNy eq 0 }">selected</c:if>>N</select>
+								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
 									<select name="scOymbGenderCd" class="form-select"
 										aria-label="Default select example">
@@ -270,53 +271,84 @@
 										<option value="3"
 											<c:if test="${vo.scOymbGenderCd eq 3 }">selected</c:if>>남자
 
+
+
 										
 										<option value="4"
 											<c:if test="${vo.scOymbGenderCd eq 4 }">selected</c:if>>여자
+
+
 
 										
 										<option value="5"
 											<c:if test="${vo.scOymbGenderCd eq 5 }">selected</c:if>>기타
 
+
+
 										
 									</select>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
-									<select class="form-select" aria-label="Default select example">
-										<option value="">::날짜::
-										<option value="1">One
-										<option value="2">Two
-										<option value="3">Three
+									<select name="scOymbGradeCd" class="form-select" aria-label="Default select example">
+										<option value="" >::회원등급::
+										<option value="137" <c:if test="${vo.scOymbGradeCd eq 137 }">selected</c:if>>골드
+										<option value="138" <c:if test="${vo.scOymbGradeCd eq 138 }">selected</c:if>>블랙
+										<option value="139" <c:if test="${vo.scOymbGradeCd eq 139 }">selected</c:if>>그린
+										<option value="140" <c:if test="${vo.scOymbGradeCd eq 1 }">selected</c:if>>베이비
 									</select>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
-									<input type="text" class="form-control"
-										id="exampleFormControlInput1" placeholder="시작일">
+									<select name="scOymbName" class="form-select"
+										aria-label="Default select example">
+										<option value="">::이름검색 (한/영)::
+										<option value="10"
+											<c:if test="${vo.scOption eq 10 }">selected</c:if>>한글
+
+
+
+										
+										<option value="20"
+											<c:if test="${vo.scOption eq 20 }">selected</c:if>>영문
+
+
+
+										
+									</select>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
-									<input type="text" class="form-control"
-										id="exampleFormControlInput1" placeholder="종료일">
+									<select name="scOption" class="form-select" aria-label="Default select example">
+										<option value="">::검색구분::
+										<option value="111" <c:if test="${vo.scOption eq 111 }">selected</c:if>>회원번호
+										<option value="222" <c:if test="${vo.scOption eq 222 }">selected</c:if>>아이디
+										<option value="333" <c:if test="${vo.scOption eq 333 }">selected</c:if>>연락처
+										<option value="444" <c:if test="${vo.scOption eq 444 }">selected</c:if>>이메일계정
+									</select>
 								</div>
-								<div class="col-12 col-sm-4 col-lg-2"></div>
-								<div class="col-12 col-sm-4 col-lg-2"></div>
+								<div class="col-12 col-sm-4 col-lg-2">
+									<select name="scOympTelecomCd" class="form-select" aria-label="Default select example">
+										<option value="">::통신사구분::
+										<option value="28" <c:if test="${vo.scOympTelecomCd eq 28 }">selected</c:if>>SKT
+										<option value="29" <c:if test="${vo.scOympTelecomCd eq 29 }">selected</c:if>>KT
+										<option value="30" <c:if test="${vo.scOympTelecomCd eq 30 }">selected</c:if>>LGU
+										<option value="31" <c:if test="${vo.scOympTelecomCd eq 31 }">selected</c:if>>알뜰폰
+									</select>
+								</div>
+								<div class="col-12 col-sm-4 col-lg-2">
+									<select name="scOymeEmailDomainCd" class="form-select" aria-label="Default select example">
+										<option value="">::이메일도메인구분::
+										<option value="35" <c:if test="${vo.scOymeEmailDomainCd eq 35 }">selected</c:if>>네이버
+										<option value="36" <c:if test="${vo.scOymeEmailDomainCd eq 36 }">selected</c:if>>다음
+										<option value="37" <c:if test="${vo.scOymeEmailDomainCd eq 37 }">selected</c:if>>구글
+										<option value="144" <c:if test="${vo.scOymeEmailDomainCd eq 144 }">selected</c:if>>기타
+									</select>
+								</div>
+
 
 							</div>
 							<br>
 							<div class="row gx-2 gy-2">
-								<div class="col-12 col-sm-4 col-lg-2">
-									<select name="scOption" class="form-select"
-										aria-label="Default select example">
-										<option value="">::검색구분::
-										<option value="1"
-											<c:if test="${vo.scOption eq 1 }">selected</c:if>>한글
 
-										
-										<option value="2"
-											<c:if test="${vo.scOption eq 2 }">selected</c:if>>영문
 
-										
-									</select>
-								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
 									<input type="text" name="scValue" class="form-control"
 										id="exampleFormControlInput1" placeholder="검색어">
@@ -330,6 +362,7 @@
 
 									</div>
 								</div>
+								<div class="col-12 col-sm-4 col-lg-2"></div>
 								<div class="col-12 col-sm-4 col-lg-2"></div>
 								<div class="col-12 col-sm-4 col-lg-2"></div>
 								<div class="col-12 col-sm-4 col-lg-2"></div>
@@ -351,12 +384,15 @@
 													id="flexCheckDefault">
 											</div>
 										</th>
-										<th scope="col">#</th>
+										<th scope="col">회원번호</th>
+										<th scope="col">회원등급</th>
 										<th scope="col">이름</th>
 										<th scope="col">아이디</th>
 										<th scope="col">성별</th>
+										<th scope="col">통신사</th>
 										<th scope="col">연락처</th>
 										<th scope="col">이메일</th>
+										<th scope="col"></th>
 
 									</tr>
 								</thead>
@@ -378,13 +414,18 @@
 														</div>
 													</th>
 													<th scope="row"><c:out value="${item.oymbSeq}" /></th>
+													<td><c:out value="${item.oymbGrade}" /></td>
 													<td><a
 														href="/myapp/durian/durianView?oymbSeq=<c:out value="${item.oymbSeq}"/>"><c:out
 																value="${item.oymbName}" /></a></td>
 													<td><c:out value="${item.oymbId}" /></td>
 													<td><c:out value="${item.oymbGender}" /></td>
+													<td><c:out value="${item.oympTelecom}" /></td>
 													<td><c:out value="${item.oympNumber}" /></td>
 													<td><c:out value="${item.oymeEmailFull}" /></td>
+													<td><div class="d-none">
+															<c:out value="${item.oymbDelNy}" />
+														</div></td>
 
 
 
@@ -451,7 +492,7 @@
 				<td>asdf9988@naver.com</td>
 			</tr> -->
 								</tbody>
-								<tfoot>
+						<!-- <tfoot>
 									<tr>
 										<th scope="row"><button type="button" id="btnSubmit_del"
 												class="btn btn-danger">&nbsp삭 제&nbsp</button></th>
@@ -467,8 +508,18 @@
 
 											</div></td>
 									</tr>
-								</tfoot>
+								</tfoot> -->		
 							</table>
+							<div class="row">
+							<div class="col-2">
+							<button type="button" id="btnSubmit_del" class="btn btn-danger">&nbsp삭 제&nbsp</button></div>
+							<div class="col-8">
+							</div>
+							<div class="col-2">
+							<a href="/myapp/durian/durianForm?oymbSeq=<c:out value="${item.oymbSeq}"/>">
+							<button type="button" class="btn btn-success">&nbsp등 록&nbsp</button></a></div>
+												
+							</div>
 						</div>
 					</div>
 
@@ -546,29 +597,29 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="/myapp/resources/js/validation.js"></script>
-	
-	<script type="text/javascript">
-$("#btnSubmit_del").on("click", function() {
-	/* alert($("scOption").val()); */
 
-	alert("삭제?");
-	confirm("진짜 삭제? 복구 노노");
-});
-</script>
+	<script type="text/javascript">
+		$("#btnSubmit_del").on("click", function() {
+			/* alert($("scOption").val()); */
+
+			alert("삭제?");
+			confirm("진짜 삭제? 복구 노노");
+		});
+	</script>
 	<!-- <script type="text/javascript">
 $("#btnSubmit").on("click", function(){
 	alert($("#scOycgName").val());		// jquery 방식
 });
 </script> -->
 
-<script type="text/javascript">
-$("#btnSubmit").on("click", function(){
+	<script type="text/javascript">
+		/* $("#btnSubmit").on("click", function(){
 
-if(!checkNull($("#scValue"), $("#scValue").val(), "검색어를 입력해주세요."))return false;
-});
+		 if(!checkNull($("#scValue"), $("#scValue").val(), "검색어를 입력해주세요."))return false;
+		 });
+		 */
+	</script>
 
-
-</script>
 
 
 </body>

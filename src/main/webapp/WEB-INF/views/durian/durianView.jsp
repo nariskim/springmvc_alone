@@ -250,7 +250,7 @@ s<%@ page language="java" contentType="text/html; charset=utf-8"
 					</ol>
 				</nav>
 				<br> <br>
-				<inpeut type="hidden" class="form-control" name="oymbSeq"
+				<input type="hidden" class="form-control" name="oymbSeq"
 					value=<c:out value="${item.oymbSeq}"/>>
 				<div class="row">
 

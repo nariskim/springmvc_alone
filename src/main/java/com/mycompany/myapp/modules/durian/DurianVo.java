@@ -14,7 +14,11 @@ public class DurianVo {
 	
 	// oyMemberSearch
 	private String scOymbName = "";
+	private String scOymbDelNy = ""; 
 	private Integer scOymbGenderCd;
+	private Integer scOymbGradeCd;
+	private Integer scOymeEmailDomainCd;
+	private Integer scOympTelecomCd;
 
 	// common
 	private String scOption;
@@ -130,12 +134,44 @@ public class DurianVo {
 		this.scOymbName = scOymbName;
 	}
 
-	public Integer getscOymbGenderCd() {
+	public String getScOymbDelNy() {
+		return scOymbDelNy;
+	}
+
+	public void setScOymbDelNy(String scOymbDelNy) {
+		this.scOymbDelNy = scOymbDelNy;
+	}
+
+	public Integer getScOymbGenderCd() {
 		return scOymbGenderCd;
 	}
 
-	public void setscOymbGenderCd(Integer scOymbGenderCd) {
+	public void setScOymbGenderCd(Integer scOymbGenderCd) {
 		this.scOymbGenderCd = scOymbGenderCd;
+	}
+
+	public Integer getScOymbGradeCd() {
+		return scOymbGradeCd;
+	}
+
+	public void setScOymbGradeCd(Integer scOymbGradeCd) {
+		this.scOymbGradeCd = scOymbGradeCd;
+	}
+
+	public Integer getScOymeEmailDomainCd() {
+		return scOymeEmailDomainCd;
+	}
+
+	public void setScOymeEmailDomainCd(Integer scOymeEmailDomainCd) {
+		this.scOymeEmailDomainCd = scOymeEmailDomainCd;
+	}
+
+	public Integer getScOympTelecomCd() {
+		return scOympTelecomCd;
+	}
+
+	public void setScOympTelecomCd(Integer scOympTelecomCd) {
+		this.scOympTelecomCd = scOympTelecomCd;
 	}
 
 	public String getScOption() {
@@ -241,6 +277,9 @@ public class DurianVo {
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
+
+	
+
 
 
 

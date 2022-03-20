@@ -8,6 +8,8 @@ public class Durian {
 	private Integer oymbDelNy;
 	private String oymbGenderCd = "";
 	private String oymbGender = "";
+	private String oymbGradeCd = "";
+	private String oymbGrade = "";
 	private String oymbPassword = "";
 	private String oymbDob = "";
 	
@@ -31,7 +33,7 @@ public class Durian {
 	private String oynaName = "";
 	
 	private String oympTelecomCd = "";
-	private String oymbTelecom = "";
+	private String oympTelecom = "";
 	
 	
 	private String oycgSeq = "";
@@ -56,9 +58,11 @@ public class Durian {
 	private Integer oympDelNy;
 //	private String oymbSeq = "";
 	
+	
 
 	// ------------
 
+	
 	
 	public String getOymbSeq() {
 		return oymbSeq;
@@ -95,6 +99,18 @@ public class Durian {
 	}
 	public void setOymbGender(String oymbGender) {
 		this.oymbGender = oymbGender;
+	}
+	public String getOymbGradeCd() {
+		return oymbGradeCd;
+	}
+	public void setOymbGradeCd(String oymbGradeCd) {
+		this.oymbGradeCd = oymbGradeCd;
+	}
+	public String getOymbGrade() {
+		return oymbGrade;
+	}
+	public void setOymbGrade(String oymbGrade) {
+		this.oymbGrade = oymbGrade;
 	}
 	public String getOymbPassword() {
 		return oymbPassword;
@@ -198,11 +214,11 @@ public class Durian {
 	public void setOympTelecomCd(String oympTelecomCd) {
 		this.oympTelecomCd = oympTelecomCd;
 	}
-	public String getOymbTelecom() {
-		return oymbTelecom;
+	public String getOympTelecom() {
+		return oympTelecom;
 	}
-	public void setOymbTelecom(String oymbTelecom) {
-		this.oymbTelecom = oymbTelecom;
+	public void setOymbTelecom(String oympTelecom) {
+		this.oympTelecom = oympTelecom;
 	}
 	public String getOycgSeq() {
 		return oycgSeq;
@@ -294,6 +310,7 @@ public class Durian {
 	public void setOympDelNy(Integer oympDelNy) {
 		this.oympDelNy = oympDelNy;
 	}
-	
+
+
 	
 }
