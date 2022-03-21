@@ -21,12 +21,16 @@
 	<select name="scOycgDelNy" id="scOycgDelNy">
 		<option value="">::삭제여부::
 		<option value="1" <c:if test="${vo.scOycgDelNy eq 1 }">selected</c:if>>Y
+		
 		<option value="0" <c:if test="${vo.scOycgDelNy eq 0 }">selected</c:if>>N
+		
 	</select> || 회원이름 : <input type="text" name="scOycgName" id="scOycgName">
 	|| <select name="scOption" id="scOption">
 		<option value="">::검색구분::
 		<option value="1" <c:if test="${vo.scOption eq 1 }">selected</c:if>>한글
+		
 		<option value="2" <c:if test="${vo.scOption eq 2 }">selected</c:if>>영문
+		
 	</select> <input type="text" name="scValue" id="scValue"> <input
 		type="submit" id="btnSubmit" name="search"> <br> <br>
 	<c:choose>
@@ -41,6 +45,10 @@
 				<c:out value="${item.oycgSeq}" /> | <a
 					href="/myapp/code/codeGroupView?oycgSeq=<c:out value="${item.oycgSeq}"/>"><c:out
 						value="${item.oycgName}" /></a> | <c:out value="${item.oycgNameEng}" />
+				<c:choose>
+				<c:when test="${item.oycdDelNy eq 0 }">O</c:when>
+				<c:otherwise>X</c:otherwise>
+				</c:choose>
 				<br>
 
 			</c:forEach>
@@ -102,12 +110,16 @@ $("#btnSubmit").on("click", function(){
 </script> -->
 
 <script type="text/javascript">
-$("#btnSubmit").on("click", function(){
+	$("#btnSubmit").on(
+			"click",
+			function() {
 
-if(!checkNull($("#scOycgName"), $("#scOycgName").val(), "검색어를 입력해주세요."))return false;	
-if(!checkNull($("#scValue"), $("#scValue").val(), "검색어를 입력해주세요."))return false;
-});
-
-
+				if (!checkNull($("#scOycgName"), $("#scOycgName").val(),
+						"검색어를 입력해주세요."))
+					return false;
+				if (!checkNull($("#scValue"), $("#scValue").val(),
+						"검색어를 입력해주세요."))
+					return false;
+			});
 </script>
 

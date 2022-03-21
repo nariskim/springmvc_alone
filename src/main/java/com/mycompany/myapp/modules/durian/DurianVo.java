@@ -3,22 +3,14 @@ package com.mycompany.myapp.modules.durian;
 public class DurianVo {
 
 	private String oymbSeq;
+	private String oymbGenderCd;
+	private String oympTelecomCd;
 
-	private String oycgSeq;
-	
-	private String oycdSeq;
-
-	private String oympSeq;
-	
-	private String oymeSeq;
 	
 	// oyMemberSearch
-	private String scOymbName = "";
-	private String scOymbDelNy = ""; 
-	private Integer scOymbGenderCd;
-	private Integer scOymbGradeCd;
-	private Integer scOymeEmailDomainCd;
-	private Integer scOympTelecomCd;
+
+	private String scOymbName;
+	private Integer scOymbDelNy ; 
 
 	// common
 	private String scOption;
@@ -94,36 +86,20 @@ public class DurianVo {
 		this.oymbSeq = oymbSeq;
 	}
 
-	public String getOycgSeq() {
-		return oycgSeq;
+	public String getOymbGenderCd() {
+		return oymbGenderCd;
 	}
 
-	public void setOycgSeq(String oycgSeq) {
-		this.oycgSeq = oycgSeq;
+	public void setOymbGenderCd(String oymbGenderCd) {
+		this.oymbGenderCd = oymbGenderCd;
 	}
 
-	public String getOycdSeq() {
-		return oycdSeq;
+	public String getOympTelecomCd() {
+		return oympTelecomCd;
 	}
 
-	public void setOycdSeq(String oycdSeq) {
-		this.oycdSeq = oycdSeq;
-	}
-
-	public String getOympSeq() {
-		return oympSeq;
-	}
-
-	public void setOympSeq(String oympSeq) {
-		this.oympSeq = oympSeq;
-	}
-
-	public String getOymeSeq() {
-		return oymeSeq;
-	}
-
-	public void setOymeSeq(String oymeSeq) {
-		this.oymeSeq = oymeSeq;
+	public void setOympTelecomCd(String oympTelecomCd) {
+		this.oympTelecomCd = oympTelecomCd;
 	}
 
 	public String getScOymbName() {
@@ -134,44 +110,12 @@ public class DurianVo {
 		this.scOymbName = scOymbName;
 	}
 
-	public String getScOymbDelNy() {
+	public Integer getScOymbDelNy() {
 		return scOymbDelNy;
 	}
 
-	public void setScOymbDelNy(String scOymbDelNy) {
+	public void setScOymbDelNy(Integer scOymbDelNy) {
 		this.scOymbDelNy = scOymbDelNy;
-	}
-
-	public Integer getScOymbGenderCd() {
-		return scOymbGenderCd;
-	}
-
-	public void setScOymbGenderCd(Integer scOymbGenderCd) {
-		this.scOymbGenderCd = scOymbGenderCd;
-	}
-
-	public Integer getScOymbGradeCd() {
-		return scOymbGradeCd;
-	}
-
-	public void setScOymbGradeCd(Integer scOymbGradeCd) {
-		this.scOymbGradeCd = scOymbGradeCd;
-	}
-
-	public Integer getScOymeEmailDomainCd() {
-		return scOymeEmailDomainCd;
-	}
-
-	public void setScOymeEmailDomainCd(Integer scOymeEmailDomainCd) {
-		this.scOymeEmailDomainCd = scOymeEmailDomainCd;
-	}
-
-	public Integer getScOympTelecomCd() {
-		return scOympTelecomCd;
-	}
-
-	public void setScOympTelecomCd(Integer scOympTelecomCd) {
-		this.scOympTelecomCd = scOympTelecomCd;
 	}
 
 	public String getScOption() {
@@ -278,11 +222,6 @@ public class DurianVo {
 		this.startRnumForMysql = startRnumForMysql;
 	}
 
-	
 
-
-
-
-	
 	
 }

@@ -381,325 +381,287 @@
 								<label for="formFile" class="form-label">주소</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<div class="input-group">
-									<input type="text" class="form-control" id="address"
-										placeholder="주소를 입력해주세요">
-									<button class="btn btn-outline-dark" type="button"
-										id="button-addon1" data-bs-toggle="modal"
-										data-bs-target="#exampleModal">주소 찾기</button>
-									<!--MODAL -->
-									<div class="modal fade" id="exampleModal" tabindex="-1"
-										aria-labelledby="exampleModalLabel" aria-hidden="true">
-										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">주소 검색</h5>
-													<button type="button" class="btn-close"
-														data-bs-dismiss="modal" aria-label="Close"></button>
-												</div>
-												<div class="modal-body">
-													<h3 style="text-align: center">주소 검색</h3>
-													<br> <br>
-													<div class="input-group mb-3">
-														<input class="form-control" type="text"
-															placeholder="주소 입력"> <br> <a
-															href="https://map.naver.com/v5"
-															class="btn btn-outline-secondary" role="button"
-															id="button-addon2">검색</a>
-													</div>
-													<p>도로명, 건물명 또는 지번 중 편한 방법으로 검색하세요.</p>
-													<p>예) 건물명 : 방배동 우성아파트</p>
-													<p>도로명 : 테헤란로 152</p>
-													<p>지역번 : 역삼동 737</p>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary"
-														data-bs-dismiss="modal">닫기</button>
-													<button type="button" class="btn btn-primary">확인</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- MODAL END -->
-								</div>
-								<input type="text" class="form-control" id="address"
-									placeholder="상세 주소">
-							</div>
+								<div class=input-group>
+									<input type="text" class="form-control" id="oymaZipCode"
+										placeholder="우편번호">
+									<button type="button" id="btnZipCodeClear"
+										class="btn btn-outline-secondary">
+										<i class="fa solid fa-x"></i>
+									</button>
+									<input type="button" id="btnAddress"
+										class="btn btn-outline-dark"
+										onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+									<input type="text" class="form-control" id="oymaAddress1"
+										placeholder="주소"><br> <input type="text"
+										class="form-control" id="oymaAddress2" placeholder="상세주소">
+									<input type="text" class="form-control"
+										id="sample6_extraAddress" placeholder="참고항목">
 
-							<div class="col-12 col-sm-4 col-lg-2">
-								<label for="formFile" class="form-label">국적</label>
+								</div>
+
 							</div>
-							<div class="col-12 col-sm-8 col-lg-4">
-								<select class="form-select" aria-label="Default select example">
-									<option value="choose">선택해주세요</option>
-									<option value="korea">한국</option>
-									<option value="usa">미국</option>
-									<option value="france">프랑스</option>
-									<option value="uk">영국</option>
-									<option value="germany">독일</option>
-									<option value="japan">일본</option>
-									<option value="italia">이탈리아</option>
-									<option value="canada">캐나다</option>
-								</select> <input type="text" class="form-control" id="address"
-									placeholder="그 외 국가 직접 입력">
+						</div>
+
+						<div class="col-12 col-sm-4 col-lg-2">
+							<label for="formFile" class="form-label">국적</label>
+						</div>
+						<div class="col-12 col-sm-8 col-lg-4">
+							<select class="form-select" aria-label="Default select example">
+								<option value="choose">선택해주세요</option>
+								<option value="korea">한국</option>
+								<option value="usa">미국</option>
+								<option value="france">프랑스</option>
+								<option value="uk">영국</option>
+								<option value="germany">독일</option>
+								<option value="japan">일본</option>
+								<option value="italia">이탈리아</option>
+								<option value="canada">캐나다</option>
+							</select> <input type="text" class="form-control" id="address"
+								placeholder="그 외 국가 직접 입력">
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="col-12 col-sm-4 col-lg-2">
+							<label for="formFile" class="form-label">연락처 (필수)</label>
+						</div>
+						<div class="col-12 col-sm-8 col-lg-4">
+							<div class="input-group">
+								<select class="form-select form-select-sm"
+									aria-label="Default select example">
+									<option selected>통신사</option>
+									<option>SKT</option>
+									<option>KT</option>
+									<option>Uplus</option>
+									<option>알뜰폰</option>
+								</select> <input type="text" class="form-control" id="oympNumber"
+									name="oympNumber" placeholder="'-'제외">
+							</div>
+						</div>
+
+						<div class="col-12 col-sm-4 col-lg-2">
+							<label for="formFile" class="form-label">연락처 (선택)</label>
+						</div>
+						<div class="col-12 col-sm-8 col-lg-4">
+							<div class="input-group">
+								<select class="form-select form-select-sm"
+									aria-label="Default select example">
+									<option selected>통신사</option>
+									<option>SKT</option>
+									<option>KT</option>
+									<option>Uplus</option>
+									<option>알뜰폰</option>
+								</select> <input type="text" class="form-control" name="oympNumber"
+									id="oympNumber" placeholder="'-'제외">
 							</div>
 
 						</div>
+
 
 						<div class="row">
 
 							<div class="col-12 col-sm-4 col-lg-2">
-								<label for="formFile" class="form-label">연락처 (필수)</label>
+								<label for="formFile" class="form-label">이메일 (필수)</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
 								<div class="input-group">
-									<select class="form-select form-select-sm"
+									<input type="text" class="form-control" id="oymeEmailAccount"
+										name="oymeEmailAccount" placeholder="이메일"> <span
+										class="input-group-text">@</span> <select class="form-select"
 										aria-label="Default select example">
-										<option selected>통신사</option>
-										<option>SKT</option>
-										<option>KT</option>
-										<option>Uplus</option>
-										<option>알뜰폰</option>
-									</select> <input type="text" class="form-control" id="oympNumber"
-										name="oympNumber" placeholder="'-'제외">
+										<option value="server" selected>선택해주세요
+										<option value="Gmail">gmail.com
+										<option value="Naver">naver.com
+										<option value="Daum">hanmail.net
+									</select>
 								</div>
 							</div>
 
 							<div class="col-12 col-sm-4 col-lg-2">
-								<label for="formFile" class="form-label">연락처 (선택)</label>
+								<label for="formFile" class="form-label">이메일 (선택)</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
 								<div class="input-group">
-									<select class="form-select form-select-sm"
+									<input type="text" class="form-control" id="oymeEmailAccount"
+										name="oymeEmailAccount" placeholder="이메일"> <span
+										class="input-group-text">@</span> <select class="form-select"
 										aria-label="Default select example">
-										<option selected>통신사</option>
-										<option>SKT</option>
-										<option>KT</option>
-										<option>Uplus</option>
-										<option>알뜰폰</option>
-									</select> <input type="text" class="form-control" name="oympNumber"
-										id="oympNumber" placeholder="'-'제외">
+										<option value="server" selected>선택해주세요
+										<option value="Gmail">gmail.com
+										<option value="Naver">naver.com
+										<option value="Daum">hanmail.net
+									</select>
 								</div>
+							</div>
+						</div>
 
+
+						<div class="row">
+
+							<div class="col-12 col-sm-6 col-lg-2">
+								<label for="formFile" class="form-label">피부타입</label>
+							</div>
+							<div class="col-12 col-sm-6 col-lg-4">
+								<input type="radio" class="btn-check" id="oymbSkinType"
+									name="oymbSkinType" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="민감">민감성</label> <input
+									type="radio" class="btn-check" id="oymbSkinType"
+									name="oymbSkinType" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="지성">지성</label> <input
+									type="radio" class="btn-check" id="oymbSkinType"
+									name="oymbSkinType" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="중성">중성</label> <input
+									type="radio" class="btn-check" id="oymbSkinType"
+									name="oymbSkinType" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="건성">건성</label> <input
+									type="radio" class="btn-check" id="oymbSkinType"
+									name="oymbSkinType" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="복합성">트러블</label>
 							</div>
 
 
-							<div class="row">
+						</div>
 
-								<div class="col-12 col-sm-4 col-lg-2">
-									<label for="formFile" class="form-label">이메일 (필수)</label>
-								</div>
-								<div class="col-12 col-sm-8 col-lg-4">
-									<div class="input-group">
-										<input type="text" class="form-control" id="oymeEmailAccount"
-											name="oymeEmailAccount" placeholder="이메일"> <span
-											class="input-group-text">@</span> <select class="form-select"
-											aria-label="Default select example">
-											<option value="server" selected>선택해주세요
-											<option value="Gmail">gmail.com
-											<option value="Naver">naver.com
-											<option value="Daum">hanmail.net
-										</select>
-									</div>
-								</div>
 
-								<div class="col-12 col-sm-4 col-lg-2">
-									<label for="formFile" class="form-label">이메일 (선택)</label>
-								</div>
-								<div class="col-12 col-sm-8 col-lg-4">
-									<div class="input-group">
-										<input type="text" class="form-control" id="oymeEmailAccount"
-											name="oymeEmailAccount" placeholder="이메일"> <span
-											class="input-group-text">@</span> <select class="form-select"
-											aria-label="Default select example">
-											<option value="server" selected>선택해주세요
-											<option value="Gmail">gmail.com
-											<option value="Naver">naver.com
-											<option value="Daum">hanmail.net
-										</select>
-									</div>
-								</div>
+						<div class="row">
+
+							<div class="col-12 col-sm-4 col-lg-2">
+								<label for="formFile" class="form-label">퍼스널컬러</label>
+							</div>
+							<div class="col-12 col-sm-8 col-lg-4">
+								<input type="radio" class="btn-check" id="oymbPersonalColor"
+									name="oymbPersonalColor" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="spring">봄 웜</label> <input
+									type="radio" class="btn-check" id="oymbPersonalColor"
+									name="oymbPersonalColor" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="summer">여름 쿨</label> <input
+									type="radio" class="btn-check" id="oymbPersonalColor"
+									name="oymbPersonalColor" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="fall">가을 웜</label> <input
+									type="radio" class="btn-check" id="oymbPersonalColor"
+									name="oymbPersonalColor" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="winter">겨울 쿨</label>
 							</div>
 
-
-							<div class="row">
-
-								<div class="col-12 col-sm-6 col-lg-2">
-									<label for="formFile" class="form-label">피부타입</label>
-								</div>
-								<div class="col-12 col-sm-6 col-lg-4">
-									<input type="radio" class="btn-check" id="oymbSkinType"
-										name="oymbSkinType" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="민감">민감성</label> <input
-										type="radio" class="btn-check" id="oymbSkinType"
-										name="oymbSkinType" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="지성">지성</label> <input
-										type="radio" class="btn-check" id="oymbSkinType"
-										name="oymbSkinType" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="중성">중성</label> <input
-										type="radio" class="btn-check" id="oymbSkinType"
-										name="oymbSkinType" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="건성">건성</label> <input
-										type="radio" class="btn-check" id="oymbSkinType"
-										name="oymbSkinType" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="복합성">트러블</label>
-								</div>
-
+							<div class="col-12 col-sm-4 col-lg-2">
+								<label for="formFile" class="form-label">관심 분야</label>
+							</div>
+							<div class="col-12 col-sm-8 col-lg-4">
+								<input type="checkbox" class="btn-check" id="oymbInterests"
+									autocomplete="off"> <label class="btn btn-outline-dark"
+									for="skinCare">스킨 케어</label> <input type="checkbox"
+									class="btn-check" id="oymbInterests" autocomplete="off">
+								<label class="btn btn-outline-dark" for="makeUp">메이크업</label> <input
+									type="checkbox" class="btn-check" id="oymbInterests"
+									autocomplete="off"> <label class="btn btn-outline-dark"
+									for="hairCare">헤어 케어</label> <input type="checkbox"
+									class="btn-check" id="oymbInterests" autocomplete="off">
+								<label class="btn btn-outline-dark" for="bodyCare">바디 케어</label>
+								<input type="checkbox" class="btn-check" id="oymbInterests"
+									autocomplete="off"> <label class="btn btn-outline-dark"
+									for="innerCare">이너 케어</label>
 
 							</div>
 
+						</div>
 
-							<div class="row">
 
-								<div class="col-12 col-sm-4 col-lg-2">
-									<label for="formFile" class="form-label">퍼스널컬러</label>
-								</div>
-								<div class="col-12 col-sm-8 col-lg-4">
-									<input type="radio" class="btn-check" id="oymbPersonalColor"
-										name="oymbPersonalColor" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="spring">봄 웜</label> <input
-										type="radio" class="btn-check" id="oymbPersonalColor"
-										name="oymbPersonalColor" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="summer">여름 쿨</label> <input
-										type="radio" class="btn-check" id="oymbPersonalColor"
-										name="oymbPersonalColor" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="fall">가을 웜</label> <input
-										type="radio" class="btn-check" id="oymbPersonalColor"
-										name="oymbPersonalColor" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="winter">겨울 쿨</label>
-								</div>
 
-								<div class="col-12 col-sm-4 col-lg-2">
-									<label for="formFile" class="form-label">관심 분야</label>
-								</div>
-								<div class="col-12 col-sm-8 col-lg-4">
-									<input type="checkbox" class="btn-check"
-										id="oymbInterests" autocomplete="off">
-									<label class="btn btn-outline-dark"
-										for="skinCare">스킨 케어</label>
-									<input type="checkbox" class="btn-check"
-										id="oymbInterests" autocomplete="off">
-									<label class="btn btn-outline-dark"
-										for="makeUp">메이크업</label>
-									<input type="checkbox" class="btn-check"
-										id="oymbInterests" autocomplete="off">
-									<label class="btn btn-outline-dark"
-										for="hairCare">헤어 케어</label>
-									<input type="checkbox" class="btn-check"
-										id="oymbInterests" autocomplete="off">
-									<label class="btn btn-outline-dark"
-										for="bodyCare">바디 케어</label>
-									<input type="checkbox" class="btn-check"
-										id="oymbInterests" autocomplete="off">
-									<label class="btn btn-outline-dark"
-										for="innerCare">이너 케어</label>
-									
-								</div>
-
+						<hr>
+						<div class="row">
+							<div class="col-12">
+								<label for="formFile" class="form-label">수신동의</label>
+							</div>
+							<div class="col-12 col-sm-4 col-lg-2">
+								<label for="formFile" class="form-label">모바일 수신동의</label>
 							</div>
 
-
-							
-							<hr>
-							<div class="row">
-								<div class="col-12">
-									<label for="formFile" class="form-label">수신동의</label>
-								</div>
-								<div class="col-12 col-sm-4 col-lg-2">
-									<label for="formFile" class="form-label">모바일 수신동의</label>
-								</div>
-
-								<div class="col-12 col-sm-4 col-lg-2">
-									<div class="input-group">
+							<div class="col-12 col-sm-4 col-lg-2">
+								<div class="input-group">
 									<input type="radio" class="btn-check" id="oymbSmsConsent"
 										name="oymbSmsConsent" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="Y">동의</label>
-								
-								<input type="radio" class="btn-check" id="oymbSmsConsent"
+										class="btn btn-outline-dark" for="Y">동의</label> <input
+										type="radio" class="btn-check" id="oymbSmsConsent"
 										name="oymbSmsConsent" autocomplete="off"> <label
 										class="btn btn-outline-dark" for="N">비동의</label>
-										</div>
 								</div>
+							</div>
 
-								<div class="col-12 col-sm-4 col-lg-2">
-									<label for="formFile" class="form-label">이메일 수신동의</label>
-								</div>
+							<div class="col-12 col-sm-4 col-lg-2">
+								<label for="formFile" class="form-label">이메일 수신동의</label>
+							</div>
 
-								<div class="col-12 col-sm-4 col-lg-2">
-									<div class="input-group">
+							<div class="col-12 col-sm-4 col-lg-2">
+								<div class="input-group">
 									<input type="radio" class="btn-check" id="oymbEmailConsent"
 										name="oymbEmailConsent" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="Y">동의</label>
-								
-								<input type="radio" class="btn-check" id="oymbEmailConsent"
+										class="btn btn-outline-dark" for="Y">동의</label> <input
+										type="radio" class="btn-check" id="oymbEmailConsent"
 										name="oymbEmailConsent" autocomplete="off"> <label
 										class="btn btn-outline-dark" for="N">비동의</label>
-										</div>
-									</div>
 								</div>
-
-
-
-								<div class="col-12 col-sm-4 col-lg-2">
-									<label for="formFile" class="form-label">PUSH 수신동의</label>
-								</div>
-
-								<div class="col-12 col-sm-4 col-lg-2">
-									<div class="input-group">
-									<input type="radio" class="btn-check" id="oymbPushConsent"
-										name="oymbPushConsent" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="Y">동의</label>
-								
-								<input type="radio" class="btn-check" id="oymbPushConsent"
-										name="oymbPushConsent" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="N">비동의</label>
-										</div>
-								</div>
-									</div>
-								
-
-								<div class="col-12 col-sm-4 col-lg-2">
-									<label for="formFile" class="form-label">개인정보 유효기간</label>
-								</div>
-
-								<div class="col-12 col-sm-4 col-lg-2">
-								<input type="radio" class="btn-check" id="oymbSaved"
-										name="oymbSaved" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="1년">1년</label>
-								
-								<input type="radio" class="btn-check" id="oymbSaved"
-										name="oymbSaved" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="5년">5년</label>
-								
-								<input type="radio" class="btn-check" id="oymbSaved"
-										name="oymbSaved" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="10년">10년</label>
-								
-								<input type="radio" class="btn-check" id="oymbSaved"
-										name="oymbSaved" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="평생회원">평생회원</label>
-								</div>
-								</div>
-						
-						<div class="container">
-							<footer class="py-3 my-4">
-								<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-									<li class="nav-item"><a href="#"
-										class="nav-link px-2 text-muted">Home</a></li>
-									<li class="nav-item"><a href="#"
-										class="nav-link px-2 text-muted">Features</a></li>
-									<li class="nav-item"><a href="#"
-										class="nav-link px-2 text-muted">Pricing</a></li>
-									<li class="nav-item"><a href="#"
-										class="nav-link px-2 text-muted">FAQs</a></li>
-									<li class="nav-item"><a href="#"
-										class="nav-link px-2 text-muted">About</a></li>
-								</ul>
-								<p class="text-center text-muted">© 2021 All Live Young, Inc</p>
-							</footer>
+							</div>
 						</div>
-				</main>
+
+
+
+						<div class="col-12 col-sm-4 col-lg-2">
+							<label for="formFile" class="form-label">PUSH 수신동의</label>
+						</div>
+
+						<div class="col-12 col-sm-4 col-lg-2">
+							<div class="input-group">
+								<input type="radio" class="btn-check" id="oymbPushConsent"
+									name="oymbPushConsent" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="Y">동의</label> <input
+									type="radio" class="btn-check" id="oymbPushConsent"
+									name="oymbPushConsent" autocomplete="off"> <label
+									class="btn btn-outline-dark" for="N">비동의</label>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-12 col-sm-4 col-lg-2">
+						<label for="formFile" class="form-label">개인정보 유효기간</label>
+					</div>
+
+					<div class="col-12 col-sm-4 col-lg-2">
+						<input type="radio" class="btn-check" id="oymbSaved"
+							name="oymbSaved" autocomplete="off"> <label
+							class="btn btn-outline-dark" for="1년">1년</label> <input
+							type="radio" class="btn-check" id="oymbSaved" name="oymbSaved"
+							autocomplete="off"> <label class="btn btn-outline-dark"
+							for="5년">5년</label> <input type="radio" class="btn-check"
+							id="oymbSaved" name="oymbSaved" autocomplete="off"> <label
+							class="btn btn-outline-dark" for="10년">10년</label> <input
+							type="radio" class="btn-check" id="oymbSaved" name="oymbSaved"
+							autocomplete="off"> <label class="btn btn-outline-dark"
+							for="평생회원">평생회원</label>
+					</div>
 			</div>
+
+			<div class="container">
+				<footer class="py-3 my-4">
+					<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+						<li class="nav-item"><a href="#"
+							class="nav-link px-2 text-muted">Home</a></li>
+						<li class="nav-item"><a href="#"
+							class="nav-link px-2 text-muted">Features</a></li>
+						<li class="nav-item"><a href="#"
+							class="nav-link px-2 text-muted">Pricing</a></li>
+						<li class="nav-item"><a href="#"
+							class="nav-link px-2 text-muted">FAQs</a></li>
+						<li class="nav-item"><a href="#"
+							class="nav-link px-2 text-muted">About</a></li>
+					</ul>
+					<p class="text-center text-muted">© 2021 All Live Young, Inc</p>
+				</footer>
+			</div>
+			</main>
+		</div>
 		</div>
 
 	</form>
@@ -707,6 +669,78 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+
+
+
+
+
+
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+	$("btnAddress").on("click", function{
+		sample6_execDaumPostcode();
+		
+	});	
+	
+	$("#btnZipCodeClear").on("click", function() {
+			$("#oymaZipCode").val('');
+			$("#oymaAddress1").val('');
+		});
+
+		function sample6_execDaumPostcode() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							var addr = ''; // 주소 변수
+							var extraAddr = ''; // 참고항목 변수
+
+							//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+							if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+								addr = data.roadAddress;
+							} else { // 사용자가 지번 주소를 선택했을 경우(J)
+								addr = data.jibunAddress;
+							}
+
+							// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+							if (data.userSelectedType === 'R') {
+								// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+								// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+								if (data.bname !== ''
+										&& /[동|로|가]$/g.test(data.bname)) {
+									extraAddr += data.bname;
+								}
+								// 건물명이 있고, 공동주택일 경우 추가한다.
+								if (data.buildingName !== ''
+										&& data.apartment === 'Y') {
+									extraAddr += (extraAddr !== '' ? ', '
+											+ data.buildingName
+											: data.buildingName);
+								}
+								// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+								if (extraAddr !== '') {
+									extraAddr = ' (' + extraAddr + ')';
+								}
+								// 조합된 참고항목을 해당 필드에 넣는다.
+								document.getElementById("sample6_extraAddress").value = extraAddr;
+
+							} else {
+								document.getElementById("sample6_extraAddress").value = '';
+							}
+
+							// 우편번호와 주소 정보를 해당 필드에 넣는다.
+							document.getElementById('oymaZipCode').value = data.zonecode;
+							document.getElementById("oymaAddress1").value = addr;
+							// 커서를 상세주소 필드로 이동한다.
+							document.getElementById("oymaAddress2").focus();
+						}
+					}).open();
+		}
+	</script>
 
 
 

@@ -1,6 +1,6 @@
 checkNull = function(obj, value, message) {
 	if(value == "" || value == null){
-		alert("validation.js : " + message);
+		alert(message);
 		obj.focus();
 		return false;
 	} else {
@@ -9,7 +9,7 @@ checkNull = function(obj, value, message) {
 }
 
 // jquery 형 함수 
-checkNull = function (obj, value, message) {
+/* checkNull = function (obj, value, message) {
 	if(value == "" || value == null){
 		alert(message);
 		obj.focus();
@@ -17,7 +17,7 @@ checkNull = function (obj, value, message) {
 	} else {
 		return true;
 	}
-}
+}	*/
 
 
 checkOnlyNumber = function(obj, value, message) {

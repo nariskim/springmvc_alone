@@ -23,8 +23,7 @@
 		<if test="scOycgName != null and !scOycgName.equals('')"> AND a.oycgName LIKE concat('%',#{scOycgName},'%')</if>
 		<choose>
 			<when test="scOption == 1">AND a.oycgName LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 2">AND a.oycgNameEng LIKE concat('%',#{scValue},'%')
-			</when>
+			<when test="scOption == 2">AND a.oycgNameEng LIKE concat('%',#{scValue},'%')</when>
 		</choose>
 
 	</sql>
