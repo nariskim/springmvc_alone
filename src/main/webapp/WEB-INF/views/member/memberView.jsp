@@ -16,4 +16,5 @@
 
 <br>
 
+
 <a href="/myapp/member/memberEdit?oymbSeq=<c:out value="${item.oymbSeq}"/>">수정</a>

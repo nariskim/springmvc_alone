@@ -1,5 +1,7 @@
 package com.mycompany.myapp.modules.durian;
 
+/*import java.util.Date;*/
+
 public class Durian {
 
 	private String oymbSeq = "";
@@ -8,7 +10,7 @@ public class Durian {
 	private String oymbNameEng = "";
 	private String oymbNickName = "";
 	private String oymbPassword = "";
-	private String oymbDob = "";
+	/* private Date oymbDob; */
 	private String oymbGenderCd = "";
 	private String oymbGender = "";
 	private String oymbSkinTypeCd = "";
@@ -42,7 +44,9 @@ public class Durian {
 	private String oymnSeq = "";
 	private String oymbNationality = "";
 	private Integer oymnDelNy;
-	private String oynaName = "";
+	
+	private String oynaSeq = "";
+	private Integer oynaDelNy;
 	
 	private String oympSeq= "";
 	private Integer oympDefaulyNy;
@@ -69,7 +73,6 @@ public class Durian {
 	private String oymbEmailDomain = "";
 	private Integer oymeDelNy;
 //	private String oymbSeq = "";
-	
 	
 	
 	
@@ -109,12 +112,11 @@ public class Durian {
 	public void setOymbPassword(String oymbPassword) {
 		this.oymbPassword = oymbPassword;
 	}
-	public String getOymbDob() {
-		return oymbDob;
-	}
-	public void setOymbDob(String oymbDob) {
-		this.oymbDob = oymbDob;
-	}
+
+	/*
+	 * public Date getOymbDob() { return oymbDob; } public void setOymbDob(Date
+	 * oymbDob) { this.oymbDob = oymbDob; }
+	 */
 	public String getOymbGenderCd() {
 		return oymbGenderCd;
 	}
@@ -295,11 +297,17 @@ public class Durian {
 	public void setOymnDelNy(Integer oymnDelNy) {
 		this.oymnDelNy = oymnDelNy;
 	}
-	public String getOynaName() {
-		return oynaName;
+	public String getOynaSeq() {
+		return oynaSeq;
 	}
-	public void setOynaName(String oynaName) {
-		this.oynaName = oynaName;
+	public void setOynaSeq(String oynaSeq) {
+		this.oynaSeq = oynaSeq;
+	}
+	public Integer getOynaDelNy() {
+		return oynaDelNy;
+	}
+	public void setOynaDelNy(Integer oynaDelNy) {
+		this.oynaDelNy = oynaDelNy;
 	}
 	public String getOympSeq() {
 		return oympSeq;
@@ -417,8 +425,5 @@ public class Durian {
 	}
 	
 	
-	
-
-
 	
 }

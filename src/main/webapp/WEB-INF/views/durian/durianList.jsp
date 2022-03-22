@@ -258,8 +258,8 @@
 								<div class="col-12 col-sm-4 col-lg-2">
 														<select class="form-select" name="scOymbDelNy" id="scOymbDelNy">
 							<option selected>::삭제여부::</option>
-							<option value="1" <c:if test="${vo.scOymbDelNy eq 1 }">selected</c:if> >Y</option>
-							<option value="0" <c:if test="${vo.scOymbDelNy eq 0 }">selected</c:if> >N</option>
+							<option value="1" <c:if test="${vo.scOymbDelNy eq 1 }">selected</c:if>>Y</option>
+							<option value="0" <c:if test="${vo.scOymbDelNy eq 0 }">selected</c:if>>N</option>
 						</select>	
 								
 								</div>

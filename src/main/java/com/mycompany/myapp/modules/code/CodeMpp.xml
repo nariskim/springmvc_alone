@@ -44,7 +44,9 @@
 		, a.oycgDelNy
 		
 		<include refid="selectCommon" />
+		ORDER BY oycgSeq DESC
 		limit #{startRnumForMysql}, #{rowNumToShow}
+		
 
 	</select>
 
@@ -147,8 +149,7 @@
 		values (
 		#{oycdName}
 		, 0
-		,
-		#{oycgSeq}
+		,#{oycgSeq}
 		)
 
 	</insert>

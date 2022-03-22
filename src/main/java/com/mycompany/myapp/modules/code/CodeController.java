@@ -51,12 +51,13 @@ public class CodeController {
 	public String codeGroupInst(Code dto, Model model) throws Exception {
 
 		service.insertGroup(dto);
+		dto.getOycgSeq();
 
-		return "redirect:/code/codeGroupList";
+		return "redirect:/code/codeGroupView?oycgSeq=" + dto.getOycgSeq();
 	}
 
 	@RequestMapping(value = "/code/codeGroupView")
-	public String codeGroupView(CodeVo vo, Model model) throws Exception {
+	public String codeGroupView(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 
 		Code rt = service.selectOneGroup(vo);
 
@@ -105,7 +106,7 @@ public class CodeController {
 	public String codeInst(Code dto, Model model) throws Exception {
 
 		service.insert(dto);
-
+		
 		return "redirect:/code/codeList";
 	}
 

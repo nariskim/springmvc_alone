@@ -13,10 +13,8 @@
 
 
 		FROM oyMember a
-		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND
-		f.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND
-		g.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND f.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND g.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
 		<!-- AND oymaDefaultNy=1 AND oymeDefaultNy=1 AND oympDefaultNy=1 -->
@@ -50,23 +48,17 @@
 		, a.oymbName
 		, a.oymbId
 		, a.oymbGenderCd
-		,(select oycdName
-		from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender
-		,
-		a.oymbGradeCd
-		,(select oycdName from oyCode where oycdSeq =
-		a.oymbGradeCd) as oymbGrade
+		,(select oycdName from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender
+		, a.oymbGradeCd
+		,(select oycdName from oyCode where oycdSeq = a.oymbGradeCd) as oymbGrade
 		, a.oymbDelNy
 		, f.oympTelecomCd
-		,(select
-		oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oympTelecom
-		,
-		f.oympNumber
+		,(select oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oympTelecom
+		, f.oympNumber
 		, g.oymeEmailFull
 		, g.oymeEmailAccount
 		, g.oymeEmailDomainCd
-		,(select oycdName from oyCode where oycdSeq = g.oymeEmailDomainCd) as
-		oymeEmailDomain
+		,(select oycdName from oyCode where oycdSeq = g.oymeEmailDomainCd) as oymeEmailDomain
 
 
 		<include refid="selectCommon" />
@@ -75,24 +67,119 @@
 	</select>
 
 
-	<insert id="insert">
+	<insert id="insertMember">
 
 		INSERT INTO oyMember (
-		oymbId
-		, oymbName
+		oymbName
 		, oymbNameEng
-		,
-		oymbDelNy
-		)
-		values (
-		#{oymbId}
-		, #{oymbName}
+		, oymbId
+		, oymbNickName
+		, oymbPassword
+		<!-- , oymbDob  -->
+		, oymbGenderCd
+		, oymbSkinTypeCd
+		, oymbPersonalColorCd
+		, oymbInterestsCd
+		, oymbSmsConsentNy
+		, oymbEmailConsentNy
+		, oymbPushConsentNy
+		, oymbSavedCd
+		, oymbDelNy
+		) values (
+		#{oymbName}
 		, #{oymbNameEng}
+		, #{oymbId}
+		, #{oymbNickName}
+		, #{oymbPassword}
+		<!-- , #{oymbDob} -->
+		, #{oymbGenderCd}
+		, #{oymbSkinTypeCd}
+		, #{oymbPersonalColorCd}
+		, #{oymbInterestsCd}
+		, #{oymbSmsConsentNy}
+		, #{oymbEmailConsentNy}
+		, #{oymbPushConsentNy}
+		, #{oymbSavedCd}
 		, 0
 		)
 
 	</insert>
-
+	
+	<insert id="insertJoinQna">
+		INSERT INTO oymbJoinQna (
+		oyjqQuestionCd
+		, oyjqAnswer
+		, oyjqDelNy
+		) values (
+		#{oyjqQuestionCd}
+		, #{oyjqAnswer}
+		, 0
+	</insert>
+	<insert id="insertNation">
+		INSERT INTO oymbNationality (
+		oymnSeq
+		, oymnDelNy
+		) values (
+		#{oymnSeq}
+		, 0
+	</insert>
+	<insert id="insertMbNation">
+		INSERT INTO oymbNationality (
+		oymnNation
+		, oymnDelNy
+		) values (
+		#{oymnNation}
+		, 0
+	</insert>
+	<insert id="insertAddress">
+		INSERT INTO oymbAddress (
+		oymaDefaultNy
+		, oymaTypeCd
+		, oymaZipCode
+		, oymaAddress1
+		, oymaAddress2
+		, oymaDelNy
+		) values (
+		#{oyjqQuestionCd}
+		, #{oymaDefaultNy}
+		, #{oymaTypeCd}
+		, #{oymaZipCode}
+		, #{oymaAddress1}
+		, #{oymaAddress2}
+		, 0
+	</insert>
+	<insert id="insertPhone">
+		INSERT INTO oymbPhone (
+		oympDefaultNy
+		, oympTypeCd
+		, oympTelecomCd
+		, oympNumber
+		, oympDelNy
+		) values (
+		#{oympDefaultNy}
+		, #{oympTypeCd}
+		, #{oympTelecomCd}
+		, #{oympNumber}
+		, 0
+	</insert>
+	<insert id="insertEmail">
+		INSERT INTO oymbEmail (
+		oymeDefaultNy
+		, oymeTypeCd
+		, oymeEmailFull
+		, oymeEmailAccount
+		, oymeEmailDomain
+		, oymeEmailDomainCd
+		, oymeDelNy
+		) values (
+		#{oymeDefaultNy}
+		, #{oymeTypeCd}
+		, #{oymeEmailFull}
+		, #{oymeEmailAccount}
+		, #{oymeEmailDomain}
+		, #{oymeEmailDomainCd}
+		, 0
+	</insert>
 
 
 	<select id="selectOne" resultMap="resultMapObj">
@@ -104,32 +191,24 @@
 		, a.oymbId
 		, a.oymbNickName
 		, a.oymbPassword
-		, a.oymbDob 
+		<!-- , a.oymbDob --> 
 		, a.oymbGenderCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = a.oymbGenderCd) as oymbGender
 		, a.oymbSkinTypeCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = a.oymbSkinTypeCd) as oymbSkinType
 		, a.oymbPersonalColorCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = a.oymbPersonalColorCd) as oymbPersonalColor
 		, a.oymbInterestsCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = a.oymbInterestsCd) as oymbInterests
 		, a.oymbSmsConsentNy
 		, a.oymbEmailConsentNy
 		, a.oymbPushConsentNy
 		, a.oymbSavedCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = a.oymbSavedCd) as oymbSaved
 		, a.oymbDelNy
 		, b.oyjqQuestionCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = b.oyjqQuestionCd) as oyjqQuestion
 		, b.oyjqAnswer
 		, b.oyjqDelNy
 		, c.oymnSeq
-		,(SELECT oynaName FROM oyNationality WHERE oynaSeq = c.oymnSeq) as oymbNationality
 		, c.oymnDelNy
 		, d.oymaSeq
 		, d.oymaDefaultNy
 		, d.oymaTypeCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = d.oymaTypeCd) as oymaType
 		, d.oymaZipCode
 		, d.oymaAddress1
 		, d.oymaAddress2
@@ -137,20 +216,16 @@
 		, e.oympSeq
 		, e.oympDefaultNy
 		, e.oympTypeCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = e.oympTypeCd) as oympType
 		, e.oympTelecomCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = e.oympTelecomCd) as oympTelecom
 		, e.oympNumber
 		, e.oympDelNy
 		, f.oymeSeq
 		, f.oymeDefaultNy
 		, f.oymeTypeCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = f.oymeTypeCd) as oymeType
 		, f.oymeEmailFull
 		, f.oymeEmailAccount
 		, f.oymeEmailDomain
 		, f.oymeEmailDomainCd
-		,(SELECT oycdName FROM oyCode WHERE oycdSeq = f.oymeEmailDomainCd) as oymeEmailDomain
 		, f.oymeDelNy
 
 		FROM oyMember a
@@ -164,6 +239,11 @@
 		AND a.oymbSeq = #{oymbSeq}
 
 
+		<choose>
+			<when test="oymbGenderCd == 3">AND f.oymbGradeCd = 3</when>
+			<when test="oymbGenderCd == 4">AND f.oymbGradeCd = 4</when>
+			<when test="oymbGenderCd == 5">AND f.oymbGradeCd = 5</when>
+		</choose>
 		<choose>
 			<when test="oympTelecomCd == 28">AND f.oymbGradeCd = 28</when>
 			<when test="oympTelecomCd == 29">AND f.oymbGradeCd = 29</when>
@@ -185,7 +265,6 @@
 		, oymbId = #{oymbId}
 		, oymbNickName = #{oymbNickName}
 		, oymbPassword = #{oymbPassword}
-		, oymbDob = #{oymbDob(oymbDob, '%y-%m-%d')}
 		, oymbGenderCd = #{oymbGenderCd}
 		, oymbSkinTypeCd = #{oymbSkinTypeCd}
 		, oymbPersonalColorCd = #{oymbPersonalColorCd}

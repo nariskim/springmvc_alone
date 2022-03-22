@@ -12,7 +12,7 @@
 	crossorigin="anonymous">
 <br>
 <a
-	href="/myapp/code/codeGroupForm?oycgSeq=<c:out value="${item.oycgSeq}"/>">등록</a>
+	href="/myapp/code/codeGroupForm?oycgSeq=<c:out value="${item.oycgSeq}"/>&scOption=<c:out value="${vo.scOption}"/>&scValue=<c:out value="${vo.scValue}"/>">등록</a>
 
 <br>
 <br>
@@ -24,14 +24,14 @@
 		
 		<option value="0" <c:if test="${vo.scOycgDelNy eq 0 }">selected</c:if>>N
 		
-	</select> || 회원이름 : <input type="text" name="scOycgName" id="scOycgName">
+	</select> || 회원이름 : <input type="text" name="scOycgName" id="scOycgName" value="<c:out value="${vo.scOycgName}"/>">
 	|| <select name="scOption" id="scOption">
 		<option value="">::검색구분::
 		<option value="1" <c:if test="${vo.scOption eq 1 }">selected</c:if>>한글
 		
 		<option value="2" <c:if test="${vo.scOption eq 2 }">selected</c:if>>영문
 		
-	</select> <input type="text" name="scValue" id="scValue"> <input
+	</select> <input type="text" name="scValue" id="scValue" value="<c:out value="${vo.scValue}"/>"> <input
 		type="submit" id="btnSubmit" name="search"> <br> <br>
 	<c:choose>
 		<c:when test="${fn:length(list) eq 0}">
@@ -43,7 +43,7 @@
 			<c:forEach items="${list}" var="item" varStatus="status">
 
 				<c:out value="${item.oycgSeq}" /> | <a
-					href="/myapp/code/codeGroupView?oycgSeq=<c:out value="${item.oycgSeq}"/>"><c:out
+					href="/myapp/code/codeGroupView?oycgSeq=<c:out value="${item.oycgSeq}"/>&scOption=<c:out value="${vo.scOption}"/>&scValue=<c:out value="${vo.scValue}"/>"><c:out
 						value="${item.oycgName}" /></a> | <c:out value="${item.oycgNameEng}" />
 				<c:choose>
 				<c:when test="${item.oycdDelNy eq 0 }">O</c:when>
@@ -62,23 +62,23 @@
 
 		<c:if test="${vo.startPage gt vo.pageNumToShow}">
 			<li class="page-item"><a class="page-link"
-				href="/myapp/code/codeGroupList?thisPage=${vo.startPage - 1}">Previous</a></li>
+				href="/myapp/code/codeGroupList?thisPage=${vo.startPage - 1}&scOption=<c:out value="${vo.scOption}"/>&scValue=<c:out value="${vo.scValue}"/>">Previous</a></li>
 		</c:if>
 		<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 			<c:choose>
 				<c:when test="${i.index eq vo.thisPage}">
 					<li class="page-item active"><a class="page-link"
-						href="/myapp/code/codeGroupList?thisPage=${i.index}">${i.index}</a></li>
+						href="/myapp/code/codeGroupList?thisPage=${i.index}&scOption=<c:out value="${vo.scOption}"/>&scValue=<c:out value="${vo.scValue}"/>">${i.index}</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						href="/myapp/code/codeGroupList?thisPage=${i.index}">${i.index}</a></li>
+						href="/myapp/code/codeGroupList?thisPage=${i.index}&scOption=<c:out value="${vo.scOption}"/>&scValue=<c:out value="${vo.scValue}"/>">${i.index}</a></li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${vo.endPage ne vo.totalPages}">
 			<li class="page-item"><a class="page-link"
-				href="/myapp/code/codeGroupList?thisPage=${vo.endPage + 1}">Next</a></li>
+				href="/myapp/code/codeGroupList?thisPage=${vo.endPage + 1}&scOption=<c:out value="${vo.scOption}"/>&scValue=<c:out value="${vo.scValue}"/>">Next</a></li>
 		</c:if>
 	</ul>
 </nav>
@@ -109,7 +109,7 @@ $("#btnSubmit").on("click", function(){
 });
 </script> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$("#btnSubmit").on(
 			"click",
 			function() {
@@ -121,5 +121,5 @@ $("#btnSubmit").on("click", function(){
 						"검색어를 입력해주세요."))
 					return false;
 			});
-</script>
+</script> -->
 

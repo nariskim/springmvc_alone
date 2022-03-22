@@ -243,31 +243,37 @@
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#">회원 관리</a></li>
-								<li class="breadcrumb-item"><a
-									href="/myapp/durian/durianList">회원 리스트</a></li>
-								<li class="breadcrumb-item active" aria-current="page">회원
-									등록</li>
+								<li class="breadcrumb-item"><a href="/myapp/durian/durianList">회원 리스트</a></li>
+								<li class="breadcrumb-item active" aria-current="page">회원 등록</li>
 							</ol>
 						</nav>
 						<br> <br>
 
+						<input type="hidden" name="oymbDelNy" value="0">
+						<input type="hidden" name="oyjqDelNy" value="0">
+						<input type="hidden" name="oynaDelNy" value="0">
+						<input type="hidden" name="oymnDelNy" value="0">
+						<input type="hidden" name="oymaDelNy" value="0">
+						<input type="hidden" name="oympDelNy" value="0">
+						<input type="hidden" name="oymeDelNy" value="0">
+
+
+
 
 						<div class="row">
-							<!-- <input type="hidden" name="oycdDelNy" placeholder="0"> -->
+							
 							<div class="col-12 col-sm-4 col-lg-2">
 								<label for="formFile" class="form-label">이름 (한글)</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="text" class="form-control" id="oymbName"
-									name="oymbName" placeholder="이름">
+								<input type="text" class="form-control" id="oymbName" name="oymbName" placeholder="이름">
 							</div>
 
 							<div class="col-12 col-sm-4 col-lg-2">
 								<label for="formFile" class="form-label">이름 (영문)</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="text" class="form-control" id="oymbNameEng"
-									name="oymbNameEng" placeholder="'성' 제외 '이름만' 영문 이니셜">
+								<input type="text" class="form-control" id="oymbNameEng" name="oymbNameEng" placeholder="'성' 제외 '이름만' 영문 이니셜">
 								<div id="NameEngHelpBlock" class="form-text">예시:김나리 'nr'</div>
 							</div>
 							<input type="submit" value="제출">
@@ -279,8 +285,7 @@
 								<label for="formFile" class="form-label">아이디</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="text" class="form-control" id="oymbId"
-									name="oymbId" placeholder="아이디">
+								<input type="text" class="form-control" id="oymbId" name="oymbId" placeholder="아이디">
 
 							</div>
 
@@ -288,8 +293,7 @@
 								<label for="formFile" class="form-label">닉네임</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="text" class="form-control" id="oymbNickName"
-									name="oymbNickName" placeholder="닉네임">
+								<input type="text" class="form-control" id="oymbNickName" name="oymbNickName" placeholder="닉네임">
 							</div>
 
 						</div>
@@ -300,19 +304,15 @@
 								<label for="formFile" class="form-label">비밀번호</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="password" id="oymbPassword" name="oymbPassword"
-									class="form-control" aria-describedby="passwordHelpBlock"
-									placeholder="비밀번호">
-								<div id="passwordHelpBlock" class="form-text">8-20자리의 영문
-									대소문자, 숫자, 특수문자를 조합하여 설정</div>
+								<input type="password" id="oymbPassword" name="oymbPassword" class="form-control" aria-describedby="passwordHelpBlock" placeholder="비밀번호">
+								<div id="passwordHelpBlock" class="form-text">8-20자리의 영문 대소문자, 숫자, 특수문자를 조합하여 설정</div>
 							</div>
 
 							<div class="col-12 col-sm-4 col-lg-2">
 								<label for="formFile" class="form-label">비밀번호 확인</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="password" id="oymbPwdConfirm" class="form-control"
-									aria-describedby="passwordHelpBlock" placeholder="비밀번호 확인">
+								<input type="password" id="oymbPwdConfirm" class="form-control" aria-describedby="passwordHelpBlock" placeholder="비밀번호 확인">
 								<div id="passwordHelpBlock" class="form-text"></div>
 							</div>
 
@@ -324,23 +324,19 @@
 								<label for="formFile" class="form-label">생년월일</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="date" id="oymbDob" name="oymbDob"
-									placeholder="000000">
+								<input type="date" id="oymbDob" name="oymbDob" placeholder="000000">
 							</div>
 
 							<div class="col-12 col-sm-4 col-lg-2">
 								<label for="formFile" class="form-label">성별</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="radio" class="btn-check" id="oymbGenderM"
-									name="oymbGenderM" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="man">남자</label> <input
-									type="radio" class="btn-check" id="oymbGenderW"
-									name="oymbGenderW" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="woman">여자</label> <input
-									type="radio" class="btn-check" id="oymbGenderZ"
-									name="oymbGenderZ" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="etc">기타</label>
+								<input type="radio" class="btn-check" autocomplete="off" name="oymbGenderCd" id="oymbGenderCd" value="3">
+								<label class="btn btn-outline-dark">남자</label>
+								<input type="radio" class="btn-check" autocomplete="off" name="oymbGenderCd" id="oymbGenderCd" value="4">
+								<label class="btn btn-outline-dark">여자</label>
+								<input type="radio" class="btn-check" autocomplete="off" name="oymbGenderCd" id="oymbGenderCd" value="5">
+								<label class="btn btn-outline-dark">기타</label>
 							</div>
 
 						</div>
@@ -352,13 +348,13 @@
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
 								<div class="mb-3">
-									<select class="form-select" aria-label="Default select example">
+									<select class="form-select" id="oyjqQuestionCd">
 										<option selected>선택해주세요</option>
-										<option>question 1</option>
-										<option>question 2</option>
-										<option>question 3</option>
-										<option>question 4</option>
-										<option>question 5</option>
+										<option value ="17">question 1</option>
+										<option value ="18">question 2</option>
+										<option value ="19">question 3</option>
+										<option value ="20">question 4</option>
+										<option value ="21">question 5</option>
 									</select>
 								</div>
 							</div>
@@ -367,7 +363,7 @@
 								<label for="formFile" class="form-label">비밀번호 답변</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="text" class="form-control" id=""
+								<input type="text" class="form-control" id="oyjqAnswer" name="oyjqAnswer"
 									placeholder="비밀번호 힌트 답">
 							</div>
 
@@ -380,25 +376,15 @@
 							<div class="col-12 col-sm-4 col-lg-2">
 								<label for="formFile" class="form-label">주소</label>
 							</div>
+							
 							<div class="col-12 col-sm-8 col-lg-4">
 								<div class=input-group>
-									<input type="text" class="form-control" id="oymaZipCode"
-										placeholder="우편번호">
-									<button type="button" id="btnZipCodeClear"
-										class="btn btn-outline-secondary">
-										<i class="fa solid fa-x"></i>
-									</button>
-									<input type="button" id="btnAddress"
-										class="btn btn-outline-dark"
-										onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-									<input type="text" class="form-control" id="oymaAddress1"
-										placeholder="주소"><br> <input type="text"
-										class="form-control" id="oymaAddress2" placeholder="상세주소">
-									<input type="text" class="form-control"
-										id="sample6_extraAddress" placeholder="참고항목">
-
+								<input type="text" id="oymaZipCode" placeholder="우편번호">
+								<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+								<input type="text" id="oymaAddress1" placeholder="주소"><br>
+								<input type="text" id="oymaAddress2" placeholder="상세주소">
+								<input type="text" id="oymaAddress3" placeholder="참고항목">
 								</div>
-
 							</div>
 						</div>
 
@@ -406,18 +392,17 @@
 							<label for="formFile" class="form-label">국적</label>
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
-							<select class="form-select" aria-label="Default select example">
+							<select class="form-select" id="oynaSeq">
 								<option value="choose">선택해주세요</option>
-								<option value="korea">한국</option>
-								<option value="usa">미국</option>
-								<option value="france">프랑스</option>
-								<option value="uk">영국</option>
-								<option value="germany">독일</option>
-								<option value="japan">일본</option>
-								<option value="italia">이탈리아</option>
-								<option value="canada">캐나다</option>
-							</select> <input type="text" class="form-control" id="address"
-								placeholder="그 외 국가 직접 입력">
+								<option value="1">한국</option>
+								<option value="2">미국</option>
+								<option value="5">프랑스</option>
+								<option value="3">영국</option>
+								<option value="4">독일</option>
+								<option value="6">폴란드</option>
+								<option value="7">호주</option>
+								<option value="8">중국</option>
+							</select> <input type="text" class="form-control" id="oymnNation" placeholder="그 외 국가 직접 입력">
 						</div>
 
 					</div>
@@ -429,15 +414,13 @@
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
 							<div class="input-group">
-								<select class="form-select form-select-sm"
-									aria-label="Default select example">
-									<option selected>통신사</option>
-									<option>SKT</option>
-									<option>KT</option>
-									<option>Uplus</option>
-									<option>알뜰폰</option>
-								</select> <input type="text" class="form-control" id="oympNumber"
-									name="oympNumber" placeholder="'-'제외">
+								<select class="form-select form-select-sm">
+									<option selected>::통신사::</option>
+									<option value="28">SKT</option>
+									<option value="29">KT</option>
+									<option value="30">Uplus</option>
+									<option value="31">자급제</option>
+								</select> <input type="text" class="form-control" id="oympNumber" name="oympNumber" placeholder="'-'제외">
 							</div>
 						</div>
 
@@ -446,15 +429,13 @@
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
 							<div class="input-group">
-								<select class="form-select form-select-sm"
-									aria-label="Default select example">
-									<option selected>통신사</option>
-									<option>SKT</option>
-									<option>KT</option>
-									<option>Uplus</option>
-									<option>알뜰폰</option>
-								</select> <input type="text" class="form-control" name="oympNumber"
-									id="oympNumber" placeholder="'-'제외">
+								<select class="form-select form-select-sm">
+									<option selected>::통신사::</option>
+									<option value="28">SKT</option>
+									<option value="29">KT</option>
+									<option value="30">Uplus</option>
+									<option value="31">자급제</option>
+								</select> <input type="text" class="form-control" name="oympNumber" id="oympNumber" placeholder="'-'제외">
 							</div>
 
 						</div>
@@ -468,13 +449,14 @@
 							<div class="col-12 col-sm-8 col-lg-4">
 								<div class="input-group">
 									<input type="text" class="form-control" id="oymeEmailAccount"
-										name="oymeEmailAccount" placeholder="이메일"> <span
-										class="input-group-text">@</span> <select class="form-select"
-										aria-label="Default select example">
-										<option value="server" selected>선택해주세요
-										<option value="Gmail">gmail.com
-										<option value="Naver">naver.com
-										<option value="Daum">hanmail.net
+										name="oymeEmailAccount" placeholder="이메일">
+										<span class="input-group-text">@</span>
+										<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+										<option selected>::선택해주세요::
+										<option value="35">gmail.com
+										<option value="36">naver.com
+										<option value="37">hanmail.net
+										<option value="155">직접 입력
 									</select>
 								</div>
 							</div>
@@ -485,13 +467,14 @@
 							<div class="col-12 col-sm-8 col-lg-4">
 								<div class="input-group">
 									<input type="text" class="form-control" id="oymeEmailAccount"
-										name="oymeEmailAccount" placeholder="이메일"> <span
-										class="input-group-text">@</span> <select class="form-select"
-										aria-label="Default select example">
-										<option value="server" selected>선택해주세요
-										<option value="Gmail">gmail.com
-										<option value="Naver">naver.com
-										<option value="Daum">hanmail.net
+										name="oymeEmailAccount" placeholder="이메일">
+										<span class="input-group-text">@</span>
+										<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+										<option selected>::선택해주세요::
+										<option value="35">gmail.com
+										<option value="36">naver.com
+										<option value="37">hanmail.net
+										<option value="155">직접 입력
 									</select>
 								</div>
 							</div>
@@ -504,64 +487,51 @@
 								<label for="formFile" class="form-label">피부타입</label>
 							</div>
 							<div class="col-12 col-sm-6 col-lg-4">
-								<input type="radio" class="btn-check" id="oymbSkinType"
-									name="oymbSkinType" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="민감">민감성</label> <input
-									type="radio" class="btn-check" id="oymbSkinType"
-									name="oymbSkinType" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="지성">지성</label> <input
-									type="radio" class="btn-check" id="oymbSkinType"
-									name="oymbSkinType" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="중성">중성</label> <input
-									type="radio" class="btn-check" id="oymbSkinType"
-									name="oymbSkinType" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="건성">건성</label> <input
-									type="radio" class="btn-check" id="oymbSkinType"
-									name="oymbSkinType" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="복합성">트러블</label>
+								<input type="radio" class="btn-check" id="oymbSkinTypeCd" name="oymbSkinTypeCd" autocomplete="off" value="141">
+								<label class="btn btn-outline-dark" for="민감">민감성</label>
+								<input type="radio" class="btn-check" id="oymbSkinTypeCd" name="oymbSkinTypeCd" autocomplete="off" value="142">
+								<label class="btn btn-outline-dark" for="지성">지성</label>
+								<input type="radio" class="btn-check" id="oymbSkinTypeCd" name="oymbSkinTypeCd" autocomplete="off" value="143">
+								<label class="btn btn-outline-dark" for="중성">중성</label>
+								<input type="radio" class="btn-check" id="oymbSkinTypeCd" name="oymbSkinTypeCd" autocomplete="off" value="144">
+								<label class="btn btn-outline-dark" for="건성">건성</label>
+								<input type="radio" class="btn-check" id="oymbSkinTypeCd" name="oymbSkinTypeCd" autocomplete="off" value="145">
+								<label class="btn btn-outline-dark" for="복합성">트러블</label>
 							</div>
 
 
-						</div>
-
-
-						<div class="row">
+						
 
 							<div class="col-12 col-sm-4 col-lg-2">
 								<label for="formFile" class="form-label">퍼스널컬러</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="radio" class="btn-check" id="oymbPersonalColor"
-									name="oymbPersonalColor" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="spring">봄 웜</label> <input
-									type="radio" class="btn-check" id="oymbPersonalColor"
-									name="oymbPersonalColor" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="summer">여름 쿨</label> <input
-									type="radio" class="btn-check" id="oymbPersonalColor"
-									name="oymbPersonalColor" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="fall">가을 웜</label> <input
-									type="radio" class="btn-check" id="oymbPersonalColor"
-									name="oymbPersonalColor" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="winter">겨울 쿨</label>
+								<input type="radio" class="btn-check" id="oymbPersonalColorCd" name="oymbPersonalColor" autocomplete="off" value="146">
+								<label class="btn btn-outline-dark" for="spring">봄 웜</label>
+								<input type="radio" class="btn-check" id="oymbPersonalColorCd" name="oymbPersonalColor" autocomplete="off" value="147">
+								<label class="btn btn-outline-dark" for="summer">여름 쿨</label>
+								<input type="radio" class="btn-check" id="oymbPersonalColorCd" name="oymbPersonalColor" autocomplete="off" value="148">
+								<label class="btn btn-outline-dark" for="fall">가을 웜</label>
+								<input type="radio" class="btn-check" id="oymbPersonalColorCd" name="oymbPersonalColor" autocomplete="off" value="149">
+								<label class="btn btn-outline-dark" for="winter">겨울 쿨</label>
 							</div>
 
+</div>
+<div class="row">
 							<div class="col-12 col-sm-4 col-lg-2">
 								<label for="formFile" class="form-label">관심 분야</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
-								<input type="checkbox" class="btn-check" id="oymbInterests"
-									autocomplete="off"> <label class="btn btn-outline-dark"
-									for="skinCare">스킨 케어</label> <input type="checkbox"
-									class="btn-check" id="oymbInterests" autocomplete="off">
-								<label class="btn btn-outline-dark" for="makeUp">메이크업</label> <input
-									type="checkbox" class="btn-check" id="oymbInterests"
-									autocomplete="off"> <label class="btn btn-outline-dark"
-									for="hairCare">헤어 케어</label> <input type="checkbox"
-									class="btn-check" id="oymbInterests" autocomplete="off">
+								<input type="checkbox" class="btn-check" id="oymbInterestsCd" autocomplete="off" value="150">
+								<label class="btn btn-outline-dark" for="skinCare">스킨 케어</label>
+								<input type="checkbox" class="btn-check" id="oymbInterestsCd" autocomplete="off" value="151">
+								<label class="btn btn-outline-dark" for="makeUp">메이크업</label>
+								<input type="checkbox" class="btn-check" id="oymbInterestsCd" autocomplete="off" value="152">
+								<label class="btn btn-outline-dark" for="hairCare">헤어 케어</label>
+								<input type="checkbox" class="btn-check" id="oymbInterestsCd" autocomplete="off" value="153">
 								<label class="btn btn-outline-dark" for="bodyCare">바디 케어</label>
-								<input type="checkbox" class="btn-check" id="oymbInterests"
-									autocomplete="off"> <label class="btn btn-outline-dark"
-									for="innerCare">이너 케어</label>
+								<input type="checkbox" class="btn-check" id="oymbInterestsCd" autocomplete="off" value="154">
+								<label class="btn btn-outline-dark" for="innerCare">이너 케어</label>
 
 							</div>
 
@@ -580,12 +550,10 @@
 
 							<div class="col-12 col-sm-4 col-lg-2">
 								<div class="input-group">
-									<input type="radio" class="btn-check" id="oymbSmsConsent"
-										name="oymbSmsConsent" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="Y">동의</label> <input
-										type="radio" class="btn-check" id="oymbSmsConsent"
-										name="oymbSmsConsent" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="N">비동의</label>
+									<input type="radio" class="btn-check" id="oymbSmsConsentNy" name="oymbSmsConsent" autocomplete="off" value="1">
+									<label class="btn btn-outline-dark">동의</label>
+									<input type="radio" class="btn-check" id="oymbSmsConsentNy" name="oymbSmsConsent" autocomplete="off" value="0">
+									<label class="btn btn-outline-dark">비동의</label>
 								</div>
 							</div>
 
@@ -595,12 +563,10 @@
 
 							<div class="col-12 col-sm-4 col-lg-2">
 								<div class="input-group">
-									<input type="radio" class="btn-check" id="oymbEmailConsent"
-										name="oymbEmailConsent" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="Y">동의</label> <input
-										type="radio" class="btn-check" id="oymbEmailConsent"
-										name="oymbEmailConsent" autocomplete="off"> <label
-										class="btn btn-outline-dark" for="N">비동의</label>
+									<input type="radio" class="btn-check" id="oymbEmailConsentNy" name="oymbEmailConsentNy" autocomplete="off" value="1">
+									<label class="btn btn-outline-dark">동의</label>
+									<input type="radio" class="btn-check" id="oymbEmailConsentNy" name="oymbEmailConsentNy" autocomplete="off" value="0"> 
+									<label class="btn btn-outline-dark">비동의</label>
 								</div>
 							</div>
 						</div>
@@ -613,12 +579,10 @@
 
 						<div class="col-12 col-sm-4 col-lg-2">
 							<div class="input-group">
-								<input type="radio" class="btn-check" id="oymbPushConsent"
-									name="oymbPushConsent" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="Y">동의</label> <input
-									type="radio" class="btn-check" id="oymbPushConsent"
-									name="oymbPushConsent" autocomplete="off"> <label
-									class="btn btn-outline-dark" for="N">비동의</label>
+								<input type="radio" class="btn-check" id="oymbPushConsentNy" name="oymbPushConsentNy" autocomplete="off" value="1">
+								<label class="btn btn-outline-dark">동의</label>
+								<input type="radio" class="btn-check" id="oymbPushConsentNy" name="oymbPushConsentNy" autocomplete="off" value="0">
+								<label class="btn btn-outline-dark">비동의</label>
 							</div>
 						</div>
 					</div>
@@ -629,17 +593,14 @@
 					</div>
 
 					<div class="col-12 col-sm-4 col-lg-2">
-						<input type="radio" class="btn-check" id="oymbSaved"
-							name="oymbSaved" autocomplete="off"> <label
-							class="btn btn-outline-dark" for="1년">1년</label> <input
-							type="radio" class="btn-check" id="oymbSaved" name="oymbSaved"
-							autocomplete="off"> <label class="btn btn-outline-dark"
-							for="5년">5년</label> <input type="radio" class="btn-check"
-							id="oymbSaved" name="oymbSaved" autocomplete="off"> <label
-							class="btn btn-outline-dark" for="10년">10년</label> <input
-							type="radio" class="btn-check" id="oymbSaved" name="oymbSaved"
-							autocomplete="off"> <label class="btn btn-outline-dark"
-							for="평생회원">평생회원</label>
+							<input type="radio" class="btn-check" id="oymbSavedCd" name="oymbSaved" autocomplete="off" value="6">
+							<label class="btn btn-outline-dark" for="1년">1년</label>
+							<input type="radio" class="btn-check" id="oymbSaved" name="oymbSaved" autocomplete="off" value="8">
+							<label class="btn btn-outline-dark" for="5년">5년</label>
+							<input type="radio" class="btn-check" id="oymbSaved" name="oymbSaved" autocomplete="off" value="9">
+							<label class="btn btn-outline-dark" for="10년">10년</label>
+							<input type="radio" class="btn-check" id="oymbSaved" name="oymbSaved" autocomplete="off" value="10">
+							<label class="btn btn-outline-dark" for="평생회원">평생회원</label>
 					</div>
 			</div>
 
@@ -675,72 +636,57 @@
 
 
 
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script>
-	$("btnAddress").on("click", function{
-		sample6_execDaumPostcode();
-		
-	});	
-	
-	$("#btnZipCodeClear").on("click", function() {
-			$("#oymaZipCode").val('');
-			$("#oymaAddress1").val('');
-		});
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-		function sample6_execDaumPostcode() {
-			new daum.Postcode(
-					{
-						oncomplete : function(data) {
-							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
 
-							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-							var addr = ''; // 주소 변수
-							var extraAddr = ''; // 참고항목 변수
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
 
-							//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-							if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-								addr = data.roadAddress;
-							} else { // 사용자가 지번 주소를 선택했을 경우(J)
-								addr = data.jibunAddress;
-							}
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("oymaAddress3").value = extraAddr;
+                
+                } else {
+                    document.getElementById("oymaAddress3").value = '';
+                }
 
-							// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-							if (data.userSelectedType === 'R') {
-								// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-								// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-								if (data.bname !== ''
-										&& /[동|로|가]$/g.test(data.bname)) {
-									extraAddr += data.bname;
-								}
-								// 건물명이 있고, 공동주택일 경우 추가한다.
-								if (data.buildingName !== ''
-										&& data.apartment === 'Y') {
-									extraAddr += (extraAddr !== '' ? ', '
-											+ data.buildingName
-											: data.buildingName);
-								}
-								// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-								if (extraAddr !== '') {
-									extraAddr = ' (' + extraAddr + ')';
-								}
-								// 조합된 참고항목을 해당 필드에 넣는다.
-								document.getElementById("sample6_extraAddress").value = extraAddr;
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('oymaZipCode').value = data.zonecode;
+                document.getElementById("oymaAddress1").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("oymaAddress2").focus();
+            }
+        }).open();
+    }
+</script>
 
-							} else {
-								document.getElementById("sample6_extraAddress").value = '';
-							}
-
-							// 우편번호와 주소 정보를 해당 필드에 넣는다.
-							document.getElementById('oymaZipCode').value = data.zonecode;
-							document.getElementById("oymaAddress1").value = addr;
-							// 커서를 상세주소 필드로 이동한다.
-							document.getElementById("oymaAddress2").focus();
-						}
-					}).open();
-		}
-	</script>
 
 
 

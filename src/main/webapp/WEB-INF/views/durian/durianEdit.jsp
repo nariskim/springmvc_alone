@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -251,8 +250,7 @@
 							<li class="breadcrumb-item active" aria-current="page">회원 변경</li>
 						</ol>
 					</nav>
-					<br> <br> <input type="hidden" name="oymbSeq"
-						value=<c:out value="${item.oymbSeq}"/>> <input
+					<br> <br> <input type="hidden" name="oymbSeq" value=<c:out value="${item.oymbSeq}"/>> <input
 						type="submit" value="제출">
 
 					<div class="row">
@@ -329,23 +327,19 @@
 							<label for="formFile" class="form-label">생년월일</label>
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
-							<input type="date" id="oymbDob" name="oymbDob"
-								 value="<c:out value="${item.oymbDob}"/>">
+							<input type="date" id="oymbDob" name="oymbDob">
 						</div>
 
 						<div class="col-12 col-sm-4 col-lg-2">
 							<label for="formFile" class="form-label">성별</label>
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
-							<input type="radio" class="btn-check" id="oymbGenderM"
-								name="oymbGenderM" autocomplete="off"> <label
-								class="btn btn-outline-dark" for="man">남자</label> <input
-								type="radio" class="btn-check" id="oymbGenderW"
-								name="oymbGenderW" autocomplete="off"> <label
-								class="btn btn-outline-dark" for="woman">여자</label> <input
-								type="radio" class="btn-check" id="oymbGenderZ"
-								name="oymbGenderZ" autocomplete="off"> <label
-								class="btn btn-outline-dark" for="etc">기타</label>
+							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value="3" <c:if test="${vo.oymbGenderCd eq 3 }">selected</c:if>>
+							<label class="btn btn-outline-dark">남자</label>
+							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value="4" <c:if test="${vo.oymbGenderCd eq 4 }">selected</c:if>>
+							<label class="btn btn-outline-dark">여자</label>
+							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value="5" <c:if test="${vo.oymbGenderCd eq 5 }">selected</c:if>>
+							<label class="btn btn-outline-dark">기타</label>
 						</div>
 
 					</div>

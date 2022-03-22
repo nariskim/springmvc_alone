@@ -32,8 +32,9 @@ public class MemberController {
 	public String memberInst(Model model, Member dto) throws Exception {
 
 		service.insert(dto);
+		dto.getOymbSeq();
 
-		return "redirect:/member/memberList";
+		return "redirect:/member/memberView?oymbSeq=" + dto.getOymbSeq();
 	}
 	
 	@RequestMapping(value = "/member/memberView")

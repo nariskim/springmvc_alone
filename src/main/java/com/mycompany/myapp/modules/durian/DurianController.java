@@ -51,8 +51,14 @@ public class DurianController {
 	@RequestMapping(value = "/durian/durianInst")
 	public String durianInst(Model model, Durian dto) throws Exception {
 
-		service.insert(dto);
-
+		service.insertMember(dto);
+		service.insertJoinqna(dto);
+		service.insertNation(dto);
+		service.insertMbNation(dto);
+		service.insertAddress(dto);
+		service.insertPhone(dto);
+		service.insertEmail(dto);
+		
 		return "redirect:/durian/durianList";
 	}
 	

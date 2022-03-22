@@ -34,6 +34,9 @@
 		, #{oymbName}
 		, 0
 		)
+		<selectKey resultType="String" keyProperty="oymbSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 
 	</insert>
 

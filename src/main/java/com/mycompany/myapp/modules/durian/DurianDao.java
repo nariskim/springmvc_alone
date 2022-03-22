@@ -22,16 +22,40 @@ public class DurianDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
+	//selectList
 	public List<Durian> selectList(DurianVo vo) {
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
-
-	public int insert(Durian dto) {
-		return sqlSession.insert(namespace + ".insert", dto);
+	
+	//Form
+	public int insertMember(Durian dto) {
+		return sqlSession.insert(namespace + ".insertMember", dto);
 	}
+	public int insertJoinqna(Durian dto) {
+		return sqlSession.insert(namespace + ".insertJoinqna", dto);
+	}
+	public int insertNation(Durian dto) {
+		return sqlSession.insert(namespace + ".insertNation", dto);
+	}
+	public int insertMbNation(Durian dto) {
+		return sqlSession.insert(namespace + ".insertMbNation", dto);
+	}
+	public int insertAddress(Durian dto) {
+		return sqlSession.insert(namespace + ".insertAddress", dto);
+	}
+	public int insertPhone(Durian dto) {
+		return sqlSession.insert(namespace + ".insertPhone", dto);
+	}
+	public int insertEmail(Durian dto) {
+		return sqlSession.insert(namespace + ".insertEmail", dto);
+	}
+
+	//view, edit
 	public Durian selectOne(DurianVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
+	
+	//update
 	public int update(Durian dto) {
 		return sqlSession.update(namespace + ".update", dto);
 	}

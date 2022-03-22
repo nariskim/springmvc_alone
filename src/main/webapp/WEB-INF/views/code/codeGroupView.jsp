@@ -13,5 +13,5 @@
 <c:out value="${item.oycgDelNy}" />
 
 <br>
-
+<a href="/myapp/code/codeGroupList?scOption=<c:out value="${vo.scOption}"/>&scValue=<c:out value="${vo.scValue}"/>">목록</a>
 <a href="/myapp/code/codeGroupEdit?oycgSeq=<c:out value="${item.oycgSeq}"/>">수정</a>
