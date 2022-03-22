@@ -42,18 +42,18 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeGroupForm")
-	public String codeGroupForm(Model model) throws Exception {
+	public String codeGroupForm(@ModelAttribute("vo") CodeVo vo) throws Exception {
 
 		return "code/codeGroupForm";
 	}
 
 	@RequestMapping(value = "/code/codeGroupInst")
-	public String codeGroupInst(Code dto, Model model) throws Exception {
+	public String codeGroupInst(Code dto, CodeVo vo) throws Exception {
 
 		service.insertGroup(dto);
 		dto.getOycgSeq();
 
-		return "redirect:/code/codeGroupView?oycgSeq=" + dto.getOycgSeq();
+		return "redirect:/code/codeGroupView?oycgSeq=" + dto.getOycgSeq() + "&thisPage=" + vo.getThisPage() + "&scOption=" + vo.getScOption() + "&scValue=" + vo.getScValue();
 	}
 
 	@RequestMapping(value = "/code/codeGroupView")

@@ -13,8 +13,10 @@
 
 
 		FROM oyMember a
-		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND f.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND g.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND
+		f.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND
+		g.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
 		<!-- AND oymaDefaultNy=1 AND oymeDefaultNy=1 AND oympDefaultNy=1 -->
@@ -22,7 +24,7 @@
 			<when test="scOymbDelNy == 1">AND a.oymbDelNy = 1</when>
 			<when test="scOymbDelNy == 0">AND a.oymbDelNy = 0</when>
 		</choose>
-		
+
 		<if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName LIKE concat('%',#{scOymbName},'%y')</if>
 		<choose>
 			<when test="scOption == 1">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
@@ -48,17 +50,23 @@
 		, a.oymbName
 		, a.oymbId
 		, a.oymbGenderCd
-		,(select oycdName from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender
-		, a.oymbGradeCd
-		,(select oycdName from oyCode where oycdSeq = a.oymbGradeCd) as oymbGrade
+		,(select oycdName
+		from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender
+		,
+		a.oymbGradeCd
+		,(select oycdName from oyCode where oycdSeq =
+		a.oymbGradeCd) as oymbGrade
 		, a.oymbDelNy
 		, f.oympTelecomCd
-		,(select oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oympTelecom
-		, f.oympNumber
+		,(select
+		oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oympTelecom
+		,
+		f.oympNumber
 		, g.oymeEmailFull
 		, g.oymeEmailAccount
 		, g.oymeEmailDomainCd
-		,(select oycdName from oyCode where oycdSeq = g.oymeEmailDomainCd) as oymeEmailDomain
+		,(select oycdName from oyCode where oycdSeq = g.oymeEmailDomainCd) as
+		oymeEmailDomain
 
 
 		<include refid="selectCommon" />
@@ -74,9 +82,7 @@
 		, oymbNameEng
 		, oymbId
 		, oymbNickName
-		, oymbPassword
-		<!-- , oymbDob  -->
-		, oymbGenderCd
+		, oymbPassword 
 		, oymbSkinTypeCd
 		, oymbPersonalColorCd
 		, oymbInterestsCd
@@ -91,8 +97,6 @@
 		, #{oymbId}
 		, #{oymbNickName}
 		, #{oymbPassword}
-		<!-- , #{oymbDob} -->
-		, #{oymbGenderCd}
 		, #{oymbSkinTypeCd}
 		, #{oymbPersonalColorCd}
 		, #{oymbInterestsCd}
@@ -102,9 +106,12 @@
 		, #{oymbSavedCd}
 		, 0
 		)
-
+		<selectKey resultType="String" keyProperty="oymbSeq"
+			order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
-	
+
 	<insert id="insertJoinQna">
 		INSERT INTO oymbJoinQna (
 		oyjqQuestionCd
@@ -112,9 +119,15 @@
 		, oyjqDelNy
 		) values (
 		#{oyjqQuestionCd}
-		, #{oyjqAnswer}
+		, #{oyjqAnswer} 
 		, 0
+		)
+		<selectKey resultType="String" keyProperty="oyjqSeq"
+			order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
+	
 	<insert id="insertNation">
 		INSERT INTO oymbNationality (
 		oymnSeq
@@ -122,7 +135,13 @@
 		) values (
 		#{oymnSeq}
 		, 0
+		)
+		<selectKey resultType="String" keyProperty="oymnSeq"
+			order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
+	
 	<insert id="insertMbNation">
 		INSERT INTO oymbNationality (
 		oymnNation
@@ -130,7 +149,13 @@
 		) values (
 		#{oymnNation}
 		, 0
+		)
+		<selectKey resultType="String" keyProperty="oynaSeq"
+			order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
+	
 	<insert id="insertAddress">
 		INSERT INTO oymbAddress (
 		oymaDefaultNy
@@ -147,7 +172,13 @@
 		, #{oymaAddress1}
 		, #{oymaAddress2}
 		, 0
+		)
+		<selectKey resultType="String" keyProperty="oymaSeq"
+			order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
+	
 	<insert id="insertPhone">
 		INSERT INTO oymbPhone (
 		oympDefaultNy
@@ -161,7 +192,13 @@
 		, #{oympTelecomCd}
 		, #{oympNumber}
 		, 0
+		)
+		<selectKey resultType="String" keyProperty="oympSeq"
+			order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
+	
 	<insert id="insertEmail">
 		INSERT INTO oymbEmail (
 		oymeDefaultNy
@@ -179,6 +216,11 @@
 		, #{oymeEmailDomain}
 		, #{oymeEmailDomainCd}
 		, 0
+		)
+		<selectKey resultType="String" keyProperty="oymeSeq"
+			order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
 
 
@@ -190,28 +232,34 @@
 		, a.oymbNameEng
 		, a.oymbId
 		, a.oymbNickName
-		, a.oymbPassword
-		<!-- , a.oymbDob --> 
+		,
+		a.oymbPassword
+		<!-- , a.oymbDob -->
 		, a.oymbGenderCd
 		, a.oymbSkinTypeCd
 		, a.oymbPersonalColorCd
-		, a.oymbInterestsCd
+		,
+		a.oymbInterestsCd
 		, a.oymbSmsConsentNy
 		, a.oymbEmailConsentNy
-		, a.oymbPushConsentNy
+		,
+		a.oymbPushConsentNy
 		, a.oymbSavedCd
 		, a.oymbDelNy
 		, b.oyjqQuestionCd
-		, b.oyjqAnswer
+		,
+		b.oyjqAnswer
 		, b.oyjqDelNy
 		, c.oymnSeq
 		, c.oymnDelNy
 		, d.oymaSeq
-		, d.oymaDefaultNy
+		,
+		d.oymaDefaultNy
 		, d.oymaTypeCd
 		, d.oymaZipCode
 		, d.oymaAddress1
-		, d.oymaAddress2
+		,
+		d.oymaAddress2
 		, d.oymaDelNy
 		, e.oympSeq
 		, e.oympDefaultNy
@@ -220,23 +268,30 @@
 		, e.oympNumber
 		, e.oympDelNy
 		, f.oymeSeq
-		, f.oymeDefaultNy
+		,
+		f.oymeDefaultNy
 		, f.oymeTypeCd
 		, f.oymeEmailFull
 		, f.oymeEmailAccount
-		, f.oymeEmailDomain
+		,
+		f.oymeEmailDomain
 		, f.oymeEmailDomainCd
 		, f.oymeDelNy
 
 		FROM oyMember a
 		LEFT JOIN oymbJoinQna b ON b.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbNationality c ON c.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbAddress d ON d.oymaDefaultNy=1 AND d.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbPhone e ON e.oympDefaultNy=1 AND e.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbEmail f ON f.oymeDefaultNy=1 AND f.oymbSeq = a.oymbSeq
+		LEFT JOIN
+		oymbNationality c ON c.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbAddress d ON
+		d.oymaDefaultNy=1 AND d.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbPhone e ON
+		e.oympDefaultNy=1 AND e.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbEmail f ON
+		f.oymeDefaultNy=1 AND f.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
-		AND a.oymbSeq = #{oymbSeq}
+		AND a.oymbSeq =
+		#{oymbSeq}
 
 
 		<choose>
@@ -261,18 +316,25 @@
 		oyMember
 		SET
 		oymbName = #{oymbName}
-		, oymbNameEng = #{oymbNameEng}
+		, oymbNameEng
+		= #{oymbNameEng}
 		, oymbId = #{oymbId}
 		, oymbNickName = #{oymbNickName}
-		, oymbPassword = #{oymbPassword}
+		,
+		oymbPassword = #{oymbPassword}
 		, oymbGenderCd = #{oymbGenderCd}
-		, oymbSkinTypeCd = #{oymbSkinTypeCd}
-		, oymbPersonalColorCd = #{oymbPersonalColorCd}
+		,
+		oymbSkinTypeCd = #{oymbSkinTypeCd}
+		, oymbPersonalColorCd =
+		#{oymbPersonalColorCd}
 		, oymbInterestsCd = #{oymbInterestsCd}
-		, oymbSmsConsentNy = #{oymbSmsConsentNy}
-		, oymbEmailConsentNy = #{oymbEmailConsentNy}
+		,
+		oymbSmsConsentNy = #{oymbSmsConsentNy}
+		, oymbEmailConsentNy =
+		#{oymbEmailConsentNy}
 		, oymbPushConsentNy = #{oymbPushConsentNy}
-		, oymbSavedCd = #{oymbSavedCd}
+		,
+		oymbSavedCd = #{oymbSavedCd}
 
 		WHERE 1=1
 		AND oymbSeq

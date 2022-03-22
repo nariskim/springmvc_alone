@@ -7,6 +7,9 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
 <form method="post" action="/myapp/code/codeGroupInst">
+<input type="hidden"name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+<input type="hidden" name="scOption" value="<c:out value="${vo.scOption}"/>">
+<input type="hidden" name="scValue" value="<c:out value="${vo.scValue}"/>">
 	<input type="text" id="oycgName" name="oycgName" placeholder="이름"> <input
 		type="submit" id="btnSubmit" value="제출">
 

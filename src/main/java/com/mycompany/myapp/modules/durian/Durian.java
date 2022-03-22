@@ -11,25 +11,25 @@ public class Durian {
 	private String oymbNickName = "";
 	private String oymbPassword = "";
 	/* private Date oymbDob; */
-	private String oymbGenderCd = "";
+	private Integer oymbGenderCd;
 	private String oymbGender = "";
-	private String oymbSkinTypeCd = "";
+	private Integer oymbSkinTypeCd;
 	private String oymbSkinType = "";
-	private String oymbPersonalColorCd = "";
+	private Integer oymbPersonalColorCd;
 	private String oymbPersonalColor = "";
-	private String oymbInterestsCd = "";
+	private Integer oymbInterestsCd;
 	private String oymbInterests = "";
-	private String oymbGradeCd = "";
+	private Integer oymbGradeCd;
 	private String oymbGrade = "";
 	private Integer oymbSmsConsentNy;
 	private Integer oymbEmailConsentNy;
 	private Integer oymbPushConsentNy;
-	private String oymbSavedCd = "";
+	private Integer oymbSavedCd;
 	private String oymbSaved = "";
 	private Integer oymbDelNy;
 	
 	private String oyjqSeq="";
-	private String oyjqQuestionCd = "";
+	private Integer oyjqQuestionCd;
 	private String oymbQuestion = "";
 	private String oyjqAnswer = "";
 	private Integer oyjqDelNy;
@@ -44,13 +44,16 @@ public class Durian {
 	private String oymnSeq = "";
 	private String oymbNationality = "";
 	private Integer oymnDelNy;
+//	private String oymbSeq = "";
+//	private String oynaSeq = "";
 	
 	private String oynaSeq = "";
+	private String oynaName = "";
 	private Integer oynaDelNy;
 	
 	private String oympSeq= "";
 	private Integer oympDefaulyNy;
-	private String oympTelecomCd = "";
+	private Integer oympTelecomCd;
 	private String oympTelecom = "";
 	private String oympNumber = "";
 	private Integer oympDelNy;
@@ -69,18 +72,12 @@ public class Durian {
 	private Integer oymeDefaulyNy;
 	private String oymeEmailFull = "";
 	private String oymeEmailAccount = "";
-	private String oymeEmailDomainCd = "";
+	private Integer oymeEmailDomainCd;
 	private String oymbEmailDomain = "";
 	private Integer oymeDelNy;
 //	private String oymbSeq = "";
-	
-	
-	
 	public String getOymbSeq() {
 		return oymbSeq;
-	}
-	public void setOymbSeq(String oymbSeq) {
-		this.oymbSeq = oymbSeq;
 	}
 	public String getOymbId() {
 		return oymbId;
@@ -112,15 +109,10 @@ public class Durian {
 	public void setOymbPassword(String oymbPassword) {
 		this.oymbPassword = oymbPassword;
 	}
-
-	/*
-	 * public Date getOymbDob() { return oymbDob; } public void setOymbDob(Date
-	 * oymbDob) { this.oymbDob = oymbDob; }
-	 */
-	public String getOymbGenderCd() {
+	public Integer getOymbGenderCd() {
 		return oymbGenderCd;
 	}
-	public void setOymbGenderCd(String oymbGenderCd) {
+	public void setOymbGenderCd(Integer oymbGenderCd) {
 		this.oymbGenderCd = oymbGenderCd;
 	}
 	public String getOymbGender() {
@@ -129,10 +121,10 @@ public class Durian {
 	public void setOymbGender(String oymbGender) {
 		this.oymbGender = oymbGender;
 	}
-	public String getOymbSkinTypeCd() {
+	public Integer getOymbSkinTypeCd() {
 		return oymbSkinTypeCd;
 	}
-	public void setOymbSkinTypeCd(String oymbSkinTypeCd) {
+	public void setOymbSkinTypeCd(Integer oymbSkinTypeCd) {
 		this.oymbSkinTypeCd = oymbSkinTypeCd;
 	}
 	public String getOymbSkinType() {
@@ -141,10 +133,10 @@ public class Durian {
 	public void setOymbSkinType(String oymbSkinType) {
 		this.oymbSkinType = oymbSkinType;
 	}
-	public String getOymbPersonalColorCd() {
+	public Integer getOymbPersonalColorCd() {
 		return oymbPersonalColorCd;
 	}
-	public void setOymbPersonalColorCd(String oymbPersonalColorCd) {
+	public void setOymbPersonalColorCd(Integer oymbPersonalColorCd) {
 		this.oymbPersonalColorCd = oymbPersonalColorCd;
 	}
 	public String getOymbPersonalColor() {
@@ -153,10 +145,10 @@ public class Durian {
 	public void setOymbPersonalColor(String oymbPersonalColor) {
 		this.oymbPersonalColor = oymbPersonalColor;
 	}
-	public String getOymbInterestsCd() {
+	public Integer getOymbInterestsCd() {
 		return oymbInterestsCd;
 	}
-	public void setOymbInterestsCd(String oymbInterestsCd) {
+	public void setOymbInterestsCd(Integer oymbInterestsCd) {
 		this.oymbInterestsCd = oymbInterestsCd;
 	}
 	public String getOymbInterests() {
@@ -165,10 +157,10 @@ public class Durian {
 	public void setOymbInterests(String oymbInterests) {
 		this.oymbInterests = oymbInterests;
 	}
-	public String getOymbGradeCd() {
+	public Integer getOymbGradeCd() {
 		return oymbGradeCd;
 	}
-	public void setOymbGradeCd(String oymbGradeCd) {
+	public void setOymbGradeCd(Integer oymbGradeCd) {
 		this.oymbGradeCd = oymbGradeCd;
 	}
 	public String getOymbGrade() {
@@ -195,10 +187,10 @@ public class Durian {
 	public void setOymbPushConsentNy(Integer oymbPushConsentNy) {
 		this.oymbPushConsentNy = oymbPushConsentNy;
 	}
-	public String getOymbSavedCd() {
+	public Integer getOymbSavedCd() {
 		return oymbSavedCd;
 	}
-	public void setOymbSavedCd(String oymbSavedCd) {
+	public void setOymbSavedCd(Integer oymbSavedCd) {
 		this.oymbSavedCd = oymbSavedCd;
 	}
 	public String getOymbSaved() {
@@ -219,10 +211,10 @@ public class Durian {
 	public void setOyjqSeq(String oyjqSeq) {
 		this.oyjqSeq = oyjqSeq;
 	}
-	public String getOyjqQuestionCd() {
+	public Integer getOyjqQuestionCd() {
 		return oyjqQuestionCd;
 	}
-	public void setOyjqQuestionCd(String oyjqQuestionCd) {
+	public void setOyjqQuestionCd(Integer oyjqQuestionCd) {
 		this.oyjqQuestionCd = oyjqQuestionCd;
 	}
 	public String getOymbQuestion() {
@@ -303,6 +295,12 @@ public class Durian {
 	public void setOynaSeq(String oynaSeq) {
 		this.oynaSeq = oynaSeq;
 	}
+	public String getOynaName() {
+		return oynaName;
+	}
+	public void setOynaName(String oynaName) {
+		this.oynaName = oynaName;
+	}
 	public Integer getOynaDelNy() {
 		return oynaDelNy;
 	}
@@ -321,10 +319,10 @@ public class Durian {
 	public void setOympDefaulyNy(Integer oympDefaulyNy) {
 		this.oympDefaulyNy = oympDefaulyNy;
 	}
-	public String getOympTelecomCd() {
+	public Integer getOympTelecomCd() {
 		return oympTelecomCd;
 	}
-	public void setOympTelecomCd(String oympTelecomCd) {
+	public void setOympTelecomCd(Integer oympTelecomCd) {
 		this.oympTelecomCd = oympTelecomCd;
 	}
 	public String getOympTelecom() {
@@ -405,10 +403,10 @@ public class Durian {
 	public void setOymeEmailAccount(String oymeEmailAccount) {
 		this.oymeEmailAccount = oymeEmailAccount;
 	}
-	public String getOymeEmailDomainCd() {
+	public Integer getOymeEmailDomainCd() {
 		return oymeEmailDomainCd;
 	}
-	public void setOymeEmailDomainCd(String oymeEmailDomainCd) {
+	public void setOymeEmailDomainCd(Integer oymeEmailDomainCd) {
 		this.oymeEmailDomainCd = oymeEmailDomainCd;
 	}
 	public String getOymbEmailDomain() {
@@ -423,7 +421,10 @@ public class Durian {
 	public void setOymeDelNy(Integer oymeDelNy) {
 		this.oymeDelNy = oymeDelNy;
 	}
-	
+	public void setOymbSeq(String oymbSeq) {
+		this.oymbSeq = oymbSeq;
+	}
+
 	
 	
 }

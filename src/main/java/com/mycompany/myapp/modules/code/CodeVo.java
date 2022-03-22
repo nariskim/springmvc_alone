@@ -17,6 +17,7 @@ public class CodeVo {
 	// common
 	private String scOption;
 	private String scValue;
+	
 
 	// Paging
 
