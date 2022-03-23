@@ -28,26 +28,8 @@ public class DurianDao {
 	}
 	
 	//Form
-	public int insertMember(Durian dto) {
-		return sqlSession.insert(namespace + ".insertMember", dto);
-	}
-	public int insertJoinqna(Durian dto) {
-		return sqlSession.insert(namespace + ".insertJoinqna", dto);
-	}
-	public int insertNation(Durian dto) {
-		return sqlSession.insert(namespace + ".insertNation", dto);
-	}
-	public int insertMbNation(Durian dto) {
-		return sqlSession.insert(namespace + ".insertMbNation", dto);
-	}
-	public int insertAddress(Durian dto) {
-		return sqlSession.insert(namespace + ".insertAddress", dto);
-	}
-	public int insertPhone(Durian dto) {
-		return sqlSession.insert(namespace + ".insertPhone", dto);
-	}
-	public int insertEmail(Durian dto) {
-		return sqlSession.insert(namespace + ".insertEmail", dto);
+	public int insert(Durian dto) {
+		return sqlSession.insert(namespace + ".insert", dto);
 	}
 
 	//view, edit
@@ -56,12 +38,10 @@ public class DurianDao {
 	}
 	
 	//update
-	public int update_member(Durian dto) {
-		return sqlSession.update(namespace + ".update_member", dto);
+	public int update(Durian dto) {
+		return sqlSession.update(namespace + ".update", dto);
 	}
-	public int update_joinqna(Durian dto) {
-		return sqlSession.update(namespace + ".update_joinqna", dto);
-	}
+	
 	
 
 }

@@ -20,7 +20,7 @@ public class CodeController {
 	public String codeGroupList(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 
 		// count 가져올 것
-		int count = service.selectOneCount(vo);
+		int count = service.selectOneGroupCount(vo);
 
 		vo.setParamsPaging(count);
 		
@@ -89,8 +89,59 @@ public class CodeController {
 
 		return "redirect:/code/codeGroupView?oycgSeq=" + dto.getOycgSeq() + makeQueryString(vo);
 	}
+	
+	@RequestMapping(value = "/code/codeGroupFelete")
+	public String codeGroupFelete(CodeVo vo,  RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.updateGroupDelete(vo);
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("scOption", vo.getScOption());
+		redirectAttributes.addAttribute("scValue", vo.getScValue());
+		
+		return "redirect:/code/codeGroupList";
+	}
+	
+	@RequestMapping(value = "/code/codeGroupDelete")
+	public String codeGroupDelete(CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
+
+		service.deleteGroup(vo);
+		
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("scOption", vo.getScOption());
+		redirectAttributes.addAttribute("scValue", vo.getScValue());
+		
+
+		return "redirect:/code/codeGroupList";
+	}
 
 	@RequestMapping(value = "/code/codeList")
+	public String codeList(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
+
+		// count 가져올 것
+		int count = service.selectOneCount(vo);
+
+		vo.setParamsPaging(count);
+		
+		// count 가 0 이 아니면 list 가져오는 부분 수행 후 model 개쳋에 담기
+		if (count != 0) {
+			List<Code> list = service.selectListGroup(vo);
+			model.addAttribute("list", list);
+
+		} else {
+			//by pas
+		}
+
+		/*
+		 * List<Code> list = service.selectListGroup(vo); model.addAttribute("list",
+		 * list);
+		 */
+
+//		model.addAttribute("vo", vo); @ModelAttribute("vo")  이거 둘중하나 방법 선택
+		return "code/codeList";
+	}
+	
+
+	/* @RequestMapping(value = "/code/codeList")
 	public String codeList(CodeVo vo, Model model) throws Exception {
 
 		List<Code> list = service.selectList(vo);
@@ -100,7 +151,7 @@ public class CodeController {
 		model.addAttribute("listCodeGroup", listCodeGroup);
 
 		return "code/codeList";
-	}
+	}  */
 
 	@RequestMapping(value = "/code/codeForm")
 	public String codeForm(Model model) throws Exception {
@@ -149,6 +200,19 @@ public class CodeController {
 					+ "&scOption=" + vo.getScOption() 
 					+ "&scValue=" + vo.getScValue();
 		return tmp;
+	}
+	
+	@RequestMapping(value = "/code/codeDelete")
+	public String codeDelete(CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
+
+		service.delete(vo);
+		
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("scOption", vo.getScOption());
+		redirectAttributes.addAttribute("scValue", vo.getScValue());
+		
+
+		return "redirect:/code/codeList";
 	}
 	
 }

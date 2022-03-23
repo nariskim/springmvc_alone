@@ -250,8 +250,8 @@
 							<li class="breadcrumb-item active" aria-current="page">회원 변경</li>
 						</ol>
 					</nav>
-					<br> <br> <input type="hidden" name="oymbSeq" value=<c:out value="${item.oymbSeq}"/>> <input
-						type="submit" value="제출">
+					<br> <br>
+					<input type="submit" value="제출">
 
 					<div class="row">
 
@@ -283,7 +283,7 @@
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
 							<input type="text" class="form-control" id="oymbId" name="oymbId"
-								value=<c:out value="${item.oymbId}"/>>
+								value="<c:out value="${item.oymbId}"/>">
 
 						</div>
 
@@ -327,18 +327,18 @@
 							<label for="formFile" class="form-label">생년월일</label>
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
-							<input type="date" id="oymbDob" name="oymbDob">
+							<input type="date" id="" name="">
 						</div>
 
 						<div class="col-12 col-sm-4 col-lg-2">
 							<label for="formFile" class="form-label">성별</label>
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
-							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value=3 <c:if test="${vo.oymbGenderCd eq 3 }">checked</c:if>>
+							<input type="radio" class="btn-check" id="" name="" autocomplete="off" value="3">
 							<label class="btn btn-outline-dark">남자</label>
-							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value=4 <c:if test="${vo.oymbGenderCd eq 4 }">checked</c:if>>
+							<input type="radio" class="btn-check" id="" name="" autocomplete="off" value="4">
 							<label class="btn btn-outline-dark">여자</label>
-							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value=5 <c:if test="${vo.oymbGenderCd eq 5 }">checked</c:if>>
+							<input type="radio" class="btn-check" id="" name="" autocomplete="off" value="5">
 							<label class="btn btn-outline-dark">기타</label>
 						</div>
 
@@ -428,16 +428,16 @@
 							<label for="formFile" class="form-label">국적</label>
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
-							<select class="form-select" aria-label="Default select example">
+							<select class="form-select">
 								<option value="choose">선택해주세요</option>
-								<option value="korea">한국</option>
-								<option value="usa">미국</option>
-								<option value="france">프랑스</option>
-								<option value="uk">영국</option>
-								<option value="germany">독일</option>
-								<option value="japan">일본</option>
-								<option value="italia">이탈리아</option>
-								<option value="canada">캐나다</option>
+								<option value="1">한국</option>
+								<option value="2">미국</option>
+								<option value="5">프랑스</option>
+								<option value="3">영국</option>
+								<option value="4">독일</option>
+								<option value="6">폴란드</option>
+								<option value="7">호주</option>
+								<option value="8">중국</option>
 							</select> <input type="text" class="form-control" id="address"
 								placeholder="그 외 국가 직접 입력">
 						</div>
@@ -493,7 +493,7 @@
 										 id="oymeEmailDomainCd" name="oymeEmailDomainCd">
 										<option selected>선택해주세요
 										<option value="35" <c:if test="${item.oymeEmailDomainCd eq 35 }">selected</c:if>>gmail.com
-										<option value="36" <c:if test="${item.oymeEmailDomainCd eq 36 }">selected</c:if>">naver.com
+										<option value="36" <c:if test="${item.oymeEmailDomainCd eq 36 }">selected</c:if>>naver.com
 										<option value="37" <c:if test="${item.oymeEmailDomainCd eq 37 }">selected</c:if>>hanmail.net
 									</select>
 								</div>
@@ -660,7 +660,8 @@
 							type="radio" class="btn-check" id="oymbSaved" name="oymbSaved"
 							autocomplete="off"> <label class="btn btn-outline-dark"
 							for="평생회원">평생회원</label>
-					</div>
+				</div>
+				</main>
 			</div>
 		</div>
 		<div class="container">
@@ -679,10 +680,6 @@
 				</ul>
 				<p class="text-center text-muted">© 2021 All Live Young, Inc</p>
 			</footer>
-		</div>
-
-		</main>
-		</div>
 		</div>
 
 	</form>

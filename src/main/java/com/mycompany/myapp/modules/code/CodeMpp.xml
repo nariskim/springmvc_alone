@@ -1,84 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mycompany.myapp.modules.code.CodeMpp">
 
-	<resultMap id="resultMapObj"
-		type="com.mycompany.myapp.modules.code.Code"></resultMap>
+	<resultMap id="resultMapObj" type="com.mycompany.myapp.modules.code.Code"></resultMap>
 
-	<sql id="selectCommon">
+
+	<sql id="selectGroupCommon">
 
 
 		FROM
-		oyCodeGroup a
+		oyCodeGroup
 
 		WHERE 1=1
+		AND oycgDelNy=0
 		<choose>
-			<when test="scOycgDelNy == 1">AND a.oycgDelNy = 1</when>
-			<when test="scOycgDelNy == 0">AND a.oycgDelNy = 0</when>
+			<when test="scOycgDelNy == 1">AND oycgDelNy = 1</when>
+			<when test="scOycgDelNy == 0">AND oycgDelNy = 0</when>
 		</choose>
-		<if test="scOycgName != null and !scOycgName.equals('')"> AND a.oycgName LIKE concat('%',#{scOycgName},'%')</if>
+		<if test="scOycgName != null and !scOycgName.equals('')"> AND oycgName LIKE concat('%',#{scOycgName},'%')</if>
 		<choose>
-			<when test="scOption == 1">AND a.oycgName LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 2">AND a.oycgNameEng LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 1">AND oycgName LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 2">AND oycgNameEng LIKE concat('%',#{scValue},'%')</when>
 		</choose>
 
 	</sql>
 	
-	<select id="selectOneCount" resultType="Integer">
+	<select id="selectOneGroupCount" resultType="Integer">
 
 		SELECT
 		count(*)
-		<include refid="selectCommon" />
+		<include refid="selectGroupCommon"/>
 	</select>
 	
 	
 	<select id="selectListGroup" resultMap="resultMapObj">
 		SELECT
-		a.oycgSeq
-		, a.oycgName
-		, a.oycgNameEng
-		, a.oycgDelNy
+		oycgSeq
+		, oycgName
+		, oycgNameEng
+		, oycgDelNy
 		
-		<include refid="selectCommon" />
+		<include refid="selectGroupCommon"/>
 		ORDER BY oycgSeq DESC
 		limit #{startRnumForMysql}, #{rowNumToShow}
 		
 
 	</select>
-
-
-	
-
-
-
-	<!-- <select id="selectListGroup" resultMap="resultMapObj">
-
-		SELECT
-		a.oycgSeq
-		, a.oycgName
-		, a.oycgNameEng
-		, a.oycgDelNy
-
-		FROM
-		oyCodeGroup a
-
-		WHERE 1=1
-		<choose>
-			<when test="scOycgDelNy == 1">AND a.oycgDelNy = 1</when>
-			<when test="scOycgDelNy == 0">AND a.oycgDelNy = 0</when>
-		</choose>
-		<if test="scOycgName != null and !scOycgName.equals('')"> AND a.oycgName LIKE concat('%',#{scOycgName},'%')</if>
-		<choose>
-			<when test="scOption == 1">AND a.oycgName LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 2">AND a.oycgNameEng LIKE concat('%',#{scValue},'%')
-			</when>
-		</choose>
-
-	</select> -->
 
 
 	<insert id="insertGroup">
@@ -122,19 +91,56 @@
 		AND oycgSeq = #{oycgSeq}
 
 	</update>
+	
+	<update id="updateGroupDelete">
+		UPDATE oyCodeGroup SET oycgDelNy = 1 WHERE 1=1 AND oycgSeq = #{oycgSeq}  
+	</update>
+	
+	<delete id="deleteGroup">
+		DELETE FROM oyCodeGroup WHERE 1=1 AND oycgSeq = #{oycgSeq}
+	</delete>
 
-	<select id="selectList" resultMap="resultMapObj">
 
-		SELECT
-		a.oycdSeq
-		, a.oycdName
+	<sql id="selectCommon">
+
 
 		FROM
-		oyCode a
-
+		oyCodeGroup a
+		LEFT JOIN oyCode b on a.oycgSeq = b.oycgSeq
+		
 		WHERE 1=1
-		AND oycdDelNy = 0
-		<if test="scOycgSeq != null and !scOycgSeq.equals('')"> AND oycgSeq = #{scOycgSeq}</if>
+		<choose>
+			<when test="scOycdDelNy == 1">AND oycdDelNy = 1</when>
+			<when test="scOycdDelNy == 0">AND oycdDelNy = 0</when>
+		</choose>
+		<if test="scOycdName != null and !scOycdName.equals('')"> AND oycdName LIKE concat('%',#{scOycdName},'%')</if>
+		<choose>
+			<when test="scOption == 1">AND oycdName LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 2">AND oycdNameEng LIKE concat('%',#{scValue},'%')</when>
+		</choose>
+
+	</sql>
+	
+	<select id="selectOneCount" resultType="Integer">
+
+		SELECT
+		count(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+		a.oycgSeq
+		, b.oycdSeq
+		, b.oycdName
+		, b.oycdNameEng
+		, b.oycdDelNy
+		
+		<include refid="selectCommon" />
+		ORDER BY a.oycdSeq DESC
+		limit #{startRnumForMysql}, #{rowNumToShow}
+		
 
 	</select>
 
@@ -151,6 +157,9 @@
 		, 0
 		,#{oycgSeq}
 		)
+		<selectKey resultType="String" keyProperty="oycdSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 
 	</insert>
 
@@ -160,8 +169,7 @@
 		SELECT
 		oycdSeq
 		, oycdName
-		,
-		oycdDelNy
+		, oycdDelNy
 		FROM
 		oyCode
 		WHERE 1=1
@@ -182,6 +190,10 @@
 		oycdSeq = #{oycdSeq}
 
 	</update>
+	
+	<delete id="delete">
+	DELETE FROM oyCode WHERE 1=1 AND oycdSeq = #{oycdSeq}
+	</delete>
 
 
 </mapper>

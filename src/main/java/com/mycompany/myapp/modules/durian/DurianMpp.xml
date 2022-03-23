@@ -75,21 +75,14 @@
 	</select>
 
 
-	<insert id="insertMember">
+	<insert id="insert">
 
 		INSERT INTO oyMember (
 		oymbName
 		, oymbNameEng
 		, oymbId
 		, oymbNickName
-		, oymbPassword 
-		, oymbSkinTypeCd
-		, oymbPersonalColorCd
-		, oymbInterestsCd
-		, oymbSmsConsentNy
-		, oymbEmailConsentNy
-		, oymbPushConsentNy
-		, oymbSavedCd
+		, oymbPassword
 		, oymbDelNy
 		) values (
 		#{oymbName}
@@ -97,13 +90,6 @@
 		, #{oymbId}
 		, #{oymbNickName}
 		, #{oymbPassword}
-		, #{oymbSkinTypeCd}
-		, #{oymbPersonalColorCd}
-		, #{oymbInterestsCd}
-		, #{oymbSmsConsentNy}
-		, #{oymbEmailConsentNy}
-		, #{oymbPushConsentNy}
-		, #{oymbSavedCd}
 		, 0
 		)
 		<selectKey resultType="String" keyProperty="oymbSeq"
@@ -112,116 +98,7 @@
 		</selectKey>
 	</insert>
 
-	<insert id="insertJoinQna">
-		INSERT INTO oymbJoinQna (
-		oyjqQuestionCd
-		, oyjqAnswer
-		, oyjqDelNy
-		) values (
-		#{oyjqQuestionCd}
-		, #{oyjqAnswer} 
-		, 0
-		)
-		<selectKey resultType="String" keyProperty="oyjqSeq"
-			order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
-	</insert>
-	
-	<insert id="insertNation">
-		INSERT INTO oymbNationality (
-		oymnSeq
-		, oymnDelNy
-		) values (
-		#{oymnSeq}
-		, 0
-		)
-		<selectKey resultType="String" keyProperty="oymnSeq"
-			order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
-	</insert>
-	
-	<insert id="insertMbNation">
-		INSERT INTO oymbNationality (
-		oymnNation
-		, oymnDelNy
-		) values (
-		#{oymnNation}
-		, 0
-		)
-		<selectKey resultType="String" keyProperty="oynaSeq"
-			order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
-	</insert>
-	
-	<insert id="insertAddress">
-		INSERT INTO oymbAddress (
-		oymaDefaultNy
-		, oymaTypeCd
-		, oymaZipCode
-		, oymaAddress1
-		, oymaAddress2
-		, oymaDelNy
-		) values (
-		#{oyjqQuestionCd}
-		, #{oymaDefaultNy}
-		, #{oymaTypeCd}
-		, #{oymaZipCode}
-		, #{oymaAddress1}
-		, #{oymaAddress2}
-		, 0
-		)
-		<selectKey resultType="String" keyProperty="oymaSeq"
-			order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
-	</insert>
-	
-	<insert id="insertPhone">
-		INSERT INTO oymbPhone (
-		oympDefaultNy
-		, oympTypeCd
-		, oympTelecomCd
-		, oympNumber
-		, oympDelNy
-		) values (
-		#{oympDefaultNy}
-		, #{oympTypeCd}
-		, #{oympTelecomCd}
-		, #{oympNumber}
-		, 0
-		)
-		<selectKey resultType="String" keyProperty="oympSeq"
-			order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
-	</insert>
-	
-	<insert id="insertEmail">
-		INSERT INTO oymbEmail (
-		oymeDefaultNy
-		, oymeTypeCd
-		, oymeEmailFull
-		, oymeEmailAccount
-		, oymeEmailDomain
-		, oymeEmailDomainCd
-		, oymeDelNy
-		) values (
-		#{oymeDefaultNy}
-		, #{oymeTypeCd}
-		, #{oymeEmailFull}
-		, #{oymeEmailAccount}
-		, #{oymeEmailDomain}
-		, #{oymeEmailDomainCd}
-		, 0
-		)
-		<selectKey resultType="String" keyProperty="oymeSeq"
-			order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
-	</insert>
+
 
 
 	<select id="selectOne" resultMap="resultMapObj">
@@ -263,14 +140,10 @@
 
 		FROM oyMember a
 		LEFT JOIN oymbJoinQna b ON b.oymbSeq = a.oymbSeq
-		LEFT JOIN
-		oymbNationality c ON c.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbAddress d ON
-		d.oymaDefaultNy=1 AND d.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbPhone e ON
-		e.oympDefaultNy=1 AND e.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbEmail f ON
-		f.oymeDefaultNy=1 AND f.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbNationality c ON c.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbAddress d ON d.oymaDefaultNy=1 AND d.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbPhone e ON e.oympDefaultNy=1 AND e.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbEmail f ON f.oymeDefaultNy=1 AND f.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
 		AND a.oymbSeq =
@@ -302,7 +175,7 @@
 	</select>
 
 
-	<update id="update_member">
+	<update id="update">
 
 		UPDATE
 		oyMember
@@ -318,16 +191,7 @@
 
 	</update>
 	
-	<update id="update_joinqna">
-	UPDATE
-	oymbJoinQna
-	SET
-	oyjqQuestionCd = #{oyjqQuestionCd}
-	, oyjqAnswer = #{oyjqAnswer}
-	
-	WHERE 1=1
-	AND oyjqSeq = #{oyjqSeq}
-	</update>
+
 
 
 </mapper>

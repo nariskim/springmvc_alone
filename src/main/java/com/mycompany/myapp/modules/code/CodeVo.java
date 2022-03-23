@@ -7,16 +7,21 @@ public class CodeVo {
 
 	private String oycdSeq;
 
+	// oyCodeGroupSearch
 	// oyCodeSearch
 	private String scOycgSeq = "";
-
-	// oyCodeGroupSearch
+	private String scOycdSeq = "";
 	private String scOycgName = "";
+	private String oycgName = "";
+	private String oycgNameEng = "";
+	
 	private Integer scOycgDelNy;
+	private String scOycdName = "";
+	private Integer scOycdDelNy;
 
 	// common
-	private String scOption;
-	private String scValue;
+	private String scOption = "";
+	private String scValue = "";
 	
 
 	// Paging
@@ -105,6 +110,14 @@ public class CodeVo {
 		this.scOycgSeq = scOycgSeq;
 	}
 
+	public String getScOycdSeq() {
+		return scOycdSeq;
+	}
+
+	public void setScOycdSeq(String scOycdSeq) {
+		this.scOycdSeq = scOycdSeq;
+	}
+
 	public String getScOycgName() {
 		return scOycgName;
 	}
@@ -113,12 +126,44 @@ public class CodeVo {
 		this.scOycgName = scOycgName;
 	}
 
+	public String getOycgName() {
+		return oycgName;
+	}
+
+	public void setOycgName(String oycgName) {
+		this.oycgName = oycgName;
+	}
+
+	public String getOycgNameEng() {
+		return oycgNameEng;
+	}
+
+	public void setOycgNameEng(String oycgNameEng) {
+		this.oycgNameEng = oycgNameEng;
+	}
+
 	public Integer getScOycgDelNy() {
 		return scOycgDelNy;
 	}
 
 	public void setScOycgDelNy(Integer scOycgDelNy) {
 		this.scOycgDelNy = scOycgDelNy;
+	}
+
+	public String getScOycdName() {
+		return scOycdName;
+	}
+
+	public void setScOycdName(String scOycdName) {
+		this.scOycdName = scOycdName;
+	}
+
+	public Integer getScOycdDelNy() {
+		return scOycdDelNy;
+	}
+
+	public void setScOycdDelNy(Integer scOycdDelNy) {
+		this.scOycdDelNy = scOycdDelNy;
 	}
 
 	public String getScOption() {
@@ -225,4 +270,5 @@ public class CodeVo {
 		this.startRnumForMysql = startRnumForMysql;
 	}
 
+	
 }

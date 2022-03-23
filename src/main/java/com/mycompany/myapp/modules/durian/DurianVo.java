@@ -18,7 +18,7 @@ public class DurianVo {
 	// oyMemberSearch
 
 	private String scOymbName;
-	private String scOymbDelNy ; 
+	private Integer scOymbDelNy ; 
 
 	// common
 	private String scOption;
@@ -182,11 +182,11 @@ public class DurianVo {
 		this.scOymbName = scOymbName;
 	}
 
-	public String getScOymbDelNy() {
+	public Integer getScOymbDelNy() {
 		return scOymbDelNy;
 	}
 
-	public void setScOymbDelNy(String scOymbDelNy) {
+	public void setScOymbDelNy(Integer scOymbDelNy) {
 		this.scOymbDelNy = scOymbDelNy;
 	}
 
@@ -293,6 +293,7 @@ public class DurianVo {
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
+
 
 	
 }

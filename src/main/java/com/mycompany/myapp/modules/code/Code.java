@@ -6,13 +6,14 @@ public class Code {
 
 	private String oycgSeq = "";
 	private String oycgName = "";
-	private String oycgDelNy;
 	private String oycgNameEng;
+	private Integer oycgDelNy;
 	// oyCode
 
 	private String oycdSeq = "";
 	private String oycdName = "";
-	private String oycdDelNy;
+	private String oycdNameEng = "";
+	private Integer oycdDelNy;
 //	private String oycgSeq = "";
 	public String getOycgSeq() {
 		return oycgSeq;
@@ -26,17 +27,17 @@ public class Code {
 	public void setOycgName(String oycgName) {
 		this.oycgName = oycgName;
 	}
-	public String getOycgDelNy() {
-		return oycgDelNy;
-	}
-	public void setOycgDelNy(String oycgDelNy) {
-		this.oycgDelNy = oycgDelNy;
-	}
 	public String getOycgNameEng() {
 		return oycgNameEng;
 	}
 	public void setOycgNameEng(String oycgNameEng) {
 		this.oycgNameEng = oycgNameEng;
+	}
+	public Integer getOycgDelNy() {
+		return oycgDelNy;
+	}
+	public void setOycgDelNy(Integer oycgDelNy) {
+		this.oycgDelNy = oycgDelNy;
 	}
 	public String getOycdSeq() {
 		return oycdSeq;
@@ -50,15 +51,19 @@ public class Code {
 	public void setOycdName(String oycdName) {
 		this.oycdName = oycdName;
 	}
-	public String getOycdDelNy() {
+	public String getOycdNameEng() {
+		return oycdNameEng;
+	}
+	public void setOycdNameEng(String oycdNameEng) {
+		this.oycdNameEng = oycdNameEng;
+	}
+	public Integer getOycdDelNy() {
 		return oycdDelNy;
 	}
-	public void setOycdDelNy(String oycdDelNy) {
+	public void setOycdDelNy(Integer oycdDelNy) {
 		this.oycdDelNy = oycdDelNy;
 	}
-
-	// ------------
-
-
+	
+	
 	
 }

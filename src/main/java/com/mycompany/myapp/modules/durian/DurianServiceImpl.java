@@ -18,7 +18,7 @@ public class DurianServiceImpl implements DurianService {
 	
 	@Override
 	public int insert(Durian dto) throws Exception {
-		return dao.insertMember(dto);
+		return dao.insert(dto);
 	}
 
 	
@@ -29,10 +29,7 @@ public class DurianServiceImpl implements DurianService {
 
 	@Override
 	public int update(Durian dto) throws Exception {
-		dao.update_member(dto);
-		dao.update_joinqna(dto);
-	
-		return 1;
+		return dao.update(dto);
 	}
 
 	@Override

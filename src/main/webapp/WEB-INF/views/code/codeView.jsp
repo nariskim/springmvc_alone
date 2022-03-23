@@ -15,3 +15,21 @@
 <br>
 
 <a href="/myapp/code/codeEdit?oycdSeq=<c:out value="${item.oycdSeq}"/>">수정</a>
+<a href="/myapp/code/codeDelete?oycdSeq=<c:out value="${item.oycdSeq}"/>" id="btnDelete">삭제(T)</a>
+
+<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/myapp/resources/js/validation.js"></script>
+
+	<script type="text/javascript">	
+	$("#btnDelete").on("click", function() {
+		var answer = confirm ('삭제 하시겠습니까?');
+
+		if(answer){
+			//	/myapp/code/codeGroupDele 이동
+		} else {
+			return false;
+		}
+	
+	});
+	</script>

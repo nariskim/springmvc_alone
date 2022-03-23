@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -15,7 +14,7 @@ public class DurianController {
 	DurianServiceImpl service;
 
 	@RequestMapping(value = "/durian/durianList")
-	public String durianList(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
+	public String durianList(DurianVo vo, Model model) throws Exception {
 
 		// count 가져올 것
 		int count = service.selectOneCount(vo);
