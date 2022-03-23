@@ -334,11 +334,11 @@
 							<label for="formFile" class="form-label">성별</label>
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
-							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value="3" <c:if test="${vo.oymbGenderCd eq 3 }">selected</c:if>>
+							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value=3 <c:if test="${vo.oymbGenderCd eq 3 }">checked</c:if>>
 							<label class="btn btn-outline-dark">남자</label>
-							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value="4" <c:if test="${vo.oymbGenderCd eq 4 }">selected</c:if>>
+							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value=4 <c:if test="${vo.oymbGenderCd eq 4 }">checked</c:if>>
 							<label class="btn btn-outline-dark">여자</label>
-							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value="5" <c:if test="${vo.oymbGenderCd eq 5 }">selected</c:if>>
+							<input type="radio" class="btn-check" id="oymbGenderCd" name="oymbGenderCd" autocomplete="off" value=5 <c:if test="${vo.oymbGenderCd eq 5 }">checked</c:if>>
 							<label class="btn btn-outline-dark">기타</label>
 						</div>
 
@@ -351,13 +351,13 @@
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4">
 							<div class="mb-3">
-								<select class="form-select" aria-label="Default select example">
+								<select class="form-select" id="oyjqQuestionCd" name="oyjqQuestionCd">
 									<option selected>선택해주세요</option>
-									<option>question 1</option>
-									<option>question 2</option>
-									<option>question 3</option>
-									<option>question 4</option>
-									<option>question 5</option>
+									<option value="17" <c:if test="${item.oyjqQuestionCd eq 17 }">selected</c:if>>question 1</option>
+									<option value="18" <c:if test="${item.oyjqQuestionCd eq 18 }">selected</c:if>>question 2</option>
+									<option value="19" <c:if test="${item.oyjqQuestionCd eq 19 }">selected</c:if>>question 3</option>
+									<option value="20" <c:if test="${item.oyjqQuestionCd eq 20 }">selected</c:if>>question 4</option>
+									<option value="21" <c:if test="${item.oyjqQuestionCd eq 21 }">selected</c:if>>question 5</option>
 								</select>
 							</div>
 						</div>
@@ -452,12 +452,11 @@
 						<div class="col-12 col-sm-8 col-lg-4">
 							<div class="input-group">
 								<select class="form-select form-select-sm"
-									aria-label="Default select example">
-									<option selected>통신사</option>
-									<option>SKT</option>
-									<option>KT</option>
-									<option>Uplus</option>
-									<option>알뜰폰</option>
+									 id="oympTelecomCd" name="oympTelecomCd">
+									<option value="28" <c:if test="${item.oympTelecomCd eq 28 }">selected</c:if>>SKT</option>
+									<option value="29" <c:if test="${item.oympTelecomCd eq 29 }">selected</c:if>>KT</option>
+									<option value="30" <c:if test="${item.oympTelecomCd eq 30 }">selected</c:if>>LGU</option>
+									<option value="31" <c:if test="${item.oympTelecomCd eq 31 }">selected</c:if>>알뜰폰</option>
 								</select> <input type="text" class="form-control" id="oympNumber"
 									name="oympNumber" placeholder="'-'제외">
 							</div>
@@ -469,12 +468,11 @@
 						<div class="col-12 col-sm-8 col-lg-4">
 							<div class="input-group">
 								<select class="form-select form-select-sm"
-									aria-label="Default select example">
-									<option selected>통신사</option>
-									<option>SKT</option>
-									<option>KT</option>
-									<option>Uplus</option>
-									<option>알뜰폰</option>
+									 id="oympTelecomCd" name="oympTelecomCd">
+									<option value="28" <c:if test="${item.oympTelecomCd eq 28 }">selected</c:if>>SKT</option>
+									<option value="29" <c:if test="${item.oympTelecomCd eq 29 }">selected</c:if>>KT</option>
+									<option value="30" <c:if test="${item.oympTelecomCd eq 30 }">selected</c:if>>LGU</option>
+									<option value="31" <c:if test="${item.oympTelecomCd eq 31 }">selected</c:if>>알뜰폰</option>
 								</select> <input type="text" class="form-control" name="oympNumber"
 									id="oympNumber" placeholder="'-'제외">
 							</div>
@@ -492,11 +490,11 @@
 									<input type="text" class="form-control" id="oymeEmailAccount"
 										name="oymeEmailAccount" placeholder="이메일"> <span
 										class="input-group-text">@</span> <select class="form-select"
-										aria-label="Default select example">
-										<option value="server" selected>선택해주세요
-										<option value="Gmail">gmail.com
-										<option value="Naver">naver.com
-										<option value="Daum">hanmail.net
+										 id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+										<option selected>선택해주세요
+										<option value="35" <c:if test="${item.oymeEmailDomainCd eq 35 }">selected</c:if>>gmail.com
+										<option value="36" <c:if test="${item.oymeEmailDomainCd eq 36 }">selected</c:if>">naver.com
+										<option value="37" <c:if test="${item.oymeEmailDomainCd eq 37 }">selected</c:if>>hanmail.net
 									</select>
 								</div>
 							</div>
@@ -509,11 +507,11 @@
 									<input type="text" class="form-control" id="oymeEmailAccount"
 										name="oymeEmailAccount" placeholder="이메일"> <span
 										class="input-group-text">@</span> <select class="form-select"
-										aria-label="Default select example">
-										<option value="server" selected>선택해주세요
-										<option value="Gmail">gmail.com
-										<option value="Naver">naver.com
-										<option value="Daum">hanmail.net
+										id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+										<option selected>선택해주세요
+										<option value="35" <c:if test="${item.oymeEmailDomainCd eq 35 }">selected</c:if>>gmail.com
+										<option value="36" <c:if test="${item.oymeEmailDomainCd eq 36 }">selected</c:if>">naver.com
+										<option value="37" <c:if test="${item.oymeEmailDomainCd eq 37 }">selected</c:if>>hanmail.net
 									</select>
 								</div>
 							</div>

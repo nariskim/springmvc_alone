@@ -3,14 +3,22 @@ package com.mycompany.myapp.modules.durian;
 public class DurianVo {
 
 	private String oymbSeq;
-	private String oymbGenderCd;
-	private String oympTelecomCd;
+	private String oyjqSeq;
+	private String oynaSeq;
+	private String oymnSeq;
+	private String oymaSeq;
+	private String oympSeq;
+	private String oymeSeq;
+	private Integer oymbGenderCd;
+	private Integer oyjqQuestionCd;
+	private Integer oympTelecomCd;
+	private Integer oymeEmailDomainCd;
 
 	
 	// oyMemberSearch
 
 	private String scOymbName;
-	private Integer scOymbDelNy ; 
+	private String scOymbDelNy ; 
 
 	// common
 	private String scOption;
@@ -86,20 +94,84 @@ public class DurianVo {
 		this.oymbSeq = oymbSeq;
 	}
 
-	public String getOymbGenderCd() {
+	public String getOyjqSeq() {
+		return oyjqSeq;
+	}
+
+	public void setOyjqSeq(String oyjqSeq) {
+		this.oyjqSeq = oyjqSeq;
+	}
+
+	public String getOynaSeq() {
+		return oynaSeq;
+	}
+
+	public void setOynaSeq(String oynaSeq) {
+		this.oynaSeq = oynaSeq;
+	}
+
+	public String getOymnSeq() {
+		return oymnSeq;
+	}
+
+	public void setOymnSeq(String oymnSeq) {
+		this.oymnSeq = oymnSeq;
+	}
+
+	public String getOymaSeq() {
+		return oymaSeq;
+	}
+
+	public void setOymaSeq(String oymaSeq) {
+		this.oymaSeq = oymaSeq;
+	}
+
+	public String getOympSeq() {
+		return oympSeq;
+	}
+
+	public void setOympSeq(String oympSeq) {
+		this.oympSeq = oympSeq;
+	}
+
+	public String getOymeSeq() {
+		return oymeSeq;
+	}
+
+	public void setOymeSeq(String oymeSeq) {
+		this.oymeSeq = oymeSeq;
+	}
+
+	public Integer getOymbGenderCd() {
 		return oymbGenderCd;
 	}
 
-	public void setOymbGenderCd(String oymbGenderCd) {
+	public void setOymbGenderCd(Integer oymbGenderCd) {
 		this.oymbGenderCd = oymbGenderCd;
 	}
 
-	public String getOympTelecomCd() {
+	public Integer getOyjqQuestionCd() {
+		return oyjqQuestionCd;
+	}
+
+	public void setOyjqQuestionCd(Integer oyjqQuestionCd) {
+		this.oyjqQuestionCd = oyjqQuestionCd;
+	}
+
+	public Integer getOympTelecomCd() {
 		return oympTelecomCd;
 	}
 
-	public void setOympTelecomCd(String oympTelecomCd) {
+	public void setOympTelecomCd(Integer oympTelecomCd) {
 		this.oympTelecomCd = oympTelecomCd;
+	}
+
+	public Integer getOymeEmailDomainCd() {
+		return oymeEmailDomainCd;
+	}
+
+	public void setOymeEmailDomainCd(Integer oymeEmailDomainCd) {
+		this.oymeEmailDomainCd = oymeEmailDomainCd;
 	}
 
 	public String getScOymbName() {
@@ -110,11 +182,11 @@ public class DurianVo {
 		this.scOymbName = scOymbName;
 	}
 
-	public Integer getScOymbDelNy() {
+	public String getScOymbDelNy() {
 		return scOymbDelNy;
 	}
 
-	public void setScOymbDelNy(Integer scOymbDelNy) {
+	public void setScOymbDelNy(String scOymbDelNy) {
 		this.scOymbDelNy = scOymbDelNy;
 	}
 
@@ -221,7 +293,6 @@ public class DurianVo {
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
-
 
 	
 }

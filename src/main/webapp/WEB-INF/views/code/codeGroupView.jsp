@@ -14,4 +14,4 @@
 
 <br>
 <a href="/myapp/code/codeGroupList?thisPage=<c:out value="${vo.thisPage}"/>&scOption=<c:out value="${vo.scOption}"/>&scValue=<c:out value="${vo.scValue}"/>">목록</a>
-<a href="/myapp/code/codeGroupEdit?oycgSeq=<c:out value="${item.oycgSeq}"/>">수정</a>
+<a href="/myapp/code/codeGroupEdit?oycgSeq=<c:out value="${item.oycgSeq}"/>&thisPage=<c:out value="${vo.thisPage}"/>&scOption=<c:out value="${vo.scOption}"/>&scValue=<c:out value="${vo.scValue}"/>">수정</a>

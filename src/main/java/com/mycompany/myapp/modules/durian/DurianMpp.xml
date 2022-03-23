@@ -232,34 +232,19 @@
 		, a.oymbNameEng
 		, a.oymbId
 		, a.oymbNickName
-		,
-		a.oymbPassword
-		<!-- , a.oymbDob -->
-		, a.oymbGenderCd
-		, a.oymbSkinTypeCd
-		, a.oymbPersonalColorCd
-		,
-		a.oymbInterestsCd
-		, a.oymbSmsConsentNy
-		, a.oymbEmailConsentNy
-		,
-		a.oymbPushConsentNy
-		, a.oymbSavedCd
+		, a.oymbPassword
 		, a.oymbDelNy
 		, b.oyjqQuestionCd
-		,
-		b.oyjqAnswer
+		, b.oyjqAnswer
 		, b.oyjqDelNy
 		, c.oymnSeq
 		, c.oymnDelNy
 		, d.oymaSeq
-		,
-		d.oymaDefaultNy
+		, d.oymaDefaultNy
 		, d.oymaTypeCd
 		, d.oymaZipCode
 		, d.oymaAddress1
-		,
-		d.oymaAddress2
+		, d.oymaAddress2
 		, d.oymaDelNy
 		, e.oympSeq
 		, e.oympDefaultNy
@@ -268,13 +253,11 @@
 		, e.oympNumber
 		, e.oympDelNy
 		, f.oymeSeq
-		,
-		f.oymeDefaultNy
+		, f.oymeDefaultNy
 		, f.oymeTypeCd
 		, f.oymeEmailFull
 		, f.oymeEmailAccount
-		,
-		f.oymeEmailDomain
+		, f.oymeEmailDomain
 		, f.oymeEmailDomainCd
 		, f.oymeDelNy
 
@@ -293,53 +276,57 @@
 		AND a.oymbSeq =
 		#{oymbSeq}
 
-
 		<choose>
-			<when test="oymbGenderCd == 3">AND f.oymbGradeCd = 3</when>
-			<when test="oymbGenderCd == 4">AND f.oymbGradeCd = 4</when>
-			<when test="oymbGenderCd == 5">AND f.oymbGradeCd = 5</when>
+			<when test="oyjqQuestionCd == 17">AND b.oyjqQuestionCd = 17</when>
+			<when test="oyjqQuestionCd == 18">AND b.oyjqQuestionCd = 18</when>
+			<when test="oyjqQuestionCd == 19">AND b.oyjqQuestionCd = 19</when>
+			<when test="oyjqQuestionCd == 20">AND b.oyjqQuestionCd = 20</when>
+			<when test="oyjqQuestionCd == 21">AND b.oyjqQuestionCd = 21</when>
 		</choose>
+	
 		<choose>
-			<when test="oympTelecomCd == 28">AND f.oymbGradeCd = 28</when>
-			<when test="oympTelecomCd == 29">AND f.oymbGradeCd = 29</when>
-			<when test="oympTelecomCd == 30">AND f.oymbGradeCd = 30</when>
-			<when test="oympTelecomCd == 31">AND f.oymbGradeCd = 31</when>
+			<when test="oympTelecomCd == 28">AND e.oympTelecomCd = 28</when>
+			<when test="oympTelecomCd == 29">AND e.oympTelecomCd = 29</when>
+			<when test="oympTelecomCd == 30">AND e.oympTelecomCd = 30</when>
+			<when test="oympTelecomCd == 31">AND e.oympTelecomCd = 31</when>
+		</choose>
+		
+		<choose>
+			<when test="oymeEmailDomainCd == 35">AND f.oymbGradeCd = 35</when>
+			<when test="oymeEmailDomainCd == 36">AND f.oymbGradeCd = 36</when>
+			<when test="oymeEmailDomainCd == 37">AND f.oymbGradeCd = 37</when>
+			<when test="oymeEmailDomainCd == 155">AND f.oymbGradeCd = 155</when>
 		</choose>
 
 
 	</select>
 
 
-	<update id="update">
+	<update id="update_member">
 
 		UPDATE
 		oyMember
 		SET
 		oymbName = #{oymbName}
-		, oymbNameEng
-		= #{oymbNameEng}
+		, oymbNameEng = #{oymbNameEng}
 		, oymbId = #{oymbId}
 		, oymbNickName = #{oymbNickName}
-		,
-		oymbPassword = #{oymbPassword}
-		, oymbGenderCd = #{oymbGenderCd}
-		,
-		oymbSkinTypeCd = #{oymbSkinTypeCd}
-		, oymbPersonalColorCd =
-		#{oymbPersonalColorCd}
-		, oymbInterestsCd = #{oymbInterestsCd}
-		,
-		oymbSmsConsentNy = #{oymbSmsConsentNy}
-		, oymbEmailConsentNy =
-		#{oymbEmailConsentNy}
-		, oymbPushConsentNy = #{oymbPushConsentNy}
-		,
-		oymbSavedCd = #{oymbSavedCd}
+		, oymbPassword = #{oymbPassword}
 
 		WHERE 1=1
-		AND oymbSeq
-		= #{oymbSeq}
+		AND oymbSeq = #{oymbSeq}
 
+	</update>
+	
+	<update id="update_joinqna">
+	UPDATE
+	oymbJoinQna
+	SET
+	oyjqQuestionCd = #{oyjqQuestionCd}
+	, oyjqAnswer = #{oyjqAnswer}
+	
+	WHERE 1=1
+	AND oyjqSeq = #{oyjqSeq}
 	</update>
 
 

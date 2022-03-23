@@ -6,9 +6,10 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <form method="post" action ="/myapp/code/codeGroupUpdt">
-	
-	
-	<input type="hidden" name="oycgSeq" value= <c:out value="${item.oycgSeq}"/>>
+	<input type="hidden"name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+	<input type="hidden" name="scOption" value="<c:out value="${vo.scOption}"/>">
+	<input type="hidden" name="scValue" value="<c:out value="${vo.scValue}"/>">	
+	<input type="hidden" name="oycgSeq" value= "<c:out value="${item.oycgSeq}"/>">
 
 	<input type="text" name="oycgName" value= <c:out value="${item.oycgName}"/>>	
 	

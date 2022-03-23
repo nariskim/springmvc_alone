@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CodeController {
@@ -48,12 +49,15 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeGroupInst")
-	public String codeGroupInst(Code dto, CodeVo vo) throws Exception {
+	public String codeGroupInst(Code dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.insertGroup(dto);
-		dto.getOycgSeq();
+		redirectAttributes.addAttribute("oycgSeq", dto.getOycgSeq());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("scOption", vo.getScOption());
+		redirectAttributes.addAttribute("scValue", vo.getScValue());
 
-		return "redirect:/code/codeGroupView?oycgSeq=" + dto.getOycgSeq() + "&thisPage=" + vo.getThisPage() + "&scOption=" + vo.getScOption() + "&scValue=" + vo.getScValue();
+		return "redirect:/code/codeGroupView";
 	}
 
 	@RequestMapping(value = "/code/codeGroupView")
@@ -67,7 +71,7 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeGroupEdit")
-	public String codeGroupEdit(CodeVo vo, Model model) throws Exception {
+	public String codeGroupEdit(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 
 		Code rt = service.selectOneGroup(vo);
 
@@ -77,11 +81,13 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeGroupUpdt")
-	public String codeGroupUpdt(Code dto) throws Exception {
+	public String codeGroupUpdt(Code dto, CodeVo vo) throws Exception {
 
 		service.updateGroup(dto);
+		dto.getOycgSeq();
+		
 
-		return "redirect:/code/codeGroupList";
+		return "redirect:/code/codeGroupView?oycgSeq=" + dto.getOycgSeq() + makeQueryString(vo);
 	}
 
 	@RequestMapping(value = "/code/codeList")
@@ -137,6 +143,12 @@ public class CodeController {
 
 		return "redirect:/code/codeList";
 	}
-
+	
+	public String makeQueryString(CodeVo vo) {
+		String tmp = "&thisPage=" + vo.getThisPage() 
+					+ "&scOption=" + vo.getScOption() 
+					+ "&scValue=" + vo.getScValue();
+		return tmp;
+	}
 	
 }

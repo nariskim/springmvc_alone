@@ -56,10 +56,12 @@ public class DurianDao {
 	}
 	
 	//update
-	public int update(Durian dto) {
-		return sqlSession.update(namespace + ".update", dto);
+	public int update_member(Durian dto) {
+		return sqlSession.update(namespace + ".update_member", dto);
 	}
-
+	public int update_joinqna(Durian dto) {
+		return sqlSession.update(namespace + ".update_joinqna", dto);
+	}
 	
 
 }
