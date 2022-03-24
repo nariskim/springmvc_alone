@@ -115,7 +115,7 @@
 </style>
 </head>
 <body>
-<form method="get" action="/myapp/durian/durianView">
+<form action="" method="get" id="" name="" enctype="multipart/form-data">
 
 	<div class="row">
 		<header class="navbar navbar-dark sticky-top bg-light ml-auto">

@@ -11,10 +11,8 @@
 
 
 		FROM oyMember a
-		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND
-		f.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND
-		g.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND f.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND g.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
 		<!-- AND oymaDefaultNy=1 AND oymeDefaultNy=1 AND oympDefaultNy=1 -->
@@ -48,20 +46,16 @@
 		, a.oymbName
 		, a.oymbId
 		, a.oymbGenderCd
-		,(select oycdName from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender
 		, a.oymbGradeCd
-		,(select oycdName from oyCode where oycdSeq = a.oymbGradeCd) as oymbGrade
 		, a.oymbDelNy
 		, f.oympTelecomCd
-		,(select oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oympTelecom
 		, f.oympNumber
 		, g.oymeEmailFull
 		, g.oymeEmailAccount
 		, g.oymeEmailDomainCd
-		,(select oycdName from oyCode where oycdSeq = g.oymeEmailDomainCd) as oymeEmailDomain
-
 
 		<include refid="selectCommon" />
+		ORDER BY oymbSeq DESC
 		limit #{startRnumForMysql}, #{rowNumToShow}
 
 	</select>
@@ -170,16 +164,17 @@
 	<update id="update">
 
 		UPDATE
-		oyMember a
+		oyMember
 		SET
-		a.oymbName = #{a.oymbName}
-		, a.oymbNameEng = #{a.oymbNameEng}
-		, a.oymbId = #{a.oymbId}
-		, a.oymbNickName = #{a.oymbNickName}
-		, a.oymbPassword = #{a.oymbPassword}
+		oymbName = #{oymbName}
+		, oymbNameEng = #{oymbNameEng}
+		, oymbId = #{oymbId}
+		, oymbNickName = #{oymbNickName}
+		, oymbPassword = #{oymbPassword}
 
 		WHERE 1=1
-		AND a.oymbSeq = #{a.oymbSeq}
+		AND oymbSeq = #{oymbSeq}
+
 
 	</update>
 	

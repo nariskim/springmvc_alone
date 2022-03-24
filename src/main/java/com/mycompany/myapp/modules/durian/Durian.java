@@ -27,7 +27,7 @@ public class Durian {
 	private Integer oymbDelNy;
 	
 	private String oyjqSeq="";
-	private Integer oyjqQuestionCd;
+	private String oyjqQuestionCd = "";
 	private String oyjqAnswer = "";
 	private Integer oyjqDelNy;
 	
@@ -50,7 +50,7 @@ public class Durian {
 	
 	private String oympSeq= "";
 	private Integer oympDefaulyNy;
-	private Integer oympTelecomCd;
+	private String oympTelecomCd = "";
 	private String oympNumber = "";
 	private Integer oympDelNy;
 //	private String oymbSeq = "";
@@ -68,7 +68,7 @@ public class Durian {
 	private Integer oymeDefaulyNy;
 	private String oymeEmailFull = "";
 	private String oymeEmailAccount = "";
-	private Integer oymeEmailDomainCd;
+	private String oymeEmailDomainCd = "";
 	private String oymbEmailDomain = "";
 	private Integer oymeDelNy;
 //	private String oymbSeq = "";
@@ -211,11 +211,11 @@ public class Durian {
 		this.oyjqSeq = oyjqSeq;
 	}
 
-	public Integer getOyjqQuestionCd() {
+	public String getOyjqQuestionCd() {
 		return oyjqQuestionCd;
 	}
 
-	public void setOyjqQuestionCd(Integer oyjqQuestionCd) {
+	public void setOyjqQuestionCd(String oyjqQuestionCd) {
 		this.oyjqQuestionCd = oyjqQuestionCd;
 	}
 
@@ -347,11 +347,11 @@ public class Durian {
 		this.oympDefaulyNy = oympDefaulyNy;
 	}
 
-	public Integer getOympTelecomCd() {
+	public String getOympTelecomCd() {
 		return oympTelecomCd;
 	}
 
-	public void setOympTelecomCd(Integer oympTelecomCd) {
+	public void setOympTelecomCd(String oympTelecomCd) {
 		this.oympTelecomCd = oympTelecomCd;
 	}
 
@@ -451,11 +451,11 @@ public class Durian {
 		this.oymeEmailAccount = oymeEmailAccount;
 	}
 
-	public Integer getOymeEmailDomainCd() {
+	public String getOymeEmailDomainCd() {
 		return oymeEmailDomainCd;
 	}
 
-	public void setOymeEmailDomainCd(Integer oymeEmailDomainCd) {
+	public void setOymeEmailDomainCd(String oymeEmailDomainCd) {
 		this.oymeEmailDomainCd = oymeEmailDomainCd;
 	}
 
@@ -474,5 +474,7 @@ public class Durian {
 	public void setOymeDelNy(Integer oymeDelNy) {
 		this.oymeDelNy = oymeDelNy;
 	}
+
+
 	
 }

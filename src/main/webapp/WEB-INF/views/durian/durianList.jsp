@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -121,7 +120,9 @@
 </style>
 </head>
 <body>
-<form method="get" action="/myapp/durian/durianList">
+<form id="formList" name="formList" method="post" action="/myapp/durian/durianList">
+	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+	<input type="hidden" id="oymbSeq" name="oymbSeq">
 
 		<div class="row">
 			<header class="navbar navbar-dark sticky-top bg-light ml-auto">
@@ -255,7 +256,7 @@
 							<div class="row gx-2 gy-2">
 								<div class="col-12 col-sm-4 col-lg-2">
 														<select class="form-select" name="scOymbDelNy" id="scOymbDelNy">
-							<option selected>::삭제여부::</option>
+							<option value="">::삭제여부::</option>
 							<option value="1" <c:if test="${vo.scOymbDelNy eq 1 }">selected</c:if>>Y</option>
 							<option value="0" <c:if test="${vo.scOymbDelNy eq 0 }">selected</c:if>>N</option>
 						</select>	
@@ -355,13 +356,13 @@
 														</div>
 													</th>
 													<th scope="row"><c:out value="${item.oymbSeq}" /></th>
-													<td><c:out value="${item.oymbGrade}" /></td>
+													<td><c:out value="${item.oymbGradeCd}" /></td>
 													<td><a
-														href="/myapp/durian/durianView?oymbSeq=<c:out value="${item.oymbSeq}"/>"><c:out
+														href="javascript:goForm(<c:out value="${item.oymbSeq}"/>);"><c:out
 																value="${item.oymbName}" /></a></td>
 													<td><c:out value="${item.oymbId}" /></td>
-													<td><c:out value="${item.oymbGender}" /></td>
-													<td><c:out value="${item.oympTelecom}" /></td>
+													<td><c:out value="${item.oymbGenderCd}" /></td>
+													<td><c:out value="${item.oympTelecomCd}" /></td>
 													<td><c:out value="${item.oympNumber}" /></td>
 													<td><c:out value="${item.oymeEmailFull}" /></td>
 													<td><div class="d-none">
@@ -475,9 +476,9 @@
 
 
 							<c:if test="${vo.startPage gt vo.pageNumToShow}">
-								<li class="page-item"><a class="page-link"
-									style="color: black;"
-									href="/myapp/durian/durianList?thisPage=${vo.startPage - 1}"
+								<li class="page-item">
+								<a class="page-link" style="color: black;"
+									href="javascript:goList(<c:out value='${vo.startPage - 1}'/>);"
 									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								</a></li>
 							</c:if>
@@ -487,12 +488,12 @@
 									<c:when test="${i.index eq vo.thisPage}">
 										<li class="page-item active"><a class="page-link"
 											style="color: black;"
-											href="/myapp/durian/durianList?thisPage=${i.index}">${i.index}</a></li>
+											href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
 									</c:when>
 									<c:otherwise>
 										<li class="page-item"><a class="page-link"
 											style="color: black;"
-											href="/myapp/durian/durianList?thisPage=${i.index}">${i.index}</a></li>
+											href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
@@ -501,7 +502,7 @@
 							<c:if test="${vo.endPage ne vo.totalPages}">
 								<li class="page-item"><a class="page-link"
 									style="color: black;"
-									href="/myapp/durian/durianList?thisPage=${vo.endPage + 1}"
+									href="javascript:goList(<c:out value='${vo.endPage + 1}'/>);"
 									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 								</a></li>
 							</c:if>
@@ -558,23 +559,44 @@ $("#btnSubmit").on("click", function(){
 });
 </script> -->
 
-	<script type="text/javascript">
+<script type="text/javascript">
 		/* $("#btnSubmit").on("click", function(){
 
 		 if(!checkNull($("#scValue"), $("#scValue").val(), "검색어를 입력해주세요."))return false;
 		 });
 		 */
-	</script>
-	<script type="text/javascript">
-$("#btnSubmit").on("click", function(){
 
-if(!checkNull($("#scOymbDelNy"), $("#scOymbDelNy").val(), "삭제 여부 체크 필수입니다."))return false;
+	$("#btnSubmit").on(
+			"click",
+			function() {
 
-if(!checkNull($("#scOymbName"), $("#scOymbName").val(), "검색어를 입력해주세요."))return false;
+				if (!checkNull($("#scOymbDelNy"), $("#scOymbDelNy").val(),
+						"삭제 여부 체크 필수입니다."))
+					return false;
 
-if(!checkNull($("#scValue"), $("#scValue").val(), "검색어를 입력해주세요."))return false;
-});
+				if (!checkNull($("#scOymbName"), $("#scOymbName").val(),
+						"검색어를 입력해주세요."))
+					return false;
 
+				if (!checkNull($("#scValue"), $("#scValue").val(),
+						"검색어를 입력해주세요."))
+					return false;
+			});
+
+	goList = function(seq) {
+		alert(seq);
+		// form 객체를 가져온다
+		$("#thisPage").val(seq);
+		$("#formList").submit();
+		// 그 가져온 객체를 전달한다.
+	}
+
+	goForm = function(seq) {
+		alert(seq);
+		$("#oymbSeq").val(seq);
+		$("#formList").attr("action", "/myapp/durian/durianView");
+		$("#formList").submit();
+	}
 </script>
 
 
