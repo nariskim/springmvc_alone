@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 
+
 @Repository
 public class DurianDao {
 
@@ -43,5 +44,9 @@ public class DurianDao {
 	}
 	
 	
-
+	public List<Durian> selectListForCache() { 
+		List<Durian> list = sqlSession.selectList(namespace + ".selectListForCache", ""); 
+		return list;
+	}
+	
 }

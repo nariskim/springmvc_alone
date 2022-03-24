@@ -14,7 +14,7 @@
 		oyCodeGroup
 
 		WHERE 1=1
-		AND oycgDelNy=0
+		
 		<choose>
 			<when test="scOycgDelNy == 1">AND oycgDelNy = 1</when>
 			<when test="scOycgDelNy == 0">AND oycgDelNy = 0</when>
@@ -195,5 +195,16 @@
 	DELETE FROM oyCode WHERE 1=1 AND oycdSeq = #{oycdSeq}
 	</delete>
 
+	<select id="selectListForCache" resultMap="resultMapObj">
+		SELECT
+		oycdSeq
+		, oycdName
+		, oycgSeq
+		FROM
+		oyCode
+		WHERE 1=1
+		AND oycdDelNy = 0
+		AND oycdUseNy = 1
+	</select>
 
 </mapper>

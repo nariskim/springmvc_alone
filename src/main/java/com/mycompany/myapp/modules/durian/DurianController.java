@@ -44,11 +44,13 @@ public class DurianController {
 	@RequestMapping(value = "/durian/durianForm")
 	public String durianForm(Model model) throws Exception {
 
+		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
+		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		return "durian/durianForm";
 	}
 
 	@RequestMapping(value = "/durian/durianInst")
-	public String durianInst(Model model, Durian dto) throws Exception {
+	public String durianInst(Durian dto) throws Exception {
 
 		service.insert(dto);
 		

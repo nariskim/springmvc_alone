@@ -299,6 +299,16 @@
 	</div>
 </div>
 
+
+<option value ="">::선택::</option>
+<c:foreach items="${codeGender}" var="itemGender" varStatus="statusGender">
+<option value="<c:out value="${codeGender.oycdSeq}"/>" <c:if test="${item.oymbGenderCd eq itemGender.oycdSeq}">selected</c:if>> <c:out value="${itemGender.oycdName}"/></option> 
+
+
+
+
+
+
 <div class="row">
 	<div class="col-12 col-sm-4 col-lg-2">
 		<label for="formFile" class="form-label">비밀번호 질문</label>
@@ -394,7 +404,7 @@
 			<input type="text" class="form-control" id="oymeEmailAccount"
 				name="oymeEmailAccount" placeholder="이메일">
 				<span class="input-group-text">@</span>
-				<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+				<select class="form-select" id="" name="">
 				<option selected>::선택해주세요::
 				<option value="35">gmail.com
 				<option value="36">naver.com
@@ -411,7 +421,7 @@
 			<input type="text" class="form-control" id="oymeEmailAccount"
 				name="oymeEmailAccount" placeholder="이메일">
 				<span class="input-group-text">@</span>
-				<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+				<select class="form-select" id="" name="">
 				<option selected>::선택해주세요::
 				<option value="35">gmail.com
 				<option value="36">naver.com

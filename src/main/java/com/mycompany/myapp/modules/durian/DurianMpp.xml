@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mycompany.myapp.modules.durian.DurianMpp">
 
-	<resultMap id="resultMapObj"
-		type="com.mycompany.myapp.modules.durian.Durian"></resultMap>
+	<resultMap id="resultMapObj" type="com.mycompany.myapp.modules.durian.Durian"></resultMap>
+
 
 	<sql id="selectCommon">
 
@@ -50,23 +48,17 @@
 		, a.oymbName
 		, a.oymbId
 		, a.oymbGenderCd
-		,(select oycdName
-		from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender
-		,
-		a.oymbGradeCd
-		,(select oycdName from oyCode where oycdSeq =
-		a.oymbGradeCd) as oymbGrade
+		,(select oycdName from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender
+		, a.oymbGradeCd
+		,(select oycdName from oyCode where oycdSeq = a.oymbGradeCd) as oymbGrade
 		, a.oymbDelNy
 		, f.oympTelecomCd
-		,(select
-		oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oympTelecom
-		,
-		f.oympNumber
+		,(select oycdName from oyCode where oycdSeq = f.oympTelecomCd) as oympTelecom
+		, f.oympNumber
 		, g.oymeEmailFull
 		, g.oymeEmailAccount
 		, g.oymeEmailDomainCd
-		,(select oycdName from oyCode where oycdSeq = g.oymeEmailDomainCd) as
-		oymeEmailDomain
+		,(select oycdName from oyCode where oycdSeq = g.oymeEmailDomainCd) as oymeEmailDomain
 
 
 		<include refid="selectCommon" />
@@ -178,19 +170,30 @@
 	<update id="update">
 
 		UPDATE
-		oyMember
+		oyMember a
 		SET
-		oymbName = #{oymbName}
-		, oymbNameEng = #{oymbNameEng}
-		, oymbId = #{oymbId}
-		, oymbNickName = #{oymbNickName}
-		, oymbPassword = #{oymbPassword}
+		a.oymbName = #{a.oymbName}
+		, a.oymbNameEng = #{a.oymbNameEng}
+		, a.oymbId = #{a.oymbId}
+		, a.oymbNickName = #{a.oymbNickName}
+		, a.oymbPassword = #{a.oymbPassword}
 
 		WHERE 1=1
-		AND oymbSeq = #{oymbSeq}
+		AND a.oymbSeq = #{a.oymbSeq}
 
 	</update>
 	
+	<select id="selectListForCache" resultMap="resultMapObj">
+		SELECT
+		oycdSeq
+		, oycdName
+		, oycgSeq
+		FROM
+		oyCode
+		WHERE 1=1
+		AND oycdDelNy = 0
+		AND oycdUseNy = 1
+	</select>
 
 
 

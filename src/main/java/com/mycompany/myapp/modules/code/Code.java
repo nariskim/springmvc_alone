@@ -1,5 +1,8 @@
 package com.mycompany.myapp.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 
 	// oyCodeGroup
@@ -15,6 +18,9 @@ public class Code {
 	private String oycdNameEng = "";
 	private Integer oycdDelNy;
 //	private String oycgSeq = "";
+	
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
+	
 	public String getOycgSeq() {
 		return oycgSeq;
 	}

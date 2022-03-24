@@ -71,4 +71,8 @@ public class CodeDao {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}
 
+	public List<Code> selectListForCache() { 
+		List<Code> list = sqlSession.selectList(namespace + ".selectListForCache", ""); 
+		return list;
+	}
 }
