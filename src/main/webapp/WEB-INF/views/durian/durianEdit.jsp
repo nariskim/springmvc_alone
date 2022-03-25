@@ -451,14 +451,13 @@
 					</div>
 					<div class="col-12 col-sm-8 col-lg-4">
 						<div class="input-group">
-							<select class="form-select form-select-sm"
-								 id="" name="">
-								<option value="28">SKT</option>
-								<option value="29">KT</option>
-								<option value="30">LGU</option>
-								<option value="31">알뜰폰</option>
-							</select> <input type="text" class="form-control" id="oympNumber"
-								name="oympNumber" placeholder="'-'제외">
+							<select class="form-select" id="oympTelecomCd" name="oympTelecomCd">
+				<option value="" selected>선택해주세요</option>
+					<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+			<option value="<c:out value="${itemTelecom.oycdSeq}"/>" <c:if test="${item.oympTelecomCd eq itemTelecom.oycdSeq }">selected</c:if> ><c:out value="${itemTelecom.oycdName}"/></option>	
+							</c:forEach>
+			</select>
+			<input type="text" class="form-control" id="oympNumber" name="oympNumber" value="<c:if test="${vo.oympDefaultNy eq 1 }"><c:out value="${item.oympNumber}"/></c:if>">
 						</div>
 					</div>
 
@@ -467,13 +466,13 @@
 					</div>
 					<div class="col-12 col-sm-8 col-lg-4">
 						<div class="input-group">
-							<select class="form-select form-select-sm" id="" name="">
-								<option value="28">SKT</option>
-								<option value="29">KT</option>
-								<option value="30">LGU</option>
-								<option value="31">알뜰폰</option>
-							</select> <input type="text" class="form-control" name="oympNumber"
-								id="oympNumber" placeholder="'-'제외">
+							<select class="form-select" id="oympTelecomCd" name="oympTelecomCd">
+				<option value="" selected>선택해주세요</option>
+					<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+			<option value="<c:out value="${itemTelecom.oycdSeq}"/>" <c:if test="${item.oympTelecomCd eq itemTelecom.oycdSeq }">selected</c:if> ><c:out value="${itemTelecom.oycdName}"/></option>	
+							</c:forEach>
+			</select>
+			<input type="text" class="form-control" id="oympNumber" name="oympNumber" value="<c:if test="${vo.oympDefaultNy eq 0 }"><c:out value="${item.oympNumber}"/></c:if>">
 						</div>
 
 					</div>

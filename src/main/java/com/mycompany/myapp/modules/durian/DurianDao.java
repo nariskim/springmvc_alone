@@ -32,6 +32,27 @@ public class DurianDao {
 	public int insert(Durian dto) {
 		return sqlSession.insert(namespace + ".insert", dto);
 	}
+	
+	public int insertJoinQna(Durian dto) {
+		return sqlSession.insert(namespace + ".insertJoinQna", dto);
+	}
+	
+	public int insertNationG(Durian dto) {
+		return sqlSession.insert(namespace + ".insertNationG", dto);
+	}
+	
+	public int insertNation(Durian dto) {
+		return sqlSession.insert(namespace + ".insertNation", dto);
+	}
+	
+	public int insertPhone(Durian dto) {
+		return sqlSession.insert(namespace + ".insertPhone", dto);
+	}
+	
+	public int insertEmail(Durian dto) {
+		return sqlSession.insert(namespace + ".insertEmail", dto);
+	}
+
 
 	//view, edit
 	public Durian selectOne(DurianVo vo) {

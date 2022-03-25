@@ -366,42 +366,63 @@
 				</select> <input type="text" class="form-control" id="" placeholder="그 외 국가 직접 입력">
 			</div>
 
-		</div>
+	</div>
 
 		<div class="row">
+ 
+							<div class="col-12 col-sm-4 col-lg-2">
+								<label for="formFile" class="form-label">연락처 (필수)</label>
+							</div>
+							<div class="col-12 col-sm-8 col-lg-4">
+								<div class="input-group">
+									<c:if test="${item.oympDefaultNy eq 1 }">
+							<select class="form-select form-select-sm mb-1" id="oympTelecomCd" name="oympTelecomCd">
+								<option selected>::통신사::</option>
+								<option value="28"
+									<c:if test="${item.oympTelecomCd eq 28 }">selected</c:if>>SKT</option>
+								<option value="29"
+									<c:if test="${item.oympTelecomCd eq 29 }">selected</c:if>>KT</option>
+								<option value="30"
+									<c:if test="${item.oympTelecomCd eq 30 }">selected</c:if>>LGU</option>
+								<option value="31"
+									<c:if test="${item.oympTelecomCd eq 31 }">selected</c:if>>알뜰폰</option>
+							</select>
+						</c:if>
+									<c:if test="${item.oympDefaultNy eq 1 }">
+										<input type="text" class="form-control" id="oympNumber"
+											name="oympNumber" value="<c:out value="${item.oympNumber}"/>">
+									</c:if>
 
-			<div class="col-12 col-sm-4 col-lg-2">
-				<label for="formFile" class="form-label">연락처 (필수)</label>
-			</div>
-			<div class="col-12 col-sm-8 col-lg-4">
-				<div class="input-group">
-					<select class="form-select form-select-sm mb-1" id="oympTelecomCd" name="oympTelecomCd">
-						<option selected>::통신사::</option>
-						<option value="28" <c:if test="${item.oympTelecomCd eq 28 }">selected</c:if>>SKT</option>
-						<option value="29" <c:if test="${item.oympTelecomCd eq 29 }">selected</c:if>>KT</option>
-						<option value="30" <c:if test="${item.oympTelecomCd eq 30 }">selected</c:if>>LGU</option>
-						<option value="31" <c:if test="${item.oympTelecomCd eq 31 }">selected</c:if>>알뜰폰</option>
-					</select>
-					<input type="text" readonly class="form-control" id="oympNumber" name="oympNumber" value=<c:out value="${item.oympNumber}"/>>
+								</div>
 				</div>
-			</div>
-			<div class="col-12 col-sm-4 col-lg-2">
-				<label for="formFile" class="form-label">연락처 (선택)</label>
-			</div>
-			<div class="col-12 col-sm-8 col-lg-4">
-				<div class="input-group">
-					<select class="form-select form-select-sm mb-1" id="oympTelecomCd" name="oympTelecomCd">
-						<option selected>::통신사::</option>
-						<option value="28" <c:if test="${item.oympTelecomCd eq 28 }">selected</c:if>>SKT</option>
-						<option value="29" <c:if test="${item.oympTelecomCd eq 29 }">selected</c:if>>KT</option>
-						<option value="30" <c:if test="${item.oympTelecomCd eq 30 }">selected</c:if>>LGU</option>
-						<option value="31" <c:if test="${item.oympTelecomCd eq 31 }">selected</c:if>>알뜰폰</option>
-					</select>
-					<input type="text" class="form-control" name="oympNumber" id="oympNumber" placeholder="'-'제외">
+
+				<div class="col-12 col-sm-4 col-lg-2">
+					<label for="formFile" class="form-label">연락처 (선택)</label>
 				</div>
+				<div class="col-12 col-sm-8 col-lg-4">
+					<div class="input-group">
+						<c:if test="${item.oympDefaultNy eq 0 }">
+							<select class="form-select form-select-sm mb-1" id="oympTelecomCd" name="oympTelecomCd">
+								<option selected>::통신사::</option>
+								<option value="28"
+									<c:if test="${item.oympTelecomCd eq 28 }">selected</c:if>>SKT</option>
+								<option value="29"
+									<c:if test="${item.oympTelecomCd eq 29 }">selected</c:if>>KT</option>
+								<option value="30"
+									<c:if test="${item.oympTelecomCd eq 30 }">selected</c:if>>LGU</option>
+								<option value="31"
+									<c:if test="${item.oympTelecomCd eq 31 }">selected</c:if>>알뜰폰</option>
+							</select>
+						</c:if>
+						<c:if test="${item.oympDefaultNy eq 0 }">
+							<input type="text" class="form-control" id="oympNumber" name="oympNumber" value="<c:out value="${item.oympNumber}"/>">
+						</c:if>
+					</div>
+
+				</div>
+
+
 			</div>
-			
-		</div>	
 
 		<div class="row">
 
@@ -413,10 +434,11 @@
 					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" placeholder="이메일">
 					<span class="input-group-text">@</span>
 					<select class="form-select">
-						<option value="server" selected>선택해주세요
-						<option value="Gmail">gmail.com
-						<option value="Naver">naver.com
-						<option value="Daum">hanmail.net
+						<option value="" selected>::선택::
+						<option value="35" <c:if test="${item.oymeEmailDomainCd eq 35 }">selected</c:if>>gmail.com
+						<option value="36" <c:if test="${item.oymeEmailDomainCd eq 36 }">selected</c:if>>naver.com
+						<option value="37" <c:if test="${item.oymeEmailDomainCd eq 37 }">selected</c:if>>hanmail.net
+						<option value="155" <c:if test="${item.oymeEmailDomainCd eq 155 }">selected</c:if>>hanmail.net
 					</select>
 				</div>
 			</div>
@@ -429,10 +451,11 @@
 					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" placeholder="이메일">
 					<span class="input-group-text">@</span>
 					<select class="form-select">
-						<option value="server" selected>선택해주세요
-						<option value="Gmail">gmail.com
-						<option value="Naver">naver.com
-						<option value="Daum">hanmail.net
+						<option value="" selected>::선택::
+						<option value="35" <c:if test="${item.oymeEmailDomainCd eq 35 }">selected</c:if>>gmail.com
+						<option value="36" <c:if test="${item.oymeEmailDomainCd eq 36 }">selected</c:if>>naver.com
+						<option value="37" <c:if test="${item.oymeEmailDomainCd eq 37 }">selected</c:if>>hanmail.net
+						<option value="155" <c:if test="${item.oymeEmailDomainCd eq 155 }">selected</c:if>>hanmail.net
 					</select>
 				</div>
 			</div>

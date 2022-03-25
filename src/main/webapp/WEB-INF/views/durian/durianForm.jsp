@@ -299,19 +299,18 @@
 	</div>
 </div>
 
+				
 <div class="row">
 	<div class="col-12 col-sm-4 col-lg-2">
 		<label for="formFile" class="form-label">비밀번호 질문</label>
 	</div>
 	<div class="col-12 col-sm-8 col-lg-4">
 		<div class="mb-3">
-			<select class="form-select" id="" name="">
-				<option selected>선택해주세요</option>
-				<option value ="17">question 1</option>
-				<option value ="18">question 2</option>
-				<option value ="19">question 3</option>
-				<option value ="20">question 4</option>
-				<option value ="21">question 5</option>
+			<select class="form-select" id="oyjqQuestionCd" name="oyjqQuestionCd">
+				<option value="" selected>선택해주세요</option>
+					<c:forEach items="${codeJoinQna}" var="itemJoinQna" varStatus="statusJoinQna">
+			<option value="<c:out value="${itemJoinQna.oycdSeq}"/>" <c:if test="${item.oyjqQuestionCd eq itemJoinQna.oycdSeq }">selected</c:if> ><c:out value="${itemJoinQna.oycdName}"/></option>	
+							</c:forEach>
 			</select>
 		</div>
 	</div>
@@ -319,7 +318,7 @@
 		<label for="formFile" class="form-label">비밀번호 답변</label>
 	</div>
 	<div class="col-12 col-sm-8 col-lg-4">
-		<input type="text" class="form-control" id="" name="" placeholder="비밀번호 힌트 답">
+		<input type="text" class="form-control" id="oyjqAnswer" name="oyjqAnswer" placeholder="비밀번호 힌트 답">
 	</div>
 </div>
 
@@ -363,14 +362,13 @@
 	
 	<div class="col-12 col-sm-8 col-lg-4">
 		<div class="input-group">
-			<select class="form-select form-select-sm" id="" name="">
-				<option value="">::통신사::</option>
-				<option value="28">SKT</option>
-				<option value="29">KT</option>
-				<option value="30">Uplus</option>
-				<option value="31">자급제</option>
+			<select class="form-select" id="oympTelecomCd" name="oympTelecomCd">
+				<option value="" selected>선택해주세요</option>
+					<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+			<option value="<c:out value="${itemTelecom.oycdSeq}"/>" <c:if test="${item.oympTelecomCd eq itemTelecom.oycdSeq }">selected</c:if> ><c:out value="${itemTelecom.oycdName}"/></option>	
+							</c:forEach>
 			</select>
-			 <input type="text" class="form-control" id="" name="" placeholder="'-'제외">
+			 <input type="text" class="form-control" id="oympNumber" name="oympNumber" placeholder="'-'제외">
 		</div>
 	</div>
 	<div class="col-12 col-sm-4 col-lg-2">
@@ -378,13 +376,12 @@
 	</div>
 	<div class="col-12 col-sm-8 col-lg-4">
 		<div class="input-group">
-			<select class="form-select form-select-sm" id="" name="">
-				<option selected>::통신사::</option>
-				<option value="28">SKT</option>
-				<option value="29">KT</option>
-				<option value="30">Uplus</option>
-				<option value="31">자급제</option>
-			</select> <input type="text" class="form-control" name="" id="" placeholder="'-'제외">
+			<select class="form-select" id="oympTelecomCd" name="oympTelecomCd">
+				<option value="" selected>선택해주세요</option>
+					<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+			<option value="<c:out value="${itemTelecom.oycdSeq}"/>" <c:if test="${item.oympTelecomCd eq itemTelecom.oycdSeq }">selected</c:if> ><c:out value="${itemTelecom.oycdName}"/></option>	
+							</c:forEach>
+			</select> <input type="text" class="form-control" id="oympNumber" name="oympNumber" placeholder="'-'제외">
 		</div>
 	</div>
 </div>	
@@ -395,15 +392,14 @@
 	</div>
 	<div class="col-12 col-sm-8 col-lg-4">
 		<div class="input-group">
-			<input type="text" class="form-control" id="" name="" placeholder="이메일">
+			<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" placeholder="이메일">
 				<span class="input-group-text">@</span>
-				<select class="form-select" id="" name="">
-				<option selected>::선택해주세요::
-				<option value="35">gmail.com
-				<option value="36">naver.com
-				<option value="37">hanmail.net
-				<option value="155">직접 입력
-			</select>
+				<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+				<option value="" selected>선택해주세요</option>
+					<c:forEach items="${codeEmail}" var="itemEmail" varStatus="statusEmail">
+			<option value="<c:out value="${itemEmail.oycdSeq}"/>" <c:if test="${item.oymeEmailDomainCd eq itemEmail.oycdSeq }">selected</c:if> ><c:out value="${itemEmail.oycdName}"/></option>	
+							</c:forEach>
+			</select> <input type="text" class="form-control" id="oymeEmailDomain" name="oymeEmailDomain" placeholder="'기타'는 이곳에 입력해 주세요.">
 		</div>
 	</div>
 	<div class="col-12 col-sm-4 col-lg-2">
@@ -411,24 +407,23 @@
 	</div>
 	<div class="col-12 col-sm-8 col-lg-4">
 		<div class="input-group">
-			<input type="text" class="form-control" id="" name="" placeholder="이메일">
+			<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" placeholder="이메일">
 				<span class="input-group-text">@</span>
-				<select class="form-select" id="" name="">
-				<option selected>::선택해주세요::
-				<option value="35">gmail.com
-				<option value="36">naver.com
-				<option value="37">hanmail.net
-				<option value="155">직접 입력
-			</select>
+				<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+				<option value="" selected>선택해주세요</option>
+					<c:forEach items="${codeEmail}" var="itemEmail" varStatus="statusEmail">
+			<option value="<c:out value="${itemEmail.oycdSeq}"/>" <c:if test="${item.oymeEmailDomainCd eq itemEmail.oycdSeq }">selected</c:if> ><c:out value="${itemEmail.oycdName}"/></option>	
+							</c:forEach>
+			</select> <input type="text" class="form-control" id="oymeEmailDomain" name="oymeEmailDomain" placeholder="'기타'는 이곳에 입력해 주세요.">
 		</div>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-12 col-sm-6 col-lg-2">
+	<div class="col-12 col-sm-4 col-lg-2">
 		<label for="formFile" class="form-label">피부타입</label>
 	</div>
-	<div class="col-12 col-sm-6 col-lg-4">
+	<div class="col-12 col-sm-8 col-lg-4">
 		<input type="radio" class="btn-check" id="" name="" autocomplete="off" value="141">
 		<label class="btn btn-outline-dark" for="민감">민감성</label>
 		<input type="radio" class="btn-check" id="" name="" autocomplete="off" value="142">

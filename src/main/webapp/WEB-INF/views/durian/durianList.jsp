@@ -357,9 +357,8 @@
 													</th>
 													<th scope="row"><c:out value="${item.oymbSeq}" /></th>
 													<td><c:out value="${item.oymbGradeCd}" /></td>
-													<td><a
-														href="javascript:goForm(<c:out value="${item.oymbSeq}"/>);"><c:out
-																value="${item.oymbName}" /></a></td>
+													<td><a href="javascript:goForm(<c:out value="${item.oymbSeq}"/>);">
+													<c:out value="${item.oymbName}" /></a></td>
 													<td><c:out value="${item.oymbId}" /></td>
 													<td><c:out value="${item.oymbGenderCd}" /></td>
 													<td><c:out value="${item.oympTelecomCd}" /></td>

@@ -46,7 +46,9 @@ public class DurianController {
 	public String durianForm(Model model) throws Exception {
 
 		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
+		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
+		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
 		return "durian/durianForm";
 	}
 
@@ -54,6 +56,11 @@ public class DurianController {
 	public String durianInst(Durian dto) throws Exception {
 
 		service.insert(dto);
+		service.insertJoinQna(dto);
+		service.insertNationG(dto);
+		service.insertNation(dto);
+		service.insertPhone(dto);
+		service.insertEmail(dto);
 		
 		return "redirect:/durian/durianList";
 	}
@@ -64,7 +71,7 @@ public class DurianController {
 		Durian rt = service.selectOne(vo);
 		
 		model.addAttribute("item", rt);
-	
+
 		return "durian/durianView";
 	}
 
@@ -74,7 +81,10 @@ public class DurianController {
 		Durian rt = service.selectOne(vo);
 	
 		model.addAttribute("item", rt);
-
+		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
+		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
+		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
+		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
 		return "durian/durianEdit";
 	}
 	
