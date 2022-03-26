@@ -115,8 +115,13 @@
 </style>
 </head>
 <body>
-<form method="post" action="/myapp/durian/durianInst">
-
+<form id="formForm" name="formForm" method="post" action="/myapp/durian/durianInst">
+<input type="hidden"name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+<input type="hidden"name="scOymbDelNy" value="<c:out value="${vo.scOymbDelNy}"/>">
+<input type="hidden"name="scOymbName" value="<c:out value="${vo.scOymbName}"/>">
+<input type="hidden" name="scOption" value="<c:out value="${vo.scOption}"/>">
+<input type="hidden" name="scValue" value="<c:out value="${vo.scValue}"/>">
+<input type="hidden" name="oymbSeq" value="<c:out value="${item.oymbSeq}"/>">
 	<div class="row">
 		<header class="navbar navbar-dark sticky-top bg-light ml-auto">
 
@@ -225,7 +230,7 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">회원 관리</a></li>
-				<li class="breadcrumb-item"><a href="/myapp/durian/durianList">회원 리스트</a></li>
+				<li class="breadcrumb-item"><a href="javascript:goList();">회원 리스트</a></li>
 				<li class="breadcrumb-item active" aria-current="page">회원 등록</li>
 			</ol>
 		</nav><br><br>
@@ -244,7 +249,7 @@
 		<input type="text" class="form-control" id="oymbNameEng" name="oymbNameEng" placeholder="'성' 제외 '이름만' 영문 이니셜">
 		<div id="NameEngHelpBlock" class="form-text">예시:김나리 'nr'</div>
 	</div>
-	<input type="submit" value="제출">
+
 </div>
 
 <div class="row">
@@ -354,6 +359,7 @@
 	</div>
 </div>
 
+
 <div class="row">
 	<div class="col-12 col-sm-4 col-lg-2">
 		<label for="formFile" class="form-label">연락처 (필수)</label>
@@ -363,21 +369,24 @@
 	<div class="col-12 col-sm-8 col-lg-4">
 		<div class="input-group">
 			<select class="form-select" id="oympTelecomCd" name="oympTelecomCd">
-				<option value="" selected>선택해주세요</option>
+				<option selected>::통신사::</option>
 					<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
-			<option value="<c:out value="${itemTelecom.oycdSeq}"/>" <c:if test="${item.oympTelecomCd eq itemTelecom.oycdSeq }">selected</c:if> ><c:out value="${itemTelecom.oycdName}"/></option>	
+			<option value="<c:out value="${itemTelecom.oycdSeq}"/>" <c:if test="${item.oympTelecomCd eq itemTelecom.oycdSeq }">selected</c:if>> <c:out value="${itemTelecom.oycdName}"/></option>	
 							</c:forEach>
 			</select>
 			 <input type="text" class="form-control" id="oympNumber" name="oympNumber" placeholder="'-'제외">
 		</div>
 	</div>
+	
+	
+	
 	<div class="col-12 col-sm-4 col-lg-2">
 		<label for="formFile" class="form-label">연락처 (선택)</label>
 	</div>
 	<div class="col-12 col-sm-8 col-lg-4">
 		<div class="input-group">
 			<select class="form-select" id="oympTelecomCd" name="oympTelecomCd">
-				<option value="" selected>선택해주세요</option>
+				<option selected>::통신사::</option>
 					<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
 			<option value="<c:out value="${itemTelecom.oycdSeq}"/>" <c:if test="${item.oympTelecomCd eq itemTelecom.oycdSeq }">selected</c:if> ><c:out value="${itemTelecom.oycdName}"/></option>	
 							</c:forEach>
@@ -395,7 +404,7 @@
 			<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" placeholder="이메일">
 				<span class="input-group-text">@</span>
 				<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
-				<option value="" selected>선택해주세요</option>
+				<option selected>::선택::</option>
 					<c:forEach items="${codeEmail}" var="itemEmail" varStatus="statusEmail">
 			<option value="<c:out value="${itemEmail.oycdSeq}"/>" <c:if test="${item.oymeEmailDomainCd eq itemEmail.oycdSeq }">selected</c:if> ><c:out value="${itemEmail.oycdName}"/></option>	
 							</c:forEach>
@@ -410,7 +419,7 @@
 			<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" placeholder="이메일">
 				<span class="input-group-text">@</span>
 				<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
-				<option value="" selected>선택해주세요</option>
+				<option selected>::선택::</option>
 					<c:forEach items="${codeEmail}" var="itemEmail" varStatus="statusEmail">
 			<option value="<c:out value="${itemEmail.oycdSeq}"/>" <c:if test="${item.oymeEmailDomainCd eq itemEmail.oycdSeq }">selected</c:if> ><c:out value="${itemEmail.oycdName}"/></option>	
 							</c:forEach>
@@ -525,7 +534,10 @@
 		<label class="btn btn-outline-dark" for="평생회원">평생회원</label>
 	</div>
 </div>
-			</div>		
+			</div>	
+				
+		<a href="javascript:goView(<c:out value="${item.oymbSeq}"/>);"><input type="submit" id="btnSubmit" name="search"
+											class="btn btn-outline-dark" value="&nbsp등 록&nbsp"></a>
 		</main>
 	</div>
 </div>
@@ -609,6 +621,20 @@
             }
         }).open();
     }
+    
+	goView = function(seq) {
+		alert(seq);
+		$("#oymbSeq").val(seq);
+		$("#formForm").attr("action", "/myapp/durian/durianView");
+		$("#formForm").submit();
+	}
+
+	
+	goList = function() {
+		alert("회원리스트로 이동합니다.");
+		$("#formForm").attr("action", "/myapp/durian/durianList");
+		$("#formForm").submit();
+	}
 </script>
 
 

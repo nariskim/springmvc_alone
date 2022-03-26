@@ -65,7 +65,7 @@ public class Durian {
 //	private String oycgSeq = "";
 	
 	private String oymeSeq = "";
-	private Integer oymeDefaulyNy;
+	private Integer oymeDefaultNy;
 	private String oymeEmailFull = "";
 	private String oymeEmailAccount = "";
 	private Integer oymeEmailDomainCd;
@@ -427,12 +427,12 @@ public class Durian {
 		this.oymeSeq = oymeSeq;
 	}
 
-	public Integer getOymeDefaulyNy() {
-		return oymeDefaulyNy;
+	public Integer getOymeDefaultNy() {
+		return oymeDefaultNy;
 	}
 
-	public void setOymeDefaulyNy(Integer oymeDefaulyNy) {
-		this.oymeDefaulyNy = oymeDefaulyNy;
+	public void setOymeDefaultNy(Integer oymeDefaultNy) {
+		this.oymeDefaultNy = oymeDefaultNy;
 	}
 
 	public String getOymeEmailFull() {
@@ -475,5 +475,6 @@ public class Durian {
 		this.oymeDelNy = oymeDelNy;
 	}
 
+	
 
 }

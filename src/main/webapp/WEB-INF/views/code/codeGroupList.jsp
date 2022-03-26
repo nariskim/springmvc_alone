@@ -6,12 +6,11 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<br>
-<a href="/myapp/code/codeGroupForm?thisPage=<c:out value="${vo.thisPage}"/>&scOption=<c:out value="${vo.scOption}"/>&scValue=<c:out value="${vo.scValue}"/>">등록</a>
 
-<br>
-<br>
 <form id="formList" name="formList" method="post" action="/myapp/code/codeGroupList">
+
+<a href="javascript:goList();">등록</a>
+<br>
 
 	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 	<input type="hidden" id="oycgSeq" name="oycgSeq">
@@ -47,7 +46,7 @@
 			<c:forEach items="${list}" var="item" varStatus="status">
 
 				<c:out value="${item.oycgSeq}"/> | 
-				<a href="javascript:goForm(<c:out value="${item.oycgSeq}"/>);">
+				<a href="javascript:goView(<c:out value="${item.oycgSeq}"/>);">
 				<c:out value="${item.oycgName}" /></a> | 
 				<c:out value="${item.oycgNameEng}" />
 				<c:choose>
@@ -109,10 +108,16 @@ goList = function(seq) {
 	// 그 가져온 객체를 전달한다.
 }
 
-goForm = function(seq){
+goView = function(seq){
 	alert(seq);
 	$("#oycgSeq").val(seq);
 	$("#formList").attr("action","/myapp/code/codeGroupView");
+	$("#formList").submit();
+}
+
+goForm = function(){
+	alert();
+	$("#formList").attr("action","/myapp/code/codeGroupForm");
 	$("#formList").submit();
 }
 

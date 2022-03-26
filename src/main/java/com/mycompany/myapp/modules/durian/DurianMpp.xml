@@ -55,7 +55,7 @@
 		, g.oymeEmailDomainCd
 
 		<include refid="selectCommon" />
-		ORDER BY oymbSeq DESC
+		ORDER BY oymbSeq ASC
 		limit #{startRnumForMysql}, #{rowNumToShow}
 
 	</select>
@@ -221,10 +221,42 @@
 		LEFT JOIN oymbEmail f ON f.oymeDefaultNy=1 AND f.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
-		AND a.oymbSeq =
-		#{oymbSeq}
+		AND a.oymbSeq = #{oymbSeq}
 		
 
+	</select>
+	
+	<select id="selectListPhone" resultMap="resultMapObj">
+	SELECT
+	oympSeq
+	, oympDefaultNy
+	, oympTypeCd
+	, oympTelecomCd
+	, oympNumber
+	, oympDelNy
+	
+	FROM oymbPhone
+
+	WHERE 1=1
+	AND oympDelNy = 0
+	AND oymbSeq = #{oymbSeq}
+	</select>
+
+	<select id="selectListEmail" resultMap="resultMapObj">
+	SELECT
+	oymeSeq
+	, oymeDefaultNy
+	, oymeTypeCd
+	, oymeEmailDomainCd
+	, oymeEmailAccount
+	, oymeEmailDomain
+	, oymeEmailFull
+	
+	FROM oymbEmail
+
+	WHERE 1=1
+	AND oymeDelNy = 0
+	AND oymbSeq = #{oymbSeq}
 	</select>
 
 

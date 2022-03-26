@@ -21,6 +21,16 @@ public class DurianServiceImpl implements DurianService {
 	}
 	
 	@Override
+	public List<Durian> selectListPhone(DurianVo vo) throws Exception {
+		return dao.selectListPhone(vo);
+	}
+	
+	@Override
+	public List<Durian> selectListEmail(DurianVo vo) throws Exception {
+		return dao.selectListEmail(vo);
+	}
+	
+	@Override
 	public int insert(Durian dto) throws Exception {
 		return dao.insert(dto);
 	}
@@ -38,11 +48,6 @@ public class DurianServiceImpl implements DurianService {
 	@Override
 	public int insertNation(Durian dto) throws Exception {
 		return dao.insertNation(dto);
-	}
-	
-	@Override
-	public int insertPhone(Durian dto) throws Exception {
-		return dao.insertPhone(dto);
 	}
 	
 	@Override

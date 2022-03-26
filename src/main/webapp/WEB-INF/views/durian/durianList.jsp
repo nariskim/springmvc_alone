@@ -24,8 +24,7 @@
 	crossorigin="anonymous">
 
 
-<script src="https://kit.fontawesome.com/893e1f7eb8.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/893e1f7eb8.js" crossorigin="anonymous"></script>
 
 <style type="text/css">
 .bottom-border {
@@ -297,7 +296,7 @@
 								<div class="col-12 col-sm-4 col-lg-2">
 									<div style="text-align: left;">
 										<input type="submit" id="btnSubmit" name="search"
-											class="btn btn-outline-dark"> <a
+											class="btn btn-outline-dark" value="검색"> <a
 											href="/myapp/durian/durianList"><button type="button"
 												class="btn btn-outline-dark">초기화</button></a>
 
@@ -357,7 +356,7 @@
 													</th>
 													<th scope="row"><c:out value="${item.oymbSeq}" /></th>
 													<td><c:out value="${item.oymbGradeCd}" /></td>
-													<td><a href="javascript:goForm(<c:out value="${item.oymbSeq}"/>);">
+													<td><a href="javascript:goView(<c:out value="${item.oymbSeq}"/>);">
 													<c:out value="${item.oymbName}" /></a></td>
 													<td><c:out value="${item.oymbId}" /></td>
 													<td><c:out value="${item.oymbGenderCd}" /></td>
@@ -458,8 +457,7 @@
 								</div>
 								<div class="col-8"></div>
 								<div class="col-2">
-									<a
-										href="/myapp/durian/durianForm?oymbSeq=<c:out value="${item.oymbSeq}"/>">
+									<a href="javascript:goForm();">
 										<button type="button" class="btn btn-success">&nbsp등
 											록&nbsp</button>
 									</a>
@@ -477,7 +475,7 @@
 							<c:if test="${vo.startPage gt vo.pageNumToShow}">
 								<li class="page-item">
 								<a class="page-link" style="color: black;"
-									href="javascript:goList(<c:out value='${vo.startPage - 1}'/>);"
+									href="javascript:goPage(<c:out value='${vo.startPage - 1}'/>);"
 									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								</a></li>
 							</c:if>
@@ -487,12 +485,12 @@
 									<c:when test="${i.index eq vo.thisPage}">
 										<li class="page-item active"><a class="page-link"
 											style="color: black;"
-											href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
+											href="javascript:goPage(<c:out value='${i.index}'/>);">${i.index}</a></li>
 									</c:when>
 									<c:otherwise>
 										<li class="page-item"><a class="page-link"
 											style="color: black;"
-											href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
+											href="javascript:goPage(<c:out value='${i.index}'/>);">${i.index}</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
@@ -501,7 +499,7 @@
 							<c:if test="${vo.endPage ne vo.totalPages}">
 								<li class="page-item"><a class="page-link"
 									style="color: black;"
-									href="javascript:goList(<c:out value='${vo.endPage + 1}'/>);"
+									href="javascript:goPage(<c:out value='${vo.endPage + 1}'/>);"
 									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 								</a></li>
 							</c:if>
@@ -540,63 +538,66 @@
 
 	
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="/myapp/resources/js/validation.js"></script>
 
 	<script type="text/javascript">
+	
 		$("#btnSubmit_del").on("click", function() {
 			/* alert($("scOption").val()); */
 
 			alert("삭제?");
 			confirm("진짜 삭제? 복구 노노");
 		});
-	</script>
-	<!-- <script type="text/javascript">
-$("#btnSubmit").on("click", function(){
-	alert($("#scOycgName").val());		// jquery 방식
-});
-</script> -->
 
-<script type="text/javascript">
+		$("#btnSubmit").on("click", function() {
+			alert($("#scOycgName").val()); // jquery 방식
+		});
+
 		/* $("#btnSubmit").on("click", function(){
 
 		 if(!checkNull($("#scValue"), $("#scValue").val(), "검색어를 입력해주세요."))return false;
 		 });
 		 */
 
-	$("#btnSubmit").on(
-			"click",
-			function() {
+	/* 	$("#btnSubmit").on(
+				"click",
+				function() {
 
-				if (!checkNull($("#scOymbDelNy"), $("#scOymbDelNy").val(),
-						"삭제 여부 체크 필수입니다."))
-					return false;
+					if (!checkNull($("#scOymbDelNy"), $("#scOymbDelNy").val(),
+							"삭제 여부 체크 필수입니다."))
+						return false;
 
-				if (!checkNull($("#scOymbName"), $("#scOymbName").val(),
-						"검색어를 입력해주세요."))
-					return false;
+					if (!checkNull($("#scOymbName"), $("#scOymbName").val(),
+							"검색어를 입력해주세요."))
+						return false;
 
-				if (!checkNull($("#scValue"), $("#scValue").val(),
-						"검색어를 입력해주세요."))
-					return false;
-			});
+					if (!checkNull($("#scValue"), $("#scValue").val(),
+							"검색어를 입력해주세요."))
+						return false;
+				}); */
 
-	goList = function(seq) {
-		alert(seq);
-		// form 객체를 가져온다
-		$("#thisPage").val(seq);
-		$("#formList").submit();
-		// 그 가져온 객체를 전달한다.
-	}
+		goPage = function(seq) {
+			alert(seq);
+			// form 객체를 가져온다
+			$("#thisPage").val(seq);
+			$("#formList").submit();
+			// 그 가져온 객체를 전달한다.
+		}
 
-	goForm = function(seq) {
-		alert(seq);
-		$("#oymbSeq").val(seq);
-		$("#formList").attr("action", "/myapp/durian/durianView");
-		$("#formList").submit();
-	}
-</script>
+		goView = function(seq) {
+			alert(seq);
+			$("#oymbSeq").val(seq);
+			$("#formList").attr("action", "/myapp/durian/durianView");
+			$("#formList").submit();
+		}
+
+		goForm = function() {
+			alert("회원 등록입니다.");
+			$("#formList").attr("action", "/myapp/durian/durianForm");
+			$("#formList").submit();
+		}
+	</script>
 
 
 </body>

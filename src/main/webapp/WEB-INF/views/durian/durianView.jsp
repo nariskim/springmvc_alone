@@ -115,8 +115,14 @@
 </style>
 </head>
 <body>
-<form action="" method="get" id="" name="" enctype="multipart/form-data">
-
+<form id="formView" name="formView" method="post" action="/myapp/durian/durianView">
+	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+	<input type="hidden" id="scOymbDelNy" name="scOymbDelNy" value="<c:out value="${vo.scOymbDelNy}"/>">
+	<input type="hidden" id="scOymbName" name="scOymbName" value="<c:out value="${vo.scOymbName}"/>">
+	<input type="hidden" id="scOption" name="scOption" value="<c:out value="${vo.scOption}"/>">
+	<input type="hidden" id="scValue" name="scValue" value="<c:out value="${vo.scValue}"/>">
+	<input type="hidden" id="oymbSeq" name="oymbSeq" value="<c:out value="${vo.oymbSeq}"/>">
+	
 	<div class="row">
 		<header class="navbar navbar-dark sticky-top bg-light ml-auto">
 
@@ -229,11 +235,15 @@
 						<li class="breadcrumb-item active" aria-current="page">회원 조회</li>
 					</ol>
 				</nav>
-				<br><br>
+				<br><br> 
+				<a href="javascript:goEdit(<c:out value="${vo.oymbSeq}"/>);">
+				<button type="button" id="" class="btn btn-success">수정</button></a>
+				<a href="javascript:goDel(<c:out value="${vo.oymbSeq}"/>);">
+				<button type="button" id="" class="btn btn-danger">삭제(영구)</button></a>
+				<a href="javascript:goHide(<c:out value="${vo.oymbSeq}"/>);">
+				<button type="button" id="" class="btn btn-danger">삭제(임시)</button></a>
 				
-		<a href="/myapp/durian/durianEdit?oymbSeq=<c:out value="${item.oymbSeq}"/>">수정</a>
 				
-		<input type="hidden" class="form-control" name="oymbSeq" value="<c:out value="${item.oymbSeq}"/>">
 				
 		<div class="row">
 
@@ -276,14 +286,14 @@
 				<label for="formFile" class="form-label">비밀번호</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4">
-				<input type="password" id="oymbPassword" name="oymbPassword" class="form-control" aria-describedby="passwordHelpBlock" placeholder="비밀번호">
+				<input type="password" id="oymbPassword" name="oymbPassword" class="form-control" aria-describedby="passwordHelpBlock" value="<c:out value="${item.oymbPassword}"/>">
 					<div id="passwordHelpBlock" class="form-text">8-20자리의 영문 대소문자, 숫자, 특수문자를 조합하여 설정</div>
 			</div>
 			<div class="col-12 col-sm-4 col-lg-2">
 				<label for="formFile" class="form-label">비밀번호 확인</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4">
-				<input type="password" id="oymbPwdConfirm" class="form-control" aria-describedby="passwordHelpBlock" placeholder="비밀번호 확인">
+				<input type="password" id="oymbPwdConfirm" class="form-control" aria-describedby="passwordHelpBlock" value="<c:out value="${item.oymbPassword}"/>">
 					<div id="passwordHelpBlock" class="form-text"></div>
 			</div>
 
@@ -368,77 +378,97 @@
 
 	</div>
 
-		<div class="row">
- 
+		
+						<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
+							<c:choose>
+								<c:when test="${item.oympDefaultNy eq 1}">
+									<c:set var="oympNumber1" value="${item.oympNumber}" />
+									<c:set var="oympTelecom1" value="${item.oympTelecomCd}" />
+								</c:when>
+								<c:when test="${item.oympDefaultNy eq 0}">
+									<c:set var="oympNumber0" value="${item.oympNumber}" />
+									<c:set var="oympTelecom0" value="${item.oympTelecomCd}" />
+								</c:when>
+								<c:otherwise></c:otherwise>
+							</c:choose>
+						</c:forEach>
+
+
+						<div class="row">
+
 							<div class="col-12 col-sm-4 col-lg-2">
 								<label for="formFile" class="form-label">연락처 (필수)</label>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4">
 								<div class="input-group">
-									<c:if test="${item.oympDefaultNy eq 1 }">
-							<select class="form-select form-select-sm mb-1" id="oympTelecomCd" name="oympTelecomCd">
-								<option selected>::통신사::</option>
-								<option value="28"
-									<c:if test="${item.oympTelecomCd eq 28 }">selected</c:if>>SKT</option>
-								<option value="29"
-									<c:if test="${item.oympTelecomCd eq 29 }">selected</c:if>>KT</option>
-								<option value="30"
-									<c:if test="${item.oympTelecomCd eq 30 }">selected</c:if>>LGU</option>
-								<option value="31"
-									<c:if test="${item.oympTelecomCd eq 31 }">selected</c:if>>알뜰폰</option>
-							</select>
-						</c:if>
-									<c:if test="${item.oympDefaultNy eq 1 }">
-										<input type="text" class="form-control" id="oympNumber"
-											name="oympNumber" value="<c:out value="${item.oympNumber}"/>">
-									</c:if>
+									<select class="form-select form-select-sm mb-1"
+										id="oympTelecomCd" name="oympTelecomCd">
+										<option selected>::통신사::</option>
+										<c:forEach items="${codeTelecom}" var="itemTelecom"
+											varStatus="statusTelecom">
+											<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
+												<c:if test="${oympTelecom1 eq itemTelecom.oycdSeq}">selected</c:if>><c:out
+													value="${itemTelecom.oycdName}" /></option>
+										</c:forEach>
+									</select> <input type="text" class="form-control" id="oympNumber" name="oympNumber" value="<c:out value="${oympNumber1}"/>">
+								</div>
+							</div>
+
+							<div class="col-12 col-sm-4 col-lg-2">
+								<label for="formFile" class="form-label">연락처 (선택)</label>
+							</div>
+							<div class="col-12 col-sm-8 col-lg-4">
+								<div class="input-group">
+									<select class="form-select form-select-sm mb-1"
+										id="oympTelecomCd" name="oympTelecomCd">
+										<option selected>::통신사::</option>
+										<c:forEach items="${codeTelecom}" var="itemTelecom"
+											varStatus="statusTelecom">
+											<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
+												<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq}">selected</c:if>><c:out
+													value="${itemTelecom.oycdName}" /></option>
+										</c:forEach>
+									</select> <input type="text" class="form-control" id="oympNumber"
+										name="oympNumber" value="<c:out value="${oympNumber0}"/>">
 
 								</div>
-				</div>
 
-				<div class="col-12 col-sm-4 col-lg-2">
-					<label for="formFile" class="form-label">연락처 (선택)</label>
-				</div>
-				<div class="col-12 col-sm-8 col-lg-4">
-					<div class="input-group">
-						<c:if test="${item.oympDefaultNy eq 0 }">
-							<select class="form-select form-select-sm mb-1" id="oympTelecomCd" name="oympTelecomCd">
-								<option selected>::통신사::</option>
-								<option value="28"
-									<c:if test="${item.oympTelecomCd eq 28 }">selected</c:if>>SKT</option>
-								<option value="29"
-									<c:if test="${item.oympTelecomCd eq 29 }">selected</c:if>>KT</option>
-								<option value="30"
-									<c:if test="${item.oympTelecomCd eq 30 }">selected</c:if>>LGU</option>
-								<option value="31"
-									<c:if test="${item.oympTelecomCd eq 31 }">selected</c:if>>알뜰폰</option>
-							</select>
-						</c:if>
-						<c:if test="${item.oympDefaultNy eq 0 }">
-							<input type="text" class="form-control" id="oympNumber" name="oympNumber" value="<c:out value="${item.oympNumber}"/>">
-						</c:if>
-					</div>
-
-				</div>
+							</div>
 
 
-			</div>
+						</div>
 
-		<div class="row">
+<c:forEach items="${listEmail}" var="item" varStatus="statusEmail">
+							<c:choose>
+								<c:when test="${item.oymeDefaultNy eq 1}">
+									<c:set var="oymeAccount1" value="${item.oymeEmailAccount}" />
+									<c:set var="oymeDomain1" value="${item.oymeEmailDomainCd}" />
+								</c:when>
+								<c:when test="${item.oymeDefaultNy eq 0}">
+									<c:set var="oymeAccount0" value="${item.oymeEmailAccount}" />
+									<c:set var="oymeDomain0" value="${item.oymeEmailDomainCd}" />
+								</c:when>
+								<c:otherwise></c:otherwise>
+							</c:choose>
+						</c:forEach>
+
+						<div class="row">
 
 			<div class="col-12 col-sm-4 col-lg-2">
 				<label for="formFile" class="form-label">이메일 (필수)</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4">
 				<div class="input-group">
-					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" placeholder="이메일">
+					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" value="<c:out value="${oymeAccount1}"/>">
 					<span class="input-group-text">@</span>
 					<select class="form-select">
 						<option value="" selected>::선택::
-						<option value="35" <c:if test="${item.oymeEmailDomainCd eq 35 }">selected</c:if>>gmail.com
-						<option value="36" <c:if test="${item.oymeEmailDomainCd eq 36 }">selected</c:if>>naver.com
-						<option value="37" <c:if test="${item.oymeEmailDomainCd eq 37 }">selected</c:if>>hanmail.net
-						<option value="155" <c:if test="${item.oymeEmailDomainCd eq 155 }">selected</c:if>>hanmail.net
+						<c:forEach items="${codeEmail}" var="itemEmail"
+											varStatus="statusEmail">
+											<option value="<c:out value="${itemEmail.oycdSeq}"/>"
+												<c:if test="${oymeDomain1 eq itemEmail.oycdSeq}">selected</c:if>><c:out
+													value="${itemEmail.oycdName}" /></option>
+										</c:forEach>
 					</select>
 				</div>
 			</div>
@@ -448,14 +478,16 @@
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4">
 				<div class="input-group">
-					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" placeholder="이메일">
+					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" value="<c:out value="${oymeAccount0}"/>">
 					<span class="input-group-text">@</span>
 					<select class="form-select">
 						<option value="" selected>::선택::
-						<option value="35" <c:if test="${item.oymeEmailDomainCd eq 35 }">selected</c:if>>gmail.com
-						<option value="36" <c:if test="${item.oymeEmailDomainCd eq 36 }">selected</c:if>>naver.com
-						<option value="37" <c:if test="${item.oymeEmailDomainCd eq 37 }">selected</c:if>>hanmail.net
-						<option value="155" <c:if test="${item.oymeEmailDomainCd eq 155 }">selected</c:if>>hanmail.net
+						<c:forEach items="${codeEmail}" var="itemEmail"
+											varStatus="statusEmail">
+											<option value="<c:out value="${itemEmail.oycdSeq}"/>"
+												<c:if test="${oymeDomain0 eq itemEmail.oycdSeq}">selected</c:if>><c:out
+													value="${itemEmail.oycdName}" /></option>
+										</c:forEach>
 					</select>
 				</div>
 			</div>
@@ -650,6 +682,37 @@
             }
         }).open();
     }
+    
+
+	
+		goEdit = function(seq) {
+			alert(seq);
+			$("#oymbSeq").val(seq);
+			$("#formView").attr("action", "/myapp/durian/durianEdit");
+			$("#formView").submit();
+		}
+	
+	
+	
+		
+		goDel = function(seq) {
+			alert(seq);
+			$("#oymbSeq").val(seq);
+			$("#formView").attr("action", "/myapp/durian/durianList");
+			$("#formView").submit();
+		}
+	
+	
+	
+		
+		goHide = function(seq) {
+			alert(seq);
+			$("#oymbSeq").val(seq);
+			$("#formView").attr("action", "/myapp/durian/durianList");
+			$("#formView").submit();
+		}
+
+
 </script>
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

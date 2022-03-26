@@ -28,6 +28,16 @@ public class DurianDao {
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
 	
+	//selectListPhone
+	public List<Durian> selectListPhone(DurianVo vo) {
+		return sqlSession.selectList(namespace + ".selectListPhone", vo);
+	}
+	
+	//selectListEmail
+	public List<Durian> selectListEmail(DurianVo vo) {
+		return sqlSession.selectList(namespace + ".selectListEmail", vo);
+	}
+	
 	//Form
 	public int insert(Durian dto) {
 		return sqlSession.insert(namespace + ".insert", dto);

@@ -8,6 +8,10 @@ public interface DurianService {
 	
 	public List<Durian> selectList(DurianVo vo) throws Exception;
 	
+	public List<Durian> selectListPhone(DurianVo vo) throws Exception;
+
+	public List<Durian> selectListEmail(DurianVo vo) throws Exception;
+	
 	public int insert(Durian dto) throws Exception;
 	
 	public int insertJoinQna(Durian dto) throws Exception;
@@ -15,8 +19,6 @@ public interface DurianService {
 	public int insertNationG(Durian dto) throws Exception;
 	
 	public int insertNation(Durian dto) throws Exception;
-	
-	public int insertPhone(Durian dto) throws Exception;
 	
 	public int insertEmail(Durian dto) throws Exception;
 
