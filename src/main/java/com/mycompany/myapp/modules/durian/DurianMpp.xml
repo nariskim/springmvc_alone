@@ -15,7 +15,7 @@
 		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND g.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
-		<!-- AND oymaDefaultNy=1 AND oymeDefaultNy=1 AND oympDefaultNy=1 -->
+	
 		<choose>
 			<when test="scOymbDelNy == 1">AND a.oymbDelNy = 1</when>
 			<when test="scOymbDelNy == 0">AND a.oymbDelNy = 0</when>
@@ -24,8 +24,7 @@
 		<if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName LIKE concat('%',#{scOymbName},'%y')</if>
 		<choose>
 			<when test="scOption == 1">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 2">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')
-			</when>
+			<when test="scOption == 2">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')</when>
 		</choose>
 
 

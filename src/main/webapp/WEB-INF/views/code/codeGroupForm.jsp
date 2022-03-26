@@ -10,8 +10,6 @@
 
 <form id="formForm" name="formForm" method="post" action="/myapp/code/codeGroupInst">
 <input type="hidden"name="thisPage" value="<c:out value="${vo.thisPage}"/>">
-<input type="hidden"name="scOycgDelNy" value="<c:out value="${vo.scOycgDelNy}"/>">
-<input type="hidden"name="scOycgName" value="<c:out value="${vo.scOycgName}"/>">
 <input type="hidden" name="scOption" value="<c:out value="${vo.scOption}"/>">
 <input type="hidden" name="scValue" value="<c:out value="${vo.scValue}"/>">
 	

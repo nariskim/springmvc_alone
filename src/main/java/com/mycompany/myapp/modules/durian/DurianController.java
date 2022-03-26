@@ -53,25 +53,38 @@ public class DurianController {
 
 	@RequestMapping(value = "/durian/durianInst")
 	public String durianInst(Durian dto, DurianVo vo, RedirectAttributes redirectAttributes) throws Exception {
-
+		System.out.println("############################");
+		System.out.println("vo.getScOymbDelNy() : "+vo.getScOymbDelNy());
+		System.out.println("vo.getScOymbName() : "+vo.getScOymbName());
+		System.out.println("vo.getScOption() : "+vo.getScOption());	
+		System.out.println("vo.getScValue() : "+vo.getScValue());		
+		System.out.println("vo.getThisPage() : "+vo.getThisPage());		
+		/* System.out.println("vo.getOymbSeq() : "+vo.getOymbSeq()); */		
+		System.out.println("############################");
 		service.insert(dto);
 		service.insertJoinQna(dto);
 		service.insertNationG(dto);
 		service.insertNation(dto);
 		service.insertEmail(dto);
-		redirectAttributes.addAttribute("oymbSeq", dto.getOymbSeq());
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
 		redirectAttributes.addAttribute("scOymbName", vo.getScOymbName());
 		redirectAttributes.addAttribute("scOption", vo.getScOption());
 		redirectAttributes.addAttribute("scValue", vo.getScValue());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		
 		return "redirect:/durian/durianView";
 	}
 	
 	@RequestMapping(value = "/durian/durianView")
 	public String durianView(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
-
+		System.out.println("############################");
+		System.out.println("vo.getScOymbDelNy() : "+vo.getScOymbDelNy());
+		System.out.println("vo.getScOymbName() : "+vo.getScOymbName());
+		System.out.println("vo.getScOption() : "+vo.getScOption());	
+		System.out.println("vo.getScValue() : "+vo.getScValue());		
+		System.out.println("vo.getThisPage() : "+vo.getThisPage());		
+		System.out.println("vo.getOymbSeq() : "+vo.getOymbSeq());		
+		System.out.println("############################");
 		Durian rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
 		List<Durian> list = service.selectListPhone(vo);

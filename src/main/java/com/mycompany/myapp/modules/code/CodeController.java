@@ -50,12 +50,17 @@ public class CodeController {
 
 	@RequestMapping(value = "/code/codeGroupInst")
 	public String codeGroupInst(Code dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
-
+		System.out.println("############################");
+		System.out.println("vo.getThisPage() : "+vo.getThisPage());
+		System.out.println("vo.getScOption() : "+vo.getScOption());
+		System.out.println("vo.getScValue() : "+vo.getScValue());	
+		System.out.println("dto.getOycgSeq() : "+dto.getOycgSeq());		
+		System.out.println("############################");
 		service.insertGroup(dto);
-		redirectAttributes.addAttribute("oycgSeq", dto.getOycgSeq());
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		redirectAttributes.addAttribute("scOption", vo.getScOption());
 		redirectAttributes.addAttribute("scValue", vo.getScValue());
+		redirectAttributes.addAttribute("oycgSeq", dto.getOycgSeq());
 
 		return "redirect:/code/codeGroupView";
 	}

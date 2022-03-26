@@ -13,7 +13,7 @@
 <br>
 
 	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-	<input type="hidden" id="oycgSeq" name="oycgSeq">
+	<input type="hidden" id="oycgSeq" name="oycgSeq" value="<c:out value="${item.oycgSeq}"/>">
  	
 	<select name="scOycgDelNy" id="scOycgDelNy">
 		<option value="">::삭제여부::

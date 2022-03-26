@@ -123,6 +123,9 @@
 	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 	<input type="hidden" id="oymbSeq" name="oymbSeq">
 
+
+
+
 		<div class="row">
 			<header class="navbar navbar-dark sticky-top bg-light ml-auto">
 
@@ -278,8 +281,6 @@
 										<option value="1"
 											<c:if test="${vo.scOption eq 1 }">selected</c:if>>한글
 
-
-										
 										<option value="2"
 											<c:if test="${vo.scOption eq 2 }">selected</c:if>>영문
 
@@ -288,8 +289,7 @@
 									</select>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
-									<input type="text" name="scValue" id="scValue"
-										class="form-control" placeholder="검색어" value="<c:out value="${vo.scValue}"/>">
+									<input type="text" id="scValue" name="scValue" class="form-control" placeholder="검색어" value="<c:out value="${vo.scValue}"/>">
 								</div>
 
 
@@ -358,6 +358,7 @@
 													<td><c:out value="${item.oymbGradeCd}" /></td>
 													<td><a href="javascript:goView(<c:out value="${item.oymbSeq}"/>);">
 													<c:out value="${item.oymbName}" /></a></td>
+													<td><input type="hidden" id="oymbNameEng" name="oymbNameEng" value="${item.oymbNameEng}"></td>
 													<td><c:out value="${item.oymbId}" /></td>
 													<td><c:out value="${item.oymbGenderCd}" /></td>
 													<td><c:out value="${item.oympTelecomCd}" /></td>
