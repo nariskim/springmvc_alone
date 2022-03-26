@@ -351,7 +351,13 @@
 
 	</update>
 	
-
+	<update id="updateDelete">
+		UPDATE oyMember SET oymbDelNy = 1 WHERE 1=1 AND oymbSeq = #{oymbSeq}  
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM oyMember WHERE 1=1 AND oymbSeq = #{oymbSeq}
+	</delete>
 	
 	<select id="selectListForCache" resultMap="resultMapObj">
 		SELECT

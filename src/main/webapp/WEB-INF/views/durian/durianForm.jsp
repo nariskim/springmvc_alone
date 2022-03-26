@@ -116,12 +116,6 @@
 </head>
 <body>
 <form id="formForm" name="formForm" method="post" action="/myapp/durian/durianInst">
-<input type="hidden"name="thisPage" value="<c:out value="${vo.thisPage}"/>">
-<input type="hidden"name="scOymbDelNy" value="<c:out value="${vo.scOymbDelNy}"/>">
-<input type="hidden"name="scOymbName" value="<c:out value="${vo.scOymbName}"/>">
-<input type="hidden" name="scOption" value="<c:out value="${vo.scOption}"/>">
-<input type="hidden" name="scValue" value="<c:out value="${vo.scValue}"/>">
-<input type="hidden" name="oymbSeq" value="<c:out value="${item.oymbSeq}"/>">
 	<div class="row">
 		<header class="navbar navbar-dark sticky-top bg-light ml-auto">
 
@@ -333,11 +327,11 @@
 	</div>
 	<div class="col-12 col-sm-8 col-lg-4">
 		<div class=input-group>
-			<input type="text" id="oymaZipCode" placeholder="우편번호">
-			<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-			<input type="text" id="oymaAddress1" placeholder="주소"><br>
-			<input type="text" id="oymaAddress2" placeholder="상세주소">
-			<input type="text" id="oymaAddress3" placeholder="참고항목">
+			<input type="text" class="form-control" id="oymaZipCode" placeholder="우편번호">
+			<input type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+			<input type="text" class="form-control" id="oymaAddress1" placeholder="주소"><br>
+			<input type="text" class="form-control" id="oymaAddress2" placeholder="상세주소">
+			<input type="text" class="form-control" id="oymaAddress3" placeholder="참고항목">
 		</div>
 	</div>
 	<div class="col-12 col-sm-4 col-lg-2">
@@ -569,73 +563,169 @@
 
 
 
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/myapp/resources/js/validation.js"></script>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
 
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
+	<script type="text/javascript">
+		function sample6_execDaumPostcode() {
+			new daum.Postcode(
+					{
+						oncomplete : function(data) {
+							// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("oymaAddress3").value = extraAddr;
-                
-                } else {
-                    document.getElementById("oymaAddress3").value = '';
-                }
+							// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+							// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+							var addr = ''; // 주소 변수
+							var extraAddr = ''; // 참고항목 변수
 
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('oymaZipCode').value = data.zonecode;
-                document.getElementById("oymaAddress1").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("oymaAddress2").focus();
-            }
-        }).open();
-    }
-    
-	goView = function(seq) {
-		alert(seq);
-		$("#oymbSeq").val(seq);
-		$("#formForm").attr("action", "/myapp/durian/durianView");
-		$("#formForm").submit();
-	}
+							//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+							if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+								addr = data.roadAddress;
+							} else { // 사용자가 지번 주소를 선택했을 경우(J)
+								addr = data.jibunAddress;
+							}
 
-	
-	goList = function() {
-		alert("회원리스트로 이동합니다.");
-		$("#formForm").attr("action", "/myapp/durian/durianList");
-		$("#formForm").submit();
-	}
-</script>
+							// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+							if (data.userSelectedType === 'R') {
+								// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+								// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+								if (data.bname !== ''
+										&& /[동|로|가]$/g.test(data.bname)) {
+									extraAddr += data.bname;
+								}
+								// 건물명이 있고, 공동주택일 경우 추가한다.
+								if (data.buildingName !== ''
+										&& data.apartment === 'Y') {
+									extraAddr += (extraAddr !== '' ? ', '
+											+ data.buildingName
+											: data.buildingName);
+								}
+								// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+								if (extraAddr !== '') {
+									extraAddr = ' (' + extraAddr + ')';
+								}
+								// 조합된 참고항목을 해당 필드에 넣는다.
+								document.getElementById("oymaAddress3").value = extraAddr;
+
+							} else {
+								document.getElementById("oymaAddress3").value = '';
+							}
+
+							// 우편번호와 주소 정보를 해당 필드에 넣는다.
+							document.getElementById("oymaZipCode").value = data.zonecode;
+							document.getElementById("oymaAddress1").value = addr;
+							// 커서를 상세주소 필드로 이동한다.
+							document.getElementById("oymaAddress2").focus();
+						}
+					}).open();
+		}
+		
+		$("#btnSubmit").on(
+				"click",
+				function() {
+
+					if (!checkNull($("#oymbName"), $("#oymbName").val(),
+							"(한글이름)필수 입력 사항입니다."))
+						return false;
+
+
+					if (!checkNull($("#oymbNameEng"), $("#oymbNameEng")
+							.val(), "(영문이름)필수 입력 사항입니다."))
+						return false;
+
+
+					if (!checkNull($("#oymbId"), $("#oymbId").val(), "(아이디)필수 입력 사항입니다."))
+						return false;
+
+					if (!checkNull($("#oymbPassword"), $("#oymbPassword")
+							.val(), "(비밀번호)필수 입력 사항입니다."))
+						return false;
+
+					if (!checkNull($("#oyjqQuestionCd"), $("#oyjqQuestionCd")
+							.val(), "(비밀번호 질문)필수 선택 사항입니다."))
+						return false;
+
+					if (!checkNull($("#oyjqAnswer"), $("#oyjqAnswer")
+							.val(), "(비밀번호 답)필수 입력 사항입니다."))
+						return false;
+
+					if (!checkNull($("#oymaZipCode"), $("#oymaZipCode")
+							.val(), "((우편 번호)주소를 입력해 주세요."))
+						return false;
+
+					if (!checkNull($("#oymaAddress1"), $("#oymaAddress1")
+							.val(), "((도로명 주소/지번 주소)주소를 입력해 주세요."))
+						return false;
+
+					if (!checkNull($("#oymaAddress2"), $("#oymaAddress2")
+							.val(), "((상세 주소)주소를 입력해 주세요."))
+						return false;
+
+					if (!checkNull($("#oyjqAnswer"), $("#oyjqAnswer")
+							.val(), "(비밀번호 답)필수 입력 사항입니다."))
+						return false;
+
+					
+					if (!checkNull($("#oympTelecomCd"), $("#oympTelecomCd").val(),
+					"(통신사)필수 선택 사항입니다."))
+						return false;
+
+
+					if (!checkNull($("#oympNumber"), $("#oympNumber").val(),
+							"(휴대전화)필수 입력 사항입니다."))
+						return false;
+
+
+					if (!checkNull($("#oymeEmailAccount"), $(
+							"#oymeEmailAccount").val(), "(이메일계정)필수 입력 사항입니다."))
+						return false;
+
+
+					if (!checkNull($("#oymeEmailDomainCd"), $(
+							"#oymeEmailDomainCd").val(), "(이메일주소)필수 선택 사항입니다."))
+						return false;
+
+
+					if (!checkOnlyKorean($("#oymbName"), $("#oymbName").val(),
+							""))
+						return false;
+
+					if (!checkOnlyEnglish($("#oymbNameEng"), $("#oymbNameEng")
+							.val(), ""))
+						return false;
+
+					if (!checkId($("#oymbId"), $("#oymbId").val(), ""))
+						return false;
+
+					if (!checkPassword($("#oymbPassword"), $("#oymbPassword")
+							.val(), ""))
+						return false;
+
+					if (!checkMobile($("#oympNumber"), $("#oympNumber").val(),
+							""))
+						return false;
+
+					if (!checkEmail($("#oymeEmailAccount"), $(
+							"#oymeEmailAccount").val(), ""))
+						return false;
+				});
+
+		goView = function(seq) {
+			alert(seq);
+			$("#oymbSeq").val(seq);
+			$("#formForm").attr("action", "/myapp/durian/durianView");
+			$("#formForm").submit();
+		}
+
+		goList = function() {
+			alert("회원리스트로 이동합니다.");
+			$("#formForm").attr("action", "/myapp/durian/durianList");
+			$("#formForm").submit();
+		}
+	</script>
 
 
 

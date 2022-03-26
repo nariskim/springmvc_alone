@@ -74,6 +74,14 @@ public class DurianDao {
 		return sqlSession.update(namespace + ".update", dto);
 	}
 	
+	public int updateDelete(DurianVo vo) {
+		return sqlSession.update(namespace + ".updateDelete", vo);
+	}
+	
+	public int delete(DurianVo vo) {
+		return sqlSession.delete(namespace + ".delete", vo);
+	}
+	
 	
 	public List<Durian> selectListForCache() { 
 		List<Durian> list = sqlSession.selectList(namespace + ".selectListForCache", ""); 

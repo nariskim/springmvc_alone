@@ -63,6 +63,12 @@ checkOnlyEnglish = function(value) {
     else return false;
 }
 
+checkOnlyKorean = function(value) {
+    var regExp = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/ 
+    if(regExp.test(value)) return true;
+    else return false;
+}
+
 
 checkEmail = function(obj, value, message) {
     var regExp = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -86,6 +92,8 @@ checkMobile = function(obj, value, message) {
 		return false;
 	}
 }
+
+
 
 //	javascript
 

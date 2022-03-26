@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class DurianServiceImpl implements DurianService {
 
@@ -69,6 +68,19 @@ public class DurianServiceImpl implements DurianService {
 	public int selectOneCount(DurianVo vo) throws Exception {
 		return dao.selectOneCount(vo);
 	}
+	
+	@Override
+	public int updateDelete(DurianVo vo) throws Exception{
+		return dao.updateDelete(vo);
+		
+	}
+	
+	@Override
+	public int delete(DurianVo vo) throws Exception{
+		return dao.delete(vo);
+		
+	}
+	
 	
 	@PostConstruct
 	public void selectListForCache() {

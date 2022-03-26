@@ -36,6 +36,7 @@ public class Durian {
 	private String oymaZipCode = "";
 	private String oymaAddress1 = "";
 	private String oymaAddress2 = "";
+	private String oymaAddress3 = "";
 	private Integer oymaDelNy;
 	
 	private String oymnSeq = "";
@@ -275,6 +276,14 @@ public class Durian {
 		this.oymaAddress2 = oymaAddress2;
 	}
 
+	public String getOymaAddress3() {
+		return oymaAddress3;
+	}
+
+	public void setOymaAddress3(String oymaAddress3) {
+		this.oymaAddress3 = oymaAddress3;
+	}
+
 	public Integer getOymaDelNy() {
 		return oymaDelNy;
 	}
@@ -476,5 +485,4 @@ public class Durian {
 	}
 
 	
-
 }

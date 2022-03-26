@@ -560,7 +560,7 @@
 		 });
 		 */
 
-	/* 	$("#btnSubmit").on(
+	$("#btnSubmit").on(
 				"click",
 				function() {
 
@@ -575,7 +575,7 @@
 					if (!checkNull($("#scValue"), $("#scValue").val(),
 							"검색어를 입력해주세요."))
 						return false;
-				}); */
+				});
 
 		goPage = function(seq) {
 			alert(seq);

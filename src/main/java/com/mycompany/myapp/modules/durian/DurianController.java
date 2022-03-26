@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mycompany.myapp.modules.code.CodeVo;
-
-
 @Controller
 public class DurianController {
 
@@ -55,7 +52,7 @@ public class DurianController {
 	}
 
 	@RequestMapping(value = "/durian/durianInst")
-	public String durianInst(Durian dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
+	public String durianInst(Durian dto, DurianVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.insert(dto);
 		service.insertJoinQna(dto);
@@ -64,10 +61,12 @@ public class DurianController {
 		service.insertEmail(dto);
 		redirectAttributes.addAttribute("oymbSeq", dto.getOymbSeq());
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
+		redirectAttributes.addAttribute("scOymbName", vo.getScOymbName());
 		redirectAttributes.addAttribute("scOption", vo.getScOption());
 		redirectAttributes.addAttribute("scValue", vo.getScValue());
 		
-		return "redirect:/durian/durianList";
+		return "redirect:/durian/durianView";
 	}
 	
 	@RequestMapping(value = "/durian/durianView")
@@ -108,6 +107,28 @@ public class DurianController {
 		
 		return "redirect:/durian/durianList";
 	}
+	@RequestMapping(value = "/durian/durianFelete")
+	public String DurianFelete(DurianVo vo,  RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.updateDelete(vo);
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("scOption", vo.getScOption());
+		redirectAttributes.addAttribute("scValue", vo.getScValue());
+		
+		return "redirect:/durian/durianList";
+	}
 	
+	@RequestMapping(value = "/durian/durianDelete")
+	public String DurianDelete(DurianVo vo, RedirectAttributes redirectAttributes) throws Exception {
+
+		service.delete(vo);
+		
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("scOption", vo.getScOption());
+		redirectAttributes.addAttribute("scValue", vo.getScValue());
+		
+
+		return "redirect:/durian/durianList";
+	}
 
 }
