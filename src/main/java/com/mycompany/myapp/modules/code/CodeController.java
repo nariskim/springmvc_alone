@@ -43,8 +43,12 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeGroupForm")
-	public String codeGroupForm(@ModelAttribute("vo") CodeVo vo) throws Exception {
-
+	public String codeGroupForm(@ModelAttribute("vo") CodeVo vo, Code dto) throws Exception {
+		System.out.println("############################");
+		System.out.println("vo.getThisPage() : "+vo.getThisPage());
+		System.out.println("vo.getScOption() : "+vo.getScOption());
+		System.out.println("vo.getScValue() : "+vo.getScValue());	
+		System.out.println("############################");
 		return "code/codeGroupForm";
 	}
 
@@ -54,7 +58,7 @@ public class CodeController {
 		System.out.println("vo.getThisPage() : "+vo.getThisPage());
 		System.out.println("vo.getScOption() : "+vo.getScOption());
 		System.out.println("vo.getScValue() : "+vo.getScValue());	
-		System.out.println("dto.getOycgSeq() : "+dto.getOycgSeq());		
+		System.out.println("dto.getOycgSeq() : "+dto.getOycgSeq());			
 		System.out.println("############################");
 		service.insertGroup(dto);
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());

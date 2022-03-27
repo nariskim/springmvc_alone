@@ -106,7 +106,7 @@
 
 		FROM
 		oyCodeGroup a
-		LEFT JOIN oyCode b on a.oycgSeq = b.oycgSeq
+		LEFT JOIN oyCode b on b.oycgSeq = a.oycgSeq
 		
 		WHERE 1=1
 		<choose>
@@ -138,7 +138,7 @@
 		, b.oycdDelNy
 		
 		<include refid="selectCommon" />
-		ORDER BY a.oycdSeq DESC
+		ORDER BY oycgSeq ASC
 		limit #{startRnumForMysql}, #{rowNumToShow}
 		
 
@@ -148,7 +148,9 @@
 	<insert id="insert">
 
 		INSERT INTO oyCode (
-		oycdName
+		a.oycgSeq
+		, b.oycdSeq
+		, oycdName
 		, oycdDelNy
 		, oycgSeq
 		)

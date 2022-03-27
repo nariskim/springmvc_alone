@@ -9,9 +9,9 @@ public class DurianVo {
 	private String oymaSeq;
 	private String oympSeq;
 	private String oymeSeq;
-	private Integer oyjqQuestionCd;	
-	private Integer oympTelecomCd;
-	private Integer oymeEmailDomainCd;
+	private String oyjqQuestionCd;	
+	private String oympTelecomCd;
+	private String oymeEmailDomainCd;
 	
 	private Integer oympDefaultNy;
 	
@@ -87,14 +87,6 @@ public class DurianVo {
 
 	}
 
-	public Integer getOympDefaultNy() {
-		return oympDefaultNy;
-	}
-
-	public void setOympDefaultNy(Integer oympDefaultNy) {
-		this.oympDefaultNy = oympDefaultNy;
-	}
-
 	public String getOymbSeq() {
 		return oymbSeq;
 	}
@@ -151,20 +143,36 @@ public class DurianVo {
 		this.oymeSeq = oymeSeq;
 	}
 
-	public Integer getOyjqQuestionCd() {
+	public String getOyjqQuestionCd() {
 		return oyjqQuestionCd;
 	}
 
-	public void setOyjqQuestionCd(Integer oyjqQuestionCd) {
+	public void setOyjqQuestionCd(String oyjqQuestionCd) {
 		this.oyjqQuestionCd = oyjqQuestionCd;
 	}
 
-	public Integer getOympTelecomCd() {
+	public String getOympTelecomCd() {
 		return oympTelecomCd;
 	}
 
-	public void setOympTelecomCd(Integer oympTelecomCd) {
+	public void setOympTelecomCd(String oympTelecomCd) {
 		this.oympTelecomCd = oympTelecomCd;
+	}
+
+	public String getOymeEmailDomainCd() {
+		return oymeEmailDomainCd;
+	}
+
+	public void setOymeEmailDomainCd(String oymeEmailDomainCd) {
+		this.oymeEmailDomainCd = oymeEmailDomainCd;
+	}
+
+	public Integer getOympDefaultNy() {
+		return oympDefaultNy;
+	}
+
+	public void setOympDefaultNy(Integer oympDefaultNy) {
+		this.oympDefaultNy = oympDefaultNy;
 	}
 
 	public String getScOymbName() {
@@ -287,15 +295,7 @@ public class DurianVo {
 		this.startRnumForMysql = startRnumForMysql;
 	}
 
-	public Integer getOymeEmailDomainCd() {
-		return oymeEmailDomainCd;
-	}
-
-	public void setOymeEmailDomainCd(Integer oymeEmailDomainCd) {
-		this.oymeEmailDomainCd = oymeEmailDomainCd;
-	}
-
-
+	
 	
 	
 }

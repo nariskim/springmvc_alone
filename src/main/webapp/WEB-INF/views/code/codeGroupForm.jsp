@@ -9,9 +9,7 @@
 <link href="/myapp/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
 
 <form id="formForm" name="formForm" method="post" action="/myapp/code/codeGroupInst">
-<input type="hidden"name="thisPage" value="<c:out value="${vo.thisPage}"/>">
-<input type="hidden" name="scOption" value="<c:out value="${vo.scOption}"/>">
-<input type="hidden" name="scValue" value="<c:out value="${vo.scValue}"/>">
+
 	
 	<input type="text" id="abcDate" name="abcDate">
 	

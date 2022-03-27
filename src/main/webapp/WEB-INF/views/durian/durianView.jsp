@@ -236,11 +236,11 @@
 					</ol>
 				</nav>
 				<br><br> 
-				<a href="javascript:goEdit(<c:out value="${vo.oymbSeq}"/>);">
+				<a href="javascript:goEdit();">
 				<button type="button" id="" class="btn btn-success">수정</button></a>
-				<a href="javascript:goDel(<c:out value="${vo.oymbSeq}"/>);">
+				<a href="javascript:goDel();">
 				<button type="button" id="" class="btn btn-danger">삭제(영구)</button></a>
-				<a href="javascript:goHide(<c:out value="${vo.oymbSeq}"/>);">
+				<a href="javascript:goHide();">
 				<button type="button" id="" class="btn btn-danger">삭제(임시)</button></a>
 				
 				
@@ -329,7 +329,7 @@
 			<div class="col-12 col-sm-8 col-lg-4">
 				<div class="mb-3">
 					<select class="form-select">
-						<option selected>선택해주세요</option>
+						<option value=null selected>선택해주세요</option>
 						<option>question 1</option>
 						<option>question 2</option>
 						<option>question 3</option>
@@ -367,7 +367,7 @@
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4">
 				<select class="form-select">
-					<option value="choose">선택해주세요</option>
+					<option value=null >선택해주세요</option>
 					<option value="1">한국</option>
 					<option value="2">미국</option>
 					<option value="5">프랑스</option>
@@ -406,7 +406,7 @@
 								<div class="input-group">
 									<select class="form-select form-select-sm mb-1"
 										id="oympTelecomCd" name="oympTelecomCd">
-										<option selected>::통신사::</option>
+										<option value=null selected>::통신사::</option>
 										<c:forEach items="${codeTelecom}" var="itemTelecom"
 											varStatus="statusTelecom">
 											<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
@@ -424,7 +424,7 @@
 								<div class="input-group">
 									<select class="form-select form-select-sm mb-1"
 										id="oympTelecomCd" name="oympTelecomCd">
-										<option selected>::통신사::</option>
+										<option value=null selected>::통신사::</option>
 										<c:forEach items="${codeTelecom}" var="itemTelecom"
 											varStatus="statusTelecom">
 											<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
@@ -465,7 +465,7 @@
 					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" value="<c:out value="${oymeAccount1}"/>">
 					<span class="input-group-text">@</span>
 					<select class="form-select">
-						<option value="" selected>::선택::
+						<option value=null selected>::선택::
 						<c:forEach items="${codeEmail}" var="itemEmail"
 											varStatus="statusEmail">
 											<option value="<c:out value="${itemEmail.oycdSeq}"/>"
@@ -484,7 +484,7 @@
 					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" value="<c:out value="${oymeAccount0}"/>">
 					<span class="input-group-text">@</span>
 					<select class="form-select">
-						<option value="" selected>::선택::
+						<option value=null selected>::선택::
 						<c:forEach items="${codeEmail}" var="itemEmail"
 											varStatus="statusEmail">
 											<option value="<c:out value="${itemEmail.oycdSeq}"/>"
@@ -694,23 +694,17 @@
 		}
 		
 
-		goEdit = function(seq) {
-			alert(seq);
-			$("#oymbSeq").val(seq);
+		goEdit = function() {
 			$("#formView").attr("action", "/myapp/durian/durianEdit");
 			$("#formView").submit();
 		}
 
-		goDel = function(seq2) {
-			alert(seq2);
-			$("#oymbSeq").val(seq);
+		goDel = function() {
 			$("#formView").attr("action", "/myapp/durian/durianDelete");
 			$("#formView").submit();
 		}
 
-		goHide = function(seq3) {
-			alert(seq3);
-			$("#oymbSeq").val(seq);
+		goHide = function() {
 			$("#formView").attr("action", "/myapp/durian/durianFelete");
 			$("#formView").submit();
 		}

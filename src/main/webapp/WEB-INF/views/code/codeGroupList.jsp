@@ -50,7 +50,7 @@
 				<c:out value="${item.oycgName}" /></a> | 
 				<c:out value="${item.oycgNameEng}" />
 				<c:choose>
-					<c:when test="${item.oycdDelNy eq 0 }">O</c:when>
+					<c:when test="${item.oycgDelNy eq 0 }">O</c:when>
 					<c:otherwise>X</c:otherwise>
 				</c:choose>
 				<br>

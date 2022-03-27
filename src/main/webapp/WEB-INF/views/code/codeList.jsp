@@ -45,7 +45,11 @@
 			<c:out value="${item.oycgSeq}" />
 			<c:out value="${item.oycdSeq}" /> | <a
 				href="/myapp/code/codeView?oycdSeq=<c:out value="${item.oycdSeq}"/>"><c:out
-					value="${item.oycdName}" /></a>
+					value="${item.oycdName}" /></a> | <c:out
+					value="${item.oycdNameEng}" /> | <c:choose>
+					<c:when test="${item.oycdDelNy eq 0 }">O</c:when>
+					<c:otherwise>X</c:otherwise>
+				</c:choose>
 			<br>
 
 		</c:forEach>

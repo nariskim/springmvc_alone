@@ -115,7 +115,15 @@
 </style>
 </head>
 <body>
-<form id="formForm" name="formForm" method="post" action="/myapp/durian/durianInst">
+<form id="durianForm" name="durianForm" method="post" action="/myapp/durian/durianInst">
+	
+	<input type="hidden" id="scOymbDelNy" name="scOymbDelNy" value="<c:out value="${vo.scOymbDelNy}"/>">
+	<input type="hidden" id="scOymbName" name="scOymbName" value="<c:out value="${vo.scOymbName}"/>">
+	<input type="hidden" id="scOption" name="scOption" value="<c:out value="${vo.scOption}"/>">
+	<input type="hidden" id="scValue" name="scValue" value="<c:out value="${vo.scValue}"/>">
+	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+	<input type="hidden" id="oymbSeq" name="oymbSeq" value="<c:out value="${vo.oymbSeq}"/>">
+	
 	<div class="row">
 		<header class="navbar navbar-dark sticky-top bg-light ml-auto">
 
@@ -529,9 +537,9 @@
 	</div>
 </div>
 			</div>	
-				
-		<a href="javascript:goView(<c:out value="${item.oymbSeq}"/>);"><input type="submit" id="btnSubmit" name="search"
-											class="btn btn-outline-dark" value="&nbsp등 록&nbsp"></a>
+
+											<a href="javascript:goInst();">
+					<button type="button" id="" class="btn btn-success">등록</button></a>
 		</main>
 	</div>
 </div>
@@ -713,17 +721,15 @@
 						return false;
 				});
 
-		goView = function(seq) {
-			alert(seq);
-			$("#oymbSeq").val(seq);
-			$("#formForm").attr("action", "/myapp/durian/durianView");
-			$("#formForm").submit();
+		goInst = function() {
+			$("#durianForm").attr("action", "/myapp/durian/durianView");
+			$("#durianForm").submit();
 		}
 
 		goList = function() {
 			alert("회원리스트로 이동합니다.");
-			$("#formForm").attr("action", "/myapp/durian/durianList");
-			$("#formForm").submit();
+			$("#durianForm").attr("action", "/myapp/durian/durianList");
+			$("#durianForm").submit();
 		}
 	</script>
 

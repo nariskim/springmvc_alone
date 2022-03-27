@@ -120,12 +120,14 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 </style>
 </head>
 <body>
-	<form method="post" action="/myapp/durian/durianUpdt">
+	<form id="formUpdt" name="formUpdt" method="post" action="/myapp/durian/durianUpdt">
 
-	<input type="hidden"name="thisPage" value="<c:out value="${vo.thisPage}"/>">
-	<input type="hidden" name="scOption" value="<c:out value="${vo.scOption}"/>">
-	<input type="hidden" name="scValue" value="<c:out value="${vo.scValue}"/>">	
-	<input type="hidden" name="oymbSeq" value= "<c:out value="${item.oymbSeq}"/>">
+	<input type="hidden" id="scOymbDelNy" name="scOymbDelNy" value="<c:out value="${vo.scOymbDelNy}"/>">
+	<input type="hidden" id="scOymbName" name="scOymbName" value="<c:out value="${vo.scOymbName}"/>">
+	<input type="hidden" id="scOption" name="scOption" value="<c:out value="${vo.scOption}"/>">
+	<input type="hidden" id="scValue" name="scValue" value="<c:out value="${vo.scValue}"/>">
+	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+	<input type="hidden" id="oymbSeq" name="oymbSeq" value="<c:out value="${vo.oymbSeq}"/>">
 
 		<div class="row">
 			<header class="navbar navbar-dark sticky-top bg-light ml-auto">
@@ -255,7 +257,8 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 						</ol>
 					</nav>
 					<br> <br>
-					<input type="submit" value="제출">
+					<a href="javascript:goSubmit();">
+					<button type="button" id="" class="btn btn-success">수정완료</button></a>
 					<div class="row">
 
 					<div class="col-12 col-sm-4 col-lg-2">
@@ -352,7 +355,7 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 					<div class="col-12 col-sm-8 col-lg-4">
 						<div class="mb-3">
 							<select class="form-select" id="" name="">
-								<option selected>선택해주세요</option>
+								<option value="" selected>선택해주세요</option>
 								<option value="17">question 1</option>
 								<option value="18">question 2</option>
 								<option value="19">question 3</option>
@@ -399,7 +402,7 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 					</div>
 					<div class="col-12 col-sm-8 col-lg-4">
 						<select class="form-select" id="" name="">
-							<option value="choose">선택해주세요</option>
+							<option value="">선택해주세요</option>
 							<option value="1">한국</option>
 							<option value="2">미국</option>
 							<option value="5">프랑스</option>
@@ -413,6 +416,25 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 					</div>
 
 				</div>
+
+
+						<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
+							<c:choose>
+								<c:when test="${item.oympDefaultNy eq 1}">
+									<c:set var="oympNumber1" value="${item.oympNumber}" />
+									<c:set var="oympTelecom1" value="${item.oympTelecomCd}" />
+									<c:set var="oympDefault1" value="${item.oympDefaultNy}" />
+								</c:when>
+								<c:when test="${item.oympDefaultNy eq 0}">
+									<c:set var="oympNumber0" value="${item.oympNumber}" />
+									<c:set var="oympTelecom0" value="${item.oympTelecomCd}" />
+									<c:set var="oympDefault0" value="${item.oympDefaultNy}" />
+								</c:when>
+								<c:otherwise></c:otherwise>
+							</c:choose>
+						</c:forEach>
+
+
 
 				<div class="row">
 
@@ -442,9 +464,9 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 			<option value="<c:out value="${itemTelecom.oycdSeq}"/>" <c:if test="${item.oympTelecomCd eq itemTelecom.oycdSeq }">selected</c:if> ><c:out value="${itemTelecom.oycdName}"/></option>	
 							</c:forEach>
 			</select>
-			<input type="text" class="form-control" id="oympNumber" name="oympNumber" value="<c:if test="${vo.oympDefaultNy eq 0 }"><c:out value="${item.oympNumber}"/></c:if>">
+			<input type="text" class="form-control" id="oympNumber" name="oympNumber" value="<c:out value="${item.oympNumber}"/>">
 						</div>
-
+					
 					</div>
 
 
@@ -458,7 +480,7 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 								<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" placeholder="이메일">
 									<span class="input-group-text">@</span>
 									<select class="form-select" id="" name="">
-									<option selected>선택해주세요
+									<option value="" selected>선택해주세요
 									<option value="35">gmail.com
 									<option value="36">naver.com
 									<option value="37">hanmail.net
@@ -476,7 +498,7 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 									name="oymeEmailAccount" placeholder="이메일"> <span
 									class="input-group-text">@</span> <select class="form-select"
 									id="oymeEmailDomainCd" name="oymeEmailDomainCd">
-									<option selected>선택해주세요
+									<option value="" selected>선택해주세요
 									<option value="35">gmail.com
 									<option value="36">naver.com
 									<option value="37">hanmail.net
@@ -670,6 +692,12 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+
+goSubmit = function() {
+	$("#formUpdt").attr("action", "/myapp/durian/durianView");
+	$("#formUpdt").submit();
+}
+
 </script>
 
 
