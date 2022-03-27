@@ -44,11 +44,11 @@ public class DurianController {
 	@RequestMapping(value = "/durian/durianForm")
 	public String durianForm(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
 		System.out.println("############################");
-		System.out.println("vo.getScOymbDelNy() : "+vo.getScOymbDelNy());
-		System.out.println("vo.getScOymbName() : "+vo.getScOymbName());
-		System.out.println("vo.getScOption() : "+vo.getScOption());	
-		System.out.println("vo.getScValue() : "+vo.getScValue());		
-		System.out.println("vo.getThisPage() : "+vo.getThisPage());		
+		System.out.println("getScOymbDelNy() : "+vo.getScOymbDelNy());
+		System.out.println("getScOymbName() : "+vo.getScOymbName());
+		System.out.println("getScOption() : "+vo.getScOption());	
+		System.out.println("getScValue() : "+vo.getScValue());		
+		System.out.println("getThisPage() : "+vo.getThisPage());		
 		/* System.out.println("vo.getOymbSeq() : "+vo.getOymbSeq()); */		
 		System.out.println("############################");
 		
@@ -60,18 +60,27 @@ public class DurianController {
 	}
 
 	@RequestMapping(value = "/durian/durianInst")
-	public String durianInst(Durian dto, DurianVo vo, RedirectAttributes redirectAttributes) throws Exception {
+	public String durianInst(Durian dto, DurianVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		System.out.println("############################");	
 		System.out.println("dto.getOymbSeq() : "+dto.getOymbSeq()); 		
 		System.out.println("############################");
 		service.insert(dto);
 		service.insertJoinQna(dto);
-		service.insertNationG(dto);
-		service.insertNation(dto);
+//		service.insertNationG(dto);
+//		service.insertNation(dto);
+		service.insertPhone(dto);
 		service.insertEmail(dto);
 		System.out.println("############################");	
 		System.out.println("vo.getOymbSeq() : "+vo.getOymbSeq()); 		
 		System.out.println("############################");
+		List<Durian> list = service.selectListPhone(vo);
+		model.addAttribute("listPhone", list);
+		List<Durian> list2 = service.selectListEmail(vo);
+		model.addAttribute("listEmail", list2);
+		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
+		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
+		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
+		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
 		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
 		redirectAttributes.addAttribute("scOymbName", vo.getScOymbName());
 		redirectAttributes.addAttribute("scOption", vo.getScOption());
@@ -79,18 +88,19 @@ public class DurianController {
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		redirectAttributes.addAttribute("oymbSeq", vo.getOymbSeq());
 		
-		return "redirect:/durian/durianView";
+		return "redirect:/durian/durianList";
 	}
 	
 	@RequestMapping(value = "/durian/durianView")
 	public String durianView(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
+		
 		System.out.println("############################");
-		System.out.println("vo.getScOymbDelNy() : "+vo.getScOymbDelNy());
-		System.out.println("vo.getScOymbName() : "+vo.getScOymbName());
-		System.out.println("vo.getScOption() : "+vo.getScOption());	
-		System.out.println("vo.getScValue() : "+vo.getScValue());		
-		System.out.println("vo.getThisPage() : "+vo.getThisPage());		
-		System.out.println("vo.getOymbSeq() : "+vo.getOymbSeq());		
+		System.out.println("getScOymbDelNy() : "+vo.getScOymbDelNy());
+		System.out.println("getScOymbName() : "+vo.getScOymbName());
+		System.out.println("getScOption() : "+vo.getScOption());	
+		System.out.println("getScValue() : "+vo.getScValue());		
+		System.out.println("getThisPage() : "+vo.getThisPage());		
+		System.out.println("getOymbSeq() : "+vo.getOymbSeq());		
 		System.out.println("############################");
 		Durian rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
@@ -109,10 +119,20 @@ public class DurianController {
 
 	@RequestMapping(value = "/durian/durianEdit")
 	public String durianEdit(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
-
+		System.out.println("############################");
+		System.out.println("getScOymbDelNy() : "+vo.getScOymbDelNy());
+		System.out.println("getScOymbName() : "+vo.getScOymbName());
+		System.out.println("getScOption() : "+vo.getScOption());	
+		System.out.println("getScValue() : "+vo.getScValue());		
+		System.out.println("getThisPage() : "+vo.getThisPage());		
+		System.out.println("getOymbSeq() : "+vo.getOymbSeq());		
+		System.out.println("############################");
 		Durian rt = service.selectOne(vo);
-	
 		model.addAttribute("item", rt);
+		List<Durian> list = service.selectListPhone(vo);
+		model.addAttribute("listPhone", list);
+		List<Durian> list2 = service.selectListEmail(vo);
+		model.addAttribute("listEmail", list2);
 		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
@@ -121,19 +141,31 @@ public class DurianController {
 	}
 	
 	@RequestMapping(value = "/durian/durianUpdt")
-	public String durianUpdt(@ModelAttribute("vo") Durian dto, DurianVo vo, RedirectAttributes redirectAttributes) throws Exception {
-		System.out.println("############################");	
-		System.out.println("dto.getOymbSeq() : "+dto.getOymbSeq()); 		
-		System.out.println("############################");
+	public String durianUpdt(@ModelAttribute("vo") Durian dto, DurianVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		service.update(dto);
+		service.updateJoinQna(dto);
+//		service.updateNationG(dto);
+		service.updateNation(dto); 
+		service.updatePhone(dto);
+		service.updateEmail(dto);
 		System.out.println("############################");	
-		System.out.println("dto.getOymbSeq() : "+dto.getOymbSeq()); 		
+		System.out.println("getOymbSeq() : "+vo.getOymbSeq()); 		
 		System.out.println("############################");
+		List<Durian> list = service.selectListPhone(vo);
+		model.addAttribute("listPhone", list);
+		List<Durian> list2 = service.selectListEmail(vo);
+		model.addAttribute("listEmail", list2);
+		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
+		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
+		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
+		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
+		
 		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
 		redirectAttributes.addAttribute("scOymbName", vo.getScOymbName());
 		redirectAttributes.addAttribute("scOption", vo.getScOption());
 		redirectAttributes.addAttribute("scValue", vo.getScValue());
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("oymbSeq", vo.getOymbSeq());
 		return "redirect:/durian/durianView";
 	}
 	@RequestMapping(value = "/durian/durianFelete")

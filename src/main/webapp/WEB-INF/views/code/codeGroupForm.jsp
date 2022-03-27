@@ -11,10 +11,10 @@
 <form id="formForm" name="formForm" method="post" action="/myapp/code/codeGroupInst">
 
 	
-	<input type="text" id="abcDate" name="abcDate">
+<!-- 	<input type="text" id="abcDate" name="abcDate"> -->
 	
-	<input type="text" id="oycgName" name="oycgName" placeholder="이름"> <input
-		type="submit" id="btnSubmit" value="제출">
+	<input type="text" id="oycgName" name="oycgName" placeholder="이름"> <a href="javascript:goInst();">
+					<button type="button" id="" class="btn btn-success">등록</button></a>
 
 </form>
 
@@ -29,6 +29,11 @@
 
 
 <script type="text/javascript">
+
+goInst = function() {
+	$("#formForm").attr("action", "/myapp/code/codeGroupInst");
+	$("#formForm").submit();
+}
 	$(document).ready(function(){
 		 $("#abcDate").datepicker();
 	}); 

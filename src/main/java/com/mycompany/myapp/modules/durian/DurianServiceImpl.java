@@ -39,14 +39,19 @@ public class DurianServiceImpl implements DurianService {
 		return dao.insertJoinQna(dto);
 	}
 	
-	@Override
-	public int insertNationG(Durian dto) throws Exception {
-		return dao.insertNationG(dto);
-	}
+//	@Override
+//	public int insertNationG(Durian dto) throws Exception {
+//		return dao.insertNationG(dto);
+//	}
 	
 	@Override
 	public int insertNation(Durian dto) throws Exception {
 		return dao.insertNation(dto);
+	}
+	
+	@Override
+	public int insertPhone(Durian dto) throws Exception {
+		return dao.insertPhone(dto);
 	}
 	
 	@Override
@@ -62,6 +67,31 @@ public class DurianServiceImpl implements DurianService {
 	@Override
 	public int update(Durian dto) throws Exception {
 		return dao.update(dto);
+	}
+
+	@Override
+	public int updateJoinQna(Durian dto) throws Exception {
+		return dao.updateJoinQna(dto);
+	}
+
+//	@Override
+//	public int updateNationG(Durian dto) throws Exception {
+//		return dao.updateNationG(dto);
+//	}
+
+	@Override
+	public int updateNation(Durian dto) throws Exception {
+		return dao.updateNation(dto);
+	}
+
+	@Override
+	public int updatePhone(Durian dto) throws Exception {
+		return dao.updatePhone(dto);
+	}
+	
+	@Override
+	public int updateEmail(Durian dto) throws Exception {
+		return dao.updateEmail(dto);
 	}
 
 	@Override

@@ -54,7 +54,7 @@
 		, g.oymeEmailDomainCd
 
 		<include refid="selectCommon" />
-		ORDER BY oymbSeq ASC
+		ORDER BY oymbSeq DESC
 		limit #{startRnumForMysql}, #{rowNumToShow}
 
 	</select>
@@ -102,7 +102,7 @@
 		</selectKey>
 	</insert>
 
-	<insert id="insertNationG">
+	<!-- <insert id="insertNationG">
 		INSERT INTO oyNationality (
 		oynaName
 		, oynaDelNy
@@ -114,7 +114,7 @@
 			order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
-	</insert>
+	</insert> -->
 
 	<insert id="insertNation">
 		INSERT INTO oymbNationality (
@@ -196,6 +196,7 @@
 		, d.oymaZipCode
 		, d.oymaAddress1
 		, d.oymaAddress2
+		, d.oymaAddress3
 		, d.oymaDelNy
 		, e.oympSeq
 		, e.oympDefaultNy
@@ -293,7 +294,7 @@
 	</update>
 
 	
-	<update id="updateNationG">
+<!-- 	<update id="updateNationG">
 
 		UPDATE
 		oyNationality
@@ -304,7 +305,7 @@
 		AND oymbSeq = #{oymbSeq}
 
 
-	</update>
+	</update> -->
 		
 	<update id="updateNation">
 

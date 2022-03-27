@@ -23,10 +23,10 @@ public class CodeServiceImpl implements CodeService {
 
 	@Override
 	public int insertGroup(Code dto) throws Exception {
-		dao.insertGroup(dto);	//	oycgName, oycdName, oycgSeq
-		dao.insert(dto);	//	oycgName, oycdName
+			//	oycgName, oycdName, oycgSeq
+//		dao.insert(dto);	//	oycgName, oycdName
 	
-		return 1;
+		return dao.insertGroup(dto);
 	}
 	
 	@Override

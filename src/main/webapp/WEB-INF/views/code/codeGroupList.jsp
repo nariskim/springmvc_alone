@@ -9,11 +9,11 @@
 
 <form id="formList" name="formList" method="post" action="/myapp/code/codeGroupList">
 
-<a href="javascript:goList();">등록</a>
+<a href="javascript:goForm();">등록</a>
 <br>
 
 	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-	<input type="hidden" id="oycgSeq" name="oycgSeq" value="<c:out value="${item.oycgSeq}"/>">
+	<input type="hidden" id="oycgSeq" name="oycgSeq">
  	
 	<select name="scOycgDelNy" id="scOycgDelNy">
 		<option value="">::삭제여부::

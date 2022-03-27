@@ -406,7 +406,7 @@
 								<div class="input-group">
 									<select class="form-select form-select-sm mb-1"
 										id="oympTelecomCd" name="oympTelecomCd">
-										<option value=null selected>::통신사::</option>
+										<option value="" selected>::통신사::</option>
 										<c:forEach items="${codeTelecom}" var="itemTelecom"
 											varStatus="statusTelecom">
 											<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
@@ -424,7 +424,7 @@
 								<div class="input-group">
 									<select class="form-select form-select-sm mb-1"
 										id="oympTelecomCd" name="oympTelecomCd">
-										<option value=null selected>::통신사::</option>
+										<option value="" selected>::통신사::</option>
 										<c:forEach items="${codeTelecom}" var="itemTelecom"
 											varStatus="statusTelecom">
 											<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
@@ -464,8 +464,8 @@
 				<div class="input-group">
 					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" value="<c:out value="${oymeAccount1}"/>">
 					<span class="input-group-text">@</span>
-					<select class="form-select">
-						<option value=null selected>::선택::
+					<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+						<option value="" selected>::선택::
 						<c:forEach items="${codeEmail}" var="itemEmail"
 											varStatus="statusEmail">
 											<option value="<c:out value="${itemEmail.oycdSeq}"/>"
@@ -483,8 +483,8 @@
 				<div class="input-group">
 					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" value="<c:out value="${oymeAccount0}"/>">
 					<span class="input-group-text">@</span>
-					<select class="form-select">
-						<option value=null selected>::선택::
+					<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+						<option value="" selected>::선택::
 						<c:forEach items="${codeEmail}" var="itemEmail"
 											varStatus="statusEmail">
 											<option value="<c:out value="${itemEmail.oycdSeq}"/>"

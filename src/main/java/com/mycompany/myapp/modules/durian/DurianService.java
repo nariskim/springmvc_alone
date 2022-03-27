@@ -16,16 +16,28 @@ public interface DurianService {
 	
 	public int insertJoinQna(Durian dto) throws Exception;
 	
-	public int insertNationG(Durian dto) throws Exception;
+//	public int insertNationG(Durian dto) throws Exception;
 	
 	public int insertNation(Durian dto) throws Exception;
+	
+	public int insertPhone(Durian dto) throws Exception;
 	
 	public int insertEmail(Durian dto) throws Exception;
 
 	public Durian selectOne(DurianVo vo) throws Exception;
 
 	public int update(Durian dto) throws Exception;
+	
+	public int updateJoinQna(Durian dto) throws Exception;
 
+//	public int updateNationG(Durian dto) throws Exception;
+
+	public int updateNation(Durian dto) throws Exception;
+
+	public int updatePhone(Durian dto) throws Exception;
+
+	public int updateEmail(Durian dto) throws Exception;
+	
 	public int updateDelete(DurianVo vo) throws Exception;
 	
 	public int delete(DurianVo vo) throws Exception;

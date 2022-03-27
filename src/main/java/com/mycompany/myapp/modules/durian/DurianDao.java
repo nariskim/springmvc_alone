@@ -73,6 +73,27 @@ public class DurianDao {
 	public int update(Durian dto) {
 		return sqlSession.update(namespace + ".update", dto);
 	}
+
+	public int updateJoinQna(Durian dto) {
+		return sqlSession.update(namespace + ".updateJoinQna", dto);
+	}
+
+//	public int updateNationG(Durian dto) {
+//		return sqlSession.update(namespace + ".updateNationG", dto);
+//	}
+
+	public int updateNation(Durian dto) {
+		return sqlSession.update(namespace + ".updateNation", dto);
+	}
+
+	public int updatePhone(Durian dto) {
+		return sqlSession.update(namespace + ".updatePhone", dto);
+	}
+	
+	public int updateEmail(Durian dto) {
+		return sqlSession.update(namespace + ".updateEmail", dto);
+	}
+
 	
 	public int updateDelete(DurianVo vo) {
 		return sqlSession.update(namespace + ".updateDelete", vo);
