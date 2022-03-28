@@ -32,6 +32,7 @@
 			<when test="scOption == 2">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')</when>
 			<when test="scOption == 3">AND a.oymbGender LIKE concat('%',#{scValue},'%')</when>
 			<when test="scOption == 4">AND a.oymbGrade LIKE concat('%',#{scValue},'%')</when>
+			
 		</choose>
 
 
@@ -41,7 +42,7 @@
 
 		SELECT
 		count(*)
-		<include refid="selectCommon" />
+		<include refid="selectCommon"/>
 	</select>
 
 
@@ -53,19 +54,19 @@
 		, a.oymbNameEng
 		, a.oymbId
 		, a.oymbGenderCd
-		,(select oycdName from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender
+		<!-- ,(select oycdName from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender -->
 		, a.oymbGradeCd
-		,(select oycdName from oyCode where oycdSeq = a.oymbGradeCd) as oymbGrade
+		<!-- ,(select oycdName from oyCode where oycdSeq = a.oymbGradeCd) as oymbGrade -->
 		, a.oymbDelNy
 		, a.oymbDob
 		, a.RegDateTime
 		, a.ModDateTime
 		, f.oympTelecomCd
-		,(select oycdName from oyCode where oycdSeq = a.oympTelecomCd) as oympTelecom
+		<!-- ,(select oycdName from oyCode where oycdSeq = a.oympTelecomCd) as oympTelecom -->
 		, f.oympNumber
 		, g.oymeEmailFull
-		, g.oymeEmailAccount
-		, g.oymeEmailDomainCd
+<!-- 		, g.oymeEmailAccount
+		, g.oymeEmailDomainCd -->
 
 		<include refid="selectCommon" />
 		ORDER BY oymbSeq ASC

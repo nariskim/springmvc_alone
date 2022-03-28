@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 
-/*import java.util.Date;*/
-
 public class Durian {
 
 	private String oymbSeq = "";

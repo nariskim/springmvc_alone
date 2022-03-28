@@ -117,7 +117,6 @@
 <body>
 <form id="formView" name="formView" method="post" action="/myapp/durian/durianView">
 	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
-	<input type="hidden" id="scOymbDelNy" name="scOymbDelNy" value="<c:out value="${vo.scOymbDelNy}"/>">
 	<input type="hidden" id="scOymbName" name="scOymbName" value="<c:out value="${vo.scOymbName}"/>">
 	<input type="hidden" id="scOption" name="scOption" value="<c:out value="${vo.scOption}"/>">
 	<input type="hidden" id="scValue" name="scValue" value="<c:out value="${vo.scValue}"/>">
