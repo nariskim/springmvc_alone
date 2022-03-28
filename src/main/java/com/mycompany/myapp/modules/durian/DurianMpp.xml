@@ -21,7 +21,12 @@
 			<when test="scOymbDelNy == 0">AND a.oymbDelNy = 0</when>
 		</choose>
 
-		<if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName LIKE concat('%',#{scOymbName},'%y')</if>
+		<if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName LIKE concat('%',#{scOymbName},'%')</if>
+		<choose>
+				<when test="scOptionDate == 1">AND a.regDateTime BETWEEN #{scDateStart} AND #{scDateEnd}</when>
+				<when test="scOptionDate == 2">AND a.modDateTime BETWEEN #{scDateStart} AND #{scDateEnd}</when>
+				<when test="scOptionDate == 3">AND a.oymbDob BETWEEN #{scDateStart} AND #{scDateEnd}</when>
+		</choose>
 		<choose>
 			<when test="scOption == 1">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
 			<when test="scOption == 2">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')</when>
@@ -43,10 +48,14 @@
 		SELECT
 		a.oymbSeq
 		, a.oymbName
+		, a.oymbNameEng
 		, a.oymbId
 		, a.oymbGenderCd
 		, a.oymbGradeCd
 		, a.oymbDelNy
+		, a.oymbDob
+		, a.RegDateTime
+		, a.ModDateTime
 		, f.oympTelecomCd
 		, f.oympNumber
 		, g.oymeEmailFull
@@ -54,7 +63,7 @@
 		, g.oymeEmailDomainCd
 
 		<include refid="selectCommon" />
-		ORDER BY oymbSeq DESC
+		ORDER BY oymbSeq ASC
 		limit #{startRnumForMysql}, #{rowNumToShow}
 
 	</select>
@@ -69,6 +78,8 @@
 		, oymbNickName
 		, oymbPassword
 		, oymbDelNy
+		, RegDateTime
+		, ModDateTime
 		) values (
 		#{oymbName}
 		, #{oymbNameEng}
@@ -76,6 +87,8 @@
 		, #{oymbNickName}
 		, #{oymbPassword}
 		, 0
+		, now()
+		, now()
 		)
 		<selectKey resultType="String" keyProperty="oymbSeq"
 			order="AFTER">

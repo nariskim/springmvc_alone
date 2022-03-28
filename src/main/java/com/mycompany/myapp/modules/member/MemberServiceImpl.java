@@ -1,10 +1,13 @@
 package com.mycompany.myapp.modules.member;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.myapp.common.util.UtilDateTime;
+import com.mycompany.myapp.common.base.Base;
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -18,7 +21,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int insert(Member dto) throws Exception {
-		return dao.insert(dto);
+		
+			dto.setRegDateTime(UtilDateTime.nowDate());
+			dto.setModDateTime(UtilDateTime.nowDate());
+	
+		return dao.insert(dto); 
+		
+
 	}
 	@Override
 	public Member selectOne(MemberVo vo) throws Exception {

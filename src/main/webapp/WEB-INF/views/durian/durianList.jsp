@@ -119,11 +119,10 @@
 </style>
 </head>
 <body>
+
 <form id="formList" name="formList" method="post" action="/myapp/durian/durianList">
 	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 	<input type="hidden" id="oymbSeq" name="oymbSeq">
-
-
 
 
 		<div class="row">
@@ -268,9 +267,29 @@
 									<input type="text" name="scOymbName" class="form-control"
 										id="scOymbName" placeholder="검색어" value="<c:out value="${vo.scOymbName}"/>">
 								</div>
+								<div class="row gx-2 gy-2">
+								<div class="col-12 col-sm-4 col-lg-2">
+									<select name="scOptionDate" id="scOptionDate" class="form-select">
+										<option value="">::검색구분::
+										<option value="1"
+											<c:if test="${vo.scOptionDate eq 1 }">selected</c:if>>등록일
 
-					
+										<option value="2"
+											<c:if test="${vo.scOptionDate eq 2 }">selected</c:if>>수정일
 
+										<option value="3"
+											<c:if test="${vo.scOptionDate eq 3 }">selected</c:if>>생년월일
+
+
+										
+									</select>
+								</div>	
+								<div class="col-12 col-sm-4 col-lg-2">
+									<div class="input-group">
+									<input type="text" id="scDateStart" name="scDateStart" class="form-control" placeholder="검색어" value="<c:out value="${vo.scValue}"/>">
+									<input type="text" id="scDateEnd" name="scDateEnd" class="form-control" placeholder="검색어" value="<c:out value="${vo.scValue}"/>">
+								</div></div>	
+</div>
 							</div>
 							<br>
 							<div class="row gx-2 gy-2">
@@ -328,6 +347,7 @@
 										<th scope="col">회원번호</th>
 										<th scope="col">회원등급</th>
 										<th scope="col">이름</th>
+										<th scope="col">이름(영문)</th>
 										<th scope="col">아이디</th>
 										<th scope="col">성별</th>
 										<th scope="col">통신사</th>
@@ -357,8 +377,8 @@
 													<th scope="row"><c:out value="${item.oymbSeq}" /></th>
 													<td><c:out value="${item.oymbGradeCd}" /></td>
 													<td><a href="javascript:goView(<c:out value="${item.oymbSeq}"/>);">
-													<c:out value="${item.oymbName}" /></a></td>
-													<td><input type="hidden" id="oymbNameEng" name="oymbNameEng" value="${item.oymbNameEng}"></td>
+													<c:out value="${item.oymbName}"/></a></td>
+													<td><c:out value="${item.oymbNameEng}"/></td>
 													<td><c:out value="${item.oymbId}" /></td>
 													<td><c:out value="${item.oymbGenderCd}" /></td>
 													<td><c:out value="${item.oympTelecomCd}" /></td>
@@ -375,81 +395,7 @@
 											</c:forEach>
 										</c:otherwise>
 									</c:choose>
-									<!-- <tr>
-			
-				<th scope="row">
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault">
-					</div>
-				</th>
-				<th scope="row">2</th>
-				<td>이다다</td>
-				<td>qwerty</td>
-				<td>남</td>
-				<td>01055555555</td>
-				<td>qwerty@gmail.com</td>
-			</tr>
-			<tr>
-				<th scope="row">
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault">
-					</div>
-				</th>
-				<th scope="row">3</th>
-				<td>박라라</td>
-				<td>zxcv1234</td>
-				<td>남</td>
-				<td>01022222222</td>
-				<td>zxcv1234@hanmail.net</td>
-			</tr>
-			<tr>
-				<th scope="row">
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault">
-					</div>
-				</th>
-				<th scope="row">4</th>
-				<td>최마마</td>
-				<td>poiuy</td>
-				<td>여</td>
-				<td>01066666666</td>
-				<td>poiuy@naver.com</td>
-			</tr>
-			<tr>
-				<th scope="row">
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault">
-					</div>
-				</th>
-				<th scope="row">5</th>
-				<td>김바바</td>
-				<td>asdf9988</td>
-				<td>남</td>
-				<td>01011111111</td>
-				<td>asdf9988@naver.com</td>
-			</tr> -->
-								</tbody>
-								<!-- <tfoot>
-									<tr>
-										<th scope="row"><button type="button" id="btnSubmit_del"
-												class="btn btn-danger">&nbsp삭 제&nbsp</button></th>
-										<td colspan="5">
-										<td><div style="text-align: right;">
 
-												<a
-													href="/myapp/durian/durianForm?oymbSeq=<c:out value="${item.oymbSeq}"/>">
-													<button type="button" class="btn btn-success">&nbsp등
-														록&nbsp</button>
-												</a>
-
-
-											</div></td>
-									</tr>
-								</tfoot> -->
 							</table>
 							<div class="row">
 								<div class="col-2">
@@ -525,61 +471,74 @@
 							<p class="text-center text-muted">© 2021 All Live Young, Inc</p>
 						</footer>
 					</div>
-
-
 				</main>
 			</div>
 		</div>
 
-	</form>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+</form>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-
-	
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="/myapp/resources/js/validation.js"></script>
 
 	<script type="text/javascript">
+	$("#btnSubmit").on( "click", function() {
+
+		if (!checkNull($("#scOymbDelNy"), $("#scOymbDelNy").val(),
+				"삭제 여부 선택 필수입니다."))
+			return false;
+
+		if (!checkNull($("#scOymbName"), $("#scOymbName").val(),
+				"검색어를 입력해주세요."))
+			return false;
+
+		if (!checkNull($("#scOption"), $("#scOption").val(),
+			"검색 구분 선택 필수입니다."))
+			return false;
+		
+		if (!checkNull($("#scValue"), $("#scValue").val(),
+				"검색어를 입력해주세요."))
+			return false;
+	});
 	
-		$("#btnSubmit_del").on("click", function() {
-			/* alert($("scOption").val()); */
+	$(document).ready(function(){
+		 $("#scDateStart").datepicker();
+	}); 
 
-			alert("삭제?");
-			confirm("진짜 삭제? 복구 노노");
-		});
+	$.datepicker.setDefaults({
+	    dateFormat: 'yy-mm-dd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    showMonthAfterYear: true,
+	    yearSuffix: '년'
+	});
 
-		$("#btnSubmit").on("click", function() {
-			alert($("#scOycgName").val()); // jquery 방식
-		});
+	$(document).ready(function(){
+		 $("#scDateEnd").datepicker();
+	}); 
 
-		/* $("#btnSubmit").on("click", function(){
-
-		 if(!checkNull($("#scValue"), $("#scValue").val(), "검색어를 입력해주세요."))return false;
-		 });
-		 */
-
-	$("#btnSubmit").on(
-				"click",
-				function() {
-
-					if (!checkNull($("#scOymbDelNy"), $("#scOymbDelNy").val(),
-							"삭제 여부 체크 필수입니다."))
-						return false;
-
-					if (!checkNull($("#scOymbName"), $("#scOymbName").val(),
-							"검색어를 입력해주세요."))
-						return false;
-
-					if (!checkNull($("#scValue"), $("#scValue").val(),
-							"검색어를 입력해주세요."))
-						return false;
-				});
+	$.datepicker.setDefaults({
+	    dateFormat: 'yy-mm-dd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    showMonthAfterYear: true,
+	    yearSuffix: '년'
+	});
 
 		goPage = function(seq) {
-			alert(seq);
 			// form 객체를 가져온다
 			$("#thisPage").val(seq);
 			$("#formList").submit();
@@ -587,21 +546,26 @@
 		}
 
 		goView = function(seq) {
-			alert(seq);
 			$("#oymbSeq").val(seq);
 			$("#formList").attr("action", "/myapp/durian/durianView");
 			$("#formList").submit();
 		}
 
 		goForm = function() {
-			alert("회원 등록입니다.");
 			$("#formList").attr("action", "/myapp/durian/durianForm");
 			$("#formList").submit();
 		}
+		
+		$("#btnSubmit_del").on("click", function() {
+
+			alert("삭제?");
+			confirm("진짜 삭제? 복구 노노");
+		});
+		
 	</script>
 
-
 </body>
+
 </html>
 
 

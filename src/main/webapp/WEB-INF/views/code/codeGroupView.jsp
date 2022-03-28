@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
-<form id="formView" action="" method="post">
+<form id="formView" name="formView" action="/myapp/code/codeGroupView" method="post">
 	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
 	<input type="hidden" id="oycgSeq" name="oycgSeq" value="<c:out value="${vo.oycgSeq}"/>">
 	<input type="hidden" id="scOycgDelNy" name="scOycgDelNy" value="<c:out value="${vo.scOycgDelNy}"/>">

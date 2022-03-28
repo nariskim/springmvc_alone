@@ -45,37 +45,52 @@ public class CodeController {
 	@RequestMapping(value = "/code/codeGroupForm")
 	public String codeGroupForm(@ModelAttribute("vo") CodeVo vo, Code dto) throws Exception {
 		System.out.println("############################");
-		System.out.println("vo.getThisPage() : "+vo.getThisPage());
-		System.out.println("vo.getScOption() : "+vo.getScOption());
-		System.out.println("vo.getScValue() : "+vo.getScValue());	
+		System.out.println("Form.getScOycgDelNy() : " + vo.getScOycgDelNy());
+		System.out.println("Form.getScOycgName() : " + vo.getScOycgName());
+		System.out.println("Form.getScOption() : " + vo.getScOption());
+		System.out.println("Form.getScValue() : " + vo.getScValue());
+		System.out.println("Form.getThisPage() : " + vo.getThisPage());
 		System.out.println("############################");
 		return "code/codeGroupForm";
 	}
 
 	@RequestMapping(value = "/code/codeGroupInst")
-	public String codeGroupInst(Code dto, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
+	public String codeGroupInst(Code dto, CodeVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		System.out.println("############################");
-		System.out.println("vo.getThisPage() : "+vo.getThisPage());
-		System.out.println("vo.getScOption() : "+vo.getScOption());
-		System.out.println("vo.getScValue() : "+vo.getScValue());	
-		System.out.println("dto.getOycgSeq() : "+dto.getOycgSeq());			
+		System.out.println("Inst.getScOycgDelNy() : " + vo.getScOycgDelNy());
+		System.out.println("Inst.getScOycgName() : " + vo.getScOycgName());
+		System.out.println("Inst.getScOption() : " + vo.getScOption());
+		System.out.println("Inst.getScValue() : " + vo.getScValue());
+		System.out.println("Inst.getThisPage() : " + vo.getThisPage());		
 		System.out.println("############################");
 		service.insertGroup(dto);
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		System.out.println("############################");
+		System.out.println("Inst.getOycgSeq() : " + dto.getOycgSeq());
+		System.out.println("############################");
+		redirectAttributes.addAttribute("scOycgDelNy", vo.getScOycgDelNy());
+		redirectAttributes.addAttribute("scOycgName", vo.getScOycgName());
 		redirectAttributes.addAttribute("scOption", vo.getScOption());
 		redirectAttributes.addAttribute("scValue", vo.getScValue());
-		redirectAttributes.addAttribute("oycgSeq", dto.getOycgSeq());
-
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("getOycgSeq", dto.getOycgSeq());
 		return "redirect:/code/codeGroupView";
 	}
 
 	@RequestMapping(value = "/code/codeGroupView")
 	public String codeGroupView(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
-
+		System.out.println("############################");
+		System.out.println("View.getScOycgDelNy() : " + vo.getScOycgDelNy());
+		System.out.println("View.getScOycgName() : " + vo.getScOycgName());
+		System.out.println("View.getScOption() : " + vo.getScOption());
+		System.out.println("View.getScValue() : " + vo.getScValue());
+		System.out.println("View.getThisPage() : " + vo.getThisPage());
+		System.out.println("View.getOycgSeq() : "+ vo.getOycgSeq());	
+		System.out.println("############################");
+		
 		Code rt = service.selectOneGroup(vo);
-
 		model.addAttribute("item", rt);
 
+		
 		return "code/codeGroupView";
 	}
 

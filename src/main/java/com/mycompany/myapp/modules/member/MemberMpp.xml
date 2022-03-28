@@ -10,6 +10,7 @@
 		type="com.mycompany.myapp.modules.member.Member"></resultMap>
 
 
+
 	<select id="selectList" resultMap="resultMapObj">
 		
 		SELECT
@@ -29,10 +30,14 @@
 		oymbId
 		, oymbName
 		, oymbDelNy
+		, RegDateTime
+		, ModDateTime
 		) values (
 		#{oymbId}
 		, #{oymbName}
 		, 0
+		, now()
+		, now()
 		)
 		<selectKey resultType="String" keyProperty="oymbSeq" order="AFTER">
 			SELECT last_insert_id()

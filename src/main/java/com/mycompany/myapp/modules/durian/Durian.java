@@ -1,6 +1,7 @@
 package com.mycompany.myapp.modules.durian;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -25,9 +26,11 @@ public class Durian {
 	private Integer oymbPushConsentNy;
 	private Integer oymbSavedCd;
 	private Integer oymbDelNy;
+	private Date RegDateTime;
+	private Date ModDateTime;
 	
 	private String oyjqSeq="";
-	private String oyjqQuestionCd;
+	private String oyjqQuestionCd = "";
 	private String oyjqAnswer = "";
 	private Integer oyjqDelNy;
 	
@@ -51,7 +54,7 @@ public class Durian {
 	
 	private String oympSeq= "";
 	private Integer oympDefaultNy;
-	private String oympTelecomCd;
+	private String oympTelecomCd = "";
 	private String oympNumber = "";
 	private Integer oympDelNy;
 //	private String oymbSeq = "";
@@ -202,6 +205,22 @@ public class Durian {
 
 	public void setOymbDelNy(Integer oymbDelNy) {
 		this.oymbDelNy = oymbDelNy;
+	}
+
+	public Date getRegDateTime() {
+		return RegDateTime;
+	}
+
+	public void setRegDateTime(Date regDateTime) {
+		RegDateTime = regDateTime;
+	}
+
+	public Date getModDateTime() {
+		return ModDateTime;
+	}
+
+	public void setModDateTime(Date modDateTime) {
+		ModDateTime = modDateTime;
 	}
 
 	public String getOyjqSeq() {
@@ -484,5 +503,6 @@ public class Durian {
 		this.oymeDelNy = oymeDelNy;
 	}
 
+	
 	
 }

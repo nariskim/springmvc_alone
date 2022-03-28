@@ -20,6 +20,7 @@
 			<when test="scOycgDelNy == 0">AND oycgDelNy = 0</when>
 		</choose>
 		<if test="scOycgName != null and !scOycgName.equals('')"> AND oycgName LIKE concat('%',#{scOycgName},'%')</if>
+					
 		<choose>
 			<when test="scOption == 1">AND oycgName LIKE concat('%',#{scValue},'%')</when>
 			<when test="scOption == 2">AND oycgNameEng LIKE concat('%',#{scValue},'%')</when>

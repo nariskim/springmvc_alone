@@ -527,7 +527,7 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 			
 		</div>
 
-
+<br><hr><br>
 					<div class="row">
 						<div class="col-12 col-sm-6 col-lg-2">
 							<label for="formFile" class="form-label">피부타입</label>
@@ -575,12 +575,10 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 							<input type="checkbox" class="btn-check" id="oymbInterestsCd" autocomplete="off" value="154">
 							<label class="btn btn-outline-dark" for="innerCare">이너 케어</label>
 						</div>
-					</div><hr>
+					</div><br><hr><br>
 					
 					<div class="row">
-						<div class="col-12">
-							<label for="formFile" class="form-label">수신동의</label>
-						</div>
+					
 						<div class="col-12 col-sm-4 col-lg-2">
 							<label for="formFile" class="form-label">모바일 수신동의</label>
 						</div>

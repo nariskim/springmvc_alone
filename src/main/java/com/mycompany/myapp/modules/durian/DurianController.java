@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mycompany.myapp.common.constants.Constants;
+import com.mycompany.myapp.common.util.UtilDateTime;
+
 @Controller
 public class DurianController {
 
@@ -17,7 +20,11 @@ public class DurianController {
 
 	@RequestMapping(value = "/durian/durianList")
 	public String durianList(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
-
+		
+		vo.setScOptionDate(vo.getScOptionDate() == null ? 1 : vo.getScOptionDate());
+		vo.setScDateStart(vo.getScDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getScDateStart());
+		vo.setScDateEnd(vo.getScDateEnd() == null ? UtilDateTime.nowString() : vo.getScDateEnd());
+		
 		// count 가져올 것
 		int count = service.selectOneCount(vo);
 
@@ -31,6 +38,7 @@ public class DurianController {
 		} else {
 			//by pass
 		}
+		
 
 		/*
 		 * List<Code> list = service.selectListGroup(vo); model.addAttribute("list",
@@ -92,7 +100,7 @@ public class DurianController {
 	}
 	
 	@RequestMapping(value = "/durian/durianView")
-	public String durianView(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
+	public String durianView(@ModelAttribute("vo") DurianVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		
 		System.out.println("############################");
 		System.out.println("getScOymbDelNy() : "+vo.getScOymbDelNy());
@@ -112,6 +120,12 @@ public class DurianController {
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
+		
+		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
+		redirectAttributes.addAttribute("scOymbName", vo.getScOymbName());
+		redirectAttributes.addAttribute("scOption", vo.getScOption());
+		redirectAttributes.addAttribute("scValue", vo.getScValue());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		
 		
 		return "durian/durianView";
@@ -137,6 +151,8 @@ public class DurianController {
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
+		
+		
 		return "durian/durianEdit";
 	}
 	

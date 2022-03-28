@@ -7,15 +7,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mycompany.myapp.common.constants.Constants;
+import com.mycompany.myapp.common.util.UtilDateTime;
+
 @Controller
 public class MemberController {
 
 	@Autowired
 	MemberServiceImpl service;
+	
+
 
 	@RequestMapping(value = "/member/memberList")
-	public String memberList(Model model) throws Exception {
+	public String memberList(Model model, MemberVo vo) throws Exception {
 
+		
+		System.out.println("UtilDateTime.nowLocalDateTime() : " + UtilDateTime.nowLocalDateTime());
+		System.out.println("UtilDateTime.nowDate() : " + UtilDateTime.nowDate());
+		System.out.println("UtilDateTime.nowString : " + UtilDateTime.nowString());
+		
+
+		
 		List<Member> list = service.selectList();
 		model.addAttribute("list", list);
 

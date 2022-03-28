@@ -496,6 +496,8 @@
 			</div>
 			
 		</div>
+		
+		<br><hr><br>
 
 		<div class="row">
 
@@ -550,13 +552,10 @@
 	
 		</div>
 
-	<hr>
+	<br><hr><br>
 				
 		<div class="row">
 		
-			<div class="col-12">
-				<label for="formFile" class="form-label form-label-lg">수신동의</label>
-			</div>
 			<div class="col-12 col-sm-4 col-lg-2">
 				<label for="formFile" class="form-label">모바일 수신동의</label>
 			</div>

@@ -9,6 +9,11 @@
 <link href="/myapp/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
 
 <form id="formForm" name="formForm" method="post" action="/myapp/code/codeGroupInst">
+<input type="hidden" id="scOycgDelNy" name="scOycgDelNy" value="${vo.scOycgDelNy}">
+<input type="hidden" id="scOycgName" name="scOycgName" value="${vo.scOycgName}">
+<input type="hidden" id="scOption" name="scOption" value="${vo.scOption}">
+<input type="hidden" id="scValue" name="scValue" value="${vo.scValue}">
+<input type="hidden" id="thisPage" name="thisPage" value="${vo.thisPage}">
 
 	
 <!-- 	<input type="text" id="abcDate" name="abcDate"> -->

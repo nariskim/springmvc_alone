@@ -314,9 +314,9 @@
 	<div class="col-12 col-sm-8 col-lg-4">
 		<div class="mb-3">
 			<select class="form-select" id="oyjqQuestionCd" name="oyjqQuestionCd">
-				<option value="" selected>선택해주세요</option>
+				<option value="" selected>::선택::</option>
 					<c:forEach items="${codeJoinQna}" var="itemJoinQna" varStatus="statusJoinQna">
-			<option value="<c:out value="${itemJoinQna.oycdSeq}"/>" <c:if test="${item.oyjqQuestionCd eq itemJoinQna.oycdSeq }">selected</c:if> ><c:out value="${itemJoinQna.oycdName}"/></option>	
+			<option value="<c:out value="${itemJoinQna.oycdSeq}"/>" <c:if test="${item.oyjqQuestionCd eq itemJoinQna.oycdSeq }">selected</c:if>><c:out value="${itemJoinQna.oycdName}"/></option>	
 							</c:forEach>
 			</select>
 		</div>
@@ -473,7 +473,7 @@
 			</div>
 		</div>
 	</div>
-	
+<br><hr><br>
 <div class="row">
 	<div class="col-12 col-sm-4 col-lg-2">
 		<label for="formFile" class="form-label">피부타입</label>
@@ -521,12 +521,10 @@
 		<input type="checkbox" class="btn-check" id="" name="" autocomplete="off" value="154">
 		<label class="btn btn-outline-dark" for="innerCare">이너 케어</label>
 	</div>
-</div><hr>
-
+</div>
+<br><hr><br>
 <div class="row">
-	<div class="col-12">
-		<label for="formFile" class="form-label">수신동의</label>
-	</div>
+	
 	<div class="col-12 col-sm-4 col-lg-2">
 		<label for="formFile" class="form-label">모바일 수신동의</label>
 	</div>
@@ -620,8 +618,107 @@
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-
+		
 	<script type="text/javascript">
+	
+$("#btnSubmit").on("click", function() {
+
+					if (!checkNull($("#oymbName"),
+							$("#oymbName").val(), "(한글이름)필수 입력 사항입니다."))
+						return false;
+					
+					if (!checkNull($("#oymbNameEng"), $("#oymbNameEng")
+							.val(), "(영문이름)필수 입력 사항입니다."))
+						return false;
+					
+					if (!checkNull($("#oymbId"), $("#oymbId").val(),
+							"(아이디)필수 입력 사항입니다."))
+						return false;
+
+					if (!checkNull($("#oymbPassword"), $(
+							"#oymbPassword").val(),
+							"(비밀번호)필수 입력 사항입니다."))
+						return false;
+					
+
+					if (!checkNull($("#oyjqQuestionCd"), $(
+							"#oyjqQuestionCd").val(),
+							"(비밀번호 질문)필수 선택 사항입니다."))
+						return false;
+
+					if (!checkNull($("#oyjqAnswer"), $("#oyjqAnswer")
+							.val(), "(비밀번호 답)필수 입력 사항입니다."))
+						return false;
+
+					if (!checkNull($("#oymaZipCode"), $("#oymaZipCode")
+							.val(), "((우편 번호)주소를 입력해 주세요."))
+						return false;
+
+					if (!checkNull($("#oymaAddress1"), $(
+							"#oymaAddress1").val(),
+							"((도로명 주소/지번 주소)주소를 입력해 주세요."))
+						return false;
+
+					if (!checkNull($("#oymaAddress2"), $(
+							"#oymaAddress2").val(),
+							"((상세 주소)주소를 입력해 주세요."))
+						return false;
+
+					if (!checkNull($("#oympTelecomCd"), $(
+							"#oympTelecomCd").val(),
+							"(통신사)필수 선택 사항입니다."))
+						return false;
+
+					if (!checkNull($("#oympNumber"), $("#oympNumber")
+							.val(), "(휴대전화)필수 입력 사항입니다."))
+						return false;
+
+					if (!checkNull($("#oymeEmailAccount"), $(
+							"#oymeEmailAccount").val(),
+							"(이메일계정)필수 입력 사항입니다."))
+						return false;
+
+					if (!checkNull($("#oymeEmailDomainCd"), $(
+							"#oymeEmailDomainCd").val(),
+							"(이메일주소)필수 선택 사항입니다."))
+						return false;
+
+					if (!checkOnlyKorean($("#oymbName"), $("#oymbName")
+							.val(), "한글만 입력 가능합니다."))
+						return false;
+
+					if (!checkOnlyEnglish($("#oymbNameEng"), $(
+							"#oymbNameEng").val(), "영어만 입력 가능합니다."))
+						return false;
+
+					if (!checkId($("#oymbId"), $("#oymbId").val(), ""))
+						return false;
+
+					if (!checkPassword($("#oymbPassword"), $(
+							"#oymbPassword").val(), ""))
+						return false;
+
+					if (!checkMobile($("#oympNumber"), $("#oympNumber")
+							.val(), ""))
+						return false;
+
+					if (!checkEmail($("#oymeEmailAccount"), $(
+							"#oymeEmailAccount").val(), ""))
+						return false;
+
+				});
+
+		goInst = function() {
+			$("#durianForm").attr("action", "/myapp/durian/durianInst");
+			$("#durianForm").submit();
+		}
+
+		goList = function() {
+			$("#durianForm").attr("action", "/myapp/durian/durianList");
+			$("#durianForm").submit();
+		}
+		
+
 		function sample6_execDaumPostcode() {
 			new daum.Postcode(
 					{
@@ -675,106 +772,6 @@
 					}).open();
 		}
 		
-		$("#btnSubmit").on(
-				"click",
-				function() {
-
-					if (!checkNull($("#oymbName"), $("#oymbName").val(),
-							"(한글이름)필수 입력 사항입니다."))
-						return false;
-
-
-					if (!checkNull($("#oymbNameEng"), $("#oymbNameEng")
-							.val(), "(영문이름)필수 입력 사항입니다."))
-						return false;
-
-
-					if (!checkNull($("#oymbId"), $("#oymbId").val(), "(아이디)필수 입력 사항입니다."))
-						return false;
-
-					if (!checkNull($("#oymbPassword"), $("#oymbPassword")
-							.val(), "(비밀번호)필수 입력 사항입니다."))
-						return false;
-
-					if (!checkNull($("#oyjqQuestionCd"), $("#oyjqQuestionCd")
-							.val(), "(비밀번호 질문)필수 선택 사항입니다."))
-						return false;
-
-					if (!checkNull($("#oyjqAnswer"), $("#oyjqAnswer")
-							.val(), "(비밀번호 답)필수 입력 사항입니다."))
-						return false;
-
-					if (!checkNull($("#oymaZipCode"), $("#oymaZipCode")
-							.val(), "((우편 번호)주소를 입력해 주세요."))
-						return false;
-
-					if (!checkNull($("#oymaAddress1"), $("#oymaAddress1")
-							.val(), "((도로명 주소/지번 주소)주소를 입력해 주세요."))
-						return false;
-
-					if (!checkNull($("#oymaAddress2"), $("#oymaAddress2")
-							.val(), "((상세 주소)주소를 입력해 주세요."))
-						return false;
-
-					if (!checkNull($("#oyjqAnswer"), $("#oyjqAnswer")
-							.val(), "(비밀번호 답)필수 입력 사항입니다."))
-						return false;
-
-					
-					if (!checkNull($("#oympTelecomCd"), $("#oympTelecomCd").val(),
-					"(통신사)필수 선택 사항입니다."))
-						return false;
-
-
-					if (!checkNull($("#oympNumber"), $("#oympNumber").val(),
-							"(휴대전화)필수 입력 사항입니다."))
-						return false;
-
-
-					if (!checkNull($("#oymeEmailAccount"), $(
-							"#oymeEmailAccount").val(), "(이메일계정)필수 입력 사항입니다."))
-						return false;
-
-
-					if (!checkNull($("#oymeEmailDomainCd"), $(
-							"#oymeEmailDomainCd").val(), "(이메일주소)필수 선택 사항입니다."))
-						return false;
-
-
-					if (!checkOnlyKorean($("#oymbName"), $("#oymbName").val(),
-							""))
-						return false;
-
-					if (!checkOnlyEnglish($("#oymbNameEng"), $("#oymbNameEng")
-							.val(), ""))
-						return false;
-
-					if (!checkId($("#oymbId"), $("#oymbId").val(), ""))
-						return false;
-
-					if (!checkPassword($("#oymbPassword"), $("#oymbPassword")
-							.val(), ""))
-						return false;
-
-					if (!checkMobile($("#oympNumber"), $("#oympNumber").val(),
-							""))
-						return false;
-
-					if (!checkEmail($("#oymeEmailAccount"), $(
-							"#oymeEmailAccount").val(), ""))
-						return false;
-				});
-
-		goInst = function() {
-			$("#durianForm").attr("action", "/myapp/durian/durianInst");
-			$("#durianForm").submit();
-		}
-
-		goList = function() {
-			alert("회원리스트로 이동합니다.");
-			$("#durianForm").attr("action", "/myapp/durian/durianList");
-			$("#durianForm").submit();
-		}
 	</script>
 
 

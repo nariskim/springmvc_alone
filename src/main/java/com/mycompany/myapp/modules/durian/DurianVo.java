@@ -1,5 +1,7 @@
 package com.mycompany.myapp.modules.durian;
 
+import java.util.Date;
+
 public class DurianVo {
 
 	private String oymbSeq;
@@ -17,9 +19,14 @@ public class DurianVo {
 	
 
 	// oyMemberSearch
+	private Date RegDateTime;
+	private Date ModDateTime;
 
+	private Integer scOptionDate;
+	private String scDateStart;
+	private String scDateEnd;
 	private String scOymbName;
-	private Integer scOymbDelNy ; 
+	private Integer scOymbDelNy; 
 
 	// common
 	private String scOption;
@@ -85,6 +92,22 @@ public class DurianVo {
 		System.out.println("getEndRnumForOracle():" + endRnumForOracle);
 		System.out.println("getStartRnumForMysql(): " + startRnumForMysql);
 
+	}
+
+	public Date getRegDateTime() {
+		return RegDateTime;
+	}
+
+	public void setRegDateTime(Date regDateTime) {
+		RegDateTime = regDateTime;
+	}
+
+	public Date getModDateTime() {
+		return ModDateTime;
+	}
+
+	public void setModDateTime(Date modDateTime) {
+		ModDateTime = modDateTime;
 	}
 
 	public String getOymbSeq() {
@@ -293,6 +316,30 @@ public class DurianVo {
 
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+
+	public Integer getScOptionDate() {
+		return scOptionDate;
+	}
+
+	public void setScOptionDate(Integer scOptionDate) {
+		this.scOptionDate = scOptionDate;
+	}
+
+	public String getScDateStart() {
+		return scDateStart;
+	}
+
+	public void setScDateStart(String scDateStart) {
+		this.scDateStart = scDateStart;
+	}
+
+	public String getScDateEnd() {
+		return scDateEnd;
+	}
+
+	public void setScDateEnd(String scDateEnd) {
+		this.scDateEnd = scDateEnd;
 	}
 
 	
