@@ -21,10 +21,6 @@ public class DurianController {
 	@RequestMapping(value = "/durian/durianList")
 	public String durianList(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
 		
-		vo.setScOptionDate(vo.getScOptionDate() == null ? 1 : vo.getScOptionDate());
-		vo.setScDateStart(vo.getScDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getScDateStart());
-		vo.setScDateEnd(vo.getScDateEnd() == null ? UtilDateTime.nowString() : vo.getScDateEnd());
-		
 		// count 가져올 것
 		int count = service.selectOneCount(vo);
 
@@ -32,12 +28,17 @@ public class DurianController {
 		
 		// count 가 0 이 아니면 list 가져오는 부분 수행 후 model 개쳋에 담기
 		if (count != 0) {
+			
 			List<Durian> list = service.selectList(vo);
 			model.addAttribute("list", list);
 
 		} else {
 			//by pass
 		}
+
+		vo.setScOptionDate(vo.getScOptionDate() == null ? 1 : vo.getScOptionDate());
+		vo.setScDateStart(vo.getScDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getScDateStart());
+		vo.setScDateEnd(vo.getScDateEnd() == null ? UtilDateTime.nowString() : vo.getScDateEnd());
 		
 
 		/*

@@ -102,7 +102,7 @@
 .container {
 	justify-content: center; /* 수평 정렬 */
 	align-items: center; /* 수직 정렬 */
-	width: 1143.200px;
+	width: auto;
 	height: auto;
 	color: black;
 }
@@ -248,7 +248,7 @@
 </nav>
 
 <br> <br>
-<div class="container" style="margin-left: 100px; margin-right: 100px; margin-top: 50px; margin-bottom: 50px;">
+<div class="container">
 
 
 
@@ -347,12 +347,7 @@
 <hr>
 <br>
 	<div class="table-wrapper">
-		<div class="container"
-		style="
-margin-left: 100px;
-margin-right: 100px;
-margin-top: 50px;
-margin-bottom: 50px;">
+		<div class="container">
 
 		<table class="table table-hover">
 			<thead>
@@ -373,6 +368,8 @@ margin-bottom: 50px;">
 					<th scope="col">연락처</th>
 					<th scope="col">이메일</th>
 					<th scope="col">삭제여부</th>
+					<th scope="col">최초접속</th>
+					<th scope="col">최근접속</th>
 
 				</tr>
 			</thead>
@@ -408,6 +405,8 @@ margin-bottom: 50px;">
 														<c:when test="${item.oymbDelNy eq 0 }">O</c:when>
 														<c:otherwise>X</c:otherwise>
 													</c:choose></td>
+													<td><c:out value="${item.regDateTime}" /></td>
+													<td><c:out value="${item.modDateTime}" /></td>
 											</tr>
 										</c:forEach>
 									</c:otherwise>
@@ -533,7 +532,7 @@ $.datepicker.setDefaults({
 	yearSuffix : '년'
 });
 
-$("#btnSubmit").on(
+/* $("#btnSubmit").on(
 		"click",
 		function() {
 
@@ -552,7 +551,7 @@ $("#btnSubmit").on(
 			if (!checkNull($("#scValue"), $("#scValue").val(),
 					"검색어를 입력해주세요."))
 				return false;
-		});
+		}); */
 
 goPage = function(seq) {
 	// form 객체를 가져온다

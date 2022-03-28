@@ -59,8 +59,8 @@
 		<!-- ,(select oycdName from oyCode where oycdSeq = a.oymbGradeCd) as oymbGrade -->
 		, a.oymbDelNy
 		, a.oymbDob
-		, a.RegDateTime
-		, a.ModDateTime
+		, a.regDateTime
+		, a.modDateTime
 		, f.oympTelecomCd
 		<!-- ,(select oycdName from oyCode where oycdSeq = a.oympTelecomCd) as oympTelecom -->
 		, f.oympNumber
@@ -195,7 +195,8 @@
 		, b.oyjqDelNy
 		, c.oymnSeq
 		, c.oymnDelNy
-		, d.oymaSeq
+		, c.oynaSeq
+		, c.oymbSeq
 		, d.oymaDefaultNy
 		, d.oymaTypeCd
 		, d.oymaZipCode

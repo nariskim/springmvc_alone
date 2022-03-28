@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.myapp.common.constants.Constants;
 import com.mycompany.myapp.common.util.UtilDateTime;
 
 @Controller

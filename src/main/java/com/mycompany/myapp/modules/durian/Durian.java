@@ -26,8 +26,8 @@ public class Durian {
 	private Integer oymbPushConsentNy;
 	private Integer oymbSavedCd;
 	private Integer oymbDelNy;
-	private Date RegDateTime;
-	private Date ModDateTime;
+	private Date regDateTime;
+	private Date modDateTime;
 	
 	private String oyjqSeq="";
 	private String oyjqQuestionCd = "";
@@ -233,19 +233,19 @@ public class Durian {
 	}
 
 	public Date getRegDateTime() {
-		return RegDateTime;
+		return regDateTime;
 	}
 
 	public void setRegDateTime(Date regDateTime) {
-		RegDateTime = regDateTime;
+		this.regDateTime = regDateTime;
 	}
 
 	public Date getModDateTime() {
-		return ModDateTime;
+		return modDateTime;
 	}
 
 	public void setModDateTime(Date modDateTime) {
-		ModDateTime = modDateTime;
+		this.modDateTime = modDateTime;
 	}
 
 	public String getOyjqSeq() {
@@ -528,5 +528,5 @@ public class Durian {
 		this.oymeDelNy = oymeDelNy;
 	}
 
-
+	
 }

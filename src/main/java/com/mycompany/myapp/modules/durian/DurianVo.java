@@ -17,8 +17,8 @@ public class DurianVo {
 	
 
 	// oyMemberSearch
-	private String RegDateTime;
-	private String ModDateTime;
+	private String regDateTime;
+	private String modDateTime;
 	private String oymbDob;
 
 	private Integer scOptionDate;
@@ -27,7 +27,7 @@ public class DurianVo {
 	private Integer scOymbDelNy; 
 
 	// common
-	private String scOption;
+	private Integer scOption;
 	private String scValue;
 
 	// Paging
@@ -181,19 +181,19 @@ public class DurianVo {
 	}
 
 	public String getRegDateTime() {
-		return RegDateTime;
+		return regDateTime;
 	}
 
 	public void setRegDateTime(String regDateTime) {
-		RegDateTime = regDateTime;
+		this.regDateTime = regDateTime;
 	}
 
 	public String getModDateTime() {
-		return ModDateTime;
+		return modDateTime;
 	}
 
 	public void setModDateTime(String modDateTime) {
-		ModDateTime = modDateTime;
+		this.modDateTime = modDateTime;
 	}
 
 	public String getOymbDob() {
@@ -236,11 +236,11 @@ public class DurianVo {
 		this.scOymbDelNy = scOymbDelNy;
 	}
 
-	public String getScOption() {
+	public Integer getScOption() {
 		return scOption;
 	}
 
-	public void setScOption(String scOption) {
+	public void setScOption(Integer scOption) {
 		this.scOption = scOption;
 	}
 
@@ -340,5 +340,4 @@ public class DurianVo {
 		this.startRnumForMysql = startRnumForMysql;
 	}
 
-	
 }

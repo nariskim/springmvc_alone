@@ -11,17 +11,72 @@
 
 
 
-	<select id="selectList" resultMap="resultMapObj">
-		
+	<sql id="selectCommon">
+
+
+		FROM oyMember a
+		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND f.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND g.oymbSeq = a.oymbSeq
+
+		WHERE 1=1
+	
+		<choose>
+			<when test="scOymbDelNy == 1">AND a.oymbDelNy = 1</when>
+			<when test="scOymbDelNy == 0">AND a.oymbDelNy = 0</when>
+		</choose>
+
+<!-- 		<if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName LIKE concat('%',#{scOymbName},'%')</if> -->
+		<choose>
+				<when test="scOptionDate == 1">AND a.regDateTime BETWEEN #{scDateStart} AND #{scDateEnd}</when>
+				<when test="scOptionDate == 2">AND a.modDateTime BETWEEN #{scDateStart} AND #{scDateEnd}</when>
+				<when test="scOptionDate == 3">AND a.oymbDob BETWEEN #{scDateStart} AND #{scDateEnd}</when>
+		</choose>
+		<choose>
+			<when test="scOption == 1">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 2">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 3">AND a.oymbGender LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 4">AND a.oymbGrade LIKE concat('%',#{scValue},'%')</when>
+			
+		</choose>
+
+
+	</sql>
+
+	<select id="selectOneCount" resultType="Integer">
+
 		SELECT
-		oymbSeq
-		, oymbId
-		, oymbName
-		
-		FROM
-		oyMember
-		
+		count(*)
+		<include refid="selectCommon"/>
 	</select>
+
+
+	<select id="selectList" resultMap="resultMapObj">
+
+		SELECT
+		a.oymbSeq
+		, a.oymbName
+		, a.oymbNameEng
+		, a.oymbId
+		, a.oymbGenderCd
+		<!-- ,(select oycdName from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender -->
+		, a.oymbGradeCd
+		<!-- ,(select oycdName from oyCode where oycdSeq = a.oymbGradeCd) as oymbGrade -->
+		, a.oymbDelNy
+		, a.oymbDob
+		, a.RegDateTime
+		, a.ModDateTime
+		, f.oympTelecomCd
+		<!-- ,(select oycdName from oyCode where oycdSeq = a.oympTelecomCd) as oympTelecom -->
+		, f.oympNumber
+		, g.oymeEmailFull
+<!-- 		, g.oymeEmailAccount
+		, g.oymeEmailDomainCd -->
+
+		<include refid="selectCommon" />
+		ORDER BY oymbSeq ASC
+
+	</select>
+
 	
 	
 	<insert id="insert">
