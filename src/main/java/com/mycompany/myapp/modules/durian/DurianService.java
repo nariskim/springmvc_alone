@@ -16,8 +16,6 @@ public interface DurianService {
 	
 	public int insertJoinQna(Durian dto) throws Exception;
 	
-//	public int insertNationG(Durian dto) throws Exception;
-	
 	public int insertNation(Durian dto) throws Exception;
 	
 	public int insertPhone(Durian dto) throws Exception;
@@ -29,8 +27,6 @@ public interface DurianService {
 	public int update(Durian dto) throws Exception;
 	
 	public int updateJoinQna(Durian dto) throws Exception;
-
-//	public int updateNationG(Durian dto) throws Exception;
 
 	public int updateNation(Durian dto) throws Exception;
 

@@ -47,10 +47,6 @@ public class DurianDao {
 		return sqlSession.insert(namespace + ".insertJoinQna", dto);
 	}
 	
-	public int insertNationG(Durian dto) {
-		return sqlSession.insert(namespace + ".insertNationG", dto);
-	}
-	
 	public int insertNation(Durian dto) {
 		return sqlSession.insert(namespace + ".insertNation", dto);
 	}
@@ -77,10 +73,6 @@ public class DurianDao {
 	public int updateJoinQna(Durian dto) {
 		return sqlSession.update(namespace + ".updateJoinQna", dto);
 	}
-
-//	public int updateNationG(Durian dto) {
-//		return sqlSession.update(namespace + ".updateNationG", dto);
-//	}
 
 	public int updateNation(Durian dto) {
 		return sqlSession.update(namespace + ".updateNation", dto);
@@ -109,4 +101,5 @@ public class DurianDao {
 		return list;
 	}
 	
+
 }

@@ -45,11 +45,6 @@ public class DurianServiceImpl implements DurianService {
 		return dao.insertJoinQna(dto);
 	}
 	
-//	@Override
-//	public int insertNationG(Durian dto) throws Exception {
-//		return dao.insertNationG(dto);
-//	}
-	
 	@Override
 	public int insertNation(Durian dto) throws Exception {
 		return dao.insertNation(dto);
@@ -79,11 +74,6 @@ public class DurianServiceImpl implements DurianService {
 	public int updateJoinQna(Durian dto) throws Exception {
 		return dao.updateJoinQna(dto);
 	}
-
-//	@Override
-//	public int updateNationG(Durian dto) throws Exception {
-//		return dao.updateNationG(dto);
-//	}
 
 	@Override
 	public int updateNation(Durian dto) throws Exception {
@@ -126,6 +116,7 @@ public class DurianServiceImpl implements DurianService {
 		Durian.cachedCodeArrayList.addAll(codeListFromDb);
 		System.out.println("cachedCodeArrayList:" + Durian.cachedCodeArrayList.size() + "chached !");
 	}
+	
 
 	public static List<Durian> selectListCachedCode(String oycgSeq) throws Exception {
 		List<Durian> rt = new ArrayList<Durian>();

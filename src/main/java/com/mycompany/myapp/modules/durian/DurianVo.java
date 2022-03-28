@@ -1,7 +1,5 @@
 package com.mycompany.myapp.modules.durian;
 
-import java.util.Date;
-
 public class DurianVo {
 
 	private String oymbSeq;
@@ -19,13 +17,13 @@ public class DurianVo {
 	
 
 	// oyMemberSearch
-	private Date RegDateTime;
-	private Date ModDateTime;
+	private String RegDateTime;
+	private String ModDateTime;
+	private String oymbDob;
 
 	private Integer scOptionDate;
 	private String scDateStart;
 	private String scDateEnd;
-	private String scOymbName;
 	private Integer scOymbDelNy; 
 
 	// common
@@ -76,9 +74,9 @@ public class DurianVo {
 		if (startRnumForOracle < 1)
 			startRnumForOracle = 1;
 
-		if (thisPage == 1) {
+		if(thisPage == 1 || thisPage == 0) {
 			startRnumForMysql = 0;
-		} else {
+		}else {
 			startRnumForMysql = ((rowNumToShow * (thisPage - 1)));
 		}
 
@@ -92,22 +90,6 @@ public class DurianVo {
 		System.out.println("getEndRnumForOracle():" + endRnumForOracle);
 		System.out.println("getStartRnumForMysql(): " + startRnumForMysql);
 
-	}
-
-	public Date getRegDateTime() {
-		return RegDateTime;
-	}
-
-	public void setRegDateTime(Date regDateTime) {
-		RegDateTime = regDateTime;
-	}
-
-	public Date getModDateTime() {
-		return ModDateTime;
-	}
-
-	public void setModDateTime(Date modDateTime) {
-		ModDateTime = modDateTime;
 	}
 
 	public String getOymbSeq() {
@@ -198,12 +180,52 @@ public class DurianVo {
 		this.oympDefaultNy = oympDefaultNy;
 	}
 
-	public String getScOymbName() {
-		return scOymbName;
+	public String getRegDateTime() {
+		return RegDateTime;
 	}
 
-	public void setScOymbName(String scOymbName) {
-		this.scOymbName = scOymbName;
+	public void setRegDateTime(String regDateTime) {
+		RegDateTime = regDateTime;
+	}
+
+	public String getModDateTime() {
+		return ModDateTime;
+	}
+
+	public void setModDateTime(String modDateTime) {
+		ModDateTime = modDateTime;
+	}
+
+	public String getOymbDob() {
+		return oymbDob;
+	}
+
+	public void setOymbDob(String oymbDob) {
+		this.oymbDob = oymbDob;
+	}
+
+	public Integer getScOptionDate() {
+		return scOptionDate;
+	}
+
+	public void setScOptionDate(Integer scOptionDate) {
+		this.scOptionDate = scOptionDate;
+	}
+
+	public String getScDateStart() {
+		return scDateStart;
+	}
+
+	public void setScDateStart(String scDateStart) {
+		this.scDateStart = scDateStart;
+	}
+
+	public String getScDateEnd() {
+		return scDateEnd;
+	}
+
+	public void setScDateEnd(String scDateEnd) {
+		this.scDateEnd = scDateEnd;
 	}
 
 	public Integer getScOymbDelNy() {
@@ -318,31 +340,5 @@ public class DurianVo {
 		this.startRnumForMysql = startRnumForMysql;
 	}
 
-	public Integer getScOptionDate() {
-		return scOptionDate;
-	}
-
-	public void setScOptionDate(Integer scOptionDate) {
-		this.scOptionDate = scOptionDate;
-	}
-
-	public String getScDateStart() {
-		return scDateStart;
-	}
-
-	public void setScDateStart(String scDateStart) {
-		this.scDateStart = scDateStart;
-	}
-
-	public String getScDateEnd() {
-		return scDateEnd;
-	}
-
-	public void setScDateEnd(String scDateEnd) {
-		this.scDateEnd = scDateEnd;
-	}
-
-	
-	
 	
 }

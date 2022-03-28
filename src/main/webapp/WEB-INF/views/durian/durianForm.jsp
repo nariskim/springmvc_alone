@@ -19,10 +19,10 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-
 <script src="https://kit.fontawesome.com/893e1f7eb8.js" crossorigin="anonymous"></script>
 
 <style type="text/css">
+
 .bottom-border {
 	border-bottom: 2px groove black;
 }
@@ -113,6 +113,7 @@
 	display: inline;
 }
 </style>
+
 </head>
 <body>
 <form id="durianForm" name="durianForm" method="post" action="/myapp/durian/durianInst">
@@ -316,7 +317,7 @@
 			<select class="form-select" id="oyjqQuestionCd" name="oyjqQuestionCd">
 				<option value="" selected>::선택::</option>
 					<c:forEach items="${codeJoinQna}" var="itemJoinQna" varStatus="statusJoinQna">
-			<option value="<c:out value="${itemJoinQna.oycdSeq}"/>" <c:if test="${item.oyjqQuestionCd eq itemJoinQna.oycdSeq }">selected</c:if>><c:out value="${itemJoinQna.oycdName}"/></option>	
+			<option value="<c:out value="${itemJoinQna.oycdSeq}"/>"<c:if test="${item.oyjqQuestionCd eq itemJoinQna.oycdSeq }">selected</c:if>><c:out value="${itemJoinQna.oycdName}"/></option>	
 							</c:forEach>
 			</select>
 		</div>
@@ -346,16 +347,16 @@
 		<label for="formFile" class="form-label">국적</label>
 	</div>
 	<div class="col-12 col-sm-8 col-lg-4">
-		<select class="form-select" id="" name="">
+		<select class="form-select" id="oynaSeq" name="oynaSeq">
 			<option value="">::국적::</option>
-			<option value="1">한국</option>
-			<option value="2">미국</option>
-			<option value="5">프랑스</option>
-			<option value="3">영국</option>
-			<option value="4">독일</option>
-			<option value="6">폴란드</option>
-			<option value="7">호주</option>
-			<option value="8">중국</option>
+			<option value="1" <c:if test="${item.oynaSeq eq 1}">selected</c:if>>한국</option>
+			<option value="2" <c:if test="${item.oynaSeq eq 2}">selected</c:if>>미국</option>
+			<option value="5" <c:if test="${item.oynaSeq eq 5}">selected</c:if>>프랑스</option>
+			<option value="3" <c:if test="${item.oynaSeq eq 3}">selected</c:if>>영국</option>
+			<option value="4" <c:if test="${item.oynaSeq eq 4}">selected</c:if>>독일</option>
+			<option value="6" <c:if test="${item.oynaSeq eq 6}">selected</c:if>>폴란드</option>
+			<option value="7" <c:if test="${item.oynaSeq eq 7}">selected</c:if>>호주</option>
+			<option value="8" <c:if test="${item.oynaSeq eq 8}">selected</c:if>>중국</option>
 		</select>
 			<input type="text" class="form-control" id="" name="" placeholder="그 외 국가 직접 입력">
 	</div>

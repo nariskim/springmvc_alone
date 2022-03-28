@@ -16,7 +16,7 @@
 <input type="hidden" id="thisPage" name="thisPage" value="${vo.thisPage}">
 
 	
-<!-- 	<input type="text" id="abcDate" name="abcDate"> -->
+	<input type="text" id="abcDate" name="abcDate">
 	
 	<input type="text" id="oycgName" name="oycgName" placeholder="이름"> <a href="javascript:goInst();">
 					<button type="button" id="" class="btn btn-success">등록</button></a>
@@ -25,6 +25,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/myapp/resources/js/validation.js"></script>
+
 <!-- jquery ui -->
 <script src="/myapp/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 

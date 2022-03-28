@@ -23,6 +23,8 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
+<!-- jquery ui CSS -->
+<link href="/myapp/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
 
 <script src="https://kit.fontawesome.com/893e1f7eb8.js" crossorigin="anonymous"></script>
 
@@ -120,9 +122,11 @@
 </head>
 <body>
 
-<form id="formList" name="formList" method="post" action="/myapp/durian/durianList">
-	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-	<input type="hidden" id="oymbSeq" name="oymbSeq">
+	<form id="formList" name="formList" method="post"
+		action="/myapp/durian/durianList">
+		<input type="hidden" id="thisPage" name="thisPage"
+			value="<c:out value="${vo.thisPage}" default="1"/>"> <input
+			type="hidden" id="oymbSeq" name="oymbSeq">
 
 
 		<div class="row">
@@ -254,45 +258,54 @@
 					<div class="bbb">
 						<div class="container">
 
+
+
 							<div class="row gx-2 gy-2">
 								<div class="col-12 col-sm-4 col-lg-2">
-														<select class="form-select" name="scOymbDelNy" id="scOymbDelNy">
-							<option value="">::삭제여부::</option>
-							<option value="1" <c:if test="${vo.scOymbDelNy eq 1 }">selected</c:if>>Y</option>
-							<option value="0" <c:if test="${vo.scOymbDelNy eq 0 }">selected</c:if>>N</option>
-						</select>	
-								
-								</div>
-								<div class="col-12 col-sm-4 col-lg-2">
-									<input type="text" name="scOymbName" class="form-control"
-										id="scOymbName" placeholder="검색어" value="<c:out value="${vo.scOymbName}"/>">
-								</div>
-								<div class="row gx-2 gy-2">
-								<div class="col-12 col-sm-4 col-lg-2">
-									<select name="scOptionDate" id="scOptionDate" class="form-select">
+									<select name="scOptionDate" id="scOptionDate"
+										class="form-select">
 										<option value="">::검색구분::
 										<option value="1"
 											<c:if test="${vo.scOptionDate eq 1 }">selected</c:if>>등록일
 
+										
 										<option value="2"
 											<c:if test="${vo.scOptionDate eq 2 }">selected</c:if>>수정일
 
+										
 										<option value="3"
 											<c:if test="${vo.scOptionDate eq 3 }">selected</c:if>>생년월일
 
 
+
 										
 									</select>
-								</div>	
+								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
-									<div class="input-group">
-									<input type="text" id="scDateStart" name="scDateStart" class="form-control" placeholder="검색어" value="<c:out value="${vo.scValue}"/>">
-									<input type="text" id="scDateEnd" name="scDateEnd" class="form-control" placeholder="검색어" value="<c:out value="${vo.scValue}"/>">
-								</div></div>	
-</div>
+									<input type="text" id="scDateStart" name="scDateStart"
+										class="form-control" placeholder="검색어"
+										value="<c:out value="${vo.scValue}"/>">
+								</div>
+								<div class="col-12 col-sm-4 col-lg-2">
+									<input type="text" id="scDateEnd" name="scDateEnd"
+										class="form-control" placeholder="검색어"
+										value="<c:out value="${vo.scValue}"/>">
+								</div>
 							</div>
+
 							<br>
+
 							<div class="row gx-2 gy-2">
+								<div class="col-12 col-sm-4 col-lg-2">
+									<select class="form-select" name="scOymbDelNy" id="scOymbDelNy">
+										<option value="">::삭제여부::</option>
+										<option value="1"
+											<c:if test="${vo.scOymbDelNy eq 1 }">selected</c:if>>Y</option>
+										<option value="0"
+											<c:if test="${vo.scOymbDelNy eq 0 }">selected</c:if>>N</option>
+									</select>
+
+								</div>
 
 								<div class="col-12 col-sm-4 col-lg-2">
 									<select name="scOption" id="scOption" class="form-select">
@@ -300,15 +313,19 @@
 										<option value="1"
 											<c:if test="${vo.scOption eq 1 }">selected</c:if>>한글
 
+										
 										<option value="2"
 											<c:if test="${vo.scOption eq 2 }">selected</c:if>>영문
+
 
 
 										
 									</select>
 								</div>
 								<div class="col-12 col-sm-4 col-lg-2">
-									<input type="text" id="scValue" name="scValue" class="form-control" placeholder="검색어" value="<c:out value="${vo.scValue}"/>">
+									<input type="text" id="scValue" name="scValue"
+										class="form-control" placeholder="검색어"
+										value="<c:out value="${vo.scValue}"/>">
 								</div>
 
 
@@ -331,7 +348,7 @@
 						</div>
 					</div>
 
-					<br> <br>
+					<br><hr><br>
 					<div class="table-wrapper">
 						<div class="container">
 
@@ -358,52 +375,50 @@
 									</tr>
 								</thead>
 
-								<tbody>
-									<c:choose>
-										<c:when test="${fn:length(list) eq 0}">
-											<tr>
-												<td class="text-center" colspan="9">There is no data!</td>
-											</tr>
-										</c:when>
-										<c:otherwise>
-											<c:forEach items="${list}" var="item" varStatus="status">
-												<tr>
-													<th scope="row">
-														<div class="form-check">
-															<input class="form-check-input" type="checkbox" value="s"
-																id="flexCheckDefault">
-														</div>
-													</th>
-													<th scope="row"><c:out value="${item.oymbSeq}" /></th>
-													<td><c:out value="${item.oymbGradeCd}" /></td>
-													<td><a href="javascript:goView(<c:out value="${item.oymbSeq}"/>);">
-													<c:out value="${item.oymbName}"/></a></td>
-													<td><c:out value="${item.oymbNameEng}"/></td>
-													<td><c:out value="${item.oymbId}" /></td>
-													<td><c:out value="${item.oymbGenderCd}" /></td>
-													<td><c:out value="${item.oympTelecomCd}" /></td>
-													<td><c:out value="${item.oympNumber}" /></td>
-													<td><c:out value="${item.oymeEmailFull}" /></td>
-													<td><div class="d-none">
-															<c:out value="${item.oymbDelNy}" />
-														</div></td>
-
-
-
-												</tr>
-
-											</c:forEach>
-										</c:otherwise>
-									</c:choose>
-
-							</table>
+					<tbody>
+						<c:choose>
+							<c:when test="${fn:length(list) eq 0}">
+								<tr>
+									<td class="text-center" colspan="9">There is no data!</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${list}" var="item" varStatus="status">
+									<tr>
+										<th scope="row">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="s"
+													id="flexCheckDefault">
+											</div>
+										</th>
+										<th scope="row"><c:out value="${item.oymbSeq}" /></th>
+										<td><c:out value="${item.oymbGender}" /></td>
+										<td><a
+											href="javascript:goView(<c:out value="${item.oymbSeq}"/>);">
+												<c:out value="${item.oymbName}" />
+										</a></td>
+										<td><c:out value="${item.oymbNameEng}" /></td>
+										<td><c:out value="${item.oymbId}" /></td>
+										<td><c:out value="${item.oymbGender}" /></td>
+										<td><c:out value="${item.oympTelecom}" /></td>
+										<td><c:out value="${item.oympNumber}" /></td>
+										<td><c:out value="${item.oymeEmailFull}" /></td>
+										<td><c:choose>
+												<c:when test="${item.oymbDelNy eq 0 }">O</c:when>
+												<c:otherwise>X</c:otherwise>
+											</c:choose></td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+							</table><br><hr><br>
 							<div class="row">
 								<div class="col-2">
 									<button type="button" id="btnSubmit_del" class="btn btn-danger">&nbsp삭
 										제&nbsp</button>
 								</div>
 								<div class="col-8"></div>
-								<div class="col-2">
 									<a href="javascript:goForm();">
 										<button type="button" class="btn btn-success">&nbsp등
 											록&nbsp</button>
@@ -420,8 +435,8 @@
 
 
 							<c:if test="${vo.startPage gt vo.pageNumToShow}">
-								<li class="page-item">
-								<a class="page-link" style="color: black;"
+								<li class="page-item"><a class="page-link"
+									style="color: black;"
 									href="javascript:goPage(<c:out value='${vo.startPage - 1}'/>);"
 									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								</a></li>
@@ -475,16 +490,43 @@
 			</div>
 		</div>
 
-</form>
+	</form>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="/myapp/resources/js/validation.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/myapp/resources/js/validation.js"></script>
+<!-- jquery ui -->
+<script src="/myapp/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+
 
 	<script type="text/javascript">
+
+	
+	$(document).ready(function(){
+		 $("#scDateStart").datepicker();
+	}); 
+
+
+	$(document).ready(function(){
+		 $("#scDateEnd").datepicker();
+	}); 
+
+	$.datepicker.setDefaults({
+	    dateFormat: 'yy-mm-dd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    showMonthAfterYear: true,
+	    yearSuffix: '년'
+	});
+
 	$("#btnSubmit").on( "click", function() {
 
 		if (!checkNull($("#scOymbDelNy"), $("#scOymbDelNy").val(),
@@ -504,40 +546,6 @@
 			return false;
 	});
 	
-	$(document).ready(function(){
-		 $("#scDateStart").datepicker();
-	}); 
-
-	$.datepicker.setDefaults({
-	    dateFormat: 'yy-mm-dd',
-	    prevText: '이전 달',
-	    nextText: '다음 달',
-	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-	    showMonthAfterYear: true,
-	    yearSuffix: '년'
-	});
-
-	$(document).ready(function(){
-		 $("#scDateEnd").datepicker();
-	}); 
-
-	$.datepicker.setDefaults({
-	    dateFormat: 'yy-mm-dd',
-	    prevText: '이전 달',
-	    nextText: '다음 달',
-	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-	    showMonthAfterYear: true,
-	    yearSuffix: '년'
-	});
-
 		goPage = function(seq) {
 			// form 객체를 가져온다
 			$("#thisPage").val(seq);

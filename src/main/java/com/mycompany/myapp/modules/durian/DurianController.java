@@ -46,6 +46,7 @@ public class DurianController {
 		 */
 
 //		model.addAttribute("vo", vo); @ModelAttribute("vo")  이거 둘중하나 방법 선택
+
 		return "durian/durianList";
 	}
 
@@ -53,17 +54,16 @@ public class DurianController {
 	public String durianForm(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
 		System.out.println("############################");
 		System.out.println("getScOymbDelNy() : "+vo.getScOymbDelNy());
-		System.out.println("getScOymbName() : "+vo.getScOymbName());
 		System.out.println("getScOption() : "+vo.getScOption());	
 		System.out.println("getScValue() : "+vo.getScValue());		
-		System.out.println("getThisPage() : "+vo.getThisPage());		
-		/* System.out.println("vo.getOymbSeq() : "+vo.getOymbSeq()); */		
+		System.out.println("getThisPage() : "+vo.getThisPage());	
 		System.out.println("############################");
 		
 		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
+		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("19"));
 		return "durian/durianForm";
 	}
 
@@ -74,8 +74,7 @@ public class DurianController {
 		System.out.println("############################");
 		service.insert(dto);
 		service.insertJoinQna(dto);
-//		service.insertNationG(dto);
-//		service.insertNation(dto);
+		service.insertNation(dto);
 		service.insertPhone(dto);
 		service.insertEmail(dto);
 		System.out.println("############################");	
@@ -89,8 +88,8 @@ public class DurianController {
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
+		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("19"));
 		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
-		redirectAttributes.addAttribute("scOymbName", vo.getScOymbName());
 		redirectAttributes.addAttribute("scOption", vo.getScOption());
 		redirectAttributes.addAttribute("scValue", vo.getScValue());
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
@@ -104,7 +103,6 @@ public class DurianController {
 		
 		System.out.println("############################");
 		System.out.println("getScOymbDelNy() : "+vo.getScOymbDelNy());
-		System.out.println("getScOymbName() : "+vo.getScOymbName());
 		System.out.println("getScOption() : "+vo.getScOption());	
 		System.out.println("getScValue() : "+vo.getScValue());		
 		System.out.println("getThisPage() : "+vo.getThisPage());		
@@ -120,9 +118,9 @@ public class DurianController {
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
+		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("19"));
 		
 		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
-		redirectAttributes.addAttribute("scOymbName", vo.getScOymbName());
 		redirectAttributes.addAttribute("scOption", vo.getScOption());
 		redirectAttributes.addAttribute("scValue", vo.getScValue());
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
@@ -135,7 +133,6 @@ public class DurianController {
 	public String durianEdit(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
 		System.out.println("############################");
 		System.out.println("getScOymbDelNy() : "+vo.getScOymbDelNy());
-		System.out.println("getScOymbName() : "+vo.getScOymbName());
 		System.out.println("getScOption() : "+vo.getScOption());	
 		System.out.println("getScValue() : "+vo.getScValue());		
 		System.out.println("getThisPage() : "+vo.getThisPage());		
@@ -151,6 +148,7 @@ public class DurianController {
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
+		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("19"));
 		
 		
 		return "durian/durianEdit";
@@ -160,7 +158,6 @@ public class DurianController {
 	public String durianUpdt(@ModelAttribute("vo") Durian dto, DurianVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
 		service.update(dto);
 		service.updateJoinQna(dto);
-//		service.updateNationG(dto);
 		service.updateNation(dto); 
 		service.updatePhone(dto);
 		service.updateEmail(dto);
@@ -175,9 +172,9 @@ public class DurianController {
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
+		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("19"));
 		
 		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
-		redirectAttributes.addAttribute("scOymbName", vo.getScOymbName());
 		redirectAttributes.addAttribute("scOption", vo.getScOption());
 		redirectAttributes.addAttribute("scValue", vo.getScValue());
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
