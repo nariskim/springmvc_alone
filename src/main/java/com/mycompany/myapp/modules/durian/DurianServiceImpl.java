@@ -33,11 +33,46 @@ public class DurianServiceImpl implements DurianService {
 	
 	@Override
 	public int insert(Durian dto) throws Exception {
+	
 		
 		dto.setRegDateTime(UtilDateTime.nowDate());
 		dto.setModDateTime(UtilDateTime.nowDate());
-
+		
+		
+		/*try {
+		 * //oymbEmail for(int i = 0; i< dto.getOymeEmailFullArray().length; i++) {
+		 * dto.setOymeDefaultNy(dto.getOymeDefaultNyArray()[i]);
+		 * dto.setOymeTypeCd(dto.getOymeTypeCdArray()[i]);
+		 * dto.setOymeEmailFull(dto.getOymeEmailFullArray()[i]);
+		 * dto.setOymeEmailAccount(dto.getOymeEmailAccountArray()[i]);
+		 * dto.setOymeEmailDomain(dto.getOymeEmailDomainArray()[i]);
+		 * dto.setOymeEmailDomainCd(dto.getOymeEmailDomainCdArray()[i]);
+		 * dao.insertEmail(dto); }
+		 * 
+		 * //oymbPhone for(int i = 0; i< dto.getOympNumberArray().length; i++) {
+		 * dto.setOympDefaultNy(dto.getOympDefaultNyArray()[i]);
+		 * dto.setOympTypeCd(dto.getOympTypeCdArray()[i]);
+		 * dto.setOympDeviceCd(dto.getOympDeviceCdArray()[i]);
+		 * dto.setOympTelecomCd(dto.getOympTelecomCdArray()[i]);
+		 * dto.setOympNumber(dto.getOympNumberArray()[i]); dao.insertPhone(dto); }
+		 * 
+		 * //oymbAddress for(int i = 0; i< dto.getOymaZipCodeArray().length; i++) {
+		 * dto.setOymaDefaultNy(dto.getOymaDefaultNyArray()[i]);
+		 * dto.setOymaTypeCd(dto.getOymaTypeCdArray()[i]);
+		 * dto.setOymaTitle(dto.getOymaTitleArray()[i]);
+		 * dto.setOymaAddress1(dto.getOymaAddress1Array()[i]);
+		 * dto.setOymaAddress2(dto.getOymaAddress2Array()[i]);
+		 * dto.setOymaAddress3(dto.getOymaAddress3Array()[i]);
+		 * dto.setOymaZipCode(dto.getOymaZipCodeArray()[i]); dao.insertAddress(dto); }
+		 return dao.insert(dto);
+		} catch (Exception e) {
+			throw new Exception();
+		}*/
+		
 		return dao.insert(dto);
+		
+		
+		
 	}
 	
 	@Override
@@ -51,14 +86,16 @@ public class DurianServiceImpl implements DurianService {
 	}
 	
 	@Override
-	public int insertPhone(Durian dto) throws Exception {
-		return dao.insertPhone(dto);
+	public int insertAddress(Durian dto) throws Exception {
+		return dao.insertAddress(dto);
 	}
-	
-	@Override
-	public int insertEmail(Durian dto) throws Exception {
-		return dao.insertEmail(dto);
-	}
+	/*
+	 * @Override public int insertPhone(Durian dto) throws Exception { return
+	 * dao.insertPhone(dto); }
+	 * 
+	 * @Override public int insertEmail(Durian dto) throws Exception { return
+	 * dao.insertEmail(dto); }
+	 */
 	
 	@Override
 	public Durian selectOne(DurianVo vo) throws Exception {
@@ -75,20 +112,19 @@ public class DurianServiceImpl implements DurianService {
 		return dao.updateJoinQna(dto);
 	}
 
-	@Override
-	public int updateNation(Durian dto) throws Exception {
-		return dao.updateNation(dto);
-	}
-
-	@Override
-	public int updatePhone(Durian dto) throws Exception {
-		return dao.updatePhone(dto);
-	}
+	 @Override 
+	 public int updateNation(Durian dto) throws Exception { return
+	  dao.updateNation(dto); 
+	 }
 	
-	@Override
-	public int updateEmail(Durian dto) throws Exception {
-		return dao.updateEmail(dto);
-	}
+	 
+	/*
+	 * @Override public int updatePhone(Durian dto) throws Exception { return
+	 * dao.updatePhone(dto); }
+	 * 
+	 * @Override public int updateEmail(Durian dto) throws Exception { return
+	 * dao.updateEmail(dto); }
+	 */
 
 	@Override
 	public int selectOneCount(DurianVo vo) throws Exception {

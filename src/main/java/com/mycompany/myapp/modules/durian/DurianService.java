@@ -18,9 +18,11 @@ public interface DurianService {
 	
 	public int insertNation(Durian dto) throws Exception;
 	
-	public int insertPhone(Durian dto) throws Exception;
-	
-	public int insertEmail(Durian dto) throws Exception;
+	public int insertAddress(Durian dto) throws Exception;
+//	
+//	public int insertPhone(Durian dto) throws Exception;
+//	
+//	public int insertEmail(Durian dto) throws Exception;
 
 	public Durian selectOne(DurianVo vo) throws Exception;
 
@@ -29,10 +31,10 @@ public interface DurianService {
 	public int updateJoinQna(Durian dto) throws Exception;
 
 	public int updateNation(Durian dto) throws Exception;
-
-	public int updatePhone(Durian dto) throws Exception;
-
-	public int updateEmail(Durian dto) throws Exception;
+//
+//	public int updatePhone(Durian dto) throws Exception;
+//
+//	public int updateEmail(Durian dto) throws Exception;
 	
 	public int updateDelete(DurianVo vo) throws Exception;
 	

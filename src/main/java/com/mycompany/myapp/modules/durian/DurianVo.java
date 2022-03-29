@@ -9,11 +9,7 @@ public class DurianVo {
 	private String oymaSeq;
 	private String oympSeq;
 	private String oymeSeq;
-	private String oyjqQuestionCd;	
-	private String oympTelecomCd;
-	private String oymeEmailDomainCd;
-	
-	private Integer oympDefaultNy;
+
 	
 
 	// oyMemberSearch
@@ -146,38 +142,6 @@ public class DurianVo {
 
 	public void setOymeSeq(String oymeSeq) {
 		this.oymeSeq = oymeSeq;
-	}
-
-	public String getOyjqQuestionCd() {
-		return oyjqQuestionCd;
-	}
-
-	public void setOyjqQuestionCd(String oyjqQuestionCd) {
-		this.oyjqQuestionCd = oyjqQuestionCd;
-	}
-
-	public String getOympTelecomCd() {
-		return oympTelecomCd;
-	}
-
-	public void setOympTelecomCd(String oympTelecomCd) {
-		this.oympTelecomCd = oympTelecomCd;
-	}
-
-	public String getOymeEmailDomainCd() {
-		return oymeEmailDomainCd;
-	}
-
-	public void setOymeEmailDomainCd(String oymeEmailDomainCd) {
-		this.oymeEmailDomainCd = oymeEmailDomainCd;
-	}
-
-	public Integer getOympDefaultNy() {
-		return oympDefaultNy;
-	}
-
-	public void setOympDefaultNy(Integer oympDefaultNy) {
-		this.oympDefaultNy = oympDefaultNy;
 	}
 
 	public String getRegDateTime() {

@@ -22,16 +22,16 @@
 		</choose>
 
 <!-- 		<if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName LIKE concat('%',#{scOymbName},'%')</if> -->
-		<choose>
+  		<choose>
 				<when test="scOptionDate == 1">AND a.regDateTime BETWEEN #{scDateStart} AND #{scDateEnd}</when>
 				<when test="scOptionDate == 2">AND a.modDateTime BETWEEN #{scDateStart} AND #{scDateEnd}</when>
 				<when test="scOptionDate == 3">AND a.oymbDob BETWEEN #{scDateStart} AND #{scDateEnd}</when>
-		</choose>
+		</choose>	
 		<choose>
 			<when test="scOption == 1">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
 			<when test="scOption == 2">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 3">AND a.oymbGender LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 4">AND a.oymbGrade LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 3">AND f.oympNumber LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 4">AND g.oymeEmailFull LIKE concat('%',#{scValue},'%')</when>
 			
 		</choose>
 
@@ -54,19 +54,13 @@
 		, a.oymbNameEng
 		, a.oymbId
 		, a.oymbGenderCd
-		<!-- ,(select oycdName from oyCode where oycdSeq = a.oymbGenderCd) as oymbGender -->
 		, a.oymbGradeCd
-		<!-- ,(select oycdName from oyCode where oycdSeq = a.oymbGradeCd) as oymbGrade -->
 		, a.oymbDelNy
 		, a.oymbDob
 		, a.regDateTime
 		, a.modDateTime
-		, f.oympTelecomCd
-		<!-- ,(select oycdName from oyCode where oycdSeq = a.oympTelecomCd) as oympTelecom -->
 		, f.oympNumber
 		, g.oymeEmailFull
-<!-- 		, g.oymeEmailAccount
-		, g.oymeEmailDomainCd -->
 
 		<include refid="selectCommon" />
 		ORDER BY oymbSeq ASC
@@ -83,9 +77,13 @@
 		, oymbId
 		, oymbNickName
 		, oymbPassword
+		<choose>
+		<when test="oymbDob.equals('')">,NULL</when>
+		<otherwise>,#{oymbDob}</otherwise>
+		</choose>
 		, oymbDelNy
-		, RegDateTime
-		, ModDateTime
+		, regDateTime
+		, modDateTime
 		) values (
 		#{oymbName}
 		, #{oymbNameEng}
@@ -108,11 +106,15 @@
 		oyjqQuestionCd
 		, oyjqAnswer
 		, oyjqDelNy
+		, regDateTime
+		, modDateTime
 		, oymbSeq
 		) values (
 		#{oyjqQuestionCd}
 		,#{oyjqAnswer}
 		,0
+		, now()
+		, now()
 		,#{oymbSeq}
 		)
 		<selectKey resultType="String" keyProperty="oyjqSeq"
@@ -121,7 +123,29 @@
 		</selectKey>
 	</insert>
 
-	<insert id="insertNation">
+	<insert id="insertAddress">
+		INSERT INTO oymbAddress (
+		oymaZipCode
+		, oymaAddress1
+		, oymaAddress2
+		, oymaAddress3
+		, oymaDelNy
+		, oymbSeq
+		) values (
+		#{oymaZipCode}
+		, #{oymaAddress1}
+		, #{oymaAddress2}
+		, #{oymaAddress3}
+		,0 
+		,#{oymbSeq}
+		)
+		<selectKey resultType="String" keyProperty="oymaSeq"
+			order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+
+<!-- 	<insert id="insertNation">
 		INSERT INTO oymbNationality (
 		oymnDelNy
 		, oymbSeq
@@ -175,7 +199,7 @@
 			order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
-	</insert>
+	</insert> -->
 
 
 
@@ -276,6 +300,7 @@
 		, oymbId = #{oymbId}
 		, oymbNickName = #{oymbNickName}
 		, oymbPassword = #{oymbPassword}
+		, modDateTime = #{modDateTime}
 
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
@@ -283,7 +308,7 @@
 
 	</update>
 	
-	<update id="updateJoinQna">
+<!-- 	<update id="updateJoinQna">
 
 		UPDATE
 		oymbJoinQna
@@ -291,7 +316,7 @@
 		oyjqQuestionCd = #{oyjqQuestionCd}
 		, oyjqAnswer = #{oyjqAnswer}
 		, oyjqDelNy = #{oyjqDelNy}
-		, oymbSeq = #{oymbSeq}
+
 
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
@@ -300,7 +325,7 @@
 	</update>
 
 		
-	<update id="updateNation">
+<update id="updateNation">
 
 		UPDATE
 		oymbNationality
@@ -342,7 +367,7 @@
 		AND oymbSeq = #{oymbSeq}
 
 
-	</update>
+	</update> -->
 	
 	<update id="updateDelete">
 		UPDATE oyMember SET oymbDelNy = 1 WHERE 1=1 AND oymbSeq = #{oymbSeq}  

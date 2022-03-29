@@ -21,13 +21,22 @@ public class DurianController {
 	@RequestMapping(value = "/durian/durianList")
 	public String durianList(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
 		
-		// count 가져올 것
-		int count = service.selectOneCount(vo);
-
-		vo.setParamsPaging(count);
+		/*
+		 * vo.setScOptionDate(vo.getScOptionDate() == null ? 1 : vo.getScOptionDate());
+		 * vo.setScDateStart(vo.getScDateStart() == null ?
+		 * UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(),
+		 * Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getScDateStart()));
+		 * vo.setScDateEnd(vo.getScDateEnd() == null ? UtilDateTime.nowString() :
+		 * UtilDateTime.addStringTime(vo.getScDateEnd()));
+		 */
 		
-		// count 가 0 이 아니면 list 가져오는 부분 수행 후 model 개쳋에 담기
-		if (count != 0) {
+		vo.setScDateStart(vo.getScDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getScDateStart()));
+		vo.setScDateEnd(vo.getScDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getScDateEnd()));
+
+		vo.setParamsPaging(service.selectOneCount(vo));
+
+		
+		if (vo.getTotalRows() > 0) {
 			
 			List<Durian> list = service.selectList(vo);
 			model.addAttribute("list", list);
@@ -36,17 +45,6 @@ public class DurianController {
 			//by pass
 		}
 
-		vo.setScOptionDate(vo.getScOptionDate() == null ? 1 : vo.getScOptionDate());
-		vo.setScDateStart(vo.getScDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getScDateStart());
-		vo.setScDateEnd(vo.getScDateEnd() == null ? UtilDateTime.nowString() : vo.getScDateEnd());
-		
-
-		/*
-		 * List<Code> list = service.selectListGroup(vo); model.addAttribute("list",
-		 * list);
-		 */
-
-//		model.addAttribute("vo", vo); @ModelAttribute("vo")  이거 둘중하나 방법 선택
 
 		return "durian/durianList";
 	}
@@ -64,23 +62,19 @@ public class DurianController {
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
-		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("19"));
+		model.addAttribute("codeGrade", DurianServiceImpl.selectListCachedCode("19"));
 		return "durian/durianForm";
 	}
 
 	@RequestMapping(value = "/durian/durianInst")
 	public String durianInst(Durian dto, DurianVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
-		System.out.println("############################");	
-		System.out.println("dto.getOymbSeq() : "+dto.getOymbSeq()); 		
-		System.out.println("############################");
 		service.insert(dto);
 		service.insertJoinQna(dto);
 		service.insertNation(dto);
-		service.insertPhone(dto);
-		service.insertEmail(dto);
-		System.out.println("############################");	
-		System.out.println("vo.getOymbSeq() : "+vo.getOymbSeq()); 		
-		System.out.println("############################");
+		service.insertAddress(dto);
+		
+//		service.insertPhone(dto);
+//		service.insertEmail(dto);
 		List<Durian> list = service.selectListPhone(vo);
 		model.addAttribute("listPhone", list);
 		List<Durian> list2 = service.selectListEmail(vo);
@@ -89,25 +83,27 @@ public class DurianController {
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
-		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("19"));
-		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
-		redirectAttributes.addAttribute("scOption", vo.getScOption());
-		redirectAttributes.addAttribute("scValue", vo.getScValue());
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
-		redirectAttributes.addAttribute("oymbSeq", vo.getOymbSeq());
+		model.addAttribute("codeGrade", DurianServiceImpl.selectListCachedCode("19"));
+
+		vo.setOymbSeq(dto.getOymbSeq());
+
+		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/durian/durianList";
+		return "redirect:/durian/durianView";
 	}
 	
 	@RequestMapping(value = "/durian/durianView")
-	public String durianView(@ModelAttribute("vo") DurianVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
+	public String durianView(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
 		
 		System.out.println("############################");
-		System.out.println("getScOymbDelNy() : "+vo.getScOymbDelNy());
-		System.out.println("getScOption() : "+vo.getScOption());	
-		System.out.println("getScValue() : "+vo.getScValue());		
-		System.out.println("getThisPage() : "+vo.getThisPage());		
-		System.out.println("getOymbSeq() : "+vo.getOymbSeq());		
+		System.out.println("View: getScOymbDelNy() : "+vo.getScOymbDelNy());
+		System.out.println("View: getScOption() : "+vo.getScOption());	
+		System.out.println("View: getScValue() : "+vo.getScValue());		
+		System.out.println("View: getThisPage() : "+vo.getThisPage());		
+		System.out.println("View: getOymbSeq() : "+vo.getOymbSeq());		
+		System.out.println("View: getScOptionDate() : "+vo.getScOptionDate());		
+		System.out.println("View: getScDateStart() : "+vo.getScDateStart());		
+		System.out.println("View: getScDateEnd() : "+vo.getScDateEnd());		
 		System.out.println("############################");
 		Durian rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
@@ -119,13 +115,8 @@ public class DurianController {
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
-		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("19"));
-		
-		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
-		redirectAttributes.addAttribute("scOption", vo.getScOption());
-		redirectAttributes.addAttribute("scValue", vo.getScValue());
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
-		
+		model.addAttribute("codeGrade", DurianServiceImpl.selectListCachedCode("19"));
+	
 		
 		return "durian/durianView";
 	}
@@ -133,11 +124,14 @@ public class DurianController {
 	@RequestMapping(value = "/durian/durianEdit")
 	public String durianEdit(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
 		System.out.println("############################");
-		System.out.println("getScOymbDelNy() : "+vo.getScOymbDelNy());
-		System.out.println("getScOption() : "+vo.getScOption());	
-		System.out.println("getScValue() : "+vo.getScValue());		
-		System.out.println("getThisPage() : "+vo.getThisPage());		
-		System.out.println("getOymbSeq() : "+vo.getOymbSeq());		
+		System.out.println("Edit: getScOymbDelNy() : "+vo.getScOymbDelNy());
+		System.out.println("Edit: getScOption() : "+vo.getScOption());	
+		System.out.println("Edit: getScValue() : "+vo.getScValue());		
+		System.out.println("Edit: getThisPage() : "+vo.getThisPage());		
+		System.out.println("Edit: getOymbSeq() : "+vo.getOymbSeq());		
+		System.out.println("Edit: getScOptionDate() : "+vo.getScOptionDate());		
+		System.out.println("Edit: getScDateStart() : "+vo.getScDateStart());		
+		System.out.println("Edit: getScDateEnd() : "+vo.getScDateEnd());		
 		System.out.println("############################");
 		Durian rt = service.selectOne(vo);
 		model.addAttribute("item", rt);
@@ -149,37 +143,26 @@ public class DurianController {
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
-		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("19"));
+		model.addAttribute("codeGrade", DurianServiceImpl.selectListCachedCode("19"));
 		
 		
 		return "durian/durianEdit";
 	}
 	
 	@RequestMapping(value = "/durian/durianUpdt")
-	public String durianUpdt(@ModelAttribute("vo") Durian dto, DurianVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
+	public String durianUpdt(@ModelAttribute("vo") Durian dto, DurianVo vo, RedirectAttributes redirectAttributes) throws Exception {
+
 		service.update(dto);
 		service.updateJoinQna(dto);
 		service.updateNation(dto); 
-		service.updatePhone(dto);
-		service.updateEmail(dto);
-		System.out.println("############################");	
-		System.out.println("getOymbSeq() : "+vo.getOymbSeq()); 		
-		System.out.println("############################");
-		List<Durian> list = service.selectListPhone(vo);
-		model.addAttribute("listPhone", list);
-		List<Durian> list2 = service.selectListEmail(vo);
-		model.addAttribute("listEmail", list2);
-		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
-		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
-		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
-		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
-		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("19"));
+//		service.updatePhone(dto);
+//		service.updateEmail(dto);
 		
-		redirectAttributes.addAttribute("scOymbDelNy", vo.getScOymbDelNy());
-		redirectAttributes.addAttribute("scOption", vo.getScOption());
-		redirectAttributes.addAttribute("scValue", vo.getScValue());
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
-		redirectAttributes.addAttribute("oymbSeq", vo.getOymbSeq());
+
+		vo.setOymbSeq(dto.getOymbSeq());
+
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
 		return "redirect:/durian/durianView";
 	}
 	@RequestMapping(value = "/durian/durianFelete")

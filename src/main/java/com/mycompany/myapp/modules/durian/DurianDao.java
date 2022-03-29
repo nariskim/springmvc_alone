@@ -7,8 +7,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-
-
 @Repository
 public class DurianDao {
 
@@ -18,54 +16,59 @@ public class DurianDao {
 
 	private static String namespace = "com.mycompany.myapp.modules.durian.DurianMpp";
 
-	//paging
+	// paging
 	public int selectOneCount(DurianVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
-	
-	//selectList
+
+	// selectList
 	public List<Durian> selectList(DurianVo vo) {
 		return sqlSession.selectList(namespace + ".selectList", vo);
 	}
-	
-	//selectListPhone
+
+	// selectListPhone
 	public List<Durian> selectListPhone(DurianVo vo) {
 		return sqlSession.selectList(namespace + ".selectListPhone", vo);
 	}
-	
-	//selectListEmail
+
+	// selectListEmail
 	public List<Durian> selectListEmail(DurianVo vo) {
 		return sqlSession.selectList(namespace + ".selectListEmail", vo);
 	}
-	
-	//Form
+
+	// Form
 	public int insert(Durian dto) {
 		return sqlSession.insert(namespace + ".insert", dto);
 	}
-	
+
 	public int insertJoinQna(Durian dto) {
 		return sqlSession.insert(namespace + ".insertJoinQna", dto);
 	}
-	
+
 	public int insertNation(Durian dto) {
 		return sqlSession.insert(namespace + ".insertNation", dto);
 	}
-	
-	public int insertPhone(Durian dto) {
-		return sqlSession.insert(namespace + ".insertPhone", dto);
-	}
-	
-	public int insertEmail(Durian dto) {
-		return sqlSession.insert(namespace + ".insertEmail", dto);
+
+	public int insertAddress(Durian dto) {
+		return sqlSession.insert(namespace + ".insertAddress", dto);
 	}
 
+	
+	/*
+	 * public int insertPhone(Durian dto) { return sqlSession.insert(namespace +
+	 * ".insertPhone", dto); }
+	 * 
+	 * public int insertEmail(Durian dto) { return sqlSession.insert(namespace +
+	 * ".insertEmail", dto); }
+	 * 
+	 */
 
-	//view, edit
+	// view, edit
 	public Durian selectOne(DurianVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
-	
-	//update
+
+	// update
 	public int update(Durian dto) {
 		return sqlSession.update(namespace + ".update", dto);
 	}
@@ -74,32 +77,30 @@ public class DurianDao {
 		return sqlSession.update(namespace + ".updateJoinQna", dto);
 	}
 
+	
 	public int updateNation(Durian dto) {
 		return sqlSession.update(namespace + ".updateNation", dto);
 	}
 
-	public int updatePhone(Durian dto) {
-		return sqlSession.update(namespace + ".updatePhone", dto);
-	}
-	
-	public int updateEmail(Durian dto) {
-		return sqlSession.update(namespace + ".updateEmail", dto);
-	}
+		/*
+		 * public int updatePhone(Durian dto) { return sqlSession.update(namespace +
+		 * ".updatePhone", dto); }
+		 * 
+		 * public int updateEmail(Durian dto) { return sqlSession.update(namespace +
+		 * ".updateEmail", dto); }
+		 */
 
-	
 	public int updateDelete(DurianVo vo) {
 		return sqlSession.update(namespace + ".updateDelete", vo);
 	}
-	
+
 	public int delete(DurianVo vo) {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}
-	
-	
-	public List<Durian> selectListForCache() { 
-		List<Durian> list = sqlSession.selectList(namespace + ".selectListForCache", ""); 
+
+	public List<Durian> selectListForCache() {
+		List<Durian> list = sqlSession.selectList(namespace + ".selectListForCache", "");
 		return list;
 	}
-	
 
 }

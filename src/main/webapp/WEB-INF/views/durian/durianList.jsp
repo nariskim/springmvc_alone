@@ -4,7 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
+<jsp:useBean id="DurianServiceImpl" class="com.mycompany.myapp.modules.durian.DurianServiceImpl"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -14,21 +16,27 @@
 
 <title>List.Durian</title>
 
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+<script src="https://kit.fontawesome.com/893e1f7eb8.js" crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
 <!-- jquery ui CSS -->
-<link
-	href="/myapp/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css"
-	rel="stylesheet">
+<link href="/myapp/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
 
-<script src="https://kit.fontawesome.com/893e1f7eb8.js"
-	crossorigin="anonymous"></script>
+
 
 <style type="text/css">
+
+main {
+	margin-top: 5%;
+	margin-bottom: 15%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .bottom-border {
 	border-bottom: 2px groove black;
 }
@@ -115,72 +123,76 @@
 </head>
 <body>
 
-<form id="formList" name="formList" method="post" action="/myapp/durian/durianList">
-<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-<input type="hidden" id="oymbSeq" name="oymbSeq">
+	<form id="formList" name="formList" method="post">
+		<input type="hidden" id="thisPage" name="thisPage"
+			value="<c:out value="${vo.thisPage}" default="1"/>"> <input
+			type="hidden" id="rowNumToShow" name="rowNumToShow"
+			value="<c:out value="${vo.rowNumToShow}" default="1"/>"> <input
+			type="hidden" name="checkboxSeqArray"> <input type="hidden"
+			name="oymbSeq">
 
 
 
-<!-- navbar s -->
-<div class="row">
-	<header class="navbar navbar-dark sticky-top bg-light ml-auto">
+		<!-- navbar s -->
+		<div class="row">
+			<header class="navbar navbar-dark sticky-top bg-light ml-auto">
 
-		<div class="col-auto col-sm-5">
-			<h1>&nbsp&nbsp&nbspALL LIVE YOUNG</h1>
+				<div class="col-auto col-sm-5">
+					<h1>&nbsp&nbsp&nbspALL LIVE YOUNG</h1>
+				</div>
+				<div class="col-auto d-md-none">
+
+					<div class="container-fluid">
+						<button
+							class="navbar-toggler position-relative d-md-none collapsed"
+							type="button" data-bs-toggle="collapse"
+							data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+							aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+
+					</div>
+
+
+				</div>
+				<div class="col-10 col-sm-3">
+
+					<input type="text" class="form-control me-2 search-input"
+						placeholder="Search...">
+				</div>
+				<div class="col-2 col-sm-1">
+					<button type="button" class="btn btn-secondary search-button">
+						<i class="fas fa-search text-light"></i>
+					</button>
+
+				</div>
+
+				<div class="col-auto col-sm-3">
+
+					<ul class="nav">
+						<li class="nav-item icon-parent"><a href="#"
+							class="nav-link icon-bullet"><i
+								class="fas fa-comments text-muted fa-lg"></i></a></li>
+
+
+						<li class="nav-item icon-parent"><a href="#"
+							class="nav-link icon-bullet"><i
+								class="fas fa-bell text-muted fa-lg"></i></a></li>
+
+						<li class="nav-item ml-auto"><a href="#" class="nav-link"><i
+								class="fas fa-sign-out-alt text-danger fa-lg"></i></a></li>
+					</ul>
+				</div>
+
+
+			</header>
 		</div>
-		<div class="col-auto d-md-none">
 
-			<div class="container-fluid">
-				<button
-					class="navbar-toggler position-relative d-md-none collapsed"
-					type="button" data-bs-toggle="collapse"
-					data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-					aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-			</div>
-
-
-		</div>
-		<div class="col-10 col-sm-3">
-
-			<input type="text" class="form-control me-2 search-input"
-				placeholder="Search...">
-		</div>
-		<div class="col-2 col-sm-1">
-			<button type="button" class="btn btn-secondary search-button">
-				<i class="fas fa-search text-light"></i>
-			</button>
-
-		</div>
-
-		<div class="col-auto col-sm-3">
-
-			<ul class="nav">
-				<li class="nav-item icon-parent"><a href="#"
-					class="nav-link icon-bullet"><i
-						class="fas fa-comments text-muted fa-lg"></i></a></li>
-
-
-				<li class="nav-item icon-parent"><a href="#"
-					class="nav-link icon-bullet"><i
-						class="fas fa-bell text-muted fa-lg"></i></a></li>
-
-				<li class="nav-item ml-auto"><a href="#" class="nav-link"><i
-						class="fas fa-sign-out-alt text-danger fa-lg"></i></a></li>
-			</ul>
-		</div>
-
-
-	</header>
-</div>
-
-<!-- navbar e -->
+		<!-- navbar e -->
 
 
 
-			<!-- <nav id="sidebarMenu"
+		<!-- <nav id="sidebarMenu"
 	class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show">
 	<div class="position-sticky pt-3">
 		<ul class="navbar-nav flex-column mt-4">
@@ -234,264 +246,299 @@
 
 	</div>
 </nav> -->
-<main>
-	<div class="container-fluid">
-		<div class="row">
+		<main>
+			<div class="container-fluid">
+				<div class="row">
 
-<br>
-<nav aria-label="breadcrumb">
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="#">회원 관리</a></li>
-		<li class="breadcrumb-item active" aria-current="page">회원
-			리스트</li>
-	</ol>
-</nav>
+					<br>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#">회원 관리</a></li>
+							<li class="breadcrumb-item active" aria-current="page">회원
+								리스트</li>
+						</ol>
+					</nav>
 
-<br> <br>
-<div class="container">
-
-
-
-<div class="row gx-2 gy-2">
-	<div class="col-12 col-sm-4 col-lg-2">
-		<select name="scOptionDate" id="scOptionDate"
-			class="form-select">
-			<option value="">::검색구분::
-				<option value="1"
-				<c:if test="${vo.scOptionDate eq 1 }">selected</c:if>>등록일</option>
-
-	
-	
-<option value="2"
-	<c:if test="${vo.scOptionDate eq 2 }">selected</c:if>>수정일</option>
-
-	
-	
-<option value="3"
-	<c:if test="${vo.scOptionDate eq 3 }">selected</c:if>>생년월일</option>
+					<br> <br>
+					<div class="container">
 
 
 
-		
-	
-</select>
-</div>
-<div class="col-12 col-sm-4 col-lg-2">
-	<input type="text" id="scDateStart" name="scDateStart"
-	class="form-control" placeholder="시작"
-	value="<c:out value="${vo.scValue}"/>">
-</div>
-<div class="col-12 col-sm-4 col-lg-2">
-	<input type="text" id="scDateEnd" name="scDateEnd"
-	class="form-control" placeholder="종료"
-	value="<c:out value="${vo.scValue}"/>">
-	</div>
-</div>
-
-<br>
-
-<div class="row gx-2 gy-2">
-	<div class="col-12 col-sm-4 col-lg-2">
-		<select class="form-select" name="scOymbDelNy" id="scOymbDelNy">
-			<option value="">::삭제여부::</option>
-			<option value="1"
-			<c:if test="${vo.scOymbDelNy eq 1 }">selected</c:if>>Y</option>
-<option value="0"
-<c:if test="${vo.scOymbDelNy eq 0 }">selected</c:if>>N</option>
-	</select>
-
-</div>
-
-<div class="col-12 col-sm-4 col-lg-2">
-	<select name="scOption" id="scOption" class="form-select">
-		<option value="">::검색구분::</option>
-		
-	<option value="1"
-		<c:if test="${vo.scOption eq 1 }">selected</c:if>>이름</option>
-<option value="2"
-	<c:if test="${vo.scOption eq 2 }">selected</c:if>>영문이름</option>
-<option value="3"
-	<c:if test="${vo.scOption eq 3 }">selected</c:if>>성별</option>
-<option value="4"
-	<c:if test="${vo.scOption eq 4 }">selected</c:if>>회원등급</option>
-
-</select>
-</div>
-<div class="col-12 col-sm-4 col-lg-2">
-	<input type="text" id="scValue" name="scValue"
-	class="form-control" placeholder="검색어"
-	value="<c:out value="${vo.scValue}"/>">
-</div>
+						<div class="row">
+							<div class="col-12 col-sm-4 col-lg-2">
+								<select name="scOptionDate" id="scOptionDate"
+									class="form-select">
+									<option value=""
+										<c:if test="${empty vo.scOptionDate}">selected</c:if>>::날짜::
 
 
-<div class="col-12 col-sm-4 col-lg-2">
-	<div style="text-align: left;">
-						<input type="submit" id="btnSubmit" name="search"
-						class="btn btn-outline-dark" value="검색"> <a
-						href="/myapp/durian/durianList"><button type="button"
-							class="btn btn-outline-dark">초기화</button></a>
+									
+									<option value="1"
+										<c:if test="${vo.scOptionDate eq 1 }">selected</c:if>>등록일</option>
+
+
+
+									<option value="2"
+										<c:if test="${vo.scOptionDate eq 2 }">selected</c:if>>수정일</option>
+
+
+
+									<option value="3"
+										<c:if test="${vo.scOptionDate eq 3 }">selected</c:if>>생년월일</option>
+
+								</select>
+
+
+
+							</div>
+							<div class="col-12 col-sm-4 col-lg-2">
+								<fmt:parseDate var="scDateStart" value="${vo.scDateStart }"
+									pattern="yyyy-MM-dd HH:mm:ss" />
+								<input type="text" id="scDateStart" name="scDateStart"
+									value="<fmt:formatDate value="${scDateStart }" pattern="yyyy-MM-dd" />"
+									placeholder="시작일" class="form-control" autocomplete="off">
+							</div>
+							<div class="col-12 col-sm-4 col-lg-2">
+								<fmt:parseDate var="scDateEnd" value="${vo.scDateEnd }"
+									pattern="yyyy-MM-dd HH:mm:ss" />
+								<input type="text" id="scDateEnd" name="scDateEnd"
+									value="<fmt:formatDate value="${scDateEnd }" pattern="yyyy-MM-dd" />"
+									placeholder="종료일" class="form-control" autocomplete="off">
+							</div>
+						</div>
+
+						<br>
+
+						<div class="row">
+							<div class="col-12 col-sm-4 col-lg-2">
+								<select class="form-select" name="scOymbDelNy" id="scOymbDelNy">
+									<option value=""
+										<c:if test="${empty vo.scOymbDelNy}">selected</c:if>>::삭제여부::</option>
+									<option value="1"
+										<c:if test="${vo.scOymbDelNy eq 1 }">selected</c:if>>Y</option>
+									<option value="0"
+										<c:if test="${vo.scOymbDelNy eq 0 }">selected</c:if>>N</option>
+								</select>
+
+							</div>
+
+							<div class="col-12 col-sm-4 col-lg-2">
+								<select name="scOption" id="scOption" class="form-select">
+									<option value=""
+										<c:if test="${empty vo.scOption}">selected</c:if>>::검색구분::</option>
+
+									<option value="1"
+										<c:if test="${vo.scOption eq 1 }">selected</c:if>>이름</option>
+									<option value="2"
+										<c:if test="${vo.scOption eq 2 }">selected</c:if>>영문이름</option>
+									<option value="3"
+										<c:if test="${vo.scOption eq 3 }">selected</c:if>>전화번호</option>
+									<option value="4"
+										<c:if test="${vo.scOption eq 4 }">selected</c:if>>이메일</option>
+
+								</select>
+							</div>
+							<div class="col-12 col-sm-4 col-lg-2">
+								<input type="text" id="scValue" name="scValue"
+									class="form-control" placeholder="검색어"
+									value="<c:out value="${vo.scValue}"/>">
+							</div>
+
+
+							<div class="col-12 col-sm-4 col-lg-2">
+								<div class="input-group" style="text-align: left;">
+									<input type="submit" id="btnSubmit" name="search"
+										class="btn btn-outline-dark" value="검색"> <a
+										href="/myapp/durian/durianList"><button type="button"
+											class="btn btn-outline-dark">초기화</button></a>
+
+								</div>
+							</div>
+							<div class="col-12 col-sm-4 col-lg-2"></div>
+							<div class="col-12 col-sm-4 col-lg-2"></div>
+							<div class="col-12 col-sm-4 col-lg-2"></div>
+							<div class="col-12 col-sm-4 col-lg-2"></div>
+
+						</div>
 
 					</div>
 				</div>
-				<div class="col-12 col-sm-4 col-lg-2"></div>
-				<div class="col-12 col-sm-4 col-lg-2"></div>
-				<div class="col-12 col-sm-4 col-lg-2"></div>
-				<div class="col-12 col-sm-4 col-lg-2"></div>
-
 			</div>
+			<br>
+			<hr>
+			<br>
+			<div class="table-wrapper">
+				<div class="container">
 
-		</div>
-	</div>
-</div>
-	<br>
-<hr>
-<br>
-	<div class="table-wrapper">
-		<div class="container">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox"
+											value="<c:out value="${item.oymbSeq}"/>" id="checkboxSeq0"
+											name="checkboxSeq">
+									</div>
+								</th>
+								<th scope="col">회원번호</th>
+								<th scope="col">회원등급</th>
+								<th scope="col">이름</th>
+								<th scope="col">이름(영문)</th>
+								<th scope="col">아이디</th>
+								<th scope="col">성별</th>
+								<th scope="col">연락처</th>
+								<th scope="col">이메일</th>
+								<th scope="col">삭제여부</th>
+								<th scope="col">최초접속</th>
+								<th scope="col">최근접속</th>
 
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th scope="col">
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-							id="flexCheckDefault">
-						</div>
-					</th>
-					<th scope="col">회원번호</th>
-					<th scope="col">회원등급</th>
-					<th scope="col">이름</th>
-					<th scope="col">이름(영문)</th>
-					<th scope="col">아이디</th>
-					<th scope="col">성별</th>
-					<th scope="col">통신사</th>
-					<th scope="col">연락처</th>
-					<th scope="col">이메일</th>
-					<th scope="col">삭제여부</th>
-					<th scope="col">최초접속</th>
-					<th scope="col">최근접속</th>
+							</tr>
+						</thead>
 
-				</tr>
-			</thead>
-
-<tbody>
-								<c:choose>
-									<c:when test="${fn:length(list) eq 0}">
-										<tr>
-											<td class="text-center" colspan="9">There is no data!</td>
-										</tr>
-									</c:when>
-									<c:otherwise>
-										<c:forEach items="${list}" var="item" varStatus="status">
-											<tr>
-												<th scope="row">
-													<div class="form-check">
-														<input class="form-check-input" type="checkbox" value="s"
-															id="">
-													</div>
-												</th>
-												<th scope="row"><c:out value="${item.oymbSeq}"/></th>
-												<td><c:out value="${item.oymbGradeCd}"/></td>
-												<td><a href="javascript:goView(<c:out value="${item.oymbSeq}"/>);">
-														<c:out value="${item.oymbName}" />
-												</a></td>
-												<td><c:out value="${item.oymbNameEng}" /></td>
-												<td><c:out value="${item.oymbId}" /></td>
-												<td><c:out value="${item.oymbGenderCd}" /></td>
-												<td><c:out value="${item.oympTelecomCd}" /></td>
-												<td><c:out value="${item.oympNumber}" /></td>
-												<td><c:out value="${item.oymeEmailFull}" /></td>
-												<td><c:choose>
-														<c:when test="${item.oymbDelNy eq 0 }">O</c:when>
-														<c:otherwise>X</c:otherwise>
-													</c:choose></td>
-													<td><c:out value="${item.regDateTime}" /></td>
-													<td><c:out value="${item.modDateTime}" /></td>
-											</tr>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
-							</tbody>
-		</table>
-	<br>
-	<hr>
-	<br>
-		<div class="row">
-				<button type="button" id="btnSubmit_del" class="btn btn-danger">&nbsp삭
-					제&nbsp</button>
-			
-			
-				<a href="javascript:goForm();">
-					<button type="button" class="btn btn-success">&nbsp등
-						록&nbsp</button>
-				</a>
-			</div>
-
-		</div>
-	</div>
-
-
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-
-
-
-						<c:if test="${vo.startPage gt vo.pageNumToShow}">
-							<li class="page-item"><a class="page-link"
-								style="color: black;"
-								href="javascript:goPage(<c:out value='${vo.startPage - 1}'/>);"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							</a></li>
-						</c:if>
-						<c:forEach begin="${vo.startPage}" end="${vo.endPage}"
-							varStatus="i">
+						<tbody>
+							<c:set var="listCodeGender"
+								value="${DurianServiceImpl.selectListCachedCode('2')}" />
 							<c:choose>
-								<c:when test="${i.index eq vo.thisPage}">
-									<li class="page-item active"><a class="page-link"
-										style="color: black;"
-										href="javascript:goPage(<c:out value='${i.index}'/>);">${i.index}</a></li>
+								<c:when test="${fn:length(list) eq 0}">
+									<tr>
+										<td class="text-center" colspan="9">There is no data!</td>
+									</tr>
 								</c:when>
 								<c:otherwise>
-									<li class="page-item"><a class="page-link"
-										style="color: black;"
-										href="javascript:goPage(<c:out value='${i.index}'/>);">${i.index}</a></li>
+
+									<c:forEach items="${list}" var="item" varStatus="status">
+										<tr>
+											<th scope="row">
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox"
+														name="checkboxSeq"
+														value="<c:out value="${item.oymbSeq}"/>" id="checkbox">
+												</div>
+											</th>
+											<th scope="row"><c:out value="${item.oymbSeq}" /></th>
+											<td><c:forEach items="${listCodeGrade}"
+													var="itemGrade" varStatus="statusGrade">
+													<c:if test="${item.oymbGradeCd eq itemGrade.oycdSeq}">
+														<c:out value="${itemGrade.oycdName}" />
+													</c:if>
+												</c:forEach></td>
+											<td><a
+												href="javascript:goView(<c:out value="${item.oymbSeq}"/>);">
+													<c:out value="${item.oymbName}" />
+											</a></td>
+											<td><c:out value="${item.oymbNameEng}" /></td>
+											<td><c:out value="${item.oymbId}" /></td>
+											<td><c:forEach items="${listCodeGender}"
+													var="itemGender" varStatus="statusGender">
+													<c:if test="${item.oymbGenderCd eq itemGender.oycdSeq}">
+														<c:out value="${itemGender.oycdName}" />
+													</c:if>
+												</c:forEach></td>
+											<td><c:set var="phoneNumber" value="${item.oympNumber}" />
+												<c:choose>
+													<c:when test="${fn:length(phoneNumber) eq 10 }">
+														<c:out value="${fn:substring(phoneNumber,0,3)}" />
+														<c:out value="${fn:substring(phoneNumber,3,6)}" />
+														<c:out value="${fn:substring(phoneNumber,6,10)}" />
+													</c:when>
+													<c:otherwise>
+														<c:out value="${fn:substring(phoneNumber,0,3)}" />
+														<c:out value="${fn:substring(phoneNumber,3,7)}" />
+														<c:out value="${fn:substring(phoneNumber,7,10)}" />
+													</c:otherwise>
+												</c:choose></td>
+											<td><c:out value="${item.oymeEmailFull}" /></td>
+											<td><c:choose>
+													<c:when test="${item.oymbDelNy eq 0 }">O</c:when>
+													<c:otherwise>X</c:otherwise>
+												</c:choose></td>
+											<td><fmt:formatDate value="${item.regDateTime}"
+													pattern="yyyy-MM-dd HH:mm:ss" /></td>
+											<td><fmt:formatDate value="${item.modDateTime}"
+													pattern="yyyy-MM-dd HH:mm:ss" /></td>
+										</tr>
+									</c:forEach>
 								</c:otherwise>
 							</c:choose>
-						</c:forEach>
-
-
-						<c:if test="${vo.endPage ne vo.totalPages}">
-							<li class="page-item"><a class="page-link"
-								style="color: black;"
-								href="javascript:goPage(<c:out value='${vo.endPage + 1}'/>);"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-							</a></li>
-						</c:if>
-					</ul>
-				</nav>
-
-			</main>
-				<!--  -->
-					<div class="container">
-						<footer class="py-3 my-4">
-							<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-								<li class="nav-item"><a href="#"
-							class="nav-link px-2 text-muted">Home</a></li>
-								<li class="nav-item"><a href="#"
-							class="nav-link px-2 text-muted">Features</a></li>
-								<li class="nav-item"><a href="#"
-							class="nav-link px-2 text-muted">Pricing</a></li>
-								<li class="nav-item"><a href="#"
-							class="nav-link px-2 text-muted">FAQs</a></li>
-								<li class="nav-item"><a href="#"
-							class="nav-link px-2 text-muted">About</a></li>
-							</ul>
-							<p class="text-center text-muted">© 2021 All Live Young, Inc</p>
-						</footer>
+						</tbody>
+					</table>
+					<br>
+					<hr>
+					<br>
+					<div class="row">
+						<a href=""><button type="button" id="btnSubmit_del"
+								class="btn btn-danger">&nbsp삭 제&nbsp</button></a> <a
+							href="javascript:goForm();">
+							<button type="button" class="btn btn-success">&nbsp등
+								록&nbsp</button>
+						</a>
 					</div>
-				
-			
-		
+
+				</div>
+			</div>
+
+
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+
+
+
+					<c:if test="${vo.startPage gt vo.pageNumToShow}">
+						<li class="page-item"><a class="page-link"
+							style="color: black;"
+							href="javascript:goPage(<c:out value='${vo.startPage - 1}'/>);"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:if>
+					<c:forEach begin="${vo.startPage}" end="${vo.endPage}"
+						varStatus="i">
+						<c:choose>
+							<c:when test="${i.index eq vo.thisPage}">
+								<li class="page-item active"><a class="page-link"
+									style="color: black;"
+									href="javascript:goPage(<c:out value='${i.index}'/>);">${i.index}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link"
+									style="color: black;"
+									href="javascript:goPage(<c:out value='${i.index}'/>);">${i.index}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+
+
+					<c:if test="${vo.endPage ne vo.totalPages}">
+						<li class="page-item"><a class="page-link"
+							style="color: black;"
+							href="javascript:goPage(<c:out value='${vo.endPage + 1}'/>);"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:if>
+				</ul>
+			</nav>
+
+		</main>
+		<!--  -->
+		<div class="container">
+			<footer class="py-3 my-4">
+				<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+					<li class="nav-item"><a href="#"
+						class="nav-link px-2 text-muted">Home</a></li>
+					<li class="nav-item"><a href="#"
+						class="nav-link px-2 text-muted">Features</a></li>
+					<li class="nav-item"><a href="#"
+						class="nav-link px-2 text-muted">Pricing</a></li>
+					<li class="nav-item"><a href="#"
+						class="nav-link px-2 text-muted">FAQs</a></li>
+					<li class="nav-item"><a href="#"
+						class="nav-link px-2 text-muted">About</a></li>
+				</ul>
+				<p class="text-center text-muted">© 2021 All Live Young, Inc</p>
+			</footer>
+		</div>
+
+
+
 
 	</form>
 
@@ -499,6 +546,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+
 
 <script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -531,6 +579,10 @@ $.datepicker.setDefaults({
 	showMonthAfterYear : true,
 	yearSuffix : '년'
 });
+
+
+	
+	
 
 /* $("#btnSubmit").on(
 		"click",
@@ -576,6 +628,14 @@ $("#btnSubmit_del").on("click", function() {
 	alert("삭제?");
 	confirm("진짜 삭제? 복구 노노");
 });
+$("#checkboxAll").click(function() {
+	if($("#checkboxAll").is(":checked")) $("input[name=checkboxSeq]").prop("checked", true);
+	else $("input[name=checkboxSeq]").prop("checked", false);
+});
+
+	
+
+	
 </script>
 	</body>
 
