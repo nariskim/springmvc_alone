@@ -128,48 +128,48 @@ main {
 	
 	
 	<div class="row">
-		<header class="navbar navbar-dark sticky-top bg-light ml-auto">
+			<header class="navbar navbar-dark sticky-top bg-light ml-auto">
 
-			<div class="col-auto col-sm-5">
-				<h1>&nbsp&nbsp&nbspALL LIVE YOUNG</h1>
-			</div>
-			
-			<div class="col-auto d-md-none">
-				<div class="container-fluid">
-					<button class="navbar-toggler position-relative d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-					</button>
+				<div class="col-auto col-sm-5">
+					<h1>&nbsp&nbsp&nbspALL LIVE YOUNG</h1>
 				</div>
-			</div>
-			
-			<div class="col-10 col-sm-3">
-				<input type="text" class="form-control me-2 search-input" placeholder="Search...">
-			</div>
-			
-			<div class="col-2 col-sm-1">
-				<button type="button" class="btn btn-secondary search-button">
-					<i class="fas fa-search text-light"></i>
-				</button>
-			</div>
+				
+				<div class="col-auto d-md-none">
 
-			<div class="col-auto col-sm-3">
-				<ul class="nav">
-					<li class="nav-item icon-parent">
-						<a href="#" class="nav-link icon-bullet"><i class="fas fa-comments text-muted fa-lg"></i></a>
-					</li>
+					<div class="container-fluid">
+						<button
+							class="navbar-toggler position-relative d-md-none collapsed"
+							type="button" data-bs-toggle="collapse"
+							data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+							aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
 
-					<li class="nav-item icon-parent">
-						<a href="#" class="nav-link icon-bullet"><i class="fas fa-bell text-muted fa-lg"></i></a>
-					</li>
+					</div>
 
-					<li class="nav-item ml-auto"><a href="#" class="nav-link">
-						<i class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
-					</li>
-				</ul>
-			</div>
 
-		</header>
-	</div>
+				</div>
+				<div class="col-10 col-sm-3">
+
+					
+				</div>
+				<div class="col-2 col-sm-3">
+					
+
+				</div>
+
+				<div class="col-auto col-sm-1">
+
+					
+						<a href="#" class="nav-link"><i
+								class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
+					
+				</div>
+
+
+			</header>
+		</div>
+
 
 
 	<div class="container-fluid">
@@ -177,13 +177,11 @@ main {
 		<div class="row">
 		<br>
 			<div class="container">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
+				<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="#">회원 관리</a></li>
 						<li class="breadcrumb-item"><a href="#">회원 리스트</a></li>
-						<li class="breadcrumb-item active" aria-current="page">회원 조회</li>
+						<li class="breadcrumb-item active" aria-current="page">회원 정보 조회</li>
 					</ol>
-				</nav>
 				
 				</div>
 				<br><hr><br>
@@ -590,7 +588,25 @@ main {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript">
+	<script type="text/javascript">	$(document).ready(function() {
+		$("#oymbDob").datepicker();
+	});
+
+	$.datepicker.setDefaults({
+		dateFormat : 'yy-mm-dd',
+		prevText : '이전 달',
+		nextText : '다음 달',
+		monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+		showMonthAfterYear : true,
+		yearSuffix : '년'
+	});
+
 		function sample6_execDaumPostcode() {
 			new daum.Postcode(
 					{

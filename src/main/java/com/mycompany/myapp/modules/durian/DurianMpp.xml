@@ -28,10 +28,14 @@
 				<when test="scOptionDate == 3">AND a.oymbDob BETWEEN #{scDateStart} AND #{scDateEnd}</when>
 		</choose>	
 		<choose>
-			<when test="scOption == 1">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 2">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 3">AND f.oympNumber LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 4">AND g.oymeEmailFull LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 1">AND a.oymbSeq = #{scValue}</when>
+			<when test="scOption == 2">AND a.oymbGradeCd LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 3">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 4">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 5">AND a.oymbId LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 6">AND a.oymbGenderCd LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 7">AND f.oympNumber LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 8">AND g.oymeEmailFull LIKE concat('%',#{scValue},'%')</when>
 			
 		</choose>
 
@@ -77,10 +81,7 @@
 		, oymbId
 		, oymbNickName
 		, oymbPassword
-		<choose>
-		<when test="oymbDob.equals('')">,NULL</when>
-		<otherwise>,#{oymbDob}</otherwise>
-		</choose>
+
 		, oymbDelNy
 		, regDateTime
 		, modDateTime
@@ -145,7 +146,7 @@
 		</selectKey>
 	</insert>
 
-<!-- 	<insert id="insertNation">
+ 	<insert id="insertNation">
 		INSERT INTO oymbNationality (
 		oymnDelNy
 		, oymbSeq
@@ -161,7 +162,7 @@
 		</selectKey>
 	</insert>
 
-	<insert id="insertPhone">
+<!--	<insert id="insertPhone">
 		INSERT INTO oymbPhone (
 		oympTelecomCd
 		, oympNumber 

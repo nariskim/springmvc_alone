@@ -31,8 +31,8 @@
 <style type="text/css">
 
 main {
-	margin-top: 5%;
-	margin-bottom: 15%;
+	margin-top: 2%;
+	margin-bottom: 20%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -76,9 +76,22 @@ main {
 	box-shadow: none;
 	border-bottom: 2px solid GreenYellow;
 }
+.select-input {
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	border-bottom: 2px solid black;
+	transition: all .4s;
+}
+
+.select-input:focus {
+	background: transparent;
+	box-shadow: none;
+	border-bottom: 2px solid GreenYellow;
+}
 
 .search-button {
-	border-radius: 50%;
+	border-radius: 100%;
 	padding: 10px 16px;
 	transition: all .4s;
 }
@@ -123,15 +136,11 @@ main {
 </head>
 <body>
 
-	<form id="formList" name="formList" method="post">
-		<input type="hidden" id="thisPage" name="thisPage"
-			value="<c:out value="${vo.thisPage}" default="1"/>"> <input
-			type="hidden" id="rowNumToShow" name="rowNumToShow"
-			value="<c:out value="${vo.rowNumToShow}" default="1"/>"> <input
-			type="hidden" name="checkboxSeqArray"> <input type="hidden"
-			name="oymbSeq">
-
-
+	<form id="formList" name="formList" method="post" action="/myapp/durian/durianList">
+		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+		<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}" default="1"/>">
+		<input type="hidden" name="checkboxSeqArray"> 
+		<input type="hidden" id="oymbSeq" name="oymbSeq">
 
 		<!-- navbar s -->
 		<div class="row">
@@ -140,6 +149,7 @@ main {
 				<div class="col-auto col-sm-5">
 					<h1>&nbsp&nbsp&nbspALL LIVE YOUNG</h1>
 				</div>
+				
 				<div class="col-auto d-md-none">
 
 					<div class="container-fluid">
@@ -157,31 +167,19 @@ main {
 				</div>
 				<div class="col-10 col-sm-3">
 
-					<input type="text" class="form-control me-2 search-input"
-						placeholder="Search...">
+					
 				</div>
-				<div class="col-2 col-sm-1">
-					<button type="button" class="btn btn-secondary search-button">
-						<i class="fas fa-search text-light"></i>
-					</button>
+				<div class="col-2 col-sm-3">
+					
 
 				</div>
 
-				<div class="col-auto col-sm-3">
+				<div class="col-auto col-sm-1">
 
-					<ul class="nav">
-						<li class="nav-item icon-parent"><a href="#"
-							class="nav-link icon-bullet"><i
-								class="fas fa-comments text-muted fa-lg"></i></a></li>
-
-
-						<li class="nav-item icon-parent"><a href="#"
-							class="nav-link icon-bullet"><i
-								class="fas fa-bell text-muted fa-lg"></i></a></li>
-
-						<li class="nav-item ml-auto"><a href="#" class="nav-link"><i
-								class="fas fa-sign-out-alt text-danger fa-lg"></i></a></li>
-					</ul>
+					
+						<a href="#" class="nav-link"><i
+								class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
+					
 				</div>
 
 
@@ -250,24 +248,15 @@ main {
 			<div class="container-fluid">
 				<div class="row">
 
-					<br>
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="#">회원 관리</a></li>
-							<li class="breadcrumb-item active" aria-current="page">회원
-								리스트</li>
-						</ol>
-					</nav>
-
-					<br> <br>
+				
 					<div class="container">
 
 
 
 						<div class="row">
-							<div class="col-12 col-sm-4 col-lg-2">
+							<div class="col-12 col-sm-12 col-lg-3">
 								<select name="scOptionDate" id="scOptionDate"
-									class="form-select">
+									class="form-select select-input">
 									<option value=""
 										<c:if test="${empty vo.scOptionDate}">selected</c:if>>::날짜::
 
@@ -291,27 +280,28 @@ main {
 
 
 							</div>
-							<div class="col-12 col-sm-4 col-lg-2">
-								<fmt:parseDate var="scDateStart" value="${vo.scDateStart }"
+							<div class="col-12 col-sm-6 col-lg-4">
+								<fmt:parseDate var="scDateStart" value="${vo.scDateStart}"
 									pattern="yyyy-MM-dd HH:mm:ss" />
 								<input type="text" id="scDateStart" name="scDateStart"
-									value="<fmt:formatDate value="${scDateStart }" pattern="yyyy-MM-dd" />"
-									placeholder="시작일" class="form-control" autocomplete="off">
+									value="<fmt:formatDate value="${scDateStart}" pattern="yyyy-MM-dd" />"
+									placeholder="시작일" class="form-control me-2 search-input" autocomplete="off">
 							</div>
-							<div class="col-12 col-sm-4 col-lg-2">
-								<fmt:parseDate var="scDateEnd" value="${vo.scDateEnd }"
+							<div class="col-12 col-sm-6 col-lg-4">
+								<fmt:parseDate var="scDateEnd" value="${vo.scDateEnd}"
 									pattern="yyyy-MM-dd HH:mm:ss" />
 								<input type="text" id="scDateEnd" name="scDateEnd"
-									value="<fmt:formatDate value="${scDateEnd }" pattern="yyyy-MM-dd" />"
-									placeholder="종료일" class="form-control" autocomplete="off">
+									value="<fmt:formatDate value="${scDateEnd}" pattern="yyyy-MM-dd" />"
+									placeholder="종료일" class="form-control search-input" autocomplete="off">
 							</div>
+							<div class="col-sm-none col-lg-1"></div>
 						</div>
 
 						<br>
 
 						<div class="row">
-							<div class="col-12 col-sm-4 col-lg-2">
-								<select class="form-select" name="scOymbDelNy" id="scOymbDelNy">
+							<div class="col-12 col-sm-12 col-lg-3">
+								<select class="form-select select-input" name="scOymbDelNy" id="scOymbDelNy">
 									<option value=""
 										<c:if test="${empty vo.scOymbDelNy}">selected</c:if>>::삭제여부::</option>
 									<option value="1"
@@ -322,38 +312,48 @@ main {
 
 							</div>
 
-							<div class="col-12 col-sm-4 col-lg-2">
-								<select name="scOption" id="scOption" class="form-select">
+							<div class="col-12 col-sm-4 col-lg-3">
+								<select name="scOption" id="scOption" class="form-select select-input">
 									<option value=""
 										<c:if test="${empty vo.scOption}">selected</c:if>>::검색구분::</option>
 
 									<option value="1"
-										<c:if test="${vo.scOption eq 1 }">selected</c:if>>이름</option>
+										<c:if test="${vo.scOption eq 1 }">selected</c:if>>회원번호</option>
 									<option value="2"
-										<c:if test="${vo.scOption eq 2 }">selected</c:if>>영문이름</option>
+										<c:if test="${vo.scOption eq 2 }">selected</c:if>>회원등급</option>
 									<option value="3"
-										<c:if test="${vo.scOption eq 3 }">selected</c:if>>전화번호</option>
+										<c:if test="${vo.scOption eq 3 }">selected</c:if>>이름</option>
 									<option value="4"
+										<c:if test="${vo.scOption eq 4 }">selected</c:if>>이름(영문)</option>
+									<option value="5"
+										<c:if test="${vo.scOption eq 4 }">selected</c:if>>아이디</option>
+									<option value="6"
+										<c:if test="${vo.scOption eq 4 }">selected</c:if>>성별</option>
+									<option value="7"
+										<c:if test="${vo.scOption eq 4 }">selected</c:if>>연락처</option>
+									<option value="8"
 										<c:if test="${vo.scOption eq 4 }">selected</c:if>>이메일</option>
 
 								</select>
 							</div>
-							<div class="col-12 col-sm-4 col-lg-2">
+							<div class="col-12 col-sm-4 col-lg-3">
 								<input type="text" id="scValue" name="scValue"
-									class="form-control" placeholder="검색어"
+									class="form-control search-input" placeholder="검색어"
 									value="<c:out value="${vo.scValue}"/>">
 							</div>
 
 
-							<div class="col-12 col-sm-4 col-lg-2">
-								<div class="input-group" style="text-align: left;">
-									<input type="submit" id="btnSubmit" name="search"
-										class="btn btn-outline-dark" value="검색"> <a
-										href="/myapp/durian/durianList"><button type="button"
-											class="btn btn-outline-dark">초기화</button></a>
+							<div class="col-12 col-sm-12 col-lg-1">
+								
+									<button type="submit" id="btnSubmit" name="search" class="btn btn-secondary search-button">
+						<i class="fas fa-search text-light"></i></button></div><div class="col-12 col-sm-12 col-lg-1">
+					 <a href="/myapp/durian/durianList"><button type="button" class="btn btn-secondary search-button"><i class="fa-solid fa-rotate-right text-light"></i></button></a>
+									
+									
+									
 
-								</div>
-							</div>
+								
+							</div><div class="col-12 col-sm-12 col-lg-1"></div>
 							<div class="col-12 col-sm-4 col-lg-2"></div>
 							<div class="col-12 col-sm-4 col-lg-2"></div>
 							<div class="col-12 col-sm-4 col-lg-2"></div>
@@ -369,7 +369,16 @@ main {
 			<br>
 			<div class="table-wrapper">
 				<div class="container">
+	<br>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#">회원 관리</a></li>
+							<li class="breadcrumb-item active" aria-current="page">회원
+								리스트</li>
+						</ol>
+					</nav>
 
+					<br> <br>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -396,8 +405,8 @@ main {
 						</thead>
 
 						<tbody>
-							<c:set var="listCodeGender"
-								value="${DurianServiceImpl.selectListCachedCode('2')}" />
+							<c:set var="listCodeGender" value="${DurianServiceImpl.selectListCachedCode('2')}" />
+							<c:set var="listCodeGrade" value="${DurianServiceImpl.selectListCachedCode('19')}" />
 							<c:choose>
 								<c:when test="${fn:length(list) eq 0}">
 									<tr>

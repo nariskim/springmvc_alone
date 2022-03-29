@@ -128,55 +128,54 @@ main {
 	<input type="hidden" id="scDateStart" name="scDateStart" value="<c:out value="${vo.scDateStart}"/>">
 	<input type="hidden" id="scDateEnd" name="scDateEnd" value="<c:out value="${vo.scDateEnd}"/>">
 	
-	<div class="row">
-		<header class="navbar navbar-dark sticky-top bg-light ml-auto">
+			<div class="row">
+			<header class="navbar navbar-dark sticky-top bg-light ml-auto">
 
-			<div class="col-auto col-sm-5">
-				<h1>&nbsp&nbsp&nbspALL LIVE YOUNG</h1>
-			</div>
-			
-			<div class="col-auto d-md-none">
-				<div class="container-fluid">
-					<button class="navbar-toggler position-relative d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-					</button>
+				<div class="col-auto col-sm-5">
+					<h1>&nbsp&nbsp&nbspALL LIVE YOUNG</h1>
 				</div>
-			</div>
-			
-			<div class="col-10 col-sm-3">
-				<input type="text" class="form-control me-2 search-input" placeholder="Search...">
-			</div>
-			
-			<div class="col-2 col-sm-1">
-				<button type="button" class="btn btn-secondary search-button">
-					<i class="fas fa-search text-light"></i>
-				</button>
-			</div>
+				
+				<div class="col-auto d-md-none">
 
-			<div class="col-auto col-sm-3">
-				<ul class="nav">
-					<li class="nav-item icon-parent">
-						<a href="#" class="nav-link icon-bullet"><i class="fas fa-comments text-muted fa-lg"></i></a>
-					</li>
+					<div class="container-fluid">
+						<button
+							class="navbar-toggler position-relative d-md-none collapsed"
+							type="button" data-bs-toggle="collapse"
+							data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+							aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
 
-					<li class="nav-item icon-parent">
-						<a href="#" class="nav-link icon-bullet"><i class="fas fa-bell text-muted fa-lg"></i></a>
-					</li>
+					</div>
 
-					<li class="nav-item ml-auto"><a href="#" class="nav-link">
-						<i class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
-					</li>
-				</ul>
-			</div>
 
-		</header>
-	</div>
+				</div>
+				<div class="col-10 col-sm-3">
+
+					
+				</div>
+				<div class="col-2 col-sm-3">
+					
+
+				</div>
+
+				<div class="col-auto col-sm-1">
+
+					
+						<a href="#" class="nav-link"><i
+								class="fas fa-sign-out-alt text-danger fa-lg"></i></a>
+					
+				</div>
+
+
+			</header>
+		</div>
 
 
 	<div class="container-fluid">
 		
 <main>
-<div class="row">
+
 <br>
 	<div class="container">
 		<nav aria-label="breadcrumb">
@@ -245,8 +244,12 @@ main {
 		<label for="formFile" class="form-label">생년월일</label>
 	</div>
 	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<input type="text" class="form-control" id="oymbDob" name="oymbDob" placeholder="" value="<c:out value="${item.oymbDob}"/>">
-	</div>
+		<!-- <fmt:parseDate var="oymbDob" value="${oymbDobs}"
+									pattern="yyyy-MM-dd" />
+								<input type="text" id="oymbDob" name="oymbDob"
+									value="<fmt:formatDate value="${oymbDob}" pattern="yyyy-MM-dd" />"
+									placeholder="생년월일" class="form-control" autocomplete="off"> -->
+	</div> 
 	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
 		<label for="formFile" class="form-label">성별</label>
 	</div>
@@ -291,11 +294,11 @@ main {
 	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
 		<div class=input-group>
 			<input type="text" class="form-control" id="oymaZipCode" placeholder="우편번호">
-			<input type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-			<input type="text" class="form-control" id="oymaAddress1" placeholder="주소"><br>
+			<input type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"></div>
+			<input type="text" class="form-control" id="oymaAddress1" placeholder="주소">
 			<input type="text" class="form-control" id="oymaAddress2" placeholder="상세주소">
 			<input type="text" class="form-control" id="oymaAddress3" placeholder="참고항목">
-		</div>
+		
 	</div>
 	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
 		<label for="formFile" class="form-label">국적</label>
@@ -339,7 +342,7 @@ main {
 						<div class="col-12 col-sm-8 col-lg-4"
 							style="margin-top: 20px; margin-bottom: 20px;">
 							<div class="input-group">
-								<select class="form-select form-select-sm mb-1"
+								<select class="form-select"
 									id="oympTelecomCd" name="oympTelecomCd">
 									<option value="" selected>::통신사::</option>
 									<c:forEach items="${codeTelecom}" var="itemTelecom"
@@ -348,11 +351,11 @@ main {
 											<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq}">selected</c:if>><c:out
 												value="${itemTelecom.oycdName}" /></option>
 									</c:forEach>
-								</select> <input type="text" id="oympNumberArray0" name="oympNumberArray"
+								</select> <input class="form-control" type="text" id="oympNumberArray0" name="oympNumberArray"
 									value="<c:out value="${oympNumber0}"/>" maxlength="11"
 									placeholder="'-'제외 숫자만">
-							</div>
-							<div>
+							</div></div>
+							
 								<div class="col-12 col-sm-4 col-lg-2"
 									style="margin-top: 20px; margin-bottom: 20px;">
 									<input type="hidden" id="oympDefaultNyArray1"
@@ -362,7 +365,7 @@ main {
 								<div class="col-12 col-sm-8 col-lg-4"
 									style="margin-top: 20px; margin-bottom: 20px;">
 									<div class="input-group">
-										<select class="form-select form-select-sm mb-1"
+										<select class="form-select"
 											id="oympTelecomCd" name="oympTelecomCd">
 											<option value="" selected>::통신사::</option>
 											<c:forEach items="${codeTelecom}" var="itemTelecom"
@@ -371,13 +374,68 @@ main {
 													<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq}">selected</c:if>><c:out
 														value="${itemTelecom.oycdName}" /></option>
 											</c:forEach>
-										</select> <input type="text" id="oympNumberArray1"
+										</select> <input class="form-control" type="text" id="oympNumberArray1"
 											name="oympNumberArray"
 											value="<c:out value="${oympNumber1}"/>" maxlength="11"
 											placeholder="'-'제외 숫자만">
 									</div>
 								</div>
 							</div>
+													<c:forEach items="${listEmail}" var="item" varStatus="statusEmail">
+							<c:choose>
+								<c:when test="${item.oymeDefaultNy eq 1}">
+									<c:set var="oymeAccount1" value="${item.oymeEmailAccount}" />
+									<c:set var="oymeDomain1" value="${item.oymeEmailDomainCd}" />
+								</c:when>
+								<c:when test="${item.oymeDefaultNy eq 0}">
+									<c:set var="oymeAccount0" value="${item.oymeEmailAccount}" />
+									<c:set var="oymeDomain0" value="${item.oymeEmailDomainCd}" />
+								</c:when>
+								<c:otherwise></c:otherwise>
+							</c:choose>
+						</c:forEach>
+
+						<div class="row">
+
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">이메일 (필수)</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<div class="input-group">
+					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" value="<c:out value="${oymeAccount1}"/>">
+					<span class="input-group-text">@</span>
+					<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
+						<option value="" selected>::선택::
+						<c:forEach items="${codeEmail}" var="itemEmail"
+											varStatus="statusEmail">
+											<option value="<c:out value="${itemEmail.oycdSeq}"/>"
+												<c:if test="${oymeDomain1 eq itemEmail.oycdSeq}">selected</c:if>><c:out
+													value="${itemEmail.oycdName}" /></option>
+										</c:forEach>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">이메일 (선택)</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<div class="input-group">
+					<input type="text" class="form-control" id="" name="" value="<c:out value="${oymeAccount0}"/>">
+					<span class="input-group-text">@</span>
+					<select class="form-select" id="" name="">
+						<option value="" selected>::선택::
+						<c:forEach items="${codeEmail}" var="itemEmail"
+											varStatus="statusEmail">
+											<option value="<c:out value="${itemEmail.oycdSeq}"/>"
+												<c:if test="${oymeDomain0 eq itemEmail.oycdSeq}">selected</c:if>><c:out
+													value="${itemEmail.oycdName}" /></option>
+										</c:forEach>
+					</select>
+				</div>
+			</div>
+			
+		</div>
 							<br>
 							<hr>
 							<br>
@@ -522,13 +580,11 @@ main {
 										class="btn btn-outline-dark" for="평생회원">평생회원</label>
 								</div>
 							</div>
+						</main>
 						</div>
 
 
-					</div>
-		</main>
 
-		</div>
 
 		<div class="container">
 			<footer class="py-3 my-4">
@@ -566,6 +622,8 @@ main {
 
 
 	<script type="text/javascript">
+	
+		
 		$("#btnSubmit")
 				.on(
 						"click",
@@ -717,6 +775,25 @@ main {
 						}
 					}).open();
 		}
+		
+		$(document).ready(function() {
+			$("#oymbDob").datepicker();
+		});
+
+		$.datepicker.setDefaults({
+			dateFormat : 'yy-mm-dd',
+			prevText : '이전 달',
+			nextText : '다음 달',
+			monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+					'9월', '10월', '11월', '12월' ],
+			monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+					'9월', '10월', '11월', '12월' ],
+			dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+			dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+			dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+			showMonthAfterYear : true,
+			yearSuffix : '년'
+		});
 	</script>
 
 

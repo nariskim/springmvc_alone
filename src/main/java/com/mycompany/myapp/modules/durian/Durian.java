@@ -34,7 +34,7 @@ public class Durian {
 	
 	private String oyjqSeq;
 	private String oyjqQuestionCd;
-	private String oyjqAnswe;
+	private String oyjqAnswer;
 	private Integer oyjqDelNy;
 	
 // oymbAddress	
@@ -300,12 +300,12 @@ public class Durian {
 		this.oyjqQuestionCd = oyjqQuestionCd;
 	}
 
-	public String getOyjqAnswe() {
-		return oyjqAnswe;
+	public String getOyjqAnswer() {
+		return oyjqAnswer;
 	}
 
-	public void setOyjqAnswe(String oyjqAnswe) {
-		this.oyjqAnswe = oyjqAnswe;
+	public void setOyjqAnswer(String oyjqAnswer) {
+		this.oyjqAnswer = oyjqAnswer;
 	}
 
 	public Integer getOyjqDelNy() {

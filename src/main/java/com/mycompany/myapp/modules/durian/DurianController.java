@@ -36,14 +36,19 @@ public class DurianController {
 		vo.setParamsPaging(service.selectOneCount(vo));
 
 		
-		if (vo.getTotalRows() > 0) {
-			
+		int count = service.selectOneCount(vo);
+
+		vo.setParamsPaging(count);
+		
+		// count 가 0 이 아니면 list 가져오는 부분 수행 후 model 개쳋에 담기
+		if (count != 0) {
 			List<Durian> list = service.selectList(vo);
 			model.addAttribute("list", list);
 
 		} else {
-			//by pass
+			//by pas
 		}
+
 
 
 		return "durian/durianList";
@@ -93,7 +98,7 @@ public class DurianController {
 	}
 	
 	@RequestMapping(value = "/durian/durianView")
-	public String durianView(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
+	public String durianView(@ModelAttribute("vo") DurianVo vo, Model model ) throws Exception {
 		
 		System.out.println("############################");
 		System.out.println("View: getScOymbDelNy() : "+vo.getScOymbDelNy());
