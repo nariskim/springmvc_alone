@@ -96,7 +96,7 @@ public class DurianDao {
 	}
 	
 	public int updateAddress(Durian dto) {
-		return sqlSession.update(namespace + ".updateEmail", dto);
+		return sqlSession.update(namespace + ".updateAddress", dto);
 	}
 
 	public int uelete(DurianVo vo) {

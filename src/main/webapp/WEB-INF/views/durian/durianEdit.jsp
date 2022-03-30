@@ -242,7 +242,7 @@ main {
 				<label for="formFile" class="form-label">비밀번호 확인</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<input type="password" id="oymbPwdConfirm" class="form-control" aria-describedby="passwordHelpBlock" value="<c:out value="${item.oymbPassword}"/>">
+				<input type="password" id="" name="" class="form-control" aria-describedby="passwordHelpBlock">
 					<div id="passwordHelpBlock" class="form-text"></div>
 			</div>
 
@@ -254,14 +254,14 @@ main {
 				<label for="formFile" class="form-label">생년월일</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<input type="text" class="form-control" id="" name="" value="<c:out value="${item.oymbDob}"/>">
+				<input type="text" class="form-control" id="" name="" value="">
 			</div>
 			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
 				<label for="formFile" class="form-label">성별</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
 				<select class="form-select" id="oymbGenderCd" name="oymbGenderCd">
-				<option value=" " selected>::성별::</option>
+				<option value="" selected>::성별::</option>
 					<c:forEach items="${codeGender}" var="itemGender" varStatus="statusGender">
 			<option value="<c:out value="${itemGender.oycdSeq}"/>"<c:if test="${item.oymbGenderCd eq itemGender.oycdSeq }">selected</c:if>><c:out value="${itemGender.oycdName}"/></option>	
 							</c:forEach>
@@ -324,192 +324,118 @@ main {
 					<option value="6" <c:if test="${item.oynaSeq eq 6 }">selected</c:if>>폴란드</option>
 					<option value="7" <c:if test="${item.oynaSeq eq 7 }">selected</c:if>>호주</option>
 					<option value="8" <c:if test="${item.oynaSeq eq 8 }">selected</c:if>>중국</option>
-				</select> <input type="text" class="form-control" id="" placeholder="그 외 국가 직접 입력">
+				</select> <input type="text" class="form-control" id="" name="" placeholder="그 외 국가 직접 입력">
 			</div>
 
 	</div>
 	
-	<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
-							<c:choose>
-								<c:when test="${item.oympDefaultNy eq 1}">
-									<c:set var="oympNumber1" value="${item.oympNumber}" />
-									<c:set var="oympTelecom1" value="${item.oympTelecomCd}" />
-								</c:when>
-								<c:when test="${item.oympDefaultNy eq 0}">
-									<c:set var="oympNumber0" value="${item.oympNumber}" />
-									<c:set var="oympTelecom0" value="${item.oympTelecomCd}" />
-								</c:when>
-								<c:otherwise></c:otherwise>
-							</c:choose>
-						</c:forEach>
-	
-	
-	<div class="row">
+<c:forEach items="${listPhone}" var="item"
+varStatus="statusTelecom">
+<c:choose>
+<c:when test="${item.oympDefaultNy eq 1}">
+<c:set var="oympNumber1" value="${item.oympNumber}" />
+<c:set var="oympTelecom1" value="${item.oympTelecomCd}" />
+</c:when>
+<c:when test="${item.oympDefaultNy eq 0}">
+<c:set var="oympNumber0" value="${item.oympNumber}" />
+<c:set var="oympTelecom0" value="${item.oympTelecomCd}" />
+</c:when>
+<c:otherwise></c:otherwise>
+</c:choose>
+</c:forEach>
+
+</div>
+<div class="row">
 	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<input type="hidden" id="oympDefaultNyArray0" name="oympDefaultNyArray" value="1">
-		<label for="formFile" class="form-label">연락처(필수)</label>
+	<label for="formFile" class="form-label">연락처(필수)</label>
+</div>
+
+<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+<div class="input-group">
+	<input type="hidden" id="oympDefaultNyArray0" name="oympDefaultNyArray" value="1">
+	<select class="form-select" id="oympTelecomCdArray0" name="oympTelecomCdArray">
+		<option selected>::통신사::</option>
+		<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
+<c:if test="${oympTelecom1 eq itemTelecom.oycdSeq }">selected</c:if>>
+<c:out value="${itemTelecom.oycdName}" /></option>
+</c:forEach></select>
+<input type="text" class="form-control" id="oympNumberArray0" name="oympNumberArray" value="<c:out value="${oympNumber}"/>" placeholder="'-'제외">
 	</div>
+</div>
 
-						<div class="col-12 col-sm-8 col-lg-4"
-							style="margin-top: 20px; margin-bottom: 20px;">
-							<div class="input-group">
-								<select class="form-select"
-									id="oympTelecomCd" name="oympTelecomCd">
-									<option value="" selected>::통신사::</option>
-									<c:forEach items="${codeTelecom}" var="itemTelecom"
-										varStatus="statusTelecom">
-										<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
-											<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq}">selected</c:if>><c:out
-												value="${itemTelecom.oycdName}" /></option>
-									</c:forEach>
-								</select> <input class="form-control" type="text" id="oympNumberArray0" name="oympNumberArray"
-									value="<c:out value="${oympNumber0}"/>" maxlength="11"
-									placeholder="'-'제외 숫자만">
-							</div></div>
-							
-								<div class="col-12 col-sm-4 col-lg-2"
-									style="margin-top: 20px; margin-bottom: 20px;">
-									<input type="hidden" id="oympDefaultNyArray1"
-										name="oympDefaultNyArray" value="0"> <label
-										for="formFile" class="form-label">연락처(선택)</label>
-								</div>
-								<div class="col-12 col-sm-8 col-lg-4"
-									style="margin-top: 20px; margin-bottom: 20px;">
-									<div class="input-group">
-										<select class="form-select"
-											id="oympTelecomCd" name="oympTelecomCd">
-											<option value="" selected>::통신사::</option>
-											<c:forEach items="${codeTelecom}" var="itemTelecom"
-												varStatus="statusTelecom">
-												<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
-													<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq}">selected</c:if>><c:out
-														value="${itemTelecom.oycdName}" /></option>
-											</c:forEach>
-										</select> <input class="form-control" type="text" id="oympNumberArray1"
-											name="oympNumberArray"
-											value="<c:out value="${oympNumber1}"/>" maxlength="11"
-											placeholder="'-'제외 숫자만">
-									</div>
-								</div>
-							</div>
-	<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
-							<c:choose>
-								<c:when test="${item.oympDefaultNy eq 1}">
-									<c:set var="oympNumber1" value="${item.oympNumber}" />
-									<c:set var="oympTelecom1" value="${item.oympTelecomCd}" />
-								</c:when>
-								<c:when test="${item.oympDefaultNy eq 0}">
-									<c:set var="oympNumber0" value="${item.oympNumber}" />
-									<c:set var="oympTelecom0" value="${item.oympTelecomCd}" />
-								</c:when>
-								<c:otherwise></c:otherwise>
-							</c:choose>
-						</c:forEach>
-	
-	</div>
-	<div class="row">
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<input type="hidden" id="oympDefaultNyArray0" name="oympDefaultNyArray" value="1">
-		<label for="formFile" class="form-label">연락처(필수)</label>
-	</div>
-
-						<div class="col-12 col-sm-8 col-lg-4"
-							style="margin-top: 20px; margin-bottom: 20px;">
-							<div class="input-group">
-								<select class="form-select"
-									id="oympTelecomCd" name="oympTelecomCd">
-									<option value="" selected>::통신사::</option>
-									<c:forEach items="${codeTelecom}" var="itemTelecom"
-										varStatus="statusTelecom">
-										<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
-											<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq}">selected</c:if>><c:out
-												value="${itemTelecom.oycdName}" /></option>
-									</c:forEach>
-								</select> <input class="form-control" type="text" id="oympNumberArray0" name="oympNumberArray"
-									value="<c:out value="${oympNumber0}"/>" maxlength="11"
-									placeholder="'-'제외 숫자만">
-							</div></div>
-							
-								<div class="col-12 col-sm-4 col-lg-2"
-									style="margin-top: 20px; margin-bottom: 20px;">
-									<input type="hidden" id="oympDefaultNyArray1"
-										name="oympDefaultNyArray" value="0"> <label
-										for="formFile" class="form-label">연락처(선택)</label>
-								</div>
-								<div class="col-12 col-sm-8 col-lg-4"
-									style="margin-top: 20px; margin-bottom: 20px;">
-									<div class="input-group">
-										<select class="form-select"
-											id="oympTelecomCd" name="oympTelecomCd">
-											<option value="" selected>::통신사::</option>
-											<c:forEach items="${codeTelecom}" var="itemTelecom"
-												varStatus="statusTelecom">
-												<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
-													<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq}">selected</c:if>><c:out
-														value="${itemTelecom.oycdName}" /></option>
-											</c:forEach>
-										</select> <input class="form-control" type="text" id="oympNumberArray1"
-											name="oympNumberArray"
-											value="<c:out value="${oympNumber1}"/>" maxlength="11"
-											placeholder="'-'제외 숫자만">
-									</div>
-								</div>
-							</div>
-													<c:forEach items="${listEmail}" var="item" varStatus="statusEmail">
-							<c:choose>
-								<c:when test="${item.oymeDefaultNy eq 1}">
-									<c:set var="oymeAccount1" value="${item.oymeEmailAccount}" />
-									<c:set var="oymeDomain1" value="${item.oymeEmailDomainCd}" />
-								</c:when>
-								<c:when test="${item.oymeDefaultNy eq 0}">
-									<c:set var="oymeAccount0" value="${item.oymeEmailAccount}" />
-									<c:set var="oymeDomain0" value="${item.oymeEmailDomainCd}" />
-								</c:when>
-								<c:otherwise></c:otherwise>
-							</c:choose>
-						</c:forEach>
-
-						<div class="row">
-
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<label for="formFile" class="form-label">이메일 (필수)</label>
-			</div>
-			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<div class="input-group">
-					<input type="text" class="form-control" id="oymeEmailAccount" name="oymeEmailAccount" value="<c:out value="${oymeAccount1}"/>">
-					<span class="input-group-text">@</span>
-					<select class="form-select" id="oymeEmailDomainCd" name="oymeEmailDomainCd">
-						<option value="" selected>::선택::
-						<c:forEach items="${codeEmail}" var="itemEmail"
-											varStatus="statusEmail">
-											<option value="<c:out value="${itemEmail.oycdSeq}"/>"
-												<c:if test="${oymeDomain1 eq itemEmail.oycdSeq}">selected</c:if>><c:out
-													value="${itemEmail.oycdName}" /></option>
-										</c:forEach>
-					</select>
-				</div>
-			</div>
-
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<label for="formFile" class="form-label">이메일 (선택)</label>
-			</div>
-			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<div class="input-group">
-					<input type="text" class="form-control" id="" name="" value="<c:out value="${oymeAccount0}"/>">
-					<span class="input-group-text">@</span>
-					<select class="form-select" id="" name="">
-						<option value="" selected>::선택::
-						<c:forEach items="${codeEmail}" var="itemEmail"
-											varStatus="statusEmail">
-											<option value="<c:out value="${itemEmail.oycdSeq}"/>"
-												<c:if test="${oymeDomain0 eq itemEmail.oycdSeq}">selected</c:if>><c:out
-													value="${itemEmail.oycdName}" /></option>
-										</c:forEach>
-					</select>
-				</div>
-			</div>
-			
+<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+	<label for="formFile" class="form-label">연락처(선택)</label>
+</div>
+<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+<div class="input-group">
+	<input type="hidden" id="oympDefaultNyArray1" name="oympDefaultNyArray" value="0">
+	<select class="form-select" id="oympTelecomCdArray1" name="oympTelecomCdArray">
+		<option selected>::통신사::</option>
+		<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
+<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq }">selected</c:if>>
+<c:out value="${itemTelecom.oycdName}" /></option>
+</c:forEach></select>
+<input type="text" class="form-control" id="oympNumberArray1" name="oympNumberArray" value="<c:out value="${oympNumber}"/>" placeholder="'-'제외">
 		</div>
+	</div>
+</div>
+
+
+<c:forEach items="${listEmail}" var="item" varStatus="statusEmail">
+<c:choose>
+<c:when test="${item.oymeDefaultNy eq 1}">
+<c:set var="oymeAccount1" value="${item.oymeEmailAccount}" />
+<c:set var="oymeDomain1" value="${item.oymeEmailDomainCd}" />
+</c:when>
+<c:when test="${item.oymeDefaultNy eq 0}">
+<c:set var="oymeAccount0" value="${item.oymeEmailAccount}" />
+<c:set var="oymeDomain0" value="${item.oymeEmailDomainCd}" />
+</c:when>
+<c:otherwise></c:otherwise>
+</c:choose>
+</c:forEach>
+
+<div class="row">
+
+	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+	<label for="formFile" class="form-label">이메일 (필수)</label>
+</div>
+<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+<div class="input-group">
+	<input type="hidden" id="oymeDefaultNyArray0" name="oymeDefaultNyArray" value="1">
+	<input type="text" class="form-control" id="oymeEmailAccountArray0" name="oymeEmailAccountArray"  value="<c:out value="${oymeEmailAccount}"/>">
+<span class="input-group-text">@</span>
+<select class="form-select" id="oymeEmailDomainCdArray0" name="oymeEmailDomainCdArray">
+	<option value="" selected>::선택::
+		<c:forEach items="${codeEmail}" var="itemEmail" varStatus="statusEmail">
+<option value="<c:out value="${itemEmail.oycdSeq}"/>"
+<c:if test="${oymeDomain1 eq itemEmail.oycdSeq}">selected</c:if>>
+<c:out value="${itemEmail.oycdName}" /></option>
+</c:forEach></select>
+	</div>
+</div>
+
+<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+	<label for="formFile" class="form-label">이메일 (선택)</label>
+</div>
+<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+<div class="input-group">
+	<input type="hidden" id="oymeDefaultNyArray1" name="oymeDefaultNyArray" value="0">
+	<input type="text" class="form-control" id="oymeEmailAccountArray1" name="oymeEmailAccountArray"  value="<c:out value="${oymeEmailAccount}"/>">
+<span class="input-group-text">@</span>
+<select class="form-select" id="oymeEmailDomainCdArray1" name="oymeEmailDomainCdArray">
+	<option value="" selected>::선택::
+		<c:forEach items="${codeEmail}" var="itemEmail" varStatus="statusEmail">
+<option value="<c:out value="${itemEmail.oycdSeq}"/>"
+<c:if test="${oymeDomain0 eq itemEmail.oycdSeq}">selected</c:if>>
+<c:out value="${itemEmail.oycdName}" /></option>
+</c:forEach></select>
+		</div>
+	</div>
+
+</div>
 		
 							<br>
 							<hr>

@@ -14,7 +14,6 @@ public class Durian {
 	private Integer[] oymeDefaultNyArray;
 	private String[] oymeEmailAccountArray;
 	private Integer[] oymeEmailDomainCdArray;
-	private String[] oymeEmailDomainArray;
 	
 	private String oymbSeq;
 	private Integer oymbGradeCd;
@@ -46,9 +45,6 @@ public class Durian {
 	
 // oymbAddress	
 	private String oymaSeq;
-	private Integer oymaDefaulyNy;
-	private Integer oymaTypeCd;
-	private String oymaTitle;
 	private String oymaZipCode;
 	private String oymaAddress1;
 	private String oymaAddress2;
@@ -73,8 +69,6 @@ public class Durian {
 //	oymbPhone	
 	private String oympSeq;
 	private Integer oympDefaultNy;
-	private Integer oympTypeCd;
-	private Integer oympDeviceCd;
 	private Integer oympTelecomCd;
 	private String oympNumber;
 	private Integer oympDelNy;
@@ -95,10 +89,8 @@ public class Durian {
 //	oymbEmail	
 	private String oymeSeq;
 	private Integer oymeDefaultNy;
-	private Integer oymeTypeCd;
 	private String oymeEmailFull;
 	private String oymeEmailAccount;
-	private String oymeEmailDomain;
 	private Integer oymeEmailDomainCd;
 	private Integer oymeDelNy;
 //	private String oymbSeq;
@@ -151,14 +143,6 @@ public class Durian {
 
 	public void setOymeEmailDomainCdArray(Integer[] oymeEmailDomainCdArray) {
 		this.oymeEmailDomainCdArray = oymeEmailDomainCdArray;
-	}
-
-	public String[] getOymeEmailDomainArray() {
-		return oymeEmailDomainArray;
-	}
-
-	public void setOymeEmailDomainArray(String[] oymeEmailDomainArray) {
-		this.oymeEmailDomainArray = oymeEmailDomainArray;
 	}
 
 	public String getOymbSeq() {
@@ -361,30 +345,6 @@ public class Durian {
 		this.oymaSeq = oymaSeq;
 	}
 
-	public Integer getOymaDefaulyNy() {
-		return oymaDefaulyNy;
-	}
-
-	public void setOymaDefaulyNy(Integer oymaDefaulyNy) {
-		this.oymaDefaulyNy = oymaDefaulyNy;
-	}
-
-	public Integer getOymaTypeCd() {
-		return oymaTypeCd;
-	}
-
-	public void setOymaTypeCd(Integer oymaTypeCd) {
-		this.oymaTypeCd = oymaTypeCd;
-	}
-
-	public String getOymaTitle() {
-		return oymaTitle;
-	}
-
-	public void setOymaTitle(String oymaTitle) {
-		this.oymaTitle = oymaTitle;
-	}
-
 	public String getOymaZipCode() {
 		return oymaZipCode;
 	}
@@ -481,22 +441,6 @@ public class Durian {
 		this.oympDefaultNy = oympDefaultNy;
 	}
 
-	public Integer getOympTypeCd() {
-		return oympTypeCd;
-	}
-
-	public void setOympTypeCd(Integer oympTypeCd) {
-		this.oympTypeCd = oympTypeCd;
-	}
-
-	public Integer getOympDeviceCd() {
-		return oympDeviceCd;
-	}
-
-	public void setOympDeviceCd(Integer oympDeviceCd) {
-		this.oympDeviceCd = oympDeviceCd;
-	}
-
 	public Integer getOympTelecomCd() {
 		return oympTelecomCd;
 	}
@@ -585,14 +529,6 @@ public class Durian {
 		this.oymeDefaultNy = oymeDefaultNy;
 	}
 
-	public Integer getOymeTypeCd() {
-		return oymeTypeCd;
-	}
-
-	public void setOymeTypeCd(Integer oymeTypeCd) {
-		this.oymeTypeCd = oymeTypeCd;
-	}
-
 	public String getOymeEmailFull() {
 		return oymeEmailFull;
 	}
@@ -607,14 +543,6 @@ public class Durian {
 
 	public void setOymeEmailAccount(String oymeEmailAccount) {
 		this.oymeEmailAccount = oymeEmailAccount;
-	}
-
-	public String getOymeEmailDomain() {
-		return oymeEmailDomain;
-	}
-
-	public void setOymeEmailDomain(String oymeEmailDomain) {
-		this.oymeEmailDomain = oymeEmailDomain;
 	}
 
 	public Integer getOymeEmailDomainCd() {
@@ -633,5 +561,6 @@ public class Durian {
 		this.oymeDelNy = oymeDelNy;
 	}
 
+	
 
 	}

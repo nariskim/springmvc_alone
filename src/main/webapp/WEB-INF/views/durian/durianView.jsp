@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
-
+<jsp:useBean id="DurianServiceImpl" class="com.mycompany.myapp.modules.durian.DurianServiceImpl"/>
 
 
 <!DOCTYPE html>
@@ -261,7 +261,7 @@ main {
 				<label for="formFile" class="form-label">생년월일</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<input type="text" class="form-control" id="oymbDob" name="oymbDob" value="<c:out value="${item.oymbDob}"/>">
+				<input type="text" class="form-control" id="" name="" value="">
 			</div>
 			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
 				<label for="formFile" class="form-label">성별</label>
@@ -308,11 +308,11 @@ main {
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
 		<div class=input-group>
-			<input type="text" class="form-control" id="oymaZipCode" placeholder="우편번호" value="<c:out value="${item.oymaZipCode}"/>">
+			<input type="text" class="form-control" id="oymaZipCode" name="oymaZipCode" placeholder="우편번호" value="<c:out value="${item.oymaZipCode}"/>">
 			<input type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"></div>
-			<input type="text" class="form-control" id="oymaAddress1" placeholder="주소" value="<c:out value="${item.oymaAddress1}"/>">
-			<input type="text" class="form-control" id="oymaAddress2" placeholder="상세주소" value="<c:out value="${item.oymaAddress2}"/>">
-			<input type="text" class="form-control" id="oymaAddress3" placeholder="참고항목" value="<c:out value="${item.oymaAddress3}"/>">
+			<input type="text" class="form-control" id="oymaAddress1" name="oymaAddress1" placeholder="주소" value="<c:out value="${item.oymaAddress1}"/>">
+			<input type="text" class="form-control" id="oymaAddress2" name="oymaAddress2" placeholder="상세주소" value="<c:out value="${item.oymaAddress2}"/>">
+			<input type="text" class="form-control" id="oymaAddress3" name="oymaAddress3" placeholder="참고항목" value="<c:out value="${item.oymaAddress3}"/>">
 		
 		</div>
 			

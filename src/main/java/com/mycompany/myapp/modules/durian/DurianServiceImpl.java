@@ -39,6 +39,10 @@ public class DurianServiceImpl implements DurianService {
 
 		
 		dao.insert(dto);
+		dao.insertAddress(dto);
+		dao.insertJoinQna(dto);
+		dao.insertNation(dto);
+		
 		for(int i=0; i<dto.getOympNumberArray().length; i++) {
 			dto.setOympDefaultNy(dto.getOympDefaultNyArray()[i]);
 			dto.setOympTelecomCd(dto.getOympTelecomCdArray()[i]);
@@ -50,16 +54,13 @@ public class DurianServiceImpl implements DurianService {
 			dto.setOymeDefaultNy(dto.getOymeDefaultNyArray()[i]);
 			dto.setOymeEmailDomainCd(dto.getOymeEmailDomainCdArray()[i]);
 			dto.setOymeEmailAccount(dto.getOymeEmailAccountArray()[i]);
-			dto.setOymeEmailDomain(dto.getOymeEmailDomainArray()[i]);
 			dao.insertEmail(dto);
 		}
 		
-		dao.insertAddress(dto);
-		dao.insertJoinQna(dto);
-		dao.insertNation(dto);
+		
 	
 		
-		return 1;
+		return 2;
 	}
 
 	
@@ -80,9 +81,14 @@ public class DurianServiceImpl implements DurianService {
 
 	@Override
 	public int update(Durian dto) throws Exception {
-		dao.update(dto);
+		
 		
 		dto.setModDateTime(UtilDateTime.nowDate());
+		
+		dao.update(dto);
+		dao.updateAddress(dto);
+		dao.updateJoinQna(dto);
+		dao.updateNation(dto);
 		
 		for(int i=0; i<dto.getOympNumberArray().length; i++) {
 			dto.setOympDefaultNy(dto.getOympDefaultNyArray()[i]);
@@ -95,15 +101,11 @@ public class DurianServiceImpl implements DurianService {
 			dto.setOymeDefaultNy(dto.getOymeDefaultNyArray()[i]);
 			dto.setOymeEmailDomainCd(dto.getOymeEmailDomainCdArray()[i]);
 			dto.setOymeEmailAccount(dto.getOymeEmailAccountArray()[i]);
-			dto.setOymeEmailDomain(dto.getOymeEmailDomainArray()[i]);
 			dao.updateEmail(dto);
 		}
 		
-		dao.updateAddress(dto);
-		dao.updateJoinQna(dto);
-		dao.updateNation(dto);
 		
-		return 1; 
+		return 2; 
 	}
 
 

@@ -12,10 +12,8 @@
 
 
 		FROM oyMember a
-		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND
-		f.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND
-		g.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND f.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND g.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
 
@@ -155,9 +153,9 @@
 		, #{oymaAddress2}
 		, #{oymaAddress3}
 		,0
-		, now()
-		, now()
 		,#{oymbSeq}
+		, now()
+		, now()
 		)
 		<selectKey resultType="String" keyProperty="oymaSeq"
 			order="AFTER">
@@ -188,17 +186,19 @@
 	<insert id="insertPhone">
 		INSERT INTO oymbPhone (
 		oympTelecomCd
+		, oympDefaultNy
 		, oympNumber
 		, oympDelNy
 		, oymbSeq
 		, regDateTime
 		, modDateTime
 		)
-		values (
+		values (		
 		#{oympTelecomCd}
-		,#{oympNumber}
+		, #{oympDefaultNy}
+		, #{oympNumber}
 		,0
-		,#{oymbSeq}
+		, #{oymbSeq}
 		, now()
 		, now()
 		)
@@ -210,17 +210,19 @@
 
 	<insert id="insertEmail">
 		INSERT INTO oymbEmail (
-		oymeEmailAccount
+		oymeDefaultNy
+		, oymeEmailAccount
 		, oymeEmailDomainCd
 		, oymeDelNy
 		, oymbSeq
 		, regDateTime
 		, modDateTime
 		) values (
-		#{oymeEmailAccount}
-		,#{oymeEmailDomainCd}
+		#{oymeDefaultNy}
+		, #{oymeEmailAccount}
+		, #{oymeEmailDomainCd}
 		,0
-		,#{oymbSeq}
+		, #{oymbSeq}
 		, now()
 		, now()
 		)
@@ -261,14 +263,12 @@
 		SELECT
 		a.oymbSeq
 		, a.oymbName
-		,
-		a.oymbNameEng
+		, a.oymbNameEng
 		, a.oymbId
 		, a.oymbNickName
 		, a.oymbPassword
 		, a.oymbDelNy
-		,
-		a.oymbGenderCd
+		, a.oymbGenderCd
 		, b.oyjqQuestionCd
 		, b.oyjqAnswer
 		, b.oyjqDelNy
@@ -277,40 +277,28 @@
 		, c.oynaSeq
 		, c.oymbSeq
 		, d.oymaDefaultNy
-		, d.oymaTypeCd
-		,
-		d.oymaZipCode
+		, d.oymaZipCode
 		, d.oymaAddress1
 		, d.oymaAddress2
 		, d.oymaAddress3
-		,
-		d.oymaDelNy
+		, d.oymaDelNy
 		, e.oympSeq
 		, e.oympDefaultNy
-		, e.oympTypeCd
 		, e.oympTelecomCd
 		, e.oympNumber
 		, e.oympDelNy
 		, f.oymeSeq
 		, f.oymeDefaultNy
-		, f.oymeTypeCd
-		, f.oymeEmailFull
 		, f.oymeEmailAccount
-		, f.oymeEmailDomain
-		,
-		f.oymeEmailDomainCd
+		, f.oymeEmailDomainCd
 		, f.oymeDelNy
 
 		FROM oyMember a
-		LEFT JOIN oymbJoinQna b
-		ON b.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbNationality c ON c.oymbSeq =
-		a.oymbSeq
+		LEFT JOIN oymbJoinQna b ON b.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbNationality c ON c.oymbSeq = a.oymbSeq
 		LEFT JOIN oymbAddress d ON d.oymbSeq = a.oymbSeq
-		LEFT JOIN
-		oymbPhone e ON e.oympDefaultNy=1 AND e.oymbSeq = a.oymbSeq
-		LEFT JOIN
-		oymbEmail f ON f.oymeDefaultNy=1 AND f.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbPhone e ON e.oympDefaultNy=1 AND e.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbEmail f ON f.oymeDefaultNy=1 AND f.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
 		AND a.oymbSeq = #{oymbSeq}
@@ -321,8 +309,7 @@
 	<select id="selectListPhone" resultMap="resultMapObj">
 		SELECT
 		oympSeq
-		,
-		oympDefaultNy
+		, oympDefaultNy
 		, oympTypeCd
 		, oympTelecomCd
 		, oympNumber
@@ -339,13 +326,10 @@
 	<select id="selectListEmail" resultMap="resultMapObj">
 		SELECT
 		oymeSeq
-		,
-		oymeDefaultNy
+		, oymeDefaultNy
 		, oymeTypeCd
 		, oymeEmailDomainCd
 		, oymeEmailAccount
-		,
-		oymeEmailDomain
 		, oymeEmailFull
 
 		FROM oymbEmail
@@ -382,12 +366,9 @@
 		oymbAddress
 		SET
 		oymaZipCode = #{oymaZipCode}
-		,
-		oymaAddress1
-		= #{oymaAddress1}
+		, oymaAddress1 = #{oymaAddress1}
 		, oymaAddress2 = #{oymaAddress2}
-		,
-		oymaAddress3 = #{oymaAddress3}
+		, oymaAddress3 = #{oymaAddress3}
 		, modDateTime = #{modDateTime}
 
 		WHERE 1=1
@@ -456,9 +437,7 @@
 		oymeEmailAccount = #{oymeEmailAccount}
 		, oymeEmailDomainCd =
 		#{oymeEmailDomainCd}
-		, oymeEmailDomain = #{oymeEmailDomain}
-		,
-		modDateTime = #{modDateTime}
+		, modDateTime = #{modDateTime}
 
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
