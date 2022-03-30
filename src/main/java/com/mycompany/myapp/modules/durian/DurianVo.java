@@ -88,6 +88,16 @@ public class DurianVo {
 
 	}
 
+	private String[] checkboxSeqArray;
+	
+	public String[] getCheckboxSeqArray() {
+		return checkboxSeqArray;
+	}
+
+	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
+		this.checkboxSeqArray = checkboxSeqArray;
+	}
+
 	public String getOymbSeq() {
 		return oymbSeq;
 	}

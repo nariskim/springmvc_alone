@@ -14,7 +14,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>List.Durian</title>
+<title>View.AllLiveYoung</title>
 
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -184,18 +184,23 @@ main {
 					</ol>
 				
 				</div>
-				<br><hr><br>
+				<br><br><br><br><br>
+				<div class="row">
+				<div class="col-5">
 				<a href="javascript:goList();">
-				<button type="button" id="" class="btn btn-primary">목록</button></a> 
+				<button type="button" id="" class="btn btn-outline-primary">목록</button></a>
+				
 				<a href="javascript:goEdit();">
-				<button type="button" id="" class="btn btn-success">수정</button></a>
+				<button type="button" id="" class="btn btn-outline-success">수정</button></a>
+				
 				<a href="javascript:goDel();">
-				<button type="button" id="" class="btn btn-danger">삭제(영구)</button></a>
+				<button type="button" id="" class="btn btn-outline-danger">삭제(영구)</button></a>
+				
 				<a href="javascript:goHide();">
-				<button type="button" id="" class="btn btn-danger">삭제(임시)</button></a>
-				
-				
+				<button type="button" id="" class="btn btn-outline-warning">삭제(임시)</button></a></div></div>
 				<br>
+				
+				<br><hr><br>
 		<div class="row">
 
 			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
@@ -256,14 +261,14 @@ main {
 				<label for="formFile" class="form-label">생년월일</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<input type="text" id="oymbDob" name="oymbDob" value="<c:out value="${item.oymbDob}"/>">
+				<input type="text" class="form-control" id="oymbDob" name="oymbDob" value="<c:out value="${item.oymbDob}"/>">
 			</div>
 			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
 				<label for="formFile" class="form-label">성별</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
 				<select class="form-select" id="oymbGenderCd" name="oymbGenderCd">
-				<option value=" " selected>::성별::</option>
+				<option value="" selected>::성별::</option>
 					<c:forEach items="${codeGender}" var="itemGender" varStatus="statusGender">
 			<option value="<c:out value="${itemGender.oycdSeq}"/>"<c:if test="${item.oymbGenderCd eq itemGender.oycdSeq }">selected</c:if>><c:out value="${itemGender.oycdName}"/></option>	
 							</c:forEach>
@@ -279,21 +284,19 @@ main {
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
 				<div class="mb-3">
-					<select class="form-select">
-						<option value=" " selected>::선택::</option>
-						<option>question 1</option>
-						<option>question 2</option>
-						<option>question 3</option>
-						<option>question 4</option>
-						<option>question 5</option>
-					</select>
+					<select class="form-select" id="oyjqQuestionCd" name="oyjqQuestionCd">
+				<option value="" selected>::선택::</option>
+					<c:forEach items="${codeJoinQna}" var="itemJoinQna" varStatus="statusJoinQna">
+			<option value="<c:out value="${itemJoinQna.oycdSeq}"/>"<c:if test="${item.oyjqQuestionCd eq itemJoinQna.oycdSeq }">selected</c:if>><c:out value="${itemJoinQna.oycdName}"/></option>	
+							</c:forEach>
+			</select>
 				</div>
 			</div>
 			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
 				<label for="formFile" class="form-label">비밀번호 답변</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<input type="text" class="form-control" id="" placeholder="비밀번호 힌트 답">
+				<input type="text" class="form-control" id="oyjqAnswer" name="oyjqAnswer" value="<c:out value="${item.oyjqAnswer}"/>">
 			</div>
 
 		</div>
@@ -304,14 +307,15 @@ main {
 				<label for="formFile" class="form-label">주소</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<div class=input-group>
-			<input type="text" class="form-control" id="oymaZipCode" value="<c:out value="${item.oymaZipCode}"/>">
-			<input type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-			<input type="text" class="form-control" id="oymaAddress1" value="<c:out value="${item.oymaAddress1}"/>"><br>
-			<input type="text" class="form-control" id="oymaAddress2" value="<c:out value="${item.oymaAddress2}"/>">
-			<input type="text" class="form-control" id="oymaAddress3" value="<c:out value="${item.oymaAddress3}"/>">
+		<div class=input-group>
+			<input type="text" class="form-control" id="oymaZipCode" placeholder="우편번호" value="<c:out value="${item.oymaZipCode}"/>">
+			<input type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"></div>
+			<input type="text" class="form-control" id="oymaAddress1" placeholder="주소" value="<c:out value="${item.oymaAddress1}"/>">
+			<input type="text" class="form-control" id="oymaAddress2" placeholder="상세주소" value="<c:out value="${item.oymaAddress2}"/>">
+			<input type="text" class="form-control" id="oymaAddress3" placeholder="참고항목" value="<c:out value="${item.oymaAddress3}"/>">
+		
 		</div>
-			</div>
+			
 
 			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
 				<label for="formFile" class="form-label">국적</label>
@@ -355,7 +359,7 @@ main {
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
 								<div class="input-group">
-									<select class="form-select form-select-sm mb-1"
+									<select class="form-select"
 										id="oympTelecomCd" name="oympTelecomCd">
 										<option value="" selected>::통신사::</option>
 										<c:forEach items="${codeTelecom}" var="itemTelecom"
@@ -373,7 +377,7 @@ main {
 							</div>
 							<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
 								<div class="input-group">
-									<select class="form-select form-select-sm mb-1"
+									<select class="form-select"
 										id="oympTelecomCd" name="oympTelecomCd">
 										<option value="" selected>::통신사::</option>
 										<c:forEach items="${codeTelecom}" var="itemTelecom"
@@ -450,122 +454,147 @@ main {
 		
 		<br><hr><br>
 
-		<div class="row">
+	<div class="row">
+								<div class="col-12 col-sm-4 col-lg-2"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<label for="formFile" class="form-label">피부타입</label>
+								</div>
+								<div class="col-12 col-sm-8 col-lg-4"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<input type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="141"> <label
+										class="btn btn-outline-dark" for="민감">민감성</label> <input
+										type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="142"> <label
+										class="btn btn-outline-dark" for="지성">지성</label> <input
+										type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="143"> <label
+										class="btn btn-outline-dark" for="중성">중성</label> <input
+										type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="144"> <label
+										class="btn btn-outline-dark" for="건성">건성</label> <input
+										type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="145"> <label
+										class="btn btn-outline-dark" for="복합성">트러블</label>
+								</div>
+								<div class="col-12 col-sm-4 col-lg-2"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<label for="formFile" class="form-label">퍼스널컬러</label>
+								</div>
+								<div class="col-12 col-sm-8 col-lg-4"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<input type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="146"> <label
+										class="btn btn-outline-dark" for="spring">봄 웜</label> <input
+										type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="147"> <label
+										class="btn btn-outline-dark" for="summer">여름 쿨</label> <input
+										type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="148"> <label
+										class="btn btn-outline-dark" for="fall">가을 웜</label> <input
+										type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="149"> <label
+										class="btn btn-outline-dark" for="winter">겨울 쿨</label>
+								</div>
+							</div>
 
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<label for="formFile" class="form-label">피부타입</label>
-			</div>
-			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<input type="radio" class="btn-check" id="oymbSkinType" name="oymbSkinType" autocomplete="off">
-					<label class="btn btn-outline-dark" for="민감">민감성</label>
-				<input type="radio" class="btn-check" id="oymbSkinType" name="oymbSkinType" autocomplete="off">
-					<label class="btn btn-outline-dark" for="지성">지성</label>
-				<input type="radio" class="btn-check" id="oymbSkinType" name="oymbSkinType" autocomplete="off">
-					<label class="btn btn-outline-dark" for="중성">중성</label>
-				<input type="radio" class="btn-check" id="oymbSkinType" name="oymbSkinType" autocomplete="off">
-					<label class="btn btn-outline-dark" for="건성">건성</label>
-				<input type="radio" class="btn-check" id="oymbSkinType" name="oymbSkinType" autocomplete="off">
-					<label class="btn btn-outline-dark" for="복합성">트러블</label>
-			</div>
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<label for="formFile" class="form-label">퍼스널컬러</label>
-			</div>
-			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<input type="radio" class="btn-check" id="oymbPersonalColor" name="oymbPersonalColor" autocomplete="off">
-					<label class="btn btn-outline-dark" for="spring">봄 웜</label>
-				<input type="radio" class="btn-check" id="oymbPersonalColor" name="oymbPersonalColor" autocomplete="off">
-					<label class="btn btn-outline-dark" for="summer">여름 쿨</label>
-				<input type="radio" class="btn-check" id="oymbPersonalColor" name="oymbPersonalColor" autocomplete="off">
-					<label class="btn btn-outline-dark" for="fall">가을 웜</label>
-				<input type="radio" class="btn-check" id="oymbPersonalColor" name="oymbPersonalColor" autocomplete="off">
-					<label class="btn btn-outline-dark" for="winter">겨울 쿨</label>
-			</div>
+							<div class="row">
+								<div class="col-12 col-sm-4 col-lg-2"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<label for="formFile" class="form-label">관심 분야</label>
+								</div>
+								<div class="col-12 col-sm-8 col-lg-4"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<input type="checkbox" class="btn-check" id="" name=""
+										autocomplete="off" value="150"> <label
+										class="btn btn-outline-dark" for="skinCare">스킨 케어</label> <input
+										type="checkbox" class="btn-check" id="" name=""
+										autocomplete="off" value="151"> <label
+										class="btn btn-outline-dark" for="makeUp">메이크업</label> <input
+										type="checkbox" class="btn-check" id="" name=""
+										autocomplete="off" value="152"> <label
+										class="btn btn-outline-dark" for="hairCare">헤어 케어</label> <input
+										type="checkbox" class="btn-check" id="" name=""
+										autocomplete="off" value="153"> <label
+										class="btn btn-outline-dark" for="bodyCare">바디 케어</label> <input
+										type="checkbox" class="btn-check" id="" name=""
+										autocomplete="off" value="154"> <label
+										class="btn btn-outline-dark" for="innerCare">이너 케어</label>
+								</div>
+							</div>
+							<br>
+							<hr>
+							<br>
+							<div class="row">
 
-		</div>
+								<div class="col-12 col-sm-4 col-lg-2"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<label for="formFile" class="form-label">모바일 수신동의</label>
+								</div>
 
-		<div class="row">
-	
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<label for="formFile" class="form-label">관심 분야</label>
-			</div>
-			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<input type="checkbox" class="btn-check" id="oymbInterests" autocomplete="off">
-					<label class="btn btn-outline-dark" for="skinCare">스킨 케어</label>
-				<input type="checkbox" class="btn-check" id="oymbInterests" autocomplete="off">
-					<label class="btn btn-outline-dark" for="makeUp">메이크업</label>
-				<input type="checkbox" class="btn-check" id="oymbInterests" autocomplete="off">
-					<label class="btn btn-outline-dark" for="hairCare">헤어 케어</label>
-				<input type="checkbox" class="btn-check" id="oymbInterests" autocomplete="off">
-					<label class="btn btn-outline-dark" for="bodyCare">바디 케어</label>
-				<input type="checkbox" class="btn-check" id="oymbInterests" autocomplete="off">
-					<label class="btn btn-outline-dark" for="innerCare">이너 케어</label>
-			</div>
-	
-		</div>
+								<div class="col-12 col-sm-8 col-lg-4"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<div class="input-group">
+										<input type="radio" class="btn-check" id="" name=""
+											autocomplete="off" value="1"> <label
+											class="btn btn-outline-dark">동의</label> <input type="radio"
+											class="btn-check" id="" name="" autocomplete="off" value="0">
+										<label class="btn btn-outline-dark">비동의</label>
+									</div>
+								</div>
 
-	<br><hr><br>
-				
-		<div class="row">
-		
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<label for="formFile" class="form-label">모바일 수신동의</label>
-			</div>
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<div class="input-group">
-					<input type="radio" class="btn-check" id="oymbSmsConsent" name="oymbSmsConsent" autocomplete="off">
-						<label class="btn btn-outline-dark" for="Y">동의</label>
-					<input type="radio" class="btn-check" id="oymbSmsConsent" name="oymbSmsConsent" autocomplete="off">
-						<label class="btn btn-outline-dark" for="N">비동의</label>
-				</div>
-			</div>
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<label for="formFile" class="form-label">이메일 수신동의</label>
-			</div>
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<div class="input-group">
-					<input type="radio" class="btn-check" id="oymbEmailConsent" name="oymbEmailConsent" autocomplete="off">
-						<label class="btn btn-outline-dark" for="Y">동의</label>
-					<input type="radio" class="btn-check" id="oymbEmailConsent" name="oymbEmailConsent" autocomplete="off">
-						<label class="btn btn-outline-dark" for="N">비동의</label>
-				</div>
-			</div>
-			
-		</div>
+								<div class="col-12 col-sm-4 col-lg-2"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<label for="formFile" class="form-label">이메일 수신동의</label>
+								</div>
 
-		<div class="row">
+								<div class="col-12 col-sm-8 col-lg-4"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<div class="input-group">
+										<input type="radio" class="btn-check" id="" name=""
+											autocomplete="off" value="1"> <label
+											class="btn btn-outline-dark">동의</label> <input type="radio"
+											class="btn-check" id="" name="" autocomplete="off" value="0">
+										<label class="btn btn-outline-dark">비동의</label>
+									</div>
+								</div>
+							</div>
 
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<label for="formFile" class="form-label">PUSH 수신동의</label>
-			</div>
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<div class="input-group">
-					<input type="radio" class="btn-check" id="oymbPushConsent" name="oymbPushConsent" autocomplete="off">
-					<label class="btn btn-outline-dark" for="Y">동의</label> 
-					<input type="radio" class="btn-check" id="oymbPushConsent" name="oymbPushConsent" autocomplete="off">
-					<label class="btn btn-outline-dark" for="N">비동의</label>
-				</div>
-			</div>
-		
-		</div>
-				
-		<div class="row">
-
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<label for="formFile" class="form-label">개인정보 유효기간</label>
-			</div>
-
-			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-				<input type="radio" class="btn-check" id="oymbSaved" name="oymbSaved" autocomplete="off">
-				<label class="btn btn-outline-dark" for="1년">1년</label>
-				<input type="radio" class="btn-check" id="oymbSaved" name="oymbSaved" autocomplete="off">
-				<label class="btn btn-outline-dark" for="5년">5년</label>
-				<input type="radio" class="btn-check" id="oymbSaved" name="oymbSaved" autocomplete="off">
-				<label class="btn btn-outline-dark" for="10년">10년</label>
-				<input type="radio" class="btn-check" id="oymbSaved" name="oymbSaved" autocomplete="off">
-				<label class="btn btn-outline-dark" for="평생회원">평생회원</label>
-			</div>
-		
-		</div>
+							<div class="row">
+								<div class="col-12 col-sm-4 col-lg-2"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<label for="formFile" class="form-label">PUSH 수신동의</label>
+								</div>
+								<div class="col-12 col-sm-8 col-lg-4"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<div class="input-group">
+										<input type="radio" class="btn-check" id="" name=""
+											autocomplete="off" value="1"> <label
+											class="btn btn-outline-dark">동의</label> <input type="radio"
+											class="btn-check" id="" name="" autocomplete="off" value="0">
+										<label class="btn btn-outline-dark">비동의</label>
+									</div>
+								</div>
+								<div class="col-12 col-sm-4 col-lg-2"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<label for="formFile" class="form-label">개인정보 유효기간</label>
+								</div>
+								<div class="col-12 col-sm-8 col-lg-4"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<input type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="6"> <label
+										class="btn btn-outline-dark" for="1년">1년</label> <input
+										type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="8"> <label
+										class="btn btn-outline-dark" for="5년">5년</label> <input
+										type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="9"> <label
+										class="btn btn-outline-dark" for="10년">10년</label> <input
+										type="radio" class="btn-check" id="" name=""
+										autocomplete="off" value="10"> <label
+										class="btn btn-outline-dark" for="평생회원">평생회원</label>
+								</div>
+							</div>
 			</div>	
 		</main>
 	</div>
@@ -588,24 +617,7 @@ main {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script type="text/javascript">	$(document).ready(function() {
-		$("#oymbDob").datepicker();
-	});
-
-	$.datepicker.setDefaults({
-		dateFormat : 'yy-mm-dd',
-		prevText : '이전 달',
-		nextText : '다음 달',
-		monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-				'9월', '10월', '11월', '12월' ],
-		monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-				'9월', '10월', '11월', '12월' ],
-		dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-		dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-		dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-		showMonthAfterYear : true,
-		yearSuffix : '년'
-	});
+	<script type="text/javascript">
 
 		function sample6_execDaumPostcode() {
 			new daum.Postcode(

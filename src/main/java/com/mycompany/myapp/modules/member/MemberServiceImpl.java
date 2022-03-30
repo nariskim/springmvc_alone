@@ -1,13 +1,13 @@
 package com.mycompany.myapp.modules.member;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.myapp.common.util.UtilDateTime;
-import com.mycompany.myapp.common.base.Base;
+
+
 @Service
 public class MemberServiceImpl implements MemberService {
 

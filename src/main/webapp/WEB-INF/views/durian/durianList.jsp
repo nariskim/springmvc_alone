@@ -14,7 +14,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>List.Durian</title>
+<title>List.AllLiveYoung</title>
 
 <script src="https://kit.fontawesome.com/893e1f7eb8.js" crossorigin="anonymous"></script>
 <link
@@ -367,6 +367,7 @@ main {
 			<br>
 			<hr>
 			<br>
+			
 			<div class="table-wrapper">
 				<div class="container">
 	<br>
@@ -378,15 +379,25 @@ main {
 						</ol>
 					</nav>
 
+							<div class="row">
+					<div class="col-9"></div>
+					<div class="col-3"  style="text-aling:right;">
+						<a href=""><button type="button" id="uelete" name="uelete"
+								class="btn btn-outline-warning">삭제(임시)</button></a>
+						<a href=""><button type="button" id="btnSubmit_del" name="btnSubmit_del"
+								class="btn btn-outline-danger">삭제(영구)</button></a>
+								
+								<a href="javascript:goForm();">
+							<button type="button" class="btn btn-outline-success">등록</button></a></div>
+					</div>
+					
 					<br> <br>
 					<table class="table table-hover">
 						<thead>
 							<tr>
 								<th scope="col">
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox"
-											value="<c:out value="${item.oymbSeq}"/>" id="checkboxSeq0"
-											name="checkboxSeq">
+									<input class="form-check-input" type="checkbox" value="" id="checkboxAll" name="checkboxAll">
 									</div>
 								</th>
 								<th scope="col">회원번호</th>
@@ -419,9 +430,7 @@ main {
 										<tr>
 											<th scope="row">
 												<div class="form-check">
-													<input class="form-check-input" type="checkbox"
-														name="checkboxSeq"
-														value="<c:out value="${item.oymbSeq}"/>" id="checkbox">
+												<input class="form-check-input" type="checkbox" name="checkboxSeq" id="checkboxSeq" value="<c:out value="${item.oymbSeq}"/>">
 												</div>
 											</th>
 											<th scope="row"><c:out value="${item.oymbSeq}" /></th>
@@ -453,13 +462,13 @@ main {
 													<c:otherwise>
 														<c:out value="${fn:substring(phoneNumber,0,3)}" />
 														<c:out value="${fn:substring(phoneNumber,3,7)}" />
-														<c:out value="${fn:substring(phoneNumber,7,10)}" />
+														<c:out value="${fn:substring(phoneNumber,7,11)}" />
 													</c:otherwise>
 												</c:choose></td>
 											<td><c:out value="${item.oymeEmailFull}" /></td>
 											<td><c:choose>
-													<c:when test="${item.oymbDelNy eq 0 }">O</c:when>
-													<c:otherwise>X</c:otherwise>
+													<c:when test="${item.oymbDelNy eq 0 }">N</c:when>
+													<c:otherwise>Y</c:otherwise>
 												</c:choose></td>
 											<td><fmt:formatDate value="${item.regDateTime}"
 													pattern="yyyy-MM-dd HH:mm:ss" /></td>
@@ -474,15 +483,7 @@ main {
 					<br>
 					<hr>
 					<br>
-					<div class="row">
-						<a href=""><button type="button" id="btnSubmit_del"
-								class="btn btn-danger">&nbsp삭 제&nbsp</button></a> <a
-							href="javascript:goForm();">
-							<button type="button" class="btn btn-success">&nbsp등
-								록&nbsp</button>
-						</a>
-					</div>
-
+			
 				</div>
 			</div>
 
@@ -557,15 +558,13 @@ main {
 		crossorigin="anonymous"></script>
 
 
-<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/myapp/resources/js/validation.js"></script>
 <!-- jquery ui -->
-<script
-		src="/myapp/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+<script src="/myapp/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 
-	<script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {
 	$("#scDateStart").datepicker();
 });
@@ -637,12 +636,94 @@ $("#btnSubmit_del").on("click", function() {
 	alert("삭제?");
 	confirm("진짜 삭제? 복구 노노");
 });
-$("#checkboxAll").click(function() {
-	if($("#checkboxAll").is(":checked")) $("input[name=checkboxSeq]").prop("checked", true);
+
+$('#checkboxAll').click(function(){
+	if($("#checkboxAll").is(':checked')) $("input[name=checkboxSeq]").prop("checked",true);
 	else $("input[name=checkboxSeq]").prop("checked", false);
 });
 
+$("input[name=checkboxSeq]").click(function(){
+
+var total = $("input[name=checkboxSeq]").length;
+var checked = $("input[name=checkboxSeq]:checked").length;
+
+if(total != checked) $("checkboxAll").prop("checked", false); 
+else $("checkboxAll").prop("checked", true);
+});	 
+
+$("#uelete").on("click", function(){
+	var answer = confirm("삭제하시겠습니까?");
 	
+		if(answer){
+			$("input[name=checkboxSeq]:checked").each(function() { //체크되어있는지 확인하고 
+			checkboxSeqArray.push($(this).val());				//되어있으면 checkboxSeqArray에 순차적으로 값을 넣는다
+		});  
+		
+		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray); 
+		$("#formList").attr("action", "/myapp/durian/multiUele");
+		$("#formList").submit();
+		
+	}else{
+		return false;
+	} 
+	
+});
+
+/* $().on("click" function(){
+	$().each(Function(){
+		checkboxArray.push($(this).val());
+	});
+	$().modal("hide");
+	from.attr("action" , goUrlMultiUele).submit();
+});
+
+var goUrlMulitUele = "/durian/durianMultiUele";
+var goUrlMulitDele = "/durian/durianMultiDele";
+var seq = $("input:hidden[name=oymbSeq]");
+var form = $("form[name=formList]");
+var checkboxSeqArray = [];
+
+$().on("click", function(){
+	if($("input[name=checkboxSeq]:checked").length > 0){
+	$().val(1);
+	$().text("확인");
+	$().text("데이터 삭제?");
+	$().show();
+	$().hide();
+	$().modal("show");
+	} else {
+		$().text("확인");
+		$().text("데이터 선택!");
+		$().modal("show");
+	}
+	
+});
+
+$().on("click", function(){
+	if($("input[name=checkboxSeq]:checked").length > 0){
+	$().val(2);
+	$().text("확인");
+	$().text("데이터 삭제?");
+	$().show();
+	$().hide();
+	$().modal("show");
+	} else {
+		$().text("확인");
+		$().text("데이터 선택!");
+		$().modal("show");
+	}
+	
+});
+
+
+$().on("click" function(){
+	$().each(Function(){
+		checkboxArray.push($(this).val());
+	});
+	$().modal("hide");
+	from.attr("action" , goUrlMultiDele).submit();
+});
+	 */
 
 	
 </script>

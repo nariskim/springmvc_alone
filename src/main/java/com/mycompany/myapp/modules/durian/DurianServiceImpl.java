@@ -132,8 +132,8 @@ public class DurianServiceImpl implements DurianService {
 	}
 	
 	@Override
-	public int updateDelete(DurianVo vo) throws Exception{
-		return dao.updateDelete(vo);
+	public int uelete(DurianVo vo) throws Exception{
+		return dao.uelete(vo);
 		
 	}
 	

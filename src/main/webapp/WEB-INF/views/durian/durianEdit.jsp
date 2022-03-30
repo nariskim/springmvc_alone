@@ -1,4 +1,4 @@
-R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -14,7 +14,7 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>List.Durian</title>
+<title>Edit.AllLiveYoung</title>
 
 
 <link
@@ -24,8 +24,7 @@ R<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="u
 	crossorigin="anonymous">
 
 
-<script src="https://kit.fontawesome.com/893e1f7eb8.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/893e1f7eb8.js" crossorigin="anonymous"></script>
 
 <style type="text/css">
 
@@ -189,140 +188,210 @@ main {
 						<li class="breadcrumb-item active" aria-current="page">회원 정보 변경</li>
 					</ol>
 				</nav>
-		</nav><br><hr><br>
-<a href="javascript:goInst();">
-					<button type="button" id="" class="btn btn-success">등록</button></a>
-<a href="javascript:goList();">
-					<button type="button" id="" class="btn btn-primary">목록</button></a>
-					<br>
-<div class="row">
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">이름 (한글)</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<input type="text" class="form-control" id="oymbName" name="oymbName" placeholder="이름">
-	</div>
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">이름 (영문)</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<input type="text" class="form-control" id="oymbNameEng" name="oymbNameEng" placeholder="'성' 제외 '이름만' 영문 이니셜">
-		<div id="NameEngHelpBlock" class="form-text">예시:김나리 'nr'</div>
-	</div>
+		</nav><br><br><br><br><br>
+<a href="javascript:goSubmit();">
+					<button type="button" id="" class="btn btn-outline-success">수정</button></a>
+<a href="javascript:goView();">
+					<button type="button" id="" class="btn btn-outline-primary">취소(상세)</button></a>
+					<br><hr><br>
+		<div class="row">
 
-</div>
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">이름 (한글)</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<input type="text" class="form-control" id="oymbName" name="oymbName" value="<c:out value="${item.oymbName}"/>">
+			</div>
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">이름 (영문)</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<input type="text" class="form-control" id="oymbNameEng" name="oymbNameEng" value="<c:out value="${item.oymbNameEng}"/>">
+					<div id="NameEngHelpBlock" class="form-text">예시:김나리 'nr'</div>
+			</div>
+		
+		</div>
 
-<div class="row">
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">아이디</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<input type="text" class="form-control" id="oymbId" name="oymbId" placeholder="아이디">
-	</div>
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">닉네임</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<input type="text" class="form-control" id="oymbNickName" name="oymbNickName" placeholder="닉네임">
-	</div>
-</div>
+		<div class="row">
 
-<div class="row">
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">비밀번호</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<input type="password" id="oymbPassword" name="oymbPassword" class="form-control" aria-describedby="passwordHelpBlock" placeholder="비밀번호">
-		<div id="passwordHelpBlock" class="form-text">8-20자리의 영문 대소문자, 숫자, 특수문자를 조합하여 설정</div>
-	</div>
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">비밀번호 확인</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<input type="password" id="oymbPwdConfirm" name="" class="form-control" aria-describedby="passwordHelpBlock" placeholder="비밀번호 확인">
-		<div id="passwordHelpBlock" class="form-text"></div>
-	</div>
-</div>
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">아이디</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<input type="text" class="form-control" id="oymbId" name="oymbId" value="<c:out value="${item.oymbId}"/>">
+			</div>
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">닉네임</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<input type="text" class="form-control" id="oymbNickName" name="oymbNickName" value="<c:out value="${item.oymbNickName}"/>">
+			</div>
 
-<div class="row">
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">생년월일</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<!-- <fmt:parseDate var="oymbDob" value="${oymbDobs}"
-									pattern="yyyy-MM-dd" />
-								<input type="text" id="oymbDob" name="oymbDob"
-									value="<fmt:formatDate value="${oymbDob}" pattern="yyyy-MM-dd" />"
-									placeholder="생년월일" class="form-control" autocomplete="off"> -->
-	</div> 
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">성별</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<select class="form-select" id="oymbGenderCd" name="oymbGenderCd">
-				<option value="" selected>::성별::</option>
+		</div>
+
+		<div class="row">
+
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">비밀번호</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<input type="password" id="oymbPassword" name="oymbPassword" class="form-control" aria-describedby="passwordHelpBlock" value="<c:out value="${item.oymbPassword}"/>">
+					<div id="passwordHelpBlock" class="form-text">8-20자리의 영문 대소문자, 숫자, 특수문자를 조합하여 설정</div>
+			</div>
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">비밀번호 확인</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<input type="password" id="oymbPwdConfirm" class="form-control" aria-describedby="passwordHelpBlock" value="<c:out value="${item.oymbPassword}"/>">
+					<div id="passwordHelpBlock" class="form-text"></div>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">생년월일</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<input type="text" class="form-control" id="" name="" value="<c:out value="${item.oymbDob}"/>">
+			</div>
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">성별</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<select class="form-select" id="oymbGenderCd" name="oymbGenderCd">
+				<option value=" " selected>::성별::</option>
 					<c:forEach items="${codeGender}" var="itemGender" varStatus="statusGender">
 			<option value="<c:out value="${itemGender.oycdSeq}"/>"<c:if test="${item.oymbGenderCd eq itemGender.oycdSeq }">selected</c:if>><c:out value="${itemGender.oycdName}"/></option>	
 							</c:forEach>
 			</select>
-	</div>
-</div>
+			</div>
 
-				
-<div class="row">
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">비밀번호 질문</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<div class="mb-3">
-			<select class="form-select" id="oyjqQuestionCd" name="oyjqQuestionCd">
+		</div>
+
+
+		<div class="row">
+
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">비밀번호 질문</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<div class="mb-3">
+					<select class="form-select" id="oyjqQuestionCd" name="oyjqQuestionCd">
 				<option value="" selected>::선택::</option>
 					<c:forEach items="${codeJoinQna}" var="itemJoinQna" varStatus="statusJoinQna">
 			<option value="<c:out value="${itemJoinQna.oycdSeq}"/>"<c:if test="${item.oyjqQuestionCd eq itemJoinQna.oycdSeq }">selected</c:if>><c:out value="${itemJoinQna.oycdName}"/></option>	
 							</c:forEach>
 			</select>
-		</div>
-	</div>
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">비밀번호 답변</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<input type="text" class="form-control" id="oyjqAnswer" name="oyjqAnswer" placeholder="비밀번호 힌트 답">
-	</div>
-</div>
-</div>
+				</div>
+			</div>
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">비밀번호 답변</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<input type="text" class="form-control" id="oyjqAnswer" name="oyjqAnswer" value="<c:out value="${item.oyjqAnswer}"/>">
+			</div>
 
-<div class="row">
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">주소</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<div class=input-group>
-			<input type="text" class="form-control" id="oymaZipCode" placeholder="우편번호">
-			<input type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"></div>
-			<input type="text" class="form-control" id="oymaAddress1" placeholder="주소">
-			<input type="text" class="form-control" id="oymaAddress2" placeholder="상세주소">
-			<input type="text" class="form-control" id="oymaAddress3" placeholder="참고항목">
+		</div>
 		
-	</div>
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-		<label for="formFile" class="form-label">국적</label>
-	</div>
-	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<select class="form-select" id="oynaSeq" name="oynaSeq">
-			<option value="">::국적::</option>
-			<option value="1" <c:if test="${item.oynaSeq eq 1}">selected</c:if>>한국</option>
-			<option value="2" <c:if test="${item.oynaSeq eq 2}">selected</c:if>>미국</option>
-			<option value="5" <c:if test="${item.oynaSeq eq 5}">selected</c:if>>프랑스</option>
-			<option value="3" <c:if test="${item.oynaSeq eq 3}">selected</c:if>>영국</option>
-			<option value="4" <c:if test="${item.oynaSeq eq 4}">selected</c:if>>독일</option>
-			<option value="6" <c:if test="${item.oynaSeq eq 6}">selected</c:if>>폴란드</option>
-			<option value="7" <c:if test="${item.oynaSeq eq 7}">selected</c:if>>호주</option>
-			<option value="8" <c:if test="${item.oynaSeq eq 8}">selected</c:if>>중국</option>
-		</select>
-			<input type="text" class="form-control" id="" name="" placeholder="그 외 국가 직접 입력">
+		<div class="row">
+
+		<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">주소</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+		<div class=input-group>
+			<input type="text" class="form-control" id="oymaZipCode" placeholder="우편번호" value="<c:out value="${item.oymaZipCode}"/>">
+			<input type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"></div>
+			<input type="text" class="form-control" id="oymaAddress1" placeholder="주소" value="<c:out value="${item.oymaAddress1}"/>">
+			<input type="text" class="form-control" id="oymaAddress2" placeholder="상세주소" value="<c:out value="${item.oymaAddress2}"/>">
+			<input type="text" class="form-control" id="oymaAddress3" placeholder="참고항목" value="<c:out value="${item.oymaAddress3}"/>">
+		
+		</div>
+
+			<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+				<label for="formFile" class="form-label">국적</label>
+			</div>
+			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
+				<select class="form-select" id="oynaSeq" name="oynaSeq">
+					<option value=" " >선택해주세요</option>
+					<option value="1" <c:if test="${item.oynaSeq eq 1 }">selected</c:if>>한국</option>
+					<option value="2" <c:if test="${item.oynaSeq eq 2 }">selected</c:if>>미국</option>
+					<option value="5" <c:if test="${item.oynaSeq eq 5 }">selected</c:if>>프랑스</option>
+					<option value="3" <c:if test="${item.oynaSeq eq 3 }">selected</c:if>>영국</option>
+					<option value="4" <c:if test="${item.oynaSeq eq 4 }">selected</c:if>>독일</option>
+					<option value="6" <c:if test="${item.oynaSeq eq 6 }">selected</c:if>>폴란드</option>
+					<option value="7" <c:if test="${item.oynaSeq eq 7 }">selected</c:if>>호주</option>
+					<option value="8" <c:if test="${item.oynaSeq eq 8 }">selected</c:if>>중국</option>
+				</select> <input type="text" class="form-control" id="" placeholder="그 외 국가 직접 입력">
+			</div>
+
 	</div>
 	
+	<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
+							<c:choose>
+								<c:when test="${item.oympDefaultNy eq 1}">
+									<c:set var="oympNumber1" value="${item.oympNumber}" />
+									<c:set var="oympTelecom1" value="${item.oympTelecomCd}" />
+								</c:when>
+								<c:when test="${item.oympDefaultNy eq 0}">
+									<c:set var="oympNumber0" value="${item.oympNumber}" />
+									<c:set var="oympTelecom0" value="${item.oympTelecomCd}" />
+								</c:when>
+								<c:otherwise></c:otherwise>
+							</c:choose>
+						</c:forEach>
+	
+	
+	<div class="row">
+	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
+		<input type="hidden" id="oympDefaultNyArray0" name="oympDefaultNyArray" value="1">
+		<label for="formFile" class="form-label">연락처(필수)</label>
+	</div>
+
+						<div class="col-12 col-sm-8 col-lg-4"
+							style="margin-top: 20px; margin-bottom: 20px;">
+							<div class="input-group">
+								<select class="form-select"
+									id="oympTelecomCd" name="oympTelecomCd">
+									<option value="" selected>::통신사::</option>
+									<c:forEach items="${codeTelecom}" var="itemTelecom"
+										varStatus="statusTelecom">
+										<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
+											<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq}">selected</c:if>><c:out
+												value="${itemTelecom.oycdName}" /></option>
+									</c:forEach>
+								</select> <input class="form-control" type="text" id="oympNumberArray0" name="oympNumberArray"
+									value="<c:out value="${oympNumber0}"/>" maxlength="11"
+									placeholder="'-'제외 숫자만">
+							</div></div>
+							
+								<div class="col-12 col-sm-4 col-lg-2"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<input type="hidden" id="oympDefaultNyArray1"
+										name="oympDefaultNyArray" value="0"> <label
+										for="formFile" class="form-label">연락처(선택)</label>
+								</div>
+								<div class="col-12 col-sm-8 col-lg-4"
+									style="margin-top: 20px; margin-bottom: 20px;">
+									<div class="input-group">
+										<select class="form-select"
+											id="oympTelecomCd" name="oympTelecomCd">
+											<option value="" selected>::통신사::</option>
+											<c:forEach items="${codeTelecom}" var="itemTelecom"
+												varStatus="statusTelecom">
+												<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
+													<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq}">selected</c:if>><c:out
+														value="${itemTelecom.oycdName}" /></option>
+											</c:forEach>
+										</select> <input class="form-control" type="text" id="oympNumberArray1"
+											name="oympNumberArray"
+											value="<c:out value="${oympNumber1}"/>" maxlength="11"
+											placeholder="'-'제외 숫자만">
+									</div>
+								</div>
+							</div>
 	<c:forEach items="${listPhone}" var="item" varStatus="statusTelecom">
 							<c:choose>
 								<c:when test="${item.oympDefaultNy eq 1}">
@@ -441,10 +510,11 @@ main {
 			</div>
 			
 		</div>
+		
 							<br>
 							<hr>
 							<br>
-							<div class="row">
+<div class="row">
 								<div class="col-12 col-sm-4 col-lg-2"
 									style="margin-top: 20px; margin-bottom: 20px;">
 									<label for="formFile" class="form-label">피부타입</label>
@@ -585,8 +655,8 @@ main {
 										class="btn btn-outline-dark" for="평생회원">평생회원</label>
 								</div>
 							</div>
-						</main>
-						</div>
+							</main></div>
+						
 
 		<div class="container">
 			<footer class="py-3 my-4">
@@ -615,6 +685,7 @@ main {
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script type="text/javascript">
+
 function sample6_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {

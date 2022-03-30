@@ -6,9 +6,7 @@ import java.util.List;
 
 
 public class Durian {
-	
-	private String[] checkboxSeqArray;
-	
+
 	
 	private String oymbSeq;
 	private String oymbId;
@@ -124,13 +122,6 @@ public class Durian {
 	
 	public static List<Durian> cachedCodeArrayList = new ArrayList<Durian>();
 
-	public String[] getCheckboxSeqArray() {
-		return checkboxSeqArray;
-	}
-
-	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
-		this.checkboxSeqArray = checkboxSeqArray;
-	}
 
 	public String getOymbSeq() {
 		return oymbSeq;

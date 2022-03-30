@@ -173,7 +173,7 @@ public class DurianController {
 	@RequestMapping(value = "/durian/durianFelete")
 	public String DurianFelete(DurianVo vo,  RedirectAttributes redirectAttributes) throws Exception {
 		
-		service.updateDelete(vo);
+		service.uelete(vo);
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		redirectAttributes.addAttribute("scOption", vo.getScOption());
 		redirectAttributes.addAttribute("scValue", vo.getScValue());
@@ -193,5 +193,40 @@ public class DurianController {
 
 		return "redirect:/durian/durianList";
 	}
+	
+	@RequestMapping(value = "/durian/multiUele")
+	public String multiUele(DurianVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+		
+		for(String checkboxSeq : checkboxSeqArray) {
+			vo.setOymbSeq(checkboxSeq);
+			service.uelete(vo);
+		}
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		
+		return "redirect:/durian/durianList";
+	}
+
+
+
+@RequestMapping(value = "memberMultiDele")
+public String memberMultiDele(DurianVo vo, RedirectAttributes redirectAttributes) throws Exception {
+	
+	String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+	
+	for(String checkboxSeq : checkboxSeqArray) {
+		vo.setOymbSeq(checkboxSeq);
+//		service.delete(vo);
+	}
+	
+	
+	redirectAttributes.addFlashAttribute("vo", vo);
+	
+	
+	return "redirect:/durian/durianList";
+}
 
 }

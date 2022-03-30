@@ -36,7 +36,7 @@ public interface DurianService {
 //
 //	public int updateEmail(Durian dto) throws Exception;
 	
-	public int updateDelete(DurianVo vo) throws Exception;
+	public int uelete(DurianVo vo) throws Exception;
 	
 	public int delete(DurianVo vo) throws Exception;
 	

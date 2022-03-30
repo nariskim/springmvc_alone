@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>List.Durian</title>
+<title>Form.AllLiveYoung</title>
 
 
 <link
@@ -181,15 +181,15 @@ main {
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">회원 관리</a></li>
-				<li class="breadcrumb-item"><a href="javascript:goList();">회원 리스트</a></li>
+				<li class="breadcrumb-item"><a href="#">회원 리스트</a></li>
 				<li class="breadcrumb-item active" aria-current="page">회원 등록</li>
 			</ol>
-		</nav><br><hr><br>
+		</nav><br><br><br><br><br>
 <a href="javascript:goInst();">
-					<button type="button" id="" class="btn btn-success">등록</button></a>
+					<button type="button" id="btnSubmit" class="btn btn-outline-success">등록</button></a>
 <a href="javascript:goList();">
-					<button type="button" id="" class="btn btn-primary">목록</button></a>
-					<br>
+					<button type="button" id="" class="btn btn-outline-primary">목록</button></a>
+					<br><hr><br>
 <div class="row">
 	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
 		<label for="formFile" class="form-label">이름 (한글)</label>
@@ -244,11 +244,7 @@ main {
 		<label for="formFile" class="form-label">생년월일</label>
 	</div>
 	<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-		<!-- <fmt:parseDate var="oymbDob" value="${oymbDobs}"
-									pattern="yyyy-MM-dd" />
-								<input type="text" id="oymbDob" name="oymbDob"
-									value="<fmt:formatDate value="${oymbDob}" pattern="yyyy-MM-dd" />"
-									placeholder="생년월일" class="form-control" autocomplete="off"> -->
+		<input type="text" id="" name="" max="2022-01-08" class="form-control" placeholder="'yyyyMMdd'">
 	</div> 
 	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
 		<label for="formFile" class="form-label">성별</label>
@@ -669,7 +665,7 @@ main {
 									"((상세 주소)주소를 입력해 주세요."))
 								return false;
 
-							if (!checkNull($("#oympTelecomCd"), $(
+/* 							if (!checkNull($("#oympTelecomCd"), $(
 									"#oympTelecomCd").val(),
 									"(통신사)필수 선택 사항입니다."))
 								return false;
@@ -686,9 +682,9 @@ main {
 							if (!checkNull($("#oymeEmailDomainCd"), $(
 									"#oymeEmailDomainCd").val(),
 									"(이메일주소)필수 선택 사항입니다."))
-								return false;
+								return false; */
 
-							if (!checkOnlyKorean($("#oymbName"), $("#oymbName")
+	/* 						if (!checkOnlyKorean($("#oymbName"), $("#oymbName")
 									.val(), "한글만 입력 가능합니다."))
 								return false;
 
@@ -709,7 +705,7 @@ main {
 
 							if (!checkEmail($("#oymeEmailAccount"), $(
 									"#oymeEmailAccount").val(), ""))
-								return false;
+								return false; */
 
 						});
 
@@ -776,7 +772,7 @@ main {
 					}).open();
 		}
 		
-		$(document).ready(function() {
+/* 		$(document).ready(function() {
 			$("#oymbDob").datepicker();
 		});
 
@@ -793,7 +789,7 @@ main {
 			dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
 			showMonthAfterYear : true,
 			yearSuffix : '년'
-		});
+		}); */
 	</script>
 
 

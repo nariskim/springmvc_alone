@@ -67,7 +67,7 @@
 		, g.oymeEmailFull
 
 		<include refid="selectCommon" />
-		ORDER BY oymbSeq ASC
+		ORDER BY oymbSeq DESC
 		limit #{startRnumForMysql}, #{rowNumToShow}
 
 	</select>
@@ -81,7 +81,7 @@
 		, oymbId
 		, oymbNickName
 		, oymbPassword
-
+		, oymbGenderCd
 		, oymbDelNy
 		, regDateTime
 		, modDateTime
@@ -91,6 +91,7 @@
 		, #{oymbId}
 		, #{oymbNickName}
 		, #{oymbPassword}
+		, #{oymbGenderCd}
 		, 0
 		, now()
 		, now()
@@ -215,6 +216,7 @@
 		, a.oymbNickName
 		, a.oymbPassword
 		, a.oymbDelNy
+		, a.oymbGenderCd
 		, b.oyjqQuestionCd
 		, b.oyjqAnswer
 		, b.oyjqDelNy
@@ -247,7 +249,7 @@
 		FROM oyMember a
 		LEFT JOIN oymbJoinQna b ON b.oymbSeq = a.oymbSeq
 		LEFT JOIN oymbNationality c ON c.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbAddress d ON d.oymaDefaultNy=1 AND d.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbAddress d ON d.oymbSeq = a.oymbSeq
 		LEFT JOIN oymbPhone e ON e.oympDefaultNy=1 AND e.oymbSeq = a.oymbSeq
 		LEFT JOIN oymbEmail f ON f.oymeDefaultNy=1 AND f.oymbSeq = a.oymbSeq
 
@@ -309,16 +311,14 @@
 
 	</update>
 	
-<!-- 	<update id="updateJoinQna">
+ 	<update id="updateJoinQna">
 
 		UPDATE
 		oymbJoinQna
 		SET
 		oyjqQuestionCd = #{oyjqQuestionCd}
 		, oyjqAnswer = #{oyjqAnswer}
-		, oyjqDelNy = #{oyjqDelNy}
-
-
+		
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
 
@@ -331,8 +331,7 @@
 		UPDATE
 		oymbNationality
 		SET
-		oymnDelNy = #{oymnDelNy}
-		, oynaSeq = #{oynaSeq}
+		oynaSeq = #{oynaSeq}
 	
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
@@ -340,7 +339,7 @@
 
 	</update>
 	
-	<update id="updatePhone">
+<!--	<update id="updatePhone">
 
 		UPDATE
 		oymbPhone
@@ -370,7 +369,7 @@
 
 	</update> -->
 	
-	<update id="updateDelete">
+	<update id="uelete">
 		UPDATE oyMember SET oymbDelNy = 1 WHERE 1=1 AND oymbSeq = #{oymbSeq}  
 	</update>
 	
