@@ -53,19 +53,25 @@ public class DurianDao {
 		return sqlSession.insert(namespace + ".insertAddress", dto);
 	}
 
-	
-	/*
-	 * public int insertPhone(Durian dto) { return sqlSession.insert(namespace +
-	 * ".insertPhone", dto); }
-	 * 
-	 * public int insertEmail(Durian dto) { return sqlSession.insert(namespace +
-	 * ".insertEmail", dto); }
-	 * 
-	 */
+	public int insertPhone(Durian dto) {
+		return sqlSession.insert(namespace + ".insertPhone", dto);
+	}
+
+	public int insertEmail(Durian dto) {
+		return sqlSession.insert(namespace + ".insertEmail", dto);
+	}
 
 	// view, edit
 	public Durian selectOne(DurianVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
+	}
+
+	public Durian selectOneLogin(Durian dto) {
+		return sqlSession.selectOne(namespace + ".selectOneLogin", dto);
+	}
+
+	public Durian selectOneId(Durian dto) {
+		return sqlSession.selectOne(namespace + ".selectOneId", dto);
 	}
 
 	// update
@@ -77,18 +83,21 @@ public class DurianDao {
 		return sqlSession.update(namespace + ".updateJoinQna", dto);
 	}
 
-	
 	public int updateNation(Durian dto) {
 		return sqlSession.update(namespace + ".updateNation", dto);
 	}
 
-		/*
-		 * public int updatePhone(Durian dto) { return sqlSession.update(namespace +
-		 * ".updatePhone", dto); }
-		 * 
-		 * public int updateEmail(Durian dto) { return sqlSession.update(namespace +
-		 * ".updateEmail", dto); }
-		 */
+	public int updatePhone(Durian dto) {
+		return sqlSession.update(namespace + ".updatePhone", dto);
+	}
+
+	public int updateEmail(Durian dto) {
+		return sqlSession.update(namespace + ".updateEmail", dto);
+	}
+	
+	public int updateAddress(Durian dto) {
+		return sqlSession.update(namespace + ".updateEmail", dto);
+	}
 
 	public int uelete(DurianVo vo) {
 		return sqlSession.update(namespace + ".uelete", vo);
@@ -97,7 +106,7 @@ public class DurianDao {
 	public int delete(DurianVo vo) {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}
-	
+
 	public List<Durian> selectListForCache() {
 		List<Durian> list = sqlSession.selectList(namespace + ".selectListForCache", "");
 		return list;

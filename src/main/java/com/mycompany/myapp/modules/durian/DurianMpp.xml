@@ -4,39 +4,53 @@
 
 <mapper namespace="com.mycompany.myapp.modules.durian.DurianMpp">
 
-	<resultMap id="resultMapObj" type="com.mycompany.myapp.modules.durian.Durian"></resultMap>
+	<resultMap id="resultMapObj"
+		type="com.mycompany.myapp.modules.durian.Durian"></resultMap>
 
 
 	<sql id="selectCommon">
 
 
 		FROM oyMember a
-		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND f.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND g.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbPhone f on f.oympDefaultNy=1 AND
+		f.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbEmail g on g.oymeDefaultNy=1 AND
+		g.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
-	
+
 		<choose>
 			<when test="scOymbDelNy == 1">AND a.oymbDelNy = 1</when>
 			<when test="scOymbDelNy == 0">AND a.oymbDelNy = 0</when>
 		</choose>
 
-<!-- 		<if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName LIKE concat('%',#{scOymbName},'%')</if> -->
-  		<choose>
-				<when test="scOptionDate == 1">AND a.regDateTime BETWEEN #{scDateStart} AND #{scDateEnd}</when>
-				<when test="scOptionDate == 2">AND a.modDateTime BETWEEN #{scDateStart} AND #{scDateEnd}</when>
-				<when test="scOptionDate == 3">AND a.oymbDob BETWEEN #{scDateStart} AND #{scDateEnd}</when>
-		</choose>	
+		<!-- <if test="scOymbName != null and !scOymbName.equals('')"> AND a.oymbName 
+			LIKE concat('%',#{scOymbName},'%')</if> -->
+		<choose>
+			<when test="scOptionDate == 1">AND a.regDateTime BETWEEN #{scDateStart} AND
+				#{scDateEnd}
+			</when>
+			<when test="scOptionDate == 2">AND a.modDateTime BETWEEN #{scDateStart} AND
+				#{scDateEnd}
+			</when>
+			<when test="scOptionDate == 3">AND a.oymbDob BETWEEN #{scDateStart} AND #{scDateEnd}
+			</when>
+		</choose>
 		<choose>
 			<when test="scOption == 1">AND a.oymbSeq = #{scValue}</when>
-			<when test="scOption == 2">AND a.oymbGradeCd LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 2">AND a.oymbGradeCd LIKE concat('%',#{scValue},'%')
+			</when>
 			<when test="scOption == 3">AND a.oymbName LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 4">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')</when>
+			<when test="scOption == 4">AND a.oymbNameEng LIKE concat('%',#{scValue},'%')
+			</when>
 			<when test="scOption == 5">AND a.oymbId LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 6">AND a.oymbGenderCd LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 7">AND f.oympNumber LIKE concat('%',#{scValue},'%')</when>
-			<when test="scOption == 8">AND g.oymeEmailFull LIKE concat('%',#{scValue},'%')</when>
-			
+			<when test="scOption == 6">AND a.oymbGenderCd LIKE concat('%',#{scValue},'%')
+			</when>
+			<when test="scOption == 7">AND f.oympNumber LIKE concat('%',#{scValue},'%')
+			</when>
+			<when test="scOption == 8">AND g.oymeEmailFull LIKE concat('%',#{scValue},'%')
+			</when>
+
 		</choose>
 
 
@@ -46,7 +60,7 @@
 
 		SELECT
 		count(*)
-		<include refid="selectCommon"/>
+		<include refid="selectCommon" />
 	</select>
 
 
@@ -100,9 +114,9 @@
 			order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
-		
+
 	</insert>
-		
+
 	<insert id="insertJoinQna">
 		INSERT INTO oymbJoinQna (
 		oyjqQuestionCd
@@ -133,12 +147,16 @@
 		, oymaAddress3
 		, oymaDelNy
 		, oymbSeq
+		, regDateTime
+		, modDateTime
 		) values (
 		#{oymaZipCode}
 		, #{oymaAddress1}
 		, #{oymaAddress2}
 		, #{oymaAddress3}
-		,0 
+		,0
+		, now()
+		, now()
 		,#{oymbSeq}
 		)
 		<selectKey resultType="String" keyProperty="oymaSeq"
@@ -147,15 +165,19 @@
 		</selectKey>
 	</insert>
 
- 	<insert id="insertNation">
+	<insert id="insertNation">
 		INSERT INTO oymbNationality (
 		oymnDelNy
 		, oymbSeq
 		, oynaSeq
+		, regDateTime
+		, modDateTime
 		) values (
 		0
 		,#{oymbSeq}
 		,#{oynaSeq}
+		, now()
+		, now()
 		)
 		<selectKey resultType="String" keyProperty="oyjqSeq"
 			order="AFTER">
@@ -163,17 +185,22 @@
 		</selectKey>
 	</insert>
 
-<!--	<insert id="insertPhone">
+	<insert id="insertPhone">
 		INSERT INTO oymbPhone (
 		oympTelecomCd
-		, oympNumber 
+		, oympNumber
 		, oympDelNy
 		, oymbSeq
-		) values (
+		, regDateTime
+		, modDateTime
+		)
+		values (
 		#{oympTelecomCd}
 		,#{oympNumber}
 		,0
 		,#{oymbSeq}
+		, now()
+		, now()
 		)
 		<selectKey resultType="String" keyProperty="oympSeq"
 			order="AFTER">
@@ -183,27 +210,50 @@
 
 	<insert id="insertEmail">
 		INSERT INTO oymbEmail (
-		oymeEmailFull
-		, oymeEmailAccount
+		oymeEmailAccount
 		, oymeEmailDomainCd
-		, oymeEmailDomain
 		, oymeDelNy
 		, oymbSeq
+		, regDateTime
+		, modDateTime
 		) values (
-		#{oymeEmailFull}
-		,#{oymeEmailAccount}
+		#{oymeEmailAccount}
 		,#{oymeEmailDomainCd}
-		,#{oymeEmailDomain}
 		,0
 		,#{oymbSeq}
+		, now()
+		, now()
 		)
 		<selectKey resultType="String" keyProperty="oymeSeq"
 			order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
-	</insert> -->
+	</insert>
 
+	<select id="selectOneId" resultMap="resultMapObj">
+		SELECT
+		oymbSeq
+		,oymbId
+		FROM
+		oyMember
+		WHERE 1=1
+		AND oymbId = #{oymbId}
+	</select>
 
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		SELECT
+		oymbSeq
+		, oymbId
+		,
+		oymbPassword
+		, oymbDesc
+		FROM oyMember
+		WHERE 1=1
+		AND oymbId=#{oymbId}
+		AND
+		oymbPassword=#{oymbPassword}
+
+	</select>
 
 
 	<select id="selectOne" resultMap="resultMapObj">
@@ -211,12 +261,14 @@
 		SELECT
 		a.oymbSeq
 		, a.oymbName
-		, a.oymbNameEng
+		,
+		a.oymbNameEng
 		, a.oymbId
 		, a.oymbNickName
 		, a.oymbPassword
 		, a.oymbDelNy
-		, a.oymbGenderCd
+		,
+		a.oymbGenderCd
 		, b.oyjqQuestionCd
 		, b.oyjqAnswer
 		, b.oyjqDelNy
@@ -226,11 +278,13 @@
 		, c.oymbSeq
 		, d.oymaDefaultNy
 		, d.oymaTypeCd
-		, d.oymaZipCode
+		,
+		d.oymaZipCode
 		, d.oymaAddress1
 		, d.oymaAddress2
 		, d.oymaAddress3
-		, d.oymaDelNy
+		,
+		d.oymaDelNy
 		, e.oympSeq
 		, e.oympDefaultNy
 		, e.oympTypeCd
@@ -243,53 +297,62 @@
 		, f.oymeEmailFull
 		, f.oymeEmailAccount
 		, f.oymeEmailDomain
-		, f.oymeEmailDomainCd
+		,
+		f.oymeEmailDomainCd
 		, f.oymeDelNy
 
 		FROM oyMember a
-		LEFT JOIN oymbJoinQna b ON b.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbNationality c ON c.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbJoinQna b
+		ON b.oymbSeq = a.oymbSeq
+		LEFT JOIN oymbNationality c ON c.oymbSeq =
+		a.oymbSeq
 		LEFT JOIN oymbAddress d ON d.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbPhone e ON e.oympDefaultNy=1 AND e.oymbSeq = a.oymbSeq
-		LEFT JOIN oymbEmail f ON f.oymeDefaultNy=1 AND f.oymbSeq = a.oymbSeq
+		LEFT JOIN
+		oymbPhone e ON e.oympDefaultNy=1 AND e.oymbSeq = a.oymbSeq
+		LEFT JOIN
+		oymbEmail f ON f.oymeDefaultNy=1 AND f.oymbSeq = a.oymbSeq
 
 		WHERE 1=1
 		AND a.oymbSeq = #{oymbSeq}
-		
+
 
 	</select>
-	
-	<select id="selectListPhone" resultMap="resultMapObj">
-	SELECT
-	oympSeq
-	, oympDefaultNy
-	, oympTypeCd
-	, oympTelecomCd
-	, oympNumber
-	, oympDelNy
-	
-	FROM oymbPhone
 
-	WHERE 1=1
-	AND oympDelNy = 0
-	AND oymbSeq = #{oymbSeq}
+	<select id="selectListPhone" resultMap="resultMapObj">
+		SELECT
+		oympSeq
+		,
+		oympDefaultNy
+		, oympTypeCd
+		, oympTelecomCd
+		, oympNumber
+		, oympDelNy
+
+		FROM
+		oymbPhone
+
+		WHERE 1=1
+		AND oympDelNy = 0
+		AND oymbSeq = #{oymbSeq}
 	</select>
 
 	<select id="selectListEmail" resultMap="resultMapObj">
-	SELECT
-	oymeSeq
-	, oymeDefaultNy
-	, oymeTypeCd
-	, oymeEmailDomainCd
-	, oymeEmailAccount
-	, oymeEmailDomain
-	, oymeEmailFull
-	
-	FROM oymbEmail
+		SELECT
+		oymeSeq
+		,
+		oymeDefaultNy
+		, oymeTypeCd
+		, oymeEmailDomainCd
+		, oymeEmailAccount
+		,
+		oymeEmailDomain
+		, oymeEmailFull
 
-	WHERE 1=1
-	AND oymeDelNy = 0
-	AND oymbSeq = #{oymbSeq}
+		FROM oymbEmail
+
+		WHERE 1=1
+		AND oymeDelNy = 0
+		AND oymbSeq = #{oymbSeq}
 	</select>
 
 
@@ -299,10 +362,12 @@
 		oyMember
 		SET
 		oymbName = #{oymbName}
-		, oymbNameEng = #{oymbNameEng}
+		, oymbNameEng
+		= #{oymbNameEng}
 		, oymbId = #{oymbId}
 		, oymbNickName = #{oymbNickName}
-		, oymbPassword = #{oymbPassword}
+		,
+		oymbPassword = #{oymbPassword}
 		, modDateTime = #{modDateTime}
 
 		WHERE 1=1
@@ -310,77 +375,112 @@
 
 
 	</update>
-	
- 	<update id="updateJoinQna">
+
+	<update id="updateAddress">
+
+		UPDATE
+		oymbAddress
+		SET
+		oymaZipCode = #{oymaZipCode}
+		,
+		oymaAddress1
+		= #{oymaAddress1}
+		, oymaAddress2 = #{oymaAddress2}
+		,
+		oymaAddress3 = #{oymaAddress3}
+		, modDateTime = #{modDateTime}
+
+		WHERE 1=1
+		AND oymbSeq = #{oymbSeq}
+
+	</update>
+
+
+	<update id="updateJoinQna">
 
 		UPDATE
 		oymbJoinQna
 		SET
-		oyjqQuestionCd = #{oyjqQuestionCd}
+		oyjqQuestionCd =
+		#{oyjqQuestionCd}
 		, oyjqAnswer = #{oyjqAnswer}
-		
+		, modDateTime =
+		#{modDateTime}
+
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
 
 
 	</update>
 
-		
-<update id="updateNation">
+
+	<update id="updateNation">
 
 		UPDATE
 		oymbNationality
 		SET
 		oynaSeq = #{oynaSeq}
-	
+		,
+		modDateTime = #{modDateTime}
+
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
 
 
 	</update>
-	
-<!--	<update id="updatePhone">
+
+	<update id="updatePhone">
 
 		UPDATE
 		oymbPhone
 		SET
 		oympTelecomCd = #{oympTelecomCd}
-		, oympNumber = #{oympNumber}
-		
+		,
+		oympNumber = #{oympNumber}
+		, modDateTime = #{modDateTime}
+
 		WHERE 1=1
-		AND oymbSeq = #{oymbSeq}
+		AND
+		oymbSeq = #{oymbSeq}
 
 
 	</update>
-	
+
 	<update id="updateEmail">
 
 		UPDATE
 		oymbEmail
 		SET
 		oymeEmailFull = #{oymeEmailFull}
-		, oymeEmailAccount = #{oymeEmailAccount}
-		, oymeEmailDomainCd = #{oymeEmailDomainCd}
+		,
+		oymeEmailAccount = #{oymeEmailAccount}
+		, oymeEmailDomainCd =
+		#{oymeEmailDomainCd}
 		, oymeEmailDomain = #{oymeEmailDomain}
-		
+		,
+		modDateTime = #{modDateTime}
+
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
 
 
-	</update> -->
-	
-	<update id="uelete">
-		UPDATE oyMember SET oymbDelNy = 1 WHERE 1=1 AND oymbSeq = #{oymbSeq}  
 	</update>
-	
+
+	<update id="uelete">
+		UPDATE oyMember SET oymbDelNy = 1 WHERE 1=1 AND
+		oymbSeq = #{oymbSeq}
+	</update>
+
 	<delete id="delete">
-		DELETE FROM oyMember WHERE 1=1 AND oymbSeq = #{oymbSeq}
+		DELETE FROM oyMember WHERE 1=1 AND oymbSeq =
+		#{oymbSeq}
 	</delete>
-	
+
 	<select id="selectListForCache" resultMap="resultMapObj">
 		SELECT
 		oycdSeq
-		, oycdName
+		,
+		oycdName
 		, oycgSeq
 		FROM
 		oyCode
@@ -392,13 +492,15 @@
 	<select id="selectListForCacheNation" resultMap="resultMapObj">
 		SELECT
 		oynaSeq
-		, oynaName
+		,
+		oynaName
 		, oymnSeq
 		FROM
 		oyNationality
 		WHERE 1=1
 		AND oynaDelNy = 0
-		AND oynaUseNy = 1
+		AND
+		oynaUseNy = 1
 	</select>
 
 

@@ -7,8 +7,17 @@ import java.util.List;
 
 public class Durian {
 
+	private Integer[] oympDefaultNyArray;
+	private String[] oympNumberArray;
+	private Integer[] oympTelecomCdArray;
+	
+	private Integer[] oymeDefaultNyArray;
+	private String[] oymeEmailAccountArray;
+	private Integer[] oymeEmailDomainCdArray;
+	private String[] oymeEmailDomainArray;
 	
 	private String oymbSeq;
+	private Integer oymbGradeCd;
 	private String oymbId;
 	private String oymbName;
 	private String oymbNameEng;
@@ -19,11 +28,11 @@ public class Durian {
 	private Integer oymbSkinTypeCd;
 	private Integer oymbPersonalColorCd;
 	private Integer oymbInterestsCd;;
-	private Integer oymbGradeCd;
 	private Integer oymbSmsConsentNy;
 	private Integer oymbEmailConsentNy;
 	private Integer oymbPushConsentNy;
 	private Integer oymbSavedCd;
+	private String oymbDesc;
 	private Integer oymbDelNy;
 	
 	
@@ -47,15 +56,6 @@ public class Durian {
 	private Integer oymaDelNy;
 //	private String oymbSeq;
 
-//	oymbAddressArray	
-//	private Integer[] oymaDefaulyNy;
-//	private Integer[] oymaTypeCd;
-//	private String[] oymaTitle;
-//	private String[] oymaZipCode;
-//	private String[] oymaAddress1;
-//	private String[] oymaAddress2;
-//	private String[] oymaAddress3;
-//	private Integer[] oymaDelNy;
 
 //	oymbNationality
 	private String oymnSeq;
@@ -80,14 +80,7 @@ public class Durian {
 	private Integer oympDelNy;
 //	private String oymbSeq;
 	
-//	oymbPhoneArray
-//	private Integer[] oympDefaultNy;
-//	private Integer[] oympTypeCd;
-//	private Integer[] oympDeviceCd;
-//	private Integer[] oympTelecomCd;
-//	private String[] oympNumber;
-	
-	
+
 // oyCodeGroup	
 	private String oycgSeq;
 	private String oycgName;
@@ -98,7 +91,6 @@ public class Durian {
 	private String oycdName;
 	private Integer oycdDelNy;
 //	private String oycgSeq = "";
-
 
 //	oymbEmail	
 	private String oymeSeq;
@@ -111,17 +103,63 @@ public class Durian {
 	private Integer oymeDelNy;
 //	private String oymbSeq;
 	
-// oymbEmailArray	
-//	private Integer[] oymeDefaultNy;
-//	private Integer[] oymeTypeCd;
-//	private String[] oymeEmailFull;
-//	private String[] oymeEmailAccount;
-//	private String[] oymeEmailDomain;
-//	private Integer[] oymeEmailDomainCd;
-//	private Integer[] oymeDelNy;
-	
 	public static List<Durian> cachedCodeArrayList = new ArrayList<Durian>();
 
+	public Integer[] getOympDefaultNyArray() {
+		return oympDefaultNyArray;
+	}
+
+	public void setOympDefaultNyArray(Integer[] oympDefaultNyArray) {
+		this.oympDefaultNyArray = oympDefaultNyArray;
+	}
+
+	public String[] getOympNumberArray() {
+		return oympNumberArray;
+	}
+
+	public void setOympNumberArray(String[] oympNumberArray) {
+		this.oympNumberArray = oympNumberArray;
+	}
+
+	public Integer[] getOympTelecomCdArray() {
+		return oympTelecomCdArray;
+	}
+
+	public void setOympTelecomCdArray(Integer[] oympTelecomCdArray) {
+		this.oympTelecomCdArray = oympTelecomCdArray;
+	}
+
+	public Integer[] getOymeDefaultNyArray() {
+		return oymeDefaultNyArray;
+	}
+
+	public void setOymeDefaultNyArray(Integer[] oymeDefaultNyArray) {
+		this.oymeDefaultNyArray = oymeDefaultNyArray;
+	}
+
+	public String[] getOymeEmailAccountArray() {
+		return oymeEmailAccountArray;
+	}
+
+	public void setOymeEmailAccountArray(String[] oymeEmailAccountArray) {
+		this.oymeEmailAccountArray = oymeEmailAccountArray;
+	}
+
+	public Integer[] getOymeEmailDomainCdArray() {
+		return oymeEmailDomainCdArray;
+	}
+
+	public void setOymeEmailDomainCdArray(Integer[] oymeEmailDomainCdArray) {
+		this.oymeEmailDomainCdArray = oymeEmailDomainCdArray;
+	}
+
+	public String[] getOymeEmailDomainArray() {
+		return oymeEmailDomainArray;
+	}
+
+	public void setOymeEmailDomainArray(String[] oymeEmailDomainArray) {
+		this.oymeEmailDomainArray = oymeEmailDomainArray;
+	}
 
 	public String getOymbSeq() {
 		return oymbSeq;
@@ -129,6 +167,14 @@ public class Durian {
 
 	public void setOymbSeq(String oymbSeq) {
 		this.oymbSeq = oymbSeq;
+	}
+
+	public Integer getOymbGradeCd() {
+		return oymbGradeCd;
+	}
+
+	public void setOymbGradeCd(Integer oymbGradeCd) {
+		this.oymbGradeCd = oymbGradeCd;
 	}
 
 	public String getOymbId() {
@@ -211,14 +257,6 @@ public class Durian {
 		this.oymbInterestsCd = oymbInterestsCd;
 	}
 
-	public Integer getOymbGradeCd() {
-		return oymbGradeCd;
-	}
-
-	public void setOymbGradeCd(Integer oymbGradeCd) {
-		this.oymbGradeCd = oymbGradeCd;
-	}
-
 	public Integer getOymbSmsConsentNy() {
 		return oymbSmsConsentNy;
 	}
@@ -249,6 +287,14 @@ public class Durian {
 
 	public void setOymbSavedCd(Integer oymbSavedCd) {
 		this.oymbSavedCd = oymbSavedCd;
+	}
+
+	public String getOymbDesc() {
+		return oymbDesc;
+	}
+
+	public void setOymbDesc(String oymbDesc) {
+		this.oymbDesc = oymbDesc;
 	}
 
 	public Integer getOymbDelNy() {
@@ -587,6 +633,5 @@ public class Durian {
 		this.oymeDelNy = oymeDelNy;
 	}
 
-	
-	
+
 	}

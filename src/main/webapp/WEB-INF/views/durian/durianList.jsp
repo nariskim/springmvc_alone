@@ -138,10 +138,12 @@ main {
 
 	<form id="formList" name="formList" method="post" action="/myapp/durian/durianList">
 		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
-		<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}" default="1"/>">
-		<input type="hidden" name="checkboxSeqArray"> 
+		<input type="hidden" name="checkboxSeqArray" id="checkboxSeqArray">
 		<input type="hidden" id="oymbSeq" name="oymbSeq">
-
+		
+		
+		
+		
 		<!-- navbar s -->
 		<div class="row">
 			<header class="navbar navbar-dark sticky-top bg-light ml-auto">
@@ -382,10 +384,10 @@ main {
 							<div class="row">
 					<div class="col-9"></div>
 					<div class="col-3"  style="text-aling:right;">
-						<a href=""><button type="button" id="uelete" name="uelete"
-								class="btn btn-outline-warning">삭제(임시)</button></a>
-						<a href=""><button type="button" id="btnSubmit_del" name="btnSubmit_del"
-								class="btn btn-outline-danger">삭제(영구)</button></a>
+						<button type="button" id="uelete" name="uelete"
+								class="btn btn-outline-warning">삭제(임시)</button>
+						<button type="button" id="btnSubmit_del" name="btnSubmit_del"
+								class="btn btn-outline-danger">삭제(영구)</button>
 								
 								<a href="javascript:goForm();">
 							<button type="button" class="btn btn-outline-success">등록</button></a></div>
@@ -647,18 +649,22 @@ $("input[name=checkboxSeq]").click(function(){
 var total = $("input[name=checkboxSeq]").length;
 var checked = $("input[name=checkboxSeq]:checked").length;
 
+
 if(total != checked) $("checkboxAll").prop("checked", false); 
 else $("checkboxAll").prop("checked", true);
 });	 
 
+var checkboxSeqArray = [];
 $("#uelete").on("click", function(){
-	var answer = confirm("삭제하시겠습니까?");
+	var answer = confirm("데이터 삭제?");
 	
 		if(answer){
 			$("input[name=checkboxSeq]:checked").each(function() { //체크되어있는지 확인하고 
 			checkboxSeqArray.push($(this).val());				//되어있으면 checkboxSeqArray에 순차적으로 값을 넣는다
 		});  
 		
+			
+			
 		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray); 
 		$("#formList").attr("action", "/myapp/durian/multiUele");
 		$("#formList").submit();
@@ -669,12 +675,13 @@ $("#uelete").on("click", function(){
 	
 });
 
-/* $().on("click" function(){
-	$().each(Function(){
+/* $("#uelete").on("click" function(){
+	$("input[name=checkboxSeq]:checked").each(Function(){
 		checkboxArray.push($(this).val());
 	});
-	$().modal("hide");
-	from.attr("action" , goUrlMultiUele).submit();
+	$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray); 
+		$("#formList").attr("action", "/myapp/durian/multiUele");
+		$("#formList").submit();
 });
 
 var goUrlMulitUele = "/durian/durianMultiUele";
