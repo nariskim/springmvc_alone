@@ -293,7 +293,7 @@ main {
 								<fmt:parseDate var="scDateEnd" value="${vo.scDateEnd}"
 									pattern="yyyy-MM-dd HH:mm:ss" />
 								<input type="text" id="scDateEnd" name="scDateEnd"
-									value="<fmt:formatDate value="${scDateEnd}" pattern="yyyy-MM-dd" />"
+									value="<fmt:formatDate value="${scDateEnd}" pattern="yyyy-MM-dd 59:59:59" />"
 									placeholder="종료일" class="form-control search-input" autocomplete="off">
 							</div>
 							<div class="col-sm-none col-lg-1"></div>
@@ -385,12 +385,12 @@ main {
 					<div class="col-9"></div>
 					<div class="col-3"  style="text-aling:right;">
 						<button type="button" id="uelete" name="uelete"
-								class="btn btn-outline-warning">삭제(임시)</button>
+								class="btn btn-outline-warning btn-lg"><i class="fa-solid fa-user-minus"></i></button>
 						<button type="button" id="btnSubmit_del" name="btnSubmit_del"
-								class="btn btn-outline-danger">삭제(영구)</button>
+								class="btn btn-outline-danger btn-lg"><i class="fa-solid fa-user-xmark"></i></button>
 								
 								<a href="javascript:goForm();">
-							<button type="button" class="btn btn-outline-success">등록</button></a></div>
+							<button type="button" class="btn btn-outline-success btn-lg"><i class="fa-solid fa-user-plus"></i></button></a></div>
 					</div>
 					
 					<br> <br>

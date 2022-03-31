@@ -92,6 +92,7 @@
 		, oymbNameEng
 		, oymbId
 		, oymbNickName
+		<!-- , oymbDob -->
 		, oymbPassword
 		, oymbGenderCd
 		, oymbDelNy
@@ -102,6 +103,10 @@
 		, #{oymbNameEng}
 		, #{oymbId}
 		, #{oymbNickName}
+	<!-- 	<choose>
+			<when test="oymbDob.equals('')">,NULL</when>
+			<otherwise>,#{oymbDob}</otherwise>
+		</choose> -->
 		, #{oymbPassword}
 		, #{oymbGenderCd}
 		, 0
@@ -249,6 +254,7 @@
 		,
 		oymbPassword
 		, oymbDesc
+		, oymbName
 		FROM oyMember
 		WHERE 1=1
 		AND oymbId=#{oymbId}
@@ -421,9 +427,8 @@
 		, modDateTime = #{modDateTime}
 
 		WHERE 1=1
-		AND
-		oymbSeq = #{oymbSeq}
-
+		AND oymbSeq = #{oymbSeq}
+		AND oympDefaultNy = #{oympDefaultNy}
 
 	</update>
 
@@ -435,13 +440,12 @@
 		oymeEmailFull = #{oymeEmailFull}
 		,
 		oymeEmailAccount = #{oymeEmailAccount}
-		, oymeEmailDomainCd =
-		#{oymeEmailDomainCd}
+		, oymeEmailDomainCd = #{oymeEmailDomainCd}
 		, modDateTime = #{modDateTime}
 
 		WHERE 1=1
 		AND oymbSeq = #{oymbSeq}
-
+		AND oymeDefaultNy = #{oymeDefaultNy}
 
 	</update>
 

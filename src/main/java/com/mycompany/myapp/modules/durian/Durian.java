@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 public class Durian {
 
 	private Integer[] oympDefaultNyArray;
 	private String[] oympNumberArray;
 	private Integer[] oympTelecomCdArray;
-	
+
 	private Integer[] oymeDefaultNyArray;
 	private String[] oymeEmailAccountArray;
 	private Integer[] oymeEmailDomainCdArray;
-	
+
 	private String oymbSeq;
 	private Integer oymbGradeCd;
 	private String oymbId;
@@ -22,7 +21,7 @@ public class Durian {
 	private String oymbNameEng;
 	private String oymbNickName;
 	private String oymbPassword;
-	private Date oymbDob;
+	private String oymbDob;
 	private Integer oymbGenderCd;
 	private Integer oymbSkinTypeCd;
 	private Integer oymbPersonalColorCd;
@@ -33,16 +32,15 @@ public class Durian {
 	private Integer oymbSavedCd;
 	private String oymbDesc;
 	private Integer oymbDelNy;
-	
-	
+
 	private Date regDateTime;
 	private Date modDateTime;
-	
+
 	private String oyjqSeq;
 	private String oyjqQuestionCd;
 	private String oyjqAnswer;
 	private Integer oyjqDelNy;
-	
+
 // oymbAddress	
 	private String oymaSeq;
 	private String oymaZipCode;
@@ -52,20 +50,17 @@ public class Durian {
 	private Integer oymaDelNy;
 //	private String oymbSeq;
 
-
 //	oymbNationality
 	private String oymnSeq;
 	private Integer oymnDelNy;
 //	private String oymbSeq;
 //	private String oynaSeq;
 
-	
 //	oyNationality
 	private String oynaSeq;
 	private String oynaName;
 	private Integer oynaDelNy;
 
-	
 //	oymbPhone	
 	private String oympSeq;
 	private Integer oympDefaultNy;
@@ -73,7 +68,6 @@ public class Durian {
 	private String oympNumber;
 	private Integer oympDelNy;
 //	private String oymbSeq;
-	
 
 // oyCodeGroup	
 	private String oycgSeq;
@@ -94,7 +88,7 @@ public class Durian {
 	private Integer oymeEmailDomainCd;
 	private Integer oymeDelNy;
 //	private String oymbSeq;
-	
+
 	public static List<Durian> cachedCodeArrayList = new ArrayList<Durian>();
 
 	public Integer[] getOympDefaultNyArray() {
@@ -201,11 +195,11 @@ public class Durian {
 		this.oymbPassword = oymbPassword;
 	}
 
-	public Date getOymbDob() {
+	public String getOymbDob() {
 		return oymbDob;
 	}
 
-	public void setOymbDob(Date oymbDob) {
+	public void setOymbDob(String oymbDob) {
 		this.oymbDob = oymbDob;
 	}
 
@@ -561,6 +555,4 @@ public class Durian {
 		this.oymeDelNy = oymeDelNy;
 	}
 
-	
-
-	}
+}

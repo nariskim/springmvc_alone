@@ -215,10 +215,14 @@ public class DurianController {
 		Durian rtDurian = service.selectOneLogin(dto);
 
 		if (rtDurian != null) {
-
+			rtDurian = service.selectOneLogin(dto);
 			if (rtDurian.getOymbSeq() != null) {
-				rtDurian = service.selectOneLogin(dto);
-
+				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+				
+				httpSession.setAttribute("sessSeq", rtDurian.getOymbSeq());
+				httpSession.setAttribute("sessId", rtDurian.getOymbId());
+				httpSession.setAttribute("sessName", rtDurian.getOymbName());
+				
 				returnMap.put("rt", "success");
 			} else {
 				returnMap.put("rt", "fail");
@@ -226,6 +230,16 @@ public class DurianController {
 		} else {
 			returnMap.put("rt", "fail");
 		}
+		return returnMap;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/durian/logoutProc")
+	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
 		return returnMap;
 	}
 

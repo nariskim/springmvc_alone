@@ -188,16 +188,16 @@ main {
 				<div class="row">
 				<div class="col-5">
 				<a href="javascript:goList();">
-				<button type="button" id="" class="btn btn-outline-primary">목록</button></a>
+				<button type="button" id="" class="btn btn-outline-primary btn-lg"><i class="fa-solid fa-users"></i></button></a>
 				
 				<a href="javascript:goEdit();">
-				<button type="button" id="" class="btn btn-outline-success">수정</button></a>
+				<button type="button" id="" class="btn btn-outline-success btn-lg"><i class="fa-solid fa-user-pen"></i></button></a>
 				
 				<a href="javascript:goDel();">
-				<button type="button" id="" class="btn btn-outline-danger">삭제(영구)</button></a>
+				<button type="button" id="" class="btn btn-outline-danger btn-lg"><i class="fa-solid fa-user-xmark"></i></button></a>
 				
 				<a href="javascript:goHide();">
-				<button type="button" id="" class="btn btn-outline-warning">삭제(임시)</button></a></div></div>
+				<button type="button" id="" class="btn btn-outline-warning btn-lg"><i class="fa-solid fa-user-minus"></i></button></a></div></div>
 				<br>
 				
 				<br><hr><br>
@@ -249,7 +249,7 @@ main {
 				<label for="formFile" class="form-label">비밀번호 확인</label>
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-				<input type="password" id="oymbPwdConfirm" class="form-control" aria-describedby="passwordHelpBlock" value="<c:out value="${item.oymbPassword}"/>">
+				<input type="password" id="" name="" class="form-control" aria-describedby="passwordHelpBlock" value="<c:out value="${item.oymbPassword}"/>">
 					<div id="passwordHelpBlock" class="form-text"></div>
 			</div>
 

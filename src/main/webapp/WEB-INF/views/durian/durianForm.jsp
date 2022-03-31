@@ -187,12 +187,10 @@ main {
 					<br>
 					<br>
 					<br>
-					<br> <a href="javascript:goInst();">
-						<button type="button" id="btnSubmit"
-							class="btn btn-outline-success">등록</button>
-					</a> <a href="javascript:goList();">
-						<button type="button" id="" class="btn btn-outline-primary">목록</button>
-					</a> <br>
+					<br>
+					<a href="javascript:goInst();"><button type="button" id="btnSubmit" name="" class="btn btn-outline-success btn-lg"><i class="fa-solid fa-user-check"></i></button></a>
+					<a href="javascript:goList();"><button type="button" id="" name="" class="btn btn-outline-primary btn-lg"><i class="fa-solid fa-users"></i></button></a>
+					<br>
 					<hr>
 					<br>
 					<div class="row">
@@ -662,9 +660,9 @@ varStatus="statusTelecom">
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-
 	<script type="text/javascript">
-		$("#btnSubmit").on(
+
+	$("#btnSubmit").on(
 				"click",
 				function() {
 

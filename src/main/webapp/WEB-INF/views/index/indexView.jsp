@@ -245,6 +245,15 @@ main {
 	</div>
 </nav> -->
 		<main>
+		sessSeq : <c:out value="${sessSeq}"/><br>
+		sessId : <c:out value="${sessId}"/><br>
+		sessName : <c:out value="${sessName}"/><br>
+		<c:if test="${not empty sessSeq}">
+	<button type="button" class="btn btn-danger" name="" id="btnLogout"><i
+								class="fas fa-sign-out-alt fa-lg"></i></button>
+</c:if>
+		
+		
 		</main>
 		<!--  -->
 		<div class="container">
@@ -280,7 +289,32 @@ main {
 <script src="/myapp/resources/js/validation.js"></script>
 <!-- jquery ui -->
 <script src="/myapp/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
+<script type="text/javascript">
+$("#btnLogout").on("click", function(){
+/* 	if(validation()==false) return false; */
+	$.ajax({
+	async: true 
+	,cache: false
+	,type: "post"
+	,url: "/myapp/durian/logoutProc"
+	,data : { "oymbId" : $("#oymbId").val(), "oymbPassword" : $("#oymbPassword").val()}
+	,success: function(response) {
+		if(response.rt == "success") {
+			alert("로그아웃!")
+			location.href = "/myapp/durian/loginForm";
+		} else {
+			
+		}
+	}
+	,error : function(jqXHR, textStatus, errorThrown){
+		alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+	}
+	});
+});
 
+
+	
+</script>
 
 
 	</body>

@@ -22,7 +22,19 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.mycompany.myapp" />
-	
+		
+		<!-- session interceptor s 2022.03.13 for logincheck -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/durian/loginForm" />
+			<exclude-mapping path="/durian/loginProc" />
+		<!-- 	<exclude-mapping path="/durian/findIdPwdForm" /> -->
+			<beans:bean id="checkLoginSessionInterception" class="com.mycompany.myapp.common.interceptor.CheckLoginSessionInterception"/>
+		</interceptor>
+	</interceptors>	
+	<!-- session interceptor e 2022.03.13 for logincheck -->
 	
 	
 </beans:beans>

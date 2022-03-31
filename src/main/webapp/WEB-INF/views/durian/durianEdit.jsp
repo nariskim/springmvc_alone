@@ -190,9 +190,9 @@ main {
 				</nav>
 		</nav><br><br><br><br><br>
 <a href="javascript:goSubmit();">
-					<button type="button" id="" class="btn btn-outline-success">수정</button></a>
+					<button type="button" id="" class="btn btn-outline-success btn-lg"><i class="fa-solid fa-circle-check"></i></button></a>
 <a href="javascript:goView();">
-					<button type="button" id="" class="btn btn-outline-primary">취소(상세)</button></a>
+					<button type="button" id="" class="btn btn-outline-primary btn-lg"><i class="fa-solid fa-user"></i></button></a>
 					<br><hr><br>
 		<div class="row">
 
@@ -302,11 +302,11 @@ main {
 			</div>
 			<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
 		<div class=input-group>
-			<input type="text" class="form-control" id="oymaZipCode" placeholder="우편번호" value="<c:out value="${item.oymaZipCode}"/>">
+			<input type="text" class="form-control" id="oymaZipCode" name="oymaZipCode" placeholder="우편번호" value="<c:out value="${item.oymaZipCode}"/>">
 			<input type="button" class="btn btn-outline-dark" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"></div>
-			<input type="text" class="form-control" id="oymaAddress1" placeholder="주소" value="<c:out value="${item.oymaAddress1}"/>">
-			<input type="text" class="form-control" id="oymaAddress2" placeholder="상세주소" value="<c:out value="${item.oymaAddress2}"/>">
-			<input type="text" class="form-control" id="oymaAddress3" placeholder="참고항목" value="<c:out value="${item.oymaAddress3}"/>">
+			<input type="text" class="form-control" id="oymaAddress1" name="oymaAddress1" placeholder="주소" value="<c:out value="${item.oymaAddress1}"/>">
+			<input type="text" class="form-control" id="oymaAddress2" name="oymaAddress2" placeholder="상세주소" value="<c:out value="${item.oymaAddress2}"/>">
+			<input type="text" class="form-control" id="oymaAddress3" name="oymaAddress3" placeholder="참고항목" value="<c:out value="${item.oymaAddress3}"/>">
 		
 		</div>
 
@@ -360,7 +360,7 @@ varStatus="statusTelecom">
 <c:if test="${oympTelecom1 eq itemTelecom.oycdSeq }">selected</c:if>>
 <c:out value="${itemTelecom.oycdName}" /></option>
 </c:forEach></select>
-<input type="text" class="form-control" id="oympNumberArray0" name="oympNumberArray" value="<c:out value="${oympNumber}"/>" placeholder="'-'제외">
+<input type="text" class="form-control" id="oympNumberArray0" name="oympNumberArray" value="<c:out value="${oympNumber1}"/>" placeholder="'-'제외">
 	</div>
 </div>
 
@@ -377,7 +377,7 @@ varStatus="statusTelecom">
 <c:if test="${oympTelecom0 eq itemTelecom.oycdSeq }">selected</c:if>>
 <c:out value="${itemTelecom.oycdName}" /></option>
 </c:forEach></select>
-<input type="text" class="form-control" id="oympNumberArray1" name="oympNumberArray" value="<c:out value="${oympNumber}"/>" placeholder="'-'제외">
+<input type="text" class="form-control" id="oympNumberArray1" name="oympNumberArray" value="<c:out value="${oympNumber0}"/>" placeholder="'-'제외">
 		</div>
 	</div>
 </div>
@@ -405,7 +405,7 @@ varStatus="statusTelecom">
 <div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
 <div class="input-group">
 	<input type="hidden" id="oymeDefaultNyArray0" name="oymeDefaultNyArray" value="1">
-	<input type="text" class="form-control" id="oymeEmailAccountArray0" name="oymeEmailAccountArray"  value="<c:out value="${oymeEmailAccount}"/>">
+	<input type="text" class="form-control" id="oymeEmailAccountArray0" name="oymeEmailAccountArray"  value="<c:out value="${oymeAccount1}"/>">
 <span class="input-group-text">@</span>
 <select class="form-select" id="oymeEmailDomainCdArray0" name="oymeEmailDomainCdArray">
 	<option value="" selected>::선택::
@@ -423,7 +423,7 @@ varStatus="statusTelecom">
 <div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
 <div class="input-group">
 	<input type="hidden" id="oymeDefaultNyArray1" name="oymeDefaultNyArray" value="0">
-	<input type="text" class="form-control" id="oymeEmailAccountArray1" name="oymeEmailAccountArray"  value="<c:out value="${oymeEmailAccount}"/>">
+	<input type="text" class="form-control" id="oymeEmailAccountArray1" name="oymeEmailAccountArray"  value="<c:out value="${oymeAccount0}"/>">
 <span class="input-group-text">@</span>
 <select class="form-select" id="oymeEmailDomainCdArray1" name="oymeEmailDomainCdArray">
 	<option value="" selected>::선택::
