@@ -293,7 +293,7 @@ main {
 								<fmt:parseDate var="scDateEnd" value="${vo.scDateEnd}"
 									pattern="yyyy-MM-dd HH:mm:ss" />
 								<input type="text" id="scDateEnd" name="scDateEnd"
-									value="<fmt:formatDate value="${scDateEnd}" pattern="yyyy-MM-dd 59:59:59" />"
+									value="<fmt:formatDate value="${scDateEnd}" pattern="yyyy-MM-dd" />"
 									placeholder="종료일" class="form-control search-input" autocomplete="off">
 							</div>
 							<div class="col-sm-none col-lg-1"></div>

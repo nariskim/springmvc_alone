@@ -28,13 +28,12 @@ public class DurianController {
 	@RequestMapping(value = "/durian/durianList")
 	public String durianList(@ModelAttribute("vo") DurianVo vo, Model model) throws Exception {
 
+		vo.setScOptionDate(vo.getScOptionDate() == null ? 1 : vo.getScOptionDate());
 		vo.setScDateStart(vo.getScDateStart() == null
 				? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL)
-				: UtilDateTime.addStringTime(vo.getScDateStart()));
-		vo.setScDateEnd(
-				vo.getScDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getScDateEnd()));
-
-		vo.setParamsPaging(service.selectOneCount(vo));
+				: UtilDateTime.add00TimeString(vo.getScDateStart()));
+		vo.setScDateEnd(vo.getScDateEnd() == null ? UtilDateTime.nowString()
+				: UtilDateTime.addNowTimeString(vo.getScDateEnd()));
 
 		int count = service.selectOneCount(vo);
 
@@ -55,7 +54,6 @@ public class DurianController {
 	@RequestMapping(value = "/durian/durianForm")
 	public String durianForm(@ModelAttribute("vo") DurianVo vo, Durian dto, Model model) throws Exception {
 
-		
 		List<Durian> list = service.selectListPhone(vo);
 		model.addAttribute("listPhone", list);
 
@@ -71,16 +69,16 @@ public class DurianController {
 	}
 
 	@RequestMapping(value = "/durian/durianInst")
-	public String durianInst(Durian dto, DurianVo vo, Model model, RedirectAttributes redirectAttributes) throws Exception {
-		
+	public String durianInst(Durian dto, DurianVo vo, Model model, RedirectAttributes redirectAttributes)
+			throws Exception {
+
 		service.insert(dto);
 
-	    List<Durian> list = service.selectListPhone(vo);
+		List<Durian> list = service.selectListPhone(vo);
 		model.addAttribute("listPhone", list);
 
 		List<Durian> list2 = service.selectListEmail(vo);
 		model.addAttribute("listEmail", list2);
-
 
 		vo.setOymbSeq(dto.getOymbSeq());
 
@@ -98,9 +96,9 @@ public class DurianController {
 		List<Durian> list = service.selectListPhone(vo);
 		model.addAttribute("listPhone", list);
 		List<Durian> list2 = service.selectListEmail(vo);
-        model.addAttribute("listEmail", list2);
-		
-        model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
+		model.addAttribute("listEmail", list2);
+
+		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
 		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
 		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
@@ -129,17 +127,17 @@ public class DurianController {
 	}
 
 	@RequestMapping(value = "/durian/durianUpdt")
-	public String durianUpdt(@ModelAttribute("vo") Durian dto, DurianVo vo, Model model, RedirectAttributes redirectAttributes)
-			throws Exception {
+	public String durianUpdt(@ModelAttribute("vo") Durian dto, DurianVo vo, Model model,
+			RedirectAttributes redirectAttributes) throws Exception {
 
 		service.update(dto);
 
-        List<Durian> list = service.selectListPhone(vo);
+		List<Durian> list = service.selectListPhone(vo);
 		model.addAttribute("listPhone", list);
 		List<Durian> list2 = service.selectListEmail(vo);
 		model.addAttribute("listEmail", list2);
-		
-        vo.setOymbSeq(dto.getOymbSeq());
+
+		vo.setOymbSeq(dto.getOymbSeq());
 
 		redirectAttributes.addFlashAttribute("vo", vo);
 
@@ -147,19 +145,17 @@ public class DurianController {
 	}
 
 	@RequestMapping(value = "/durian/durianFelete")
-	public String DurianFelete(DurianVo vo, Durian dto, RedirectAttributes redirectAttributes)
-			throws Exception {
+	public String DurianFelete(DurianVo vo, Durian dto, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.uelete(vo);
 
-        vo.setOymbSeq(dto.getOymbSeq());
+		vo.setOymbSeq(dto.getOymbSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/durian/durianList";
 	}
 
 	@RequestMapping(value = "/durian/durianDelete")
-	public String DurianDelete(DurianVo vo, RedirectAttributes redirectAttributes)
-			throws Exception {
+	public String DurianDelete(DurianVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
 		service.delete(vo);
 
@@ -168,8 +164,7 @@ public class DurianController {
 	}
 
 	@RequestMapping(value = "/durian/multiUele")
-	public String multiUele(DurianVo vo, Durian dto, RedirectAttributes redirectAttributes)
-			throws Exception {
+	public String multiUele(DurianVo vo, Durian dto, RedirectAttributes redirectAttributes) throws Exception {
 
 		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
 
@@ -177,7 +172,6 @@ public class DurianController {
 			vo.setOymbSeq(checkboxSeq);
 			service.uelete(vo);
 		}
-		
 
 		vo.setOymbSeq(dto.getOymbSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
@@ -186,14 +180,13 @@ public class DurianController {
 	}
 
 	@RequestMapping(value = "/durian/multiDele")
-	public String memberMultiDele(DurianVo vo, RedirectAttributes redirectAttributes)
-			throws Exception {
+	public String memberMultiDele(DurianVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
 		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
 
 		for (String checkboxSeq : checkboxSeqArray) {
 			vo.setOymbSeq(checkboxSeq);
-		    service.delete(vo);
+			service.delete(vo);
 		}
 
 		redirectAttributes.addFlashAttribute("vo", vo);
@@ -218,11 +211,11 @@ public class DurianController {
 			rtDurian = service.selectOneLogin(dto);
 			if (rtDurian.getOymbSeq() != null) {
 				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
-				
+
 				httpSession.setAttribute("sessSeq", rtDurian.getOymbSeq());
 				httpSession.setAttribute("sessId", rtDurian.getOymbId());
 				httpSession.setAttribute("sessName", rtDurian.getOymbName());
-				
+
 				returnMap.put("rt", "success");
 			} else {
 				returnMap.put("rt", "fail");
@@ -232,8 +225,7 @@ public class DurianController {
 		}
 		return returnMap;
 	}
-	
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/durian/logoutProc")
 	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
