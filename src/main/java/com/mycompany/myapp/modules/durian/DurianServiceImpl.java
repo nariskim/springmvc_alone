@@ -1,9 +1,6 @@
 package com.mycompany.myapp.modules.durian;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,33 +34,28 @@ public class DurianServiceImpl implements DurianService {
 		dto.setRegDateTime(UtilDateTime.nowDate());
 		dto.setModDateTime(UtilDateTime.nowDate());
 
-		
 		dao.insert(dto);
 		dao.insertAddress(dto);
 		dao.insertJoinQna(dto);
 		dao.insertNation(dto);
-		
-		for(int i=0; i<dto.getOympNumberArray().length; i++) {
+
+		for (int i = 0; i < dto.getOympNumberArray().length; i++) {
 			dto.setOympDefaultNy(dto.getOympDefaultNyArray()[i]);
 			dto.setOympTelecomCd(dto.getOympTelecomCdArray()[i]);
 			dto.setOympNumber(dto.getOympNumberArray()[i]);
 			dao.insertPhone(dto);
 		}
-		
-		for(int i=0; i<dto.getOymeEmailAccountArray().length; i++) {
+
+		for (int i = 0; i < dto.getOymeEmailAccountArray().length; i++) {
 			dto.setOymeDefaultNy(dto.getOymeDefaultNyArray()[i]);
 			dto.setOymeEmailDomainCd(dto.getOymeEmailDomainCdArray()[i]);
 			dto.setOymeEmailAccount(dto.getOymeEmailAccountArray()[i]);
 			dao.insertEmail(dto);
 		}
-		
-		
-	
-		
+
 		return 2;
 	}
 
-	
 	@Override
 	public Durian selectOne(DurianVo vo) throws Exception {
 		return dao.selectOne(vo);
@@ -81,33 +73,30 @@ public class DurianServiceImpl implements DurianService {
 
 	@Override
 	public int update(Durian dto) throws Exception {
-		
-		
+
 		dto.setModDateTime(UtilDateTime.nowDate());
-		
+
 		dao.update(dto);
 		dao.updateAddress(dto);
 		dao.updateJoinQna(dto);
 		dao.updateNation(dto);
-		
-		for(int i=0; i<dto.getOympNumberArray().length; i++) {
+
+		for (int i = 0; i < dto.getOympNumberArray().length; i++) {
 			dto.setOympDefaultNy(dto.getOympDefaultNyArray()[i]);
 			dto.setOympTelecomCd(dto.getOympTelecomCdArray()[i]);
 			dto.setOympNumber(dto.getOympNumberArray()[i]);
 			dao.updatePhone(dto);
 		}
-		
-		for(int i=0; i<dto.getOymeEmailAccountArray().length; i++) {
+
+		for (int i = 0; i < dto.getOymeEmailAccountArray().length; i++) {
 			dto.setOymeDefaultNy(dto.getOymeDefaultNyArray()[i]);
 			dto.setOymeEmailDomainCd(dto.getOymeEmailDomainCdArray()[i]);
 			dto.setOymeEmailAccount(dto.getOymeEmailAccountArray()[i]);
 			dao.updateEmail(dto);
 		}
-		
-		
-		return 2; 
-	}
 
+		return 2;
+	}
 
 	@Override
 	public int selectOneCount(DurianVo vo) throws Exception {
@@ -124,27 +113,6 @@ public class DurianServiceImpl implements DurianService {
 	public int delete(DurianVo vo) throws Exception {
 		return dao.delete(vo);
 
-	}
-
-	@PostConstruct
-	public void selectListForCache() {
-		List<Durian> codeListFromDb = (ArrayList<Durian>) dao.selectListForCache();
-
-		Durian.cachedCodeArrayList.clear();
-		Durian.cachedCodeArrayList.addAll(codeListFromDb);
-		System.out.println("cachedCodeArrayList:" + Durian.cachedCodeArrayList.size() + "chached !");
-	}
-
-	public static List<Durian> selectListCachedCode(String oycgSeq) throws Exception {
-		List<Durian> rt = new ArrayList<Durian>();
-		for (Durian codeRow : Durian.cachedCodeArrayList) {
-			if (codeRow.getOycgSeq().equals(oycgSeq)) {
-				rt.add(codeRow);
-			} else {
-
-			}
-		}
-		return rt;
 	}
 
 }

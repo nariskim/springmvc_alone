@@ -182,7 +182,7 @@
 		, now()
 		, now()
 		)
-		<selectKey resultType="String" keyProperty="oyjqSeq"
+		<selectKey resultType="String" keyProperty="oymnSeq"
 			order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
@@ -462,8 +462,7 @@
 	<select id="selectListForCache" resultMap="resultMapObj">
 		SELECT
 		oycdSeq
-		,
-		oycdName
+		, oycdName
 		, oycgSeq
 		FROM
 		oyCode

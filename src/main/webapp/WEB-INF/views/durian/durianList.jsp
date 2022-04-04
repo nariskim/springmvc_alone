@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
-<jsp:useBean id="DurianServiceImpl" class="com.mycompany.myapp.modules.durian.DurianServiceImpl"/>
+<jsp:useBean id="CodeServiceImpl" class="com.mycompany.myapp.modules.code.CodeServiceImpl"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -418,8 +418,8 @@ main {
 						</thead>
 
 						<tbody>
-							<c:set var="listCodeGender" value="${DurianServiceImpl.selectListCachedCode('2')}" />
-							<c:set var="listCodeGrade" value="${DurianServiceImpl.selectListCachedCode('19')}" />
+							<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}" />
+							<c:set var="listCodeGrade" value="${CodeServiceImpl.selectListCachedCode('19')}" />
 							<c:choose>
 								<c:when test="${fn:length(list) eq 0}">
 									<tr>

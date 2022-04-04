@@ -94,7 +94,7 @@ public class DurianDao {
 	public int updateEmail(Durian dto) {
 		return sqlSession.update(namespace + ".updateEmail", dto);
 	}
-	
+
 	public int updateAddress(Durian dto) {
 		return sqlSession.update(namespace + ".updateAddress", dto);
 	}
@@ -105,11 +105,6 @@ public class DurianDao {
 
 	public int delete(DurianVo vo) {
 		return sqlSession.delete(namespace + ".delete", vo);
-	}
-
-	public List<Durian> selectListForCache() {
-		List<Durian> list = sqlSession.selectList(namespace + ".selectListForCache", "");
-		return list;
 	}
 
 }

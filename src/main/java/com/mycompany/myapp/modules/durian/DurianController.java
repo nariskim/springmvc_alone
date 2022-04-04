@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.myapp.common.constants.Constants;
 import com.mycompany.myapp.common.util.UtilDateTime;
+import com.mycompany.myapp.modules.code.CodeServiceImpl;
 
 @Controller
 public class DurianController {
@@ -60,11 +61,11 @@ public class DurianController {
 		List<Durian> list2 = service.selectListEmail(vo);
 		model.addAttribute("listEmail", list2);
 
-		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
-		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
-		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
-		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
-		model.addAttribute("codeGrade", DurianServiceImpl.selectListCachedCode("19"));
+		model.addAttribute("codeGender", CodeServiceImpl.selectListCachedCode("2"));
+		model.addAttribute("codeJoinQna", CodeServiceImpl.selectListCachedCode("6"));
+		model.addAttribute("codeTelecom", CodeServiceImpl.selectListCachedCode("9"));
+		model.addAttribute("codeEmail", CodeServiceImpl.selectListCachedCode("11"));
+		model.addAttribute("codeGrade", CodeServiceImpl.selectListCachedCode("19"));
 		return "durian/durianForm";
 	}
 
@@ -98,11 +99,11 @@ public class DurianController {
 		List<Durian> list2 = service.selectListEmail(vo);
 		model.addAttribute("listEmail", list2);
 
-		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
-		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
-		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
-		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
-		model.addAttribute("codeGrade", DurianServiceImpl.selectListCachedCode("19"));
+		model.addAttribute("codeGender", CodeServiceImpl.selectListCachedCode("2"));
+		model.addAttribute("codeJoinQna", CodeServiceImpl.selectListCachedCode("6"));
+		model.addAttribute("codeTelecom", CodeServiceImpl.selectListCachedCode("9"));
+		model.addAttribute("codeEmail", CodeServiceImpl.selectListCachedCode("11"));
+		model.addAttribute("codeGrade", CodeServiceImpl.selectListCachedCode("19"));
 
 		return "durian/durianView";
 	}
@@ -117,11 +118,11 @@ public class DurianController {
 		List<Durian> list2 = service.selectListEmail(vo);
 		model.addAttribute("listEmail", list2);
 
-		model.addAttribute("codeGender", DurianServiceImpl.selectListCachedCode("2"));
-		model.addAttribute("codeJoinQna", DurianServiceImpl.selectListCachedCode("6"));
-		model.addAttribute("codeTelecom", DurianServiceImpl.selectListCachedCode("9"));
-		model.addAttribute("codeEmail", DurianServiceImpl.selectListCachedCode("11"));
-		model.addAttribute("codeGrade", DurianServiceImpl.selectListCachedCode("19"));
+		model.addAttribute("codeGender", CodeServiceImpl.selectListCachedCode("2"));
+		model.addAttribute("codeJoinQna", CodeServiceImpl.selectListCachedCode("6"));
+		model.addAttribute("codeTelecom", CodeServiceImpl.selectListCachedCode("9"));
+		model.addAttribute("codeEmail", CodeServiceImpl.selectListCachedCode("11"));
+		model.addAttribute("codeGrade", CodeServiceImpl.selectListCachedCode("19"));
 
 		return "durian/durianEdit";
 	}
