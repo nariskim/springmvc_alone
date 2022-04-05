@@ -6,7 +6,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
-<jsp:useBean id="DurianServiceImpl" class="com.mycompany.myapp.modules.durian.DurianServiceImpl"/>
+<jsp:useBean id="DurianServiceImpl"
+	class="com.mycompany.myapp.modules.durian.DurianServiceImpl" />
 
 
 <!DOCTYPE html>
@@ -183,14 +184,14 @@ main {
 							<li class="breadcrumb-item active" aria-current="page">회원 등록</li>
 						</ol>
 					</nav>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<a href="javascript:goInst();"><button type="button" id="btnSubmit" name="" class="btn btn-outline-success btn-lg"><i class="fa-solid fa-user-check"></i></button></a>
-					<a href="javascript:goList();"><button type="button" id="" name="" class="btn btn-outline-primary btn-lg"><i class="fa-solid fa-users"></i></button></a>
-					<br>
+					<br> <br> <br> <br> <br> <a
+						href="javascript:goInst();"><button type="button"
+							id="btnSubmit" name="" class="btn btn-outline-success btn-lg">
+							<i class="fa-solid fa-user-check"></i>
+						</button></a> <a href="javascript:goList();"><button type="button" id=""
+							name="" class="btn btn-outline-primary btn-lg">
+							<i class="fa-solid fa-users"></i>
+						</button></a> <br>
 					<hr>
 					<br>
 					<div class="row">
@@ -256,9 +257,8 @@ main {
 						</div>
 						<div class="col-12 col-sm-8 col-lg-4"
 							style="margin-top: 20px; margin-bottom: 20px;">
-							<input type="password" id="" name=""
-								class="form-control" aria-describedby="passwordHelpBlock"
-								placeholder="비밀번호 확인">
+							<input type="password" id="" name="" class="form-control"
+								aria-describedby="passwordHelpBlock" placeholder="비밀번호 확인">
 							<div id="passwordHelpBlock" class="form-text"></div>
 						</div>
 					</div>
@@ -332,15 +332,17 @@ main {
 					<div class="col-12 col-sm-8 col-lg-4"
 						style="margin-top: 20px; margin-bottom: 20px;">
 						<div class=input-group>
-							<input type="text" class="form-control" id="oymaZipCode" name="oymaZipCode"
-								placeholder="우편번호"> <input type="button"
-								class="btn btn-outline-dark"
+							<input type="text" class="form-control" id="oymaZipCode"
+								name="oymaZipCode" placeholder="우편번호"> <input
+								type="button" class="btn btn-outline-dark"
 								onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
 						</div>
-						<input type="text" class="form-control" id="oymaAddress1" name="oymaAddress1"
-							placeholder="주소"> <input type="text" class="form-control"
-							id="oymaAddress2" name="oymaAddress2" placeholder="상세주소"> <input type="text"
-							class="form-control" id="oymaAddress3" name="oymaAddress3" placeholder="참고항목">
+						<input type="text" class="form-control" id="oymaAddress1"
+							name="oymaAddress1" placeholder="주소"> <input type="text"
+							class="form-control" id="oymaAddress2" name="oymaAddress2"
+							placeholder="상세주소"> <input type="text"
+							class="form-control" id="oymaAddress3" name="oymaAddress3"
+							placeholder="참고항목">
 
 					</div>
 					<div class="col-12 col-sm-4 col-lg-2"
@@ -373,113 +375,141 @@ main {
 
 
 
-<c:forEach items="${listPhone}" var="item"
-varStatus="statusTelecom">
-<c:choose>
-<c:when test="${item.oympDefaultNy eq 1}">
-<c:set var="oympNumber1" value="${item.oympNumber}" />
-<c:set var="oympTelecom1" value="${item.oympTelecomCd}" />
-</c:when>
-<c:when test="${item.oympDefaultNy eq 0}">
-<c:set var="oympNumber0" value="${item.oympNumber}" />
-<c:set var="oympTelecom0" value="${item.oympTelecomCd}" />
-</c:when>
-<c:otherwise></c:otherwise>
-</c:choose>
-</c:forEach>
+					<c:forEach items="${listPhone}" var="item"
+						varStatus="statusTelecom">
+						<c:choose>
+							<c:when test="${item.oympDefaultNy eq 1}">
+								<c:set var="oympNumber1" value="${item.oympNumber}" />
+								<c:set var="oympTelecom1" value="${item.oympTelecomCd}" />
+							</c:when>
+							<c:when test="${item.oympDefaultNy eq 0}">
+								<c:set var="oympNumber0" value="${item.oympNumber}" />
+								<c:set var="oympTelecom0" value="${item.oympTelecomCd}" />
+							</c:when>
+							<c:otherwise></c:otherwise>
+						</c:choose>
+					</c:forEach>
 
-</div>
-<div class="row">
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-	<label for="formFile" class="form-label">연락처(필수)</label>
-</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-4 col-lg-2"
+						style="margin-top: 20px; margin-bottom: 20px;">
+						<label for="formFile" class="form-label">연락처(필수)</label>
+					</div>
 
-<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-<div class="input-group">
-	<input type="hidden" id="oympDefaultNyArray0" name="oympDefaultNyArray" value="1">
-	<select class="form-select" id="oympTelecomCdArray0" name="oympTelecomCdArray">
-		<option selected>::통신사::</option>
-		<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
-<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
-<c:if test="${oympTelecom1 eq itemTelecom.oycdSeq }">selected</c:if>>
-<c:out value="${itemTelecom.oycdName}" /></option>
-</c:forEach></select>
-<input type="text" class="form-control" id="oympNumberArray0" name="oympNumberArray" value="<c:out value="${oympNumber}"/>" placeholder="'-'제외">
-	</div>
-</div>
+					<div class="col-12 col-sm-8 col-lg-4"
+						style="margin-top: 20px; margin-bottom: 20px;">
+						<div class="input-group">
+							<input type="hidden" id="oympDefaultNyArray0"
+								name="oympDefaultNyArray" value="1"> <select
+								class="form-select" id="oympTelecomCdArray0"
+								name="oympTelecomCdArray">
+								<option selected>::통신사::</option>
+								<c:forEach items="${codeTelecom}" var="itemTelecom"
+									varStatus="statusTelecom">
+									<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
+										<c:if test="${oympTelecom1 eq itemTelecom.oycdSeq }">selected</c:if>>
+										<c:out value="${itemTelecom.oycdName}" /></option>
+								</c:forEach>
+							</select> <input type="text" class="form-control" id="oympNumberArray0"
+								name="oympNumberArray" value="<c:out value="${oympNumber}"/>"
+								placeholder="'-'제외">
+						</div>
+					</div>
 
-<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-	<label for="formFile" class="form-label">연락처(선택)</label>
-</div>
-<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-<div class="input-group">
-	<input type="hidden" id="oympDefaultNyArray1" name="oympDefaultNyArray" value="0">
-	<select class="form-select" id="oympTelecomCdArray1" name="oympTelecomCdArray">
-		<option selected>::통신사::</option>
-		<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
-<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
-<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq }">selected</c:if>>
-<c:out value="${itemTelecom.oycdName}" /></option>
-</c:forEach></select>
-<input type="text" class="form-control" id="oympNumberArray1" name="oympNumberArray" value="<c:out value="${oympNumber}"/>" placeholder="'-'제외">
-		</div>
-	</div>
-</div>
+					<div class="col-12 col-sm-4 col-lg-2"
+						style="margin-top: 20px; margin-bottom: 20px;">
+						<label for="formFile" class="form-label">연락처(선택)</label>
+					</div>
+					<div class="col-12 col-sm-8 col-lg-4"
+						style="margin-top: 20px; margin-bottom: 20px;">
+						<div class="input-group">
+							<input type="hidden" id="oympDefaultNyArray1"
+								name="oympDefaultNyArray" value="0"> <select
+								class="form-select" id="oympTelecomCdArray1"
+								name="oympTelecomCdArray">
+								<option selected>::통신사::</option>
+								<c:forEach items="${codeTelecom}" var="itemTelecom"
+									varStatus="statusTelecom">
+									<option value="<c:out value="${itemTelecom.oycdSeq}"/>"
+										<c:if test="${oympTelecom0 eq itemTelecom.oycdSeq }">selected</c:if>>
+										<c:out value="${itemTelecom.oycdName}" /></option>
+								</c:forEach>
+							</select> <input type="text" class="form-control" id="oympNumberArray1"
+								name="oympNumberArray" value="<c:out value="${oympNumber}"/>"
+								placeholder="'-'제외">
+						</div>
+					</div>
+				</div>
 
 
-<c:forEach items="${listEmail}" var="item" varStatus="statusEmail">
-<c:choose>
-<c:when test="${item.oymeDefaultNy eq 1}">
-<c:set var="oymeAccount1" value="${item.oymeEmailAccount}" />
-<c:set var="oymeDomain1" value="${item.oymeEmailDomainCd}" />
-</c:when>
-<c:when test="${item.oymeDefaultNy eq 0}">
-<c:set var="oymeAccount0" value="${item.oymeEmailAccount}" />
-<c:set var="oymeDomain0" value="${item.oymeEmailDomainCd}" />
-</c:when>
-<c:otherwise></c:otherwise>
-</c:choose>
-</c:forEach>
+				<c:forEach items="${listEmail}" var="item" varStatus="statusEmail">
+					<c:choose>
+						<c:when test="${item.oymeDefaultNy eq 1}">
+							<c:set var="oymeAccount1" value="${item.oymeEmailAccount}" />
+							<c:set var="oymeDomain1" value="${item.oymeEmailDomainCd}" />
+						</c:when>
+						<c:when test="${item.oymeDefaultNy eq 0}">
+							<c:set var="oymeAccount0" value="${item.oymeEmailAccount}" />
+							<c:set var="oymeDomain0" value="${item.oymeEmailDomainCd}" />
+						</c:when>
+						<c:otherwise></c:otherwise>
+					</c:choose>
+				</c:forEach>
 
-<div class="row">
+				<div class="row">
 
-	<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-	<label for="formFile" class="form-label">이메일 (필수)</label>
-</div>
-<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-<div class="input-group">
-	<input type="hidden" id="oymeDefaultNyArray0" name="oymeDefaultNyArray" value="1">
-	<input type="text" class="form-control" id="oymeEmailAccountArray0" name="oymeEmailAccountArray"  value="<c:out value="${oymeEmailAccount}"/>">
-<span class="input-group-text">@</span>
-<select class="form-select" id="oymeEmailDomainCdArray0" name="oymeEmailDomainCdArray">
-	<option value="" selected>::선택::
-		<c:forEach items="${codeEmail}" var="itemEmail" varStatus="statusEmail">
-<option value="<c:out value="${itemEmail.oycdSeq}"/>"
-<c:if test="${oymeDomain1 eq itemEmail.oycdSeq}">selected</c:if>>
-<c:out value="${itemEmail.oycdName}" /></option>
-</c:forEach></select>
-	</div>
-</div>
+					<div class="col-12 col-sm-4 col-lg-2"
+						style="margin-top: 20px; margin-bottom: 20px;">
+						<label for="formFile" class="form-label">이메일 (필수)</label>
+					</div>
+					<div class="col-12 col-sm-8 col-lg-4"
+						style="margin-top: 20px; margin-bottom: 20px;">
+						<div class="input-group">
+							<input type="hidden" id="oymeDefaultNyArray0"
+								name="oymeDefaultNyArray" value="1"> <input type="text"
+								class="form-control" id="oymeEmailAccountArray0"
+								name="oymeEmailAccountArray"
+								value="<c:out value="${oymeEmailAccount}"/>"> <span
+								class="input-group-text">@</span> <select class="form-select"
+								id="oymeEmailDomainCdArray0" name="oymeEmailDomainCdArray">
+								<option value="" selected>::선택::
+									<c:forEach items="${codeEmail}" var="itemEmail"
+										varStatus="statusEmail">
+										<option value="<c:out value="${itemEmail.oycdSeq}"/>"
+											<c:if test="${oymeDomain1 eq itemEmail.oycdSeq}">selected</c:if>>
+											<c:out value="${itemEmail.oycdName}" /></option>
+									</c:forEach>
+							</select>
+						</div>
+					</div>
 
-<div class="col-12 col-sm-4 col-lg-2" style="margin-top: 20px; margin-bottom: 20px;">
-	<label for="formFile" class="form-label">이메일 (선택)</label>
-</div>
-<div class="col-12 col-sm-8 col-lg-4" style="margin-top: 20px; margin-bottom: 20px;">
-<div class="input-group">
-	<input type="hidden" id="oymeDefaultNyArray1" name="oymeDefaultNyArray" value="0">
-	<input type="text" class="form-control" id="oymeEmailAccountArray1" name="oymeEmailAccountArray"  value="<c:out value="${oymeEmailAccount}"/>">
-<span class="input-group-text">@</span>
-<select class="form-select" id="oymeEmailDomainCdArray1" name="oymeEmailDomainCdArray">
-	<option value="" selected>::선택::
-		<c:forEach items="${codeEmail}" var="itemEmail" varStatus="statusEmail">
-<option value="<c:out value="${itemEmail.oycdSeq}"/>"
-<c:if test="${oymeDomain0 eq itemEmail.oycdSeq}">selected</c:if>>
-<c:out value="${itemEmail.oycdName}" /></option>
-</c:forEach></select>
-		</div>
-	</div>
+					<div class="col-12 col-sm-4 col-lg-2"
+						style="margin-top: 20px; margin-bottom: 20px;">
+						<label for="formFile" class="form-label">이메일 (선택)</label>
+					</div>
+					<div class="col-12 col-sm-8 col-lg-4"
+						style="margin-top: 20px; margin-bottom: 20px;">
+						<div class="input-group">
+							<input type="hidden" id="oymeDefaultNyArray1"
+								name="oymeDefaultNyArray" value="0"> <input type="text"
+								class="form-control" id="oymeEmailAccountArray1"
+								name="oymeEmailAccountArray"
+								value="<c:out value="${oymeEmailAccount}"/>"> <span
+								class="input-group-text">@</span> <select class="form-select"
+								id="oymeEmailDomainCdArray1" name="oymeEmailDomainCdArray">
+								<option value="" selected>::선택::
+									<c:forEach items="${codeEmail}" var="itemEmail"
+										varStatus="statusEmail">
+										<option value="<c:out value="${itemEmail.oycdSeq}"/>"
+											<c:if test="${oymeDomain0 eq itemEmail.oycdSeq}">selected</c:if>>
+											<c:out value="${itemEmail.oycdName}" /></option>
+									</c:forEach>
+							</select>
+						</div>
+					</div>
 
-</div>
+				</div>
 				<br>
 				<hr>
 				<br>
@@ -510,17 +540,20 @@ varStatus="statusTelecom">
 					</div>
 					<div class="col-12 col-sm-8 col-lg-4"
 						style="margin-top: 20px; margin-bottom: 20px;">
-						<input type="radio" class="btn-check" id="" name=""
-							autocomplete="off" value="146"> <label
-							class="btn btn-outline-dark" for="spring">봄 웜</label> <input
-							type="radio" class="btn-check" id="" name="" autocomplete="off"
-							value="147"> <label class="btn btn-outline-dark"
-							for="summer">여름 쿨</label> <input type="radio" class="btn-check"
-							id="" name="" autocomplete="off" value="148"> <label
-							class="btn btn-outline-dark" for="fall">가을 웜</label> <input
-							type="radio" class="btn-check" id="" name="" autocomplete="off"
-							value="149"> <label class="btn btn-outline-dark"
-							for="winter">겨울 쿨</label>
+
+						<input type="radio" class="btn-check" id="pcSpring"
+							name="oymbPersonalColorCd" autocomplete="off" value="146">
+						<label class="btn btn-outline-dark" for="spring">봄 웜</label> <input
+							type="radio" class="btn-check" id="pcSummer"
+							name="oymbPersonalColorCd" autocomplete="off" value="147">
+						<label class="btn btn-outline-dark" for="summer">여름 쿨</label> <input
+							type="radio" class="btn-check" id="pcFall"
+							name="oymbPersonalColorCd" autocomplete="off" value="148">
+						<label class="btn btn-outline-dark" for="fall">가을 웜</label> <input
+							type="radio" class="btn-check" id="pcWinter"
+							name="oymbPersonalColorCd" autocomplete="off" value="149">
+						<label class="btn btn-outline-dark" for="winter">겨울 쿨</label>
+
 					</div>
 				</div>
 
@@ -661,8 +694,7 @@ varStatus="statusTelecom">
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 	<script type="text/javascript">
-
-	$("#btnSubmit").on(
+		$("#btnSubmit").on(
 				"click",
 				function() {
 
